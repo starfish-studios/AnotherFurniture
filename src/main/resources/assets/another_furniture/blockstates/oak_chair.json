@@ -1,0 +1,23 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "another_furniture:block/chair",
+			"uvlock": true
+		},
+		"facing=east": {
+			"model": "another_furniture:block/chair",
+			"y": 90,
+			"uvlock": true
+		},
+		"facing=south": {
+			"model": "another_furniture:block/chair",
+			"y": 180,
+			"uvlock": true
+		},
+		"facing=west": {
+			"model": "another_furniture:block/chair",
+			"y": 270,
+			"uvlock": true
+		}
+	}
+}
