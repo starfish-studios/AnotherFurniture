@@ -148,6 +148,7 @@ for item in generate:
     print('public static final RegistryObject<Block> UPPERCASE_ID = registerBlock(LOWERCASE_ID, () -> new CLASS(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));'.replace("UPPERCASE_ID", item_name.upper()).replace("LOWERCASE_ID", f'"{item_name.lower()}"').replace("CLASS", class_type))
     #########################
     #Lang
+    lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
     lang[f"block.{namespace}.{item_name}"] = item_name.replace("_", " ").title()
     
 langs = f"{current_dir}\\assets\\{namespace}\\lang\\en_us.json"

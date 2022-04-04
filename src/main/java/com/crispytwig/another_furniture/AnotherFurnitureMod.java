@@ -34,6 +34,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -139,7 +140,14 @@ public class AnotherFurnitureMod
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> registryObject = BLOCKS.register(name, block);
-        ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+        ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(TAB)));
         return registryObject;
     }
+
+    public static final CreativeModeTab TAB = new CreativeModeTab(MOD_ID) {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(OAK_CHAIR.get().asItem());
+        }
+    };
 }
