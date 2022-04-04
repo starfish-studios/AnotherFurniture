@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "another_furniture:oak_chair"
+                    "name": "another_furniture:gray_stool"
                 }
             ],
             "conditions": [

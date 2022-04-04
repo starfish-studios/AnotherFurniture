@@ -93,7 +93,7 @@ for item in generate:
                 {
                     "parent": f"{namespace}:block/white_{type_of_item}",
                     "textures": {
-                        "all": f"{namespace}:block/{type_of_item}{type_of_item_extra}/{item_color}",
+                        "all": f"{namespace}:block/{type_of_item}/{item_color}",
                         "particle": "minecraft:block/oak_planks"
                     }
                 }
