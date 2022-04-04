@@ -20,13 +20,13 @@ Mod.
 [[dependencies.another_furniture]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.another_furniture]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"

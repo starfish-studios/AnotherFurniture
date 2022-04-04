@@ -53,6 +53,7 @@ for item in generate_pre:
 print(generate)
 
 lang = {}
+namespaced_items = []
 for item in generate:
     #print(item)
     item_name = item["name"]
@@ -146,6 +147,10 @@ for item in generate:
     class_type = class_names(item_name)
     
     print('public static final RegistryObject<Block> UPPERCASE_ID = registerBlock(LOWERCASE_ID, () -> new CLASS(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));'.replace("UPPERCASE_ID", item_name.upper()).replace("LOWERCASE_ID", f'"{item_name.lower()}"').replace("CLASS", class_type))
+
+    #########################
+    #Ids List
+    namespaced_items.append(namespaced_item)
     #########################
     #Lang
     lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
@@ -154,6 +159,8 @@ for item in generate:
 langs = f"{current_dir}\\assets\\{namespace}\\lang\\en_us.json"
 make_file_if_not_exist(langs, lang)
 
+for x in namespaced_items:
+    print(f'"{x}",')
 #########################
 
 

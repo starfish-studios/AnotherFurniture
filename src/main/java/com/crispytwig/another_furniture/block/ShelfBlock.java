@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,22 +40,9 @@ public class ShelfBlock extends Block {
         };
     }
 
-    public VoxelShape getInteractionShape(BlockState state, BlockGetter blockGetter, BlockPos pos) {
-        return switch (state.getValue(FACING)) {
-            case EAST -> SHAPE_EAST;
-            case SOUTH -> SHAPE_SOUTH;
-            case WEST -> SHAPE_WEST;
-            default -> SHAPE_NORTH;
-        };
-    }
-
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
-
-    //public boolean propagatesSkylightDown(BlockState state, BlockGetter blockGetter, BlockPos pos) {
-    //    return !isShapeFullBlock(state.getShape(blockGetter, pos).getFaceShape(Direction.UP));
-    //}
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
@@ -67,5 +53,4 @@ public class ShelfBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
-
 }

@@ -18,7 +18,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -34,7 +33,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -113,7 +111,7 @@ public class AnotherFurnitureMod
         BlockPos pos = event.getPos();
 
         Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-        double maxDist = 2;
+        double maxDist = 3;
         if((vec.x - player.getX()) * (vec.x - player.getX()) + (vec.y - player.getY()) * (vec.y - player.getY()) + (vec.z - player.getZ()) * (vec.z - player.getZ()) > maxDist * maxDist)
             return;
 
@@ -127,11 +125,7 @@ public class AnotherFurnitureMod
         if(state.getBlock() instanceof SeatBlock seatblock) {
             List<SeatEntity> seats = world.getEntitiesOfClass(SeatEntity.class, new AABB(pos, pos.offset(1, 1, 1)));
             if(seats.isEmpty()) {
-                float startFacing = (float)player.getLookAngle().x();
-                if (state.hasProperty(HorizontalDirectionalBlock.FACING)) {
-                    startFacing = state.getValue(HorizontalDirectionalBlock.FACING).toYRot();
-                }
-                SeatEntity seat = new SeatEntity(world, pos, seatblock.seatHeight(), startFacing);
+                SeatEntity seat = new SeatEntity(world, pos, seatblock.seatHeight());
                 world.addFreshEntity(seat);
                 event.getPlayer().startRiding(seat);
             }
