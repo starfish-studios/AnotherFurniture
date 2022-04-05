@@ -1,9 +1,6 @@
 package com.crispytwig.another_furniture;
 
-import com.crispytwig.another_furniture.block.ChairBlock;
-import com.crispytwig.another_furniture.block.SeatBlock;
-import com.crispytwig.another_furniture.block.ShelfBlock;
-import com.crispytwig.another_furniture.block.StoolBlock;
+import com.crispytwig.another_furniture.block.*;
 import com.crispytwig.another_furniture.entity.SeatEntity;
 import com.crispytwig.another_furniture.init.ModEntity;
 import com.crispytwig.another_furniture.render.SeatRenderer;
@@ -58,6 +55,8 @@ public class AnotherFurnitureMod
 
     public static final RegistryObject<Block> OAK_CHAIR = registerBlock("oak_chair",
             () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> OAK_TABLE = registerBlock("oak_table",
+            () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> OAK_SHELF = registerBlock("oak_shelf",
             () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WHITE_STOOL = registerBlock("white_stool",
