@@ -2,8 +2,7 @@
 	"credit": "Made by crispytwig using Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "another_furniture:block/oak_chair",
-		"particle": "minecraft:block/oak_planks"
+		"1": "assets:block/oak_chair"
 	},
 	"elements": [
 		{
@@ -48,14 +47,15 @@
 		{
 			"from": [12, 7, 12],
 			"to": [14, 16, 14],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0.5, -1, 15.5]},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [15.5, -1, 15.5]},
 			"faces": {
-				"north": {"uv": [9.75, 0.5, 10.25, 2.75], "texture": "#1"},
-				"east": {"uv": [9.25, 0.5, 9.75, 2.75], "texture": "#1"},
-				"south": {"uv": [10.75, 0.5, 11.25, 2.75], "texture": "#1"},
-				"west": {"uv": [10.25, 0.5, 10.75, 2.75], "texture": "#1"},
-				"up": {"uv": [10.25, 0.5, 9.75, 0], "texture": "#1"},
-				"down": {"uv": [10.75, 0, 10.25, 0.5], "texture": "#1"}
+				"north": {"uv": [1, 0.5, 0.5, 2.75], "texture": "#1"},
+				"east": {"uv": [1.5, 0.5, 1, 2.75], "texture": "#1"},
+				"south": {"uv": [2, 0.5, 1.5, 2.75], "texture": "#1"},
+				"west": {"uv": [0.5, 0.5, 0, 2.75], "texture": "#1"},
+				"up": {"uv": [0.5, 0.5, 1, 0], "texture": "#1"},
+				"down": {"uv": [1, 0, 1.5, 0.5], "texture": "#1"}
 			}
 		},
 		{
@@ -113,53 +113,29 @@
 		{
 			"from": [12, 0, 2],
 			"to": [14, 5, 4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 6]},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 6]},
 			"faces": {
-				"north": {"uv": [2.5, 4.5, 3, 5.75], "texture": "#1"},
-				"east": {"uv": [2, 4.5, 2.5, 5.75], "texture": "#1"},
-				"south": {"uv": [3.5, 4.5, 4, 5.75], "texture": "#1"},
-				"west": {"uv": [3, 4.5, 3.5, 5.75], "texture": "#1"},
-				"up": {"uv": [3, 4.5, 2.5, 4], "texture": "#1"},
-				"down": {"uv": [3.5, 4, 3, 4.5], "texture": "#1", "cullface": "down"}
+				"north": {"uv": [1, 4, 0.5, 5.25], "texture": "#1"},
+				"east": {"uv": [1.5, 4, 1, 5.25], "texture": "#1"},
+				"south": {"uv": [2, 4, 1.5, 5.25], "texture": "#1"},
+				"west": {"uv": [0.5, 4, 0, 5.25], "texture": "#1"},
+				"up": {"uv": [0.5, 4, 1, 3.5], "texture": "#1"},
+				"down": {"uv": [1, 3.5, 1.5, 4], "texture": "#1", "cullface": "down"}
 			}
 		},
 		{
 			"from": [12, 0, 12],
 			"to": [14, 5, 14],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 6]},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 16]},
 			"faces": {
-				"north": {"uv": [2.5, 4.5, 3, 5.75], "texture": "#1"},
-				"east": {"uv": [2, 4.5, 2.5, 5.75], "texture": "#1"},
-				"south": {"uv": [3.5, 4.5, 4, 5.75], "texture": "#1"},
-				"west": {"uv": [3, 4.5, 3.5, 5.75], "texture": "#1"},
-				"up": {"uv": [3, 4.5, 2.5, 4], "texture": "#1"},
-				"down": {"uv": [3.5, 4, 3, 4.5], "texture": "#1", "cullface": "down"}
-			}
-		},
-		{
-			"from": [2, 0, 2],
-			"to": [4, 5, 4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 6]},
-			"faces": {
-				"north": {"uv": [0.5, 4, 1, 5.25], "texture": "#1"},
-				"east": {"uv": [0, 4, 0.5, 5.25], "texture": "#1"},
-				"south": {"uv": [1.5, 4, 2, 5.25], "texture": "#1"},
-				"west": {"uv": [1, 4, 1.5, 5.25], "texture": "#1"},
-				"up": {"uv": [1, 4, 0.5, 3.5], "texture": "#1"},
-				"down": {"uv": [1.5, 3.5, 1, 4], "texture": "#1", "cullface": "down"}
-			}
-		},
-		{
-			"from": [2, 0, 2],
-			"to": [4, 5, 4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 6]},
-			"faces": {
-				"north": {"uv": [0.5, 4, 1, 5.25], "texture": "#1"},
-				"east": {"uv": [0, 4, 0.5, 5.25], "texture": "#1"},
-				"south": {"uv": [1.5, 4, 2, 5.25], "texture": "#1"},
-				"west": {"uv": [1, 4, 1.5, 5.25], "texture": "#1"},
-				"up": {"uv": [1, 4, 0.5, 3.5], "texture": "#1"},
-				"down": {"uv": [1.5, 3.5, 1, 4], "texture": "#1", "cullface": "down"}
+				"north": {"uv": [1, 4, 0.5, 5.25], "texture": "#1"},
+				"east": {"uv": [1.5, 4, 1, 5.25], "texture": "#1"},
+				"south": {"uv": [2, 4, 1.5, 5.25], "texture": "#1"},
+				"west": {"uv": [0.5, 4, 0, 5.25], "texture": "#1"},
+				"up": {"uv": [0.5, 4, 1, 3.5], "texture": "#1"},
+				"down": {"uv": [1, 3.5, 1.5, 4], "texture": "#1", "cullface": "down"}
 			}
 		}
 	],

@@ -1,9 +1,10 @@
 {
 	"credit": "Made by crispytwig using Blockbench",
+	"parent": "shelf",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "another_furniture:block/oak_shelf",
-		"particle": "minecraft:block/oak_planks"
+		"0": "assets:block/oak_shelf",
+		"particle": "assets:block/oak_shelf"
 	},
 	"elements": [
 		{
