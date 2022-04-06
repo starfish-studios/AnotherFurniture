@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/acacia_chair"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/acacia_chair",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/acacia_chair",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/acacia_chair",
+            "y": 270
+        }
+    }
+}

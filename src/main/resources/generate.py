@@ -8,8 +8,9 @@ as the base the other colors will parent from.
 """
 namespace = "another_furniture"
 generate_pre = [
-    {"name": "oak_chair", "blockstate_preset": "4_way"},
-    {"name": "oak_shelf", "blockstate_preset": "4_way"},
+    {"name": "WOODTYPE_chair", "wood_types": True, "blockstate_preset": "4_way"},
+    {"name": "WOODTYPE_shelf", "wood_types": True, "blockstate_preset": "4_way"},
+    {"name": "WOODTYPE_table", "wood_types": True, "blockstate_preset": "4_way"},
     {"name": "COLOR_stool", "colored": True}
 ]
 
@@ -21,12 +22,18 @@ def class_names(item_name):
         class_type = "ShelfBlock"
     elif item_name.endswith("stool"):
         class_type = "StoolBlock"
+    elif item_name.endswith("table"):
+        class_type = "TableBlock"
     return class_type
 
 ###################################
 colors = [
     "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
     "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+]
+
+wood_types = [
+    "oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"
 ]
 
 def make_file_if_not_exist(path, json_dict):
@@ -39,13 +46,16 @@ current_dir = os.getcwd()
 
 generate = []
 for item in generate_pre:
-    item2 = {**{"colored": False, "blockstate_preset": "normal"}, **item}
+    item2 = {**{"colored": False, "wood_types": False, "blockstate_preset": "normal"}, **item}
     item_name1 = item2["name"]
     if "colored" in item2 and item2["colored"]:
         for color in colors:
             dct = {**item2, **{"name": item_name1.replace("COLOR", color)}}
             generate.append(dct)
-            
+    elif "wood_types" in item2 and item2["wood_types"]:
+        for wood_type in wood_types:
+            dct = {**item2, **{"name": item_name1.replace("WOODTYPE", wood_type)}}
+            generate.append(dct)
     else:
         dct = {**item2, **{"name": item_name1}}
         generate.append(dct)
@@ -57,7 +67,7 @@ namespaced_items = []
 for item in generate:
     #print(item)
     item_name = item["name"]
-    item_color = item_name.split("_")[0]
+    item_color_or_type = item_name.split("_")[0]
     type_of_item = item_name.split("_")[1]
 
     namespaced_item = namespace + ":" + item_name
@@ -94,11 +104,21 @@ for item in generate:
                 {
                     "parent": f"{namespace}:block/white_{type_of_item}",
                     "textures": {
-                        "all": f"{namespace}:block/{type_of_item}/{item_color}",
+                        "all": f"{namespace}:block/{type_of_item}/{item_color_or_type}",
                         "particle": "minecraft:block/oak_planks"
                     }
                 }
             )
+    elif item["wood_types"]:
+        make_file_if_not_exist(f"{block_model}\\{item_name}.json",
+            {
+                "parent": f"{namespace}:block/{type_of_item}",
+                "textures": {
+                    "all": f"{namespace}:block/{type_of_item}/{item_color_or_type}",
+                    "particle": f"minecraft:block/{item_color_or_type}_planks"
+                }
+            }
+        )
     #########################
     #Item Models
     item_model = f"{current_dir}\\assets\\{namespace}\\models\\item"

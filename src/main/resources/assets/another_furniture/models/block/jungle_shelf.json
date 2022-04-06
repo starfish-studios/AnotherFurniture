@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/shelf",
+    "textures": {
+        "all": "another_furniture:block/shelf/jungle",
+        "particle": "minecraft:block/jungle_planks"
+    }
+}

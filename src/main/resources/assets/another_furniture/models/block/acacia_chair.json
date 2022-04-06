@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/chair",
+    "textures": {
+        "all": "another_furniture:block/chair/acacia",
+        "particle": "minecraft:block/acacia_planks"
+    }
+}
