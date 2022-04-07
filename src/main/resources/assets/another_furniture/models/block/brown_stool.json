@@ -1,7 +1,7 @@
 {
-    "parent": "another_furniture:block/white_stool",
+    "parent": "another_furniture:block/stool",
     "textures": {
         "all": "another_furniture:block/stool/brown",
-        "particle": "minecraft:block/oak_planks"
+        "particle": "minecraft:block/brown_wool"
     }
 }

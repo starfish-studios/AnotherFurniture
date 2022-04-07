@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:oak_table",
+        "another_furniture:spruce_table",
+        "another_furniture:birch_table",
+        "another_furniture:jungle_table",
+        "another_furniture:acacia_table",
+        "another_furniture:dark_oak_table",
+        "another_furniture:crimson_table",
+        "another_furniture:warped_table"
+    ]
+}

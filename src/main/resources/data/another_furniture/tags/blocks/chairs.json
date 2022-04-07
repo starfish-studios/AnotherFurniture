@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:oak_chair",
+        "another_furniture:spruce_chair",
+        "another_furniture:birch_chair",
+        "another_furniture:jungle_chair",
+        "another_furniture:acacia_chair",
+        "another_furniture:dark_oak_chair",
+        "another_furniture:crimson_chair",
+        "another_furniture:warped_chair"
+    ]
+}

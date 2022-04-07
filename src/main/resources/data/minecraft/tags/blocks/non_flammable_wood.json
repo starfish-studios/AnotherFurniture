@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:crimson_chair",
+        "another_furniture:warped_chair",
+        "another_furniture:crimson_shelf",
+        "another_furniture:warped_shelf",
+        "another_furniture:crimson_table",
+        "another_furniture:warped_table"
+    ]
+}

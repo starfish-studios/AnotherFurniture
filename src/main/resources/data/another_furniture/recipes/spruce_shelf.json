@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "/  "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:spruce_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:spruce_shelf",
+        "count": 1
+    },
+    "group": "shelves"
+}

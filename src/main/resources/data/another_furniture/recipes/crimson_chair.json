@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# ",
+        "##",
+        "//"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:crimson_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:crimson_chair",
+        "count": 1
+    },
+    "group": "chairs"
+}

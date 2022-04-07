@@ -6,7 +6,7 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:oak_planks"
+            "tag": "minecraft:planks"
         },
         "W": {
             "item": "minecraft:white_wool"

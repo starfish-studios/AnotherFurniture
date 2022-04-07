@@ -8,11 +8,12 @@ as the base the other colors will parent from.
 """
 namespace = "another_furniture"
 generate_pre = [
-    {"name": "WOODTYPE_chair", "wood_types": True, "blockstate_preset": "4_way"},
-    {"name": "WOODTYPE_shelf", "wood_types": True, "blockstate_preset": "4_way"},
-    {"name": "WOODTYPE_table", "wood_types": True, "blockstate_preset": "4_way"},
-    {"name": "COLOR_stool", "colored": True}
+    {"name": "WOODTYPE_chair", "wood_types": True, "blockstate_preset": "4_way", "tags": [f"{namespace}:blocks/chairs", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/chairs"}, {"minecraft:blocks/unstable_bottom_center": f"{namespace}:blocks/chairs"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["# ","##","//"],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_chair","count":1},"group":"chairs"}},
+    {"name": "WOODTYPE_shelf", "wood_types": True, "blockstate_preset": "4_way", "tags": [f"{namespace}:blocks/shelves", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/shelves"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["###","/  "],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_shelf","count":1},"group":"shelves"}},
+    {"name": "WOODTYPE_table", "wood_types": True, "blockstate_preset": "4_way", "tags": [f"{namespace}:blocks/tables", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/tables"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["###","/ /"],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_table","count":1},"group":"tables"}},
+    {"name": "COLOR_stool", "colored": True, "tags": [f"{namespace}:blocks/stools", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/stools"}, {"minecraft:blocks/unstable_bottom_center": f"{namespace}:blocks/stools"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["#W#","/ /"],"key":{"#":{"tag":"minecraft:planks"},"W":{"item":"minecraft:COLOR_wool"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:COLOR_stool","count":1},"group":"stools"}}
 ]
+
 
 def class_names(item_name):
     class_type = "CLASS"
@@ -26,6 +27,19 @@ def class_names(item_name):
         class_type = "TableBlock"
     return class_type
 
+def material_names(item_name):
+    material_type = "WOOD"
+    for wood_type in wood_types:
+        if wood_type in item_name:
+            material_type = "WOOD"
+            for non_flammable_wood in non_flammable_woods:
+                if non_flammable_wood in item_name:
+                    return "NETHER_WOOD"
+                
+    if item_name.endswith("stool"):
+        material_type = "WOOD"
+    return material_type
+
 ###################################
 colors = [
     "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
@@ -36,6 +50,10 @@ wood_types = [
     "oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"
 ]
 
+non_flammable_woods = [
+    "crimson", "warped"
+]
+
 def make_file_if_not_exist(path, json_dict):
     if not os.path.exists(path):
         with open(path, "w+") as f:
@@ -43,146 +61,157 @@ def make_file_if_not_exist(path, json_dict):
 
 
 current_dir = os.getcwd()
+block_loot_tables = f"{current_dir}\\data\\{namespace}\\loot_tables\\blocks"
+recipes = f"{current_dir}\\data\\{namespace}\\recipes"
+block_model = f"{current_dir}\\assets\\{namespace}\\models\\block"
+item_model = f"{current_dir}\\assets\\{namespace}\\models\\item"
+blockstates = f"{current_dir}\\assets\\{namespace}\\blockstates"
+langs = f"{current_dir}\\assets\\{namespace}\\lang\\en_us.json"
 
-generate = []
-for item in generate_pre:
-    item2 = {**{"colored": False, "wood_types": False, "blockstate_preset": "normal"}, **item}
-    item_name1 = item2["name"]
-    if "colored" in item2 and item2["colored"]:
-        for color in colors:
-            dct = {**item2, **{"name": item_name1.replace("COLOR", color)}}
+def generate_list(generate_pre):
+    generate = []
+    for item in generate_pre:
+        item2 = {**{"colored": False, "wood_types": False, "blockstate_preset": "normal", "tags": [], "recipe": {}}, **item}
+        item_name1 = item2["name"]
+        if "colored" in item2 and item2["colored"]:
+            for color in colors:
+                dct = {**item2, **{"name": item_name1.replace("COLOR", color)}, **{"color": color}}
+                generate.append(dct)
+                
+        elif "wood_types" in item2 and item2["wood_types"]:
+            for wood_type in wood_types:
+                dct = {**item2, **{"name": item_name1.replace("WOODTYPE", wood_type), **{"wood_type": wood_type}}}
+                generate.append(dct)
+                
+        else:
+            dct = {**item2, **{"name": item_name1}}
             generate.append(dct)
-    elif "wood_types" in item2 and item2["wood_types"]:
-        for wood_type in wood_types:
-            dct = {**item2, **{"name": item_name1.replace("WOODTYPE", wood_type)}}
-            generate.append(dct)
-    else:
-        dct = {**item2, **{"name": item_name1}}
-        generate.append(dct)
-    
-print(generate)
+        item2 = {}
+    return generate
 
-lang = {}
-namespaced_items = []
-for item in generate:
-    #print(item)
-    item_name = item["name"]
-    item_color_or_type = item_name.split("_")[0]
-    type_of_item = item_name.split("_")[1]
 
-    namespaced_item = namespace + ":" + item_name
-    #########################
-    #Block Loot Tables
-    block_loot_tables = f"{current_dir}\\data\\{namespace}\\loot_tables\\blocks"
-    make_file_if_not_exist(f"{block_loot_tables}\\{item_name}.json",
-        {
-            "type": "minecraft:block",
-            "pools": [
-		{
-		    "rolls": 1,
-		    "entries": [
-			{
-			    "type": "minecraft:item",
-			    "name": namespaced_item
-			}
-		    ],
-		    "conditions": [
-			{
-			    "condition": "minecraft:survives_explosion"
-			}
-		    ]
-		}
-            ]
-        }
-    )
-    #########################
-    # Block Models
-    block_model = f"{current_dir}\\assets\\{namespace}\\models\\block"
-    if item["colored"]:
-        if not item_name.startswith("white"):
-            make_file_if_not_exist(f"{block_model}\\{item_name}.json",
-                {
-                    "parent": f"{namespace}:block/white_{type_of_item}",
-                    "textures": {
-                        "all": f"{namespace}:block/{type_of_item}/{item_color_or_type}",
-                        "particle": "minecraft:block/oak_planks"
-                    }
-                }
-            )
-    elif item["wood_types"]:
-        make_file_if_not_exist(f"{block_model}\\{item_name}.json",
-            {
-                "parent": f"{namespace}:block/{type_of_item}",
-                "textures": {
-                    "all": f"{namespace}:block/{type_of_item}/{item_color_or_type}",
-                    "particle": f"minecraft:block/{item_color_or_type}_planks"
-                }
-            }
+tags_dict = {}
+
+def generate_all(generate):
+    lang = {}
+    namespaced_items = []
+    for item in generate:
+        item_name = item["name"]
+        type_of_item = item_name.split("_")[-1]
+
+        namespaced_item = namespace + ":" + item_name
+        #########################
+        #Block Loot Tables
+        
+        make_file_if_not_exist(f"{block_loot_tables}\\{item_name}.json",
+            {"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":namespaced_item}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
         )
-    #########################
-    #Item Models
-    item_model = f"{current_dir}\\assets\\{namespace}\\models\\item"
-    make_file_if_not_exist(f"{item_model}\\{item_name}.json",
-        {
-            "parent": f"{namespace}:block/{item_name}"
-        }
-    )
-    #########################
-    #Blockstates
-    blockstates = f"{current_dir}\\assets\\{namespace}\\blockstates"
-    if item["blockstate_preset"] == "normal":
-        blockstate = {
-            "variants": {
-		"": {
-		    "model": f"{namespace}:block/{item_name}"
-		}
-            }
-        }
-    elif item["blockstate_preset"] == "4_way":
-        blockstate = {
-            "variants": {
-		"facing=north": {
-		    "model": f"{namespace}:block/{item_name}"
-		},
-		"facing=east": {
-		    "model": f"{namespace}:block/{item_name}",
-		    "y": 90
-		},
-		"facing=south": {
-		    "model": f"{namespace}:block/{item_name}",
-		    "y": 180
-		},
-		"facing=west": {
-		    "model": f"{namespace}:block/{item_name}",
-		    "y": 270
-		}
-            }
-        }
+        #########################
+        # Block Models
+        
+        if item["colored"]:
+            make_file_if_not_exist(f"{block_model}\\{item_name}.json",
+                {"parent":f"{namespace}:block/{type_of_item}","textures":{"all":f"{namespace}:block/{type_of_item}/{item['color']}","particle":f"minecraft:block/{item['color']}_wool"}}
+            )
+        elif item["wood_types"]:
+            make_file_if_not_exist(f"{block_model}\\{item_name}.json",
+                {"parent": f"{namespace}:block/{type_of_item}","textures": {"all": f"{namespace}:block/{type_of_item}/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
+            )
+        #########################
+        #Item Models
+        
+        make_file_if_not_exist(f"{item_model}\\{item_name}.json",
+            {"parent": f"{namespace}:block/{item_name}"}
+        )
+        #########################
+        #Blockstates
+        
+        if item["blockstate_preset"] == "normal":
+            blockstate = {"variants": {"": {"model": f"{namespace}:block/{item_name}"}}}
+        elif item["blockstate_preset"] == "4_way":
+            blockstate = {"variants": {"facing=north": {"model": f"{namespace}:block/{item_name}"},"facing=east": {"model": f"{namespace}:block/{item_name}","y": 90},"facing=south": {"model": f"{namespace}:block/{item_name}","y": 180},"facing=west": {"model": f"{namespace}:block/{item_name}","y": 270}}}
 
-    make_file_if_not_exist(f"{blockstates}\\{item_name}.json", blockstate)
-    
-    
-    #########################
-    #Code
-    class_type = class_names(item_name)
-    
-    print('public static final RegistryObject<Block> UPPERCASE_ID = registerBlock(LOWERCASE_ID, () -> new CLASS(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));'.replace("UPPERCASE_ID", item_name.upper()).replace("LOWERCASE_ID", f'"{item_name.lower()}"').replace("CLASS", class_type))
+        make_file_if_not_exist(f"{blockstates}\\{item_name}.json", blockstate)
+
+
+
+        #########################
+        #Recipes
+
+        if not len(item["recipe"]) == 0:
+            if item["colored"]:
+                key = "W"
+                data = item["color"]
+                extra = "wool"
+                
+            elif item["wood_types"]:
+                key = "#"
+                data = item["wood_type"]
+                extra = "planks"
+                
+            recipe = item["recipe"]
+            key_namespace = recipe["key"][key]["item"].split(":")[0]
+            recipe["key"][key]["item"] = f"{key_namespace}:{data}_{extra}"
+            recipe["result"]["item"] = f"{namespace}:{item_name}"
+            make_file_if_not_exist(f"{recipes}\\{item_name}.json", recipe)
+
+
+        #########################
+        #Tags #1
+
+        for tag in item["tags"]:
+            if type(tag) == str:
+                if not tag in tags_dict:
+                    tags_dict[tag] = []
+                tags_dict[tag].append(namespaced_item)
+                
+                if item["wood_types"] and (item["wood_type"] in non_flammable_woods):
+                    if not "minecraft:blocks/non_flammable_wood" in tags_dict:
+                        tags_dict["minecraft:blocks/non_flammable_wood"] = []
+                    tags_dict["minecraft:blocks/non_flammable_wood"].append(namespaced_item)
+            elif type(tag) == dict:
+                dict_key = str(list(tag.keys())[0])
+                dict_value = "#" + str(list(tag.values())[0]).replace("blocks/","")
+                
+                if not dict_key in tags_dict:
+                    tags_dict[dict_key] = []
+                    
+                if not dict_value in tags_dict[dict_key]:
+                    tags_dict[dict_key].append(dict_value)
+        
+        #########################
+        #Code
+        class_type = class_names(item_name)
+        material_name = material_names(item_name)
+        
+        print(f'public static final RegistryObject<Block> {item_name.upper()} = registerBlock("{item_name.lower()}",\n() -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
+
+        
+        #########################
+        #Lang
+        lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
+        lang[f"block.{namespace}.{item_name}"] = item_name.replace("_", " ").title()
+        #########################
+        namespaced_items.append(namespaced_item)
+        
+    make_file_if_not_exist(langs, lang)
 
     #########################
     #Ids List
-    namespaced_items.append(namespaced_item)
-    #########################
-    #Lang
-    lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
-    lang[f"block.{namespace}.{item_name}"] = item_name.replace("_", " ").title()
+    #
+    #for x in namespaced_items:
+    #    print(f'"{x}",')
     
-langs = f"{current_dir}\\assets\\{namespace}\\lang\\en_us.json"
-make_file_if_not_exist(langs, lang)
+generate = generate_list(generate_pre)
+generate_all(generate)
 
-for x in namespaced_items:
-    print(f'"{x}",')
+
 #########################
+#Tags #2
 
+for tag in tags_dict:
+    block_tags = f"{current_dir}\\data\\{tag.replace(':', '/tags/')}.json"
+    make_file_if_not_exist(block_tags, {"replace": False, "values": tags_dict[tag]})
 
 
 
