@@ -1,10 +1,8 @@
 {
-	"credit": "Made by crispytwig using Blockbench",
 	"texture_size": [64, 64],
 	"parent": "minecraft:block/block",
 	"textures": {
-		"all": "another_furniture:block/oak_table",
-		"particle": "minecraft:block/oak_planks"
+		"all": "another_furniture:block/oak_table"
 	},
 	"elements": [
 		{

@@ -1,3 +1,6 @@
 {
-    "parent": "another_furniture:block/jungle_table"
+    "parent": "another_furniture:block/template/table_full",
+    "textures": {
+        "all": "another_furniture:block/table/jungle"
+    }
 }

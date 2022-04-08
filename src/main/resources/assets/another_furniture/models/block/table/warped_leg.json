@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/table",
+    "parent": "another_furniture:block/template/table_leg",
     "textures": {
         "all": "another_furniture:block/table/warped",
         "particle": "minecraft:block/warped_planks"

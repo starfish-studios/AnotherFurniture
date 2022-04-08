@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shelf",
+    "parent": "another_furniture:block/template/shelf",
     "textures": {
         "all": "another_furniture:block/shelf/acacia",
         "particle": "minecraft:block/acacia_planks"

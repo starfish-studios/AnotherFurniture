@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/table",
+    "parent": "another_furniture:block/template/table_top",
     "textures": {
         "all": "another_furniture:block/table/dark_oak",
         "particle": "minecraft:block/dark_oak_planks"

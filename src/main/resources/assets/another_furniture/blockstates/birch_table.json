@@ -1,19 +1,118 @@
 {
-    "variants": {
-        "facing=north": {
-            "model": "another_furniture:block/birch_table"
+    "multipart": [
+        {
+            "when": {
+                "facing": "north"
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_top"
+            }
         },
-        "facing=east": {
-            "model": "another_furniture:block/birch_table",
-            "y": 90
+        {
+            "when": {
+                "facing": "east"
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_top",
+                "y": 90
+            }
         },
-        "facing=south": {
-            "model": "another_furniture:block/birch_table",
-            "y": 180
+        {
+            "when": {
+                "facing": "south"
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_top",
+                "y": 180
+            }
         },
-        "facing=west": {
-            "model": "another_furniture:block/birch_table",
-            "y": 270
+        {
+            "when": {
+                "facing": "west"
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_top",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "OR": [
+                    {
+                        "n": "false",
+                        "e": "false"
+                    },
+                    {
+                        "n": "true",
+                        "e": "true",
+                        "ne": "false"
+                    }
+                ]
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_leg",
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "OR": [
+                    {
+                        "e": "false",
+                        "s": "false"
+                    },
+                    {
+                        "e": "true",
+                        "s": "true",
+                        "se": "false"
+                    }
+                ]
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_leg",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "OR": [
+                    {
+                        "s": "false",
+                        "w": "false"
+                    },
+                    {
+                        "s": "true",
+                        "w": "true",
+                        "sw": "false"
+                    }
+                ]
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_leg",
+                "y": 180,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "OR": [
+                    {
+                        "w": "false",
+                        "n": "false"
+                    },
+                    {
+                        "w": "true",
+                        "n": "true",
+                        "nw": "false"
+                    }
+                ]
+            },
+            "apply": {
+                "model": "another_furniture:block/table/birch_leg",
+                "y": 270,
+                "uvlock": true
+            }
         }
-    }
+    ]
 }

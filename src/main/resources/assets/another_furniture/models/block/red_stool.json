@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/stool",
+    "parent": "another_furniture:block/template/stool",
     "textures": {
         "all": "another_furniture:block/stool/red",
         "particle": "minecraft:block/red_wool"

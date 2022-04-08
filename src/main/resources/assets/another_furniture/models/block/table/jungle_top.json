@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/table",
+    "parent": "another_furniture:block/template/table_top",
     "textures": {
         "all": "another_furniture:block/table/jungle",
         "particle": "minecraft:block/jungle_planks"

@@ -1,0 +1,21 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"all": "another_furniture:block/table/oak",
+		"particle": "minecraft:block/oak_planks"
+	},
+	"elements": [
+		{
+			"from": [14, 0, 0],
+			"to": [16, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
+			"faces": {
+				"north": {"uv": [0.525, 0.525, 0.975, 3.975], "texture": "#all"},
+				"east": {"uv": [0.025, 0.525, 0.475, 3.975], "texture": "#all"},
+				"south": {"uv": [1.525, 0.525, 1.975, 3.975], "texture": "#all"},
+				"west": {"uv": [1.025, 0.525, 1.475, 3.975], "texture": "#all"},
+				"down": {"uv": [1.025, 0.025, 1.475, 0.475], "texture": "#all", "cullface": "down"}
+			}
+		}
+	]
+}
