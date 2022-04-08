@@ -11,61 +11,43 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TableBlock extends BaseBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    // truly, gomenasorry
-    public static final BooleanProperty N = BooleanProperty.create("n");
-    public static final BooleanProperty E = BooleanProperty.create("e");
-    public static final BooleanProperty S = BooleanProperty.create("s");
-    public static final BooleanProperty W = BooleanProperty.create("w");
-    public static final BooleanProperty NE = BooleanProperty.create("ne");
-    public static final BooleanProperty SE = BooleanProperty.create("se");
-    public static final BooleanProperty SW = BooleanProperty.create("sw");
-    public static final BooleanProperty NW = BooleanProperty.create("nw");
+    public static final IntegerProperty SHAPE = IntegerProperty.create("shape", 0, 15);
+    public static final IntegerProperty CONNECT = IntegerProperty.create("connect", 0, 4);
 
     protected static final VoxelShape TOP = Block.box(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape LEG_1 = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 14.0D, 2.0D);
     protected static final VoxelShape LEG_2 = Block.box(14.0D, 0.0D, 14.0D, 16.0D, 14.0D, 16.0D);
     protected static final VoxelShape LEG_3 = Block.box(0.0D, 0.0D, 14.0D, 2.0D, 14.0D, 16.0D);
     protected static final VoxelShape LEG_4 = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 14.0D, 2.0D);
-    protected static final VoxelShape[] SHAPES = new VoxelShape[]{TOP, Shapes.or(TOP, LEG_1), Shapes.or(TOP, LEG_2), Shapes.or(TOP, LEG_1, LEG_2),
-            Shapes.or(TOP, LEG_3), Shapes.or(TOP, LEG_1, LEG_3), Shapes.or(TOP, LEG_2, LEG_3), Shapes.or(TOP, LEG_1, LEG_2, LEG_3), Shapes.or(TOP, LEG_4),
-            Shapes.or(TOP, LEG_1, LEG_4), Shapes.or(TOP, LEG_2, LEG_4), Shapes.or(TOP, LEG_1, LEG_2, LEG_4), Shapes.or(TOP, LEG_3, LEG_4),
+    protected static final VoxelShape[] SHAPES = new VoxelShape[]{
+            TOP, Shapes.or(TOP, LEG_1), Shapes.or(TOP, LEG_2), Shapes.or(TOP, LEG_1, LEG_2),
+            Shapes.or(TOP, LEG_3), Shapes.or(TOP, LEG_1, LEG_3), Shapes.or(TOP, LEG_2, LEG_3),
+            Shapes.or(TOP, LEG_1, LEG_2, LEG_3), Shapes.or(TOP, LEG_4), Shapes.or(TOP, LEG_1, LEG_4),
+            Shapes.or(TOP, LEG_2, LEG_4), Shapes.or(TOP, LEG_1, LEG_2, LEG_4), Shapes.or(TOP, LEG_3, LEG_4),
             Shapes.or(TOP, LEG_1, LEG_3, LEG_4), Shapes.or(TOP, LEG_2, LEG_3, LEG_4), Shapes.or(TOP, LEG_1, LEG_2, LEG_3, LEG_4)
     };
 
     public TableBlock(Properties properties) {
         super(properties);
-        registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH)
-                .setValue(N, false).setValue(E,false).setValue(S,false).setValue(W,false)
-                .setValue(NE, false).setValue(SE, false).setValue(SW, false).setValue(NW, false));
+        registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SHAPE, 15));
     }
 
-    @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
-        int a = 0;
-        boolean n = state.getValue(N);
-        boolean e = state.getValue(E);
-        boolean s = state.getValue(S);
-        boolean w = state.getValue(W);
-        boolean ne = state.getValue(NE);
-        boolean se = state.getValue(SE);
-        boolean sw = state.getValue(SW);
-        boolean nw = state.getValue(NW);
-        if ((!n && !e) || (n && e && !ne)) a += 1;
-        if ((!e && !s) || (e && s && !se)) a += 2;
-        if ((!s && !w) || (s && w && !sw)) a += 4;
-        if ((!n && !w) || (n && w && !nw)) a += 8;
-        return SHAPES[a];
+        return SHAPES[state.getValue(SHAPE)];
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState()
+                .setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -74,40 +56,21 @@ public class TableBlock extends BaseBlock {
         boolean e = level.getBlockState(pos.east()).getBlock() instanceof TableBlock;
         boolean s = level.getBlockState(pos.south()).getBlock() instanceof TableBlock;
         boolean w = level.getBlockState(pos.west()).getBlock() instanceof TableBlock;
-        boolean ne = false;
-        boolean se = false;
-        boolean sw = false;
-        boolean nw = false;
-        if (n) {
-            nw = level.getBlockState(pos.north()).getValue(W);
-            ne = level.getBlockState(pos.north()).getValue(E);
-        }
-        if (e) {
-            ne = level.getBlockState(pos.east()).getValue(N);
-            se = level.getBlockState(pos.east()).getValue(S);
-        }
-        if (s) {
-            se = level.getBlockState(pos.south()).getValue(E);
-            sw = level.getBlockState(pos.south()).getValue(W);
-        }
-        if (w) {
-            sw = level.getBlockState(pos.west()).getValue(S);
-            nw = level.getBlockState(pos.west()).getValue(N);
-        }
-        return state.setValue(N, n).setValue(E, e).setValue(S, s).setValue(W, w)
-                .setValue(NE, ne).setValue(SE, se).setValue(SW, sw).setValue(NW, nw);
+        int connect = 0;
+        if (n) connect += 1;
+        if (e) connect += 1;
+        if (s) connect += 1;
+        if (w) connect += 1;
+        int shape = 0;
+        if ((!n && !e) || (n && e && !(level.getBlockState(pos.north().east()).getBlock() instanceof TableBlock))) shape += 1;
+        if ((!e && !s) || (e && s && !(level.getBlockState(pos.south().east()).getBlock() instanceof TableBlock))) shape += 2;
+        if ((!s && !w) || (s && w && !(level.getBlockState(pos.south().west()).getBlock() instanceof TableBlock))) shape += 4;
+        if ((!n && !w) || (n && w && !(level.getBlockState(pos.north().west()).getBlock() instanceof TableBlock))) shape += 8;
+        return state.setValue(SHAPE, shape).setValue(CONNECT, connect);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-        builder.add(N);
-        builder.add(E);
-        builder.add(S);
-        builder.add(W);
-        builder.add(NE);
-        builder.add(SE);
-        builder.add(SW);
-        builder.add(NW);
+        builder.add(FACING, SHAPE, CONNECT);
     }
 }
