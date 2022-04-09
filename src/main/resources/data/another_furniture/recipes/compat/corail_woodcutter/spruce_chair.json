@@ -1,0 +1,14 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        }
+    ],
+    "ingredient": {
+        "item": "minecraft:spruce_planks"
+    },
+    "result": "another_furniture:spruce_chair",
+    "count": 1
+}

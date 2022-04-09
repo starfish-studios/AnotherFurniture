@@ -172,6 +172,9 @@ def generate_all(generate):
             if not item["color"] == "white":
                 make_file_if_not_exist(f"{recipes}\\{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result": {"item": f"{namespace}:{item_name}","count": 1},"group": "stools"})
 
+        if item["wood_types"]:
+            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}.json", {"type": "corail_woodcutter:woodcutting","conditions": [{"type": "forge:mod_loaded","modid": "corail_woodcutter"}],"ingredient": {"item": f"minecraft:{item['wood_type']}_planks"},"result": f"{namespace}:{item_name}","count": 1})
+            
         #########################
         #Tags #1
 

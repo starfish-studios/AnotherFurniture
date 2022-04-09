@@ -1,0 +1,14 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        }
+    ],
+    "ingredient": {
+        "item": "minecraft:jungle_planks"
+    },
+    "result": "another_furniture:jungle_table",
+    "count": 1
+}
