@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "another_furniture:white_stool"
+        },
+        {
+            "item": "minecraft:orange_dye"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:orange_stool",
+        "count": 1
+    },
+    "group": "stools"
+}

@@ -168,6 +168,9 @@ def generate_all(generate):
             recipe["result"]["item"] = f"{namespace}:{item_name}"
             make_file_if_not_exist(f"{recipes}\\{item_name}.json", recipe)
 
+        if item_name.endswith("stool"):
+            if not item["color"] == "white":
+                make_file_if_not_exist(f"{recipes}\\{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result": {"item": f"{namespace}:{item_name}","count": 1},"group": "stools"})
 
         #########################
         #Tags #1
