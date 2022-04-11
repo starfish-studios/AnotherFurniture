@@ -1,3 +1,6 @@
 {
-    "parent": "another_furniture:block/birch_shelf"
+    "parent": "another_furniture:block/template/shelf_full",
+    "textures": {
+        "all": "another_furniture:block/shelf/birch"
+    }
 }

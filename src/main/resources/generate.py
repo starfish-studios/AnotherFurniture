@@ -9,7 +9,7 @@ as the base the other colors will parent from.
 namespace = "another_furniture"
 generate_pre = [
     {"name": "WOODTYPE_chair", "wood_types": True, "blockstate_preset": "4_way", "tags": [f"{namespace}:blocks/chairs", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/chairs"}, {"minecraft:blocks/unstable_bottom_center": f"{namespace}:blocks/chairs"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["# ","##","//"],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_chair","count":1},"group":"chairs"}},
-    {"name": "WOODTYPE_shelf", "wood_types": True, "blockstate_preset": "4_way", "tags": [f"{namespace}:blocks/shelves", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/shelves"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["###","/  "],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_shelf","count":1},"group":"shelves"}},
+    {"name": "WOODTYPE_shelf", "wood_types": True, "blockstate_preset": "shelf", "tags": [f"{namespace}:blocks/shelves", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/shelves"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["###","/  "],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_shelf","count":1},"group":"shelves"}},
     {"name": "WOODTYPE_table", "wood_types": True, "blockstate_preset": "table", "tags": [f"{namespace}:blocks/tables", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/tables"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["###","/ /"],"key":{"#":{"item":"minecraft:WOODTYPE_planks"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:WOODTYPE_table","count":1},"group":"tables"}},
     {"name": "COLOR_stool", "colored": True, "tags": [f"{namespace}:blocks/stools", {"minecraft:blocks/mineable/axe": f"{namespace}:blocks/stools"}, {"minecraft:blocks/unstable_bottom_center": f"{namespace}:blocks/stools"}], "recipe": {"type":"minecraft:crafting_shaped","pattern":["#W#","/ /"],"key":{"#":{"tag":"minecraft:planks"},"W":{"item":"minecraft:COLOR_wool"},"/":{"item":"minecraft:stick"}},"result":{"item":"another_furniture:COLOR_stool","count":1},"group":"stools"}}
 ]
@@ -116,20 +116,34 @@ def generate_all(generate):
         elif item["wood_types"]:
             if item["blockstate_preset"] == "table":
                 make_file_if_not_exist(f"{block_model}\\table\\{item['wood_type']}_leg.json",
-                    {"parent": "another_furniture:block/template/table_leg","textures": {"all": f"another_furniture:block/table/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_leg","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
                 )
                 make_file_if_not_exist(f"{block_model}\\table\\{item['wood_type']}_top.json",
-                    {"parent": "another_furniture:block/template/table_top","textures": {"all": f"another_furniture:block/table/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_top","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                )
+            elif item["blockstate_preset"] == "shelf":
+                make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_top.json",
+                    {"parent": f"{namespace}:block/template/shelf_top","textures":{"all":f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                )
+                make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_l.json",
+                    {"parent": f"{namespace}:block/template/shelf_l","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                )
+                make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_r.json",
+                    {"parent": f"{namespace}:block/template/shelf_r","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
                 )
             else:
                 make_file_if_not_exist(f"{block_model}\\{item_name}.json",
-                    {"parent": f"{namespace}:block/template/{type_of_item}","textures": {"all": f"{namespace}:block/{type_of_item}/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/{type_of_item}","textures":{"all":f"{namespace}:block/{type_of_item}/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
                 )
         #########################
         #Item Models
         if item["blockstate_preset"] == "table":
             make_file_if_not_exist(f"{item_model}\\{item_name}.json",
-                {"parent": f"{namespace}:block/template/table_full", "textures": {"all": f"another_furniture:block/table/{item['wood_type']}"}}
+                {"parent": f"{namespace}:block/template/table_full", "textures": {"all": f"{namespace}:block/table/{item['wood_type']}"}}
+            )
+        elif item["blockstate_preset"] == "shelf":
+            make_file_if_not_exist(f"{item_model}\\{item_name}.json",
+                {"parent": f"{namespace}:block/template/shelf_full", "textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}"}}
             )
         else:
             make_file_if_not_exist(f"{item_model}\\{item_name}.json",
@@ -142,10 +156,12 @@ def generate_all(generate):
             blockstate = {"variants": {"": {"model": f"{namespace}:block/{item_name}"}}}
         elif item["blockstate_preset"] == "4_way":
             blockstate = {"variants": {"facing=north": {"model": f"{namespace}:block/{item_name}"},"facing=east": {"model": f"{namespace}:block/{item_name}","y": 90},"facing=south": {"model": f"{namespace}:block/{item_name}","y": 180},"facing=west": {"model": f"{namespace}:block/{item_name}","y": 270}}}
+        elif item["blockstate_preset"] == "shelf":
+            blockstate = {"multipart":[{"when":{"facing":"north"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_top"}},{"when":{"facing":"east"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_top","y":90}},{"when":{"facing":"south"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_top","y":180}},{"when":{"facing":"west"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_top","y":270}},{"when":{"facing":"north","type":"0|1"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_l"}},{"when":{"facing":"east","type":"0|1"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_l","y":90}},{"when":{"facing":"south","type":"0|1"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_l","y":180}},{"when":{"facing":"west","type":"0|1"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_l","y":270}},{"when":{"facing":"north","type":"0|3"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_r"}},{"when":{"facing":"east","type":"0|3"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_r","y":90}},{"when":{"facing":"south","type":"0|3"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_r","y":180}},{"when":{"facing":"west","type":"0|3"},"apply":{"model":f"{namespace}:block/shelf/{item['wood_type']}_r","y":270}}]}
         elif item["blockstate_preset"] == "table":
-            blockstate = {"multipart":[{"when":{"facing":"north"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_top"}},{"when":{"facing":"east"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_top","y":90}},{"when":{"facing":"south"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_top","y":180}},{"when":{"facing":"west"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_top","y":270}},{"when":{"shape":"1|3|5|7|9|11|13|15"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_leg","uvlock":True}},{"when":{"shape":"2|3|6|7|10|11|14|15"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_leg","y":90,"uvlock":True}},{"when":{"shape":"4|5|6|7|12|13|14|15"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_leg","y":180,"uvlock":True}},{"when":{"shape":"8|9|10|11|12|13|14|15"},"apply":{"model":f"another_furniture:block/table/{item['wood_type']}_leg","y":270,"uvlock":True}}]}
+            blockstate = {"multipart":[{"when":{"facing":"north"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_top"}},{"when":{"facing":"east"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_top","y":90}},{"when":{"facing":"south"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_top","y":180}},{"when":{"facing":"west"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_top","y":270}},{"when":{"leg_1":"true"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_leg","uvlock":True}},{"when":{"leg_2":"true"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_leg","y":90,"uvlock":True}},{"when":{"leg_3":"true"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_leg","y":180,"uvlock":True}},{"when":{"leg_4":"true"},"apply":{"model":f"{namespace}:block/table/{item['wood_type']}_leg","y":270,"uvlock":True}}]}
         make_file_if_not_exist(f"{blockstates}\\{item_name}.json", blockstate)
-
+        
 
 
         #########################

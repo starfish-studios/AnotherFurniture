@@ -1,3 +1,6 @@
 {
-    "parent": "another_furniture:block/crimson_shelf"
+    "parent": "another_furniture:block/template/shelf_full",
+    "textures": {
+        "all": "another_furniture:block/shelf/crimson"
+    }
 }

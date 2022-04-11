@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/template/shelf",
+    "parent": "another_furniture:block/template/shelf_r",
     "textures": {
         "all": "another_furniture:block/shelf/dark_oak",
         "particle": "minecraft:block/dark_oak_planks"

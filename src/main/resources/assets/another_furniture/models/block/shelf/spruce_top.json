@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/template/shelf",
+    "parent": "another_furniture:block/template/shelf_top",
     "textures": {
         "all": "another_furniture:block/shelf/spruce",
         "particle": "minecraft:block/spruce_planks"

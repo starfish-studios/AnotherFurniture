@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"all": "another_furniture:block/shelf/oak",
+		"particle": "minecraft:block/oak_planks"
+	},
+	"elements": [
+		{
+			"from": [12, 6, 14],
+			"to": [16, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
+			"faces": {
+				"north": {"uv": [0.525, 0.525, 1.475, 2.475], "texture": "#all"},
+				"east": {"uv": [0.025, 0.525, 0.475, 2.475], "texture": "#all", "cullface": "east"},
+				"south": {"uv": [2.025, 0.525, 2.975, 2.475], "texture": "#all", "cullface": "south"},
+				"west": {"uv": [1.525, 0.525, 1.975, 2.475], "texture": "#all"},
+				"down": {"uv": [2.475, 0.025, 1.525, 0.475], "texture": "#all"}
+			}
+		},
+		{
+			"from": [13, 3.8, 10.5],
+			"to": [15, 14.8, 12.5],
+			"rotation": {"angle": -45, "axis": "x", "origin": [2, 9.8, 9]},
+			"faces": {
+				"north": {"uv": [0.525, 5.025, 0.975, 7.725], "texture": "#all"},
+				"east": {"uv": [0.025, 5.025, 0.475, 7.725], "texture": "#all"},
+				"south": {"uv": [1.525, 5.025, 1.975, 7.725], "texture": "#all"},
+				"west": {"uv": [1.025, 5.025, 1.475, 7.725], "texture": "#all"}
+			}
+		}
+	]
+}

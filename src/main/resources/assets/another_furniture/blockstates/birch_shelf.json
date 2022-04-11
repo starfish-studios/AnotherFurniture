@@ -1,19 +1,117 @@
 {
-    "variants": {
-        "facing=north": {
-            "model": "another_furniture:block/birch_shelf"
+    "multipart": [
+        {
+            "when": {
+                "facing": "north"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_top"
+            }
         },
-        "facing=east": {
-            "model": "another_furniture:block/birch_shelf",
-            "y": 90
+        {
+            "when": {
+                "facing": "east"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_top",
+                "y": 90
+            }
         },
-        "facing=south": {
-            "model": "another_furniture:block/birch_shelf",
-            "y": 180
+        {
+            "when": {
+                "facing": "south"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_top",
+                "y": 180
+            }
         },
-        "facing=west": {
-            "model": "another_furniture:block/birch_shelf",
-            "y": 270
+        {
+            "when": {
+                "facing": "west"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_top",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type": "0|1"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_l"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type": "0|1"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_l",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type": "0|1"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_l",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type": "0|1"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_l",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type": "0|3"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_r"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type": "0|3"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_r",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type": "0|3"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_r",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type": "0|3"
+            },
+            "apply": {
+                "model": "another_furniture:block/shelf/birch_r",
+                "y": 270
+            }
         }
-    }
+    ]
 }
