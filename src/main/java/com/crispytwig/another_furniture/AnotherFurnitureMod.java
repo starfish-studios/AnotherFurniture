@@ -2,7 +2,10 @@ package com.crispytwig.another_furniture;
 
 import com.crispytwig.another_furniture.block.SeatBlock;
 import com.crispytwig.another_furniture.entity.SeatEntity;
-import com.crispytwig.another_furniture.init.ModEntity;
+import com.crispytwig.another_furniture.init.ModBlockEntities;
+import com.crispytwig.another_furniture.init.ModBlocks;
+import com.crispytwig.another_furniture.init.ModEntities;
+import com.crispytwig.another_furniture.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,10 +23,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.List;
 
-import static com.crispytwig.another_furniture.init.ModBlocks.BLOCKS;
-import static com.crispytwig.another_furniture.init.ModBlocks.OAK_CHAIR;
-import static com.crispytwig.another_furniture.init.ModItems.ITEMS;
-
 @Mod("another_furniture")
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class AnotherFurnitureMod
@@ -33,10 +32,10 @@ public class AnotherFurnitureMod
     public AnotherFurnitureMod()
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        BLOCKS.register(bus);
-        ITEMS.register(bus);
-        ModEntity.REGISTER.register(bus);
-
+        ModBlocks.BLOCKS.register(bus);
+        ModItems.ITEMS.register(bus);
+        ModBlockEntities.BLOCK_ENTITIES.register(bus);
+        ModEntities.ENTITIES.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -79,7 +78,7 @@ public class AnotherFurnitureMod
     public static final CreativeModeTab TAB = new CreativeModeTab(MOD_ID) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(OAK_CHAIR.get().asItem());
+            return new ItemStack(ModBlocks.OAK_CHAIR.get().asItem());
         }
     };
 }

@@ -1,16 +1,22 @@
 package com.crispytwig.another_furniture.block;
 
-import com.crispytwig.another_furniture.AnotherFurnitureMod;
-import net.minecraft.client.Minecraft;
+import com.crispytwig.another_furniture.block.entity.ShelfBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,11 +25,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ShelfBlock extends BaseBlock implements SimpleWaterloggedBlock {
+public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final IntegerProperty TYPE = IntegerProperty.create("type", 0, 3);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -38,6 +44,32 @@ public class ShelfBlock extends BaseBlock implements SimpleWaterloggedBlock {
                 .setValue(TYPE, 0)
                 .setValue(WATERLOGGED, false)
         );
+    }
+
+    public InteractionResult use(BlockState p_51274_, Level p_51275_, BlockPos p_51276_, Player p_51277_, InteractionHand p_51278_, BlockHitResult p_51279_) {
+        if (p_51279_.getDirection() == Direction.UP) {
+            BlockEntity blockentity = p_51275_.getBlockEntity(p_51276_);
+            if (blockentity instanceof ShelfBlockEntity) {
+                ShelfBlockEntity shelfblockentity = (ShelfBlockEntity) blockentity;
+                ItemStack itemstack = p_51277_.getItemInHand(p_51278_);
+                if (!p_51275_.isClientSide && shelfblockentity.placeFood(p_51277_.getAbilities().instabuild ? itemstack.copy() : itemstack)) {
+                    return InteractionResult.SUCCESS;
+                }
+                return InteractionResult.CONSUME;
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    public void onRemove(BlockState p_51281_, Level p_51282_, BlockPos p_51283_, BlockState p_51284_, boolean p_51285_) {
+        if (!p_51281_.is(p_51284_.getBlock())) {
+            BlockEntity blockentity = p_51282_.getBlockEntity(p_51283_);
+            if (blockentity instanceof ShelfBlockEntity) {
+                Containers.dropContents(p_51282_, p_51283_, ((ShelfBlockEntity)blockentity).getItems());
+            }
+
+            super.onRemove(p_51281_, p_51282_, p_51283_, p_51284_, p_51285_);
+        }
     }
 
     public boolean useShapeForLightOcclusion(BlockState p_60576_) {
@@ -91,5 +123,9 @@ public class ShelfBlock extends BaseBlock implements SimpleWaterloggedBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, TYPE, WATERLOGGED);
+    }
+
+    public BlockEntity newBlockEntity(BlockPos p_152759_, BlockState p_152760_) {
+        return new ShelfBlockEntity(p_152759_, p_152760_);
     }
 }

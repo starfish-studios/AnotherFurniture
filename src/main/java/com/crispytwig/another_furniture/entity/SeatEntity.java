@@ -1,6 +1,6 @@
 package com.crispytwig.another_furniture.entity;
 
-import com.crispytwig.another_furniture.init.ModEntity;
+import com.crispytwig.another_furniture.init.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -18,7 +18,7 @@ public class SeatEntity extends Entity
 
     public SeatEntity(Level level)
     {
-        super(ModEntity.SEAT.get(), level);
+        super(ModEntities.SEAT.get(), level);
         this.noPhysics = true;
     }
 

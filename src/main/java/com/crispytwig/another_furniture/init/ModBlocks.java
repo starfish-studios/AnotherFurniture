@@ -4,18 +4,12 @@ import com.crispytwig.another_furniture.block.ChairBlock;
 import com.crispytwig.another_furniture.block.ShelfBlock;
 import com.crispytwig.another_furniture.block.StoolBlock;
 import com.crispytwig.another_furniture.block.TableBlock;
-import com.crispytwig.another_furniture.render.SeatRenderer;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -116,20 +110,5 @@ public class ModBlocks {
         RegistryObject<T> registryObject = BLOCKS.register(name, block);
         ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(TAB)));
         return registryObject;
-    }
-
-    @SubscribeEvent
-    public static void onFMLCLientSetup(FMLClientSetupEvent event)
-    {
-        EntityRenderers.register(ModEntity.SEAT.get(), SeatRenderer::new);
-
-        ItemBlockRenderTypes.setRenderLayer(OAK_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(SPRUCE_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(BIRCH_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(JUNGLE_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ACACIA_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(DARK_OAK_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(WARPED_CHAIR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CRIMSON_CHAIR.get(), RenderType.cutout());
     }
 }
