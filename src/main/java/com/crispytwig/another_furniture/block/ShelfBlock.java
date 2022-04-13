@@ -28,6 +28,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -35,8 +36,28 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     public static final IntegerProperty TYPE = IntegerProperty.create("type", 0, 3);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    protected static final VoxelShape SHAPE_SMALL = Block.box(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SHAPE_BIG = Block.box(0.0D, 6.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape TOP = Block.box(0, 14, 0.0, 16, 16, 16);
+    protected static final VoxelShape NL = Block.box(12, 6, 6, 16, 14, 16);
+    protected static final VoxelShape NR = Block.box(0, 6, 6, 4, 14, 16);
+    protected static final VoxelShape EL = Block.box(0, 6, 12, 10, 14, 16);
+    protected static final VoxelShape ER = Block.box(0, 6, 0, 10, 14, 4);
+    protected static final VoxelShape SL = Block.box(0, 6, 0, 4, 14, 10);
+    protected static final VoxelShape SR = Block.box(12, 6, 0, 16, 14, 10);
+    protected static final VoxelShape WL = Block.box(6, 6, 0, 16, 14, 4);
+    protected static final VoxelShape WR = Block.box(6, 6, 12, 16, 14, 16);
+
+    protected static final VoxelShape T_NL = Shapes.or(TOP, NL);
+    protected static final VoxelShape T_NR = Shapes.or(TOP, NR);
+    protected static final VoxelShape T_NLR = Shapes.or(TOP, NL, NR);
+    protected static final VoxelShape T_EL = Shapes.or(TOP, EL);
+    protected static final VoxelShape T_ER = Shapes.or(TOP, ER);
+    protected static final VoxelShape T_ELR = Shapes.or(TOP, EL, ER);
+    protected static final VoxelShape T_SL = Shapes.or(TOP, SL);
+    protected static final VoxelShape T_SR = Shapes.or(TOP, SR);
+    protected static final VoxelShape T_SLR = Shapes.or(TOP, SL, SR);
+    protected static final VoxelShape T_WL = Shapes.or(TOP, WL);
+    protected static final VoxelShape T_WR = Shapes.or(TOP, WR);
+    protected static final VoxelShape T_WLR = Shapes.or(TOP, WL, WR);
 
     public ShelfBlock(Properties p_49795_) {
         super(p_49795_);
@@ -45,6 +66,42 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
                 .setValue(TYPE, 0)
                 .setValue(WATERLOGGED, false)
         );
+    }
+
+    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
+        Direction direction = state.getValue(FACING);
+        int type = state.getValue(TYPE);
+
+        if (direction == Direction.NORTH) {
+            return switch (type) {
+                case 0 -> T_NLR;
+                case 1 -> T_NL;
+                case 3 -> T_NR;
+                default -> TOP;
+            };
+        } else if (direction == Direction.EAST) {
+            return switch (type) {
+                case 0 -> T_ELR;
+                case 1 -> T_EL;
+                case 3 -> T_ER;
+                default -> TOP;
+            };
+        } else if (direction == Direction.SOUTH) {
+            return switch (type) {
+                case 0 -> T_SLR;
+                case 1 -> T_SL;
+                case 3 -> T_SR;
+                default -> TOP;
+            };
+        } else if (direction == Direction.WEST) {
+            return switch (type) {
+                case 0 -> T_WLR;
+                case 1 -> T_WL;
+                case 3 -> T_WR;
+                default -> TOP;
+            };
+        }
+        return TOP;
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -79,13 +136,6 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     public boolean useShapeForLightOcclusion(BlockState p_60576_) {
         return true;
-    }
-
-    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
-        if (state.getValue(TYPE) == 2) {
-            return SHAPE_SMALL;
-        }
-        return SHAPE_BIG;
     }
 
     public RenderShape getRenderShape(BlockState state) {
