@@ -25,8 +25,7 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
 
-
-    // TABLES
+    // CHAIRS
 
     public static final RegistryObject<Block> OAK_CHAIR = registerBlock("oak_chair",
             () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));

@@ -49,8 +49,8 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return this.defaultBlockState().setValue(WATERLOGGED, waterlogged);
     }
 
-    public FluidState getFluidState(BlockState p_52362_) {
-        return p_52362_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_52362_);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
@@ -58,25 +58,23 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
         builder.add(WATERLOGGED);
     }
 
-    public void fallOn(Level p_152169_, BlockState p_152170_, BlockPos p_152171_, Entity p_152172_, float p_152173_) {
-        super.fallOn(p_152169_, p_152170_, p_152171_, p_152172_, p_152173_ * 0.5F);
+    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
+        super.fallOn(level, state, pos, entity, dmg * 0.5F);
     }
 
-    public void updateEntityAfterFallOn(BlockGetter p_49483_, Entity p_49484_) {
-        if (p_49484_.isSuppressingBounce()) {
-            super.updateEntityAfterFallOn(p_49483_, p_49484_);
+    public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity entity) {
+        if (entity.isSuppressingBounce()) {
+            super.updateEntityAfterFallOn(blockGetter, entity);
         } else {
-            this.bounceUp(p_49484_);
+            this.bounceUp(entity);
         }
-
     }
 
-    private void bounceUp(Entity p_49457_) {
-        Vec3 vec3 = p_49457_.getDeltaMovement();
+    private void bounceUp(Entity entity) {
+        Vec3 vec3 = entity.getDeltaMovement();
         if (vec3.y < 0.0D) {
-            double d0 = p_49457_ instanceof LivingEntity ? 1.0D : 0.8D;
-            p_49457_.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
+            double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
+            entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
         }
-
     }
 }
