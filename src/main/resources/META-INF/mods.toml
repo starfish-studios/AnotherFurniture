@@ -5,17 +5,14 @@ license="All rights reserved"
 
 [[mods]]
 modId="another_furniture"
-version="${file.jarVersion}"
+version="1.0"
 displayName="Another Furniture Mod"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
-logoFile="examplemod.png"
+logoFile="mod_icon.png"
 credits=""
 authors="crispytwig, Synthestra"
-description='''
-Furniture.
-Mod.
-'''
+description='''Another Furniture Mod aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.'''
 
 [[dependencies.another_furniture]]
     modId="forge"
