@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -46,16 +47,20 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         );
     }
 
-    public InteractionResult use(BlockState p_51274_, Level p_51275_, BlockPos p_51276_, Player p_51277_, InteractionHand p_51278_, BlockHitResult p_51279_) {
-        if (p_51279_.getDirection() == Direction.UP) {
-            BlockEntity blockentity = p_51275_.getBlockEntity(p_51276_);
-            if (blockentity instanceof ShelfBlockEntity) {
-                ShelfBlockEntity shelfblockentity = (ShelfBlockEntity) blockentity;
-                ItemStack itemstack = p_51277_.getItemInHand(p_51278_);
-                if (!p_51275_.isClientSide && shelfblockentity.placeFood(p_51277_.getAbilities().instabuild ? itemstack.copy() : itemstack)) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (hit.getDirection() == Direction.UP) {
+            BlockEntity blockentity = level.getBlockEntity(pos);
+            if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
+                ItemStack itemstack = player.getItemInHand(hand);
+                if (!itemstack.isEmpty()) {
+                    if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
+                        return InteractionResult.SUCCESS;
+                    }
+                    return InteractionResult.CONSUME;
+                }
+                if (!level.isClientSide && shelfblockentity.removeItem(this.getPosition(hit, pos))) {
                     return InteractionResult.SUCCESS;
                 }
-                return InteractionResult.CONSUME;
             }
         }
         return InteractionResult.PASS;
@@ -127,5 +132,15 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     public BlockEntity newBlockEntity(BlockPos p_152759_, BlockState p_152760_) {
         return new ShelfBlockEntity(p_152759_, p_152760_);
+    }
+
+
+    private int getPosition(BlockHitResult hit, BlockPos pos)
+    {
+        Vec3 hitVec = hit.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
+        int position = 0;
+        if(hitVec.x() > 0.5) position += 1;
+        if(hitVec.z() > 0.5) position += 2;
+        return position;
     }
 }

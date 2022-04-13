@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,16 +45,29 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         return compoundtag;
     }
 
-    public boolean placeFood(ItemStack p_59054_) {
-        for(int i = 0; i < this.items.size(); ++i) {
-            ItemStack itemstack = this.items.get(i);
-            if (itemstack.isEmpty()) {
-                this.items.set(i, p_59054_.split(1));
-                this.markUpdated();
-                return true;
-            }
+    public boolean placeItem(ItemStack stack, int position) {
+        ItemStack itemstack = this.items.get(position);
+        if (itemstack.isEmpty()) {
+            this.items.set(position, stack.split(stack.getCount()));
+            this.markUpdated();
+            return true;
         }
 
+        return false;
+    }
+
+    public boolean removeItem(int position) {
+        if (!this.items.get(position).isEmpty()) {
+            double posX = worldPosition.getX() + 0.3 + 0.4 * (position % 2);
+            double posY = worldPosition.getY() + 1.0;
+            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (position / 2);
+
+            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(position).copy());
+            this.level.addFreshEntity(entity);
+            this.items.set(position, ItemStack.EMPTY);
+            this.markUpdated();
+            return true;
+        }
         return false;
     }
 
@@ -66,10 +80,4 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         this.items.clear();
     }
 
-    public void dowse() {
-        if (this.level != null) {
-            this.markUpdated();
-        }
-
-    }
 }
