@@ -25,6 +25,9 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
 
+
+    // TABLES
+
     public static final RegistryObject<Block> OAK_CHAIR = registerBlock("oak_chair",
             () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SPRUCE_CHAIR = registerBlock("spruce_chair",
@@ -41,6 +44,9 @@ public class ModBlocks {
             () -> new ChairBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_CHAIR = registerBlock("warped_chair",
             () -> new ChairBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
+    // SHELVES
+
     public static final RegistryObject<Block> OAK_SHELF = registerBlock("oak_shelf",
             () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SPRUCE_SHELF = registerBlock("spruce_shelf",
@@ -57,6 +63,9 @@ public class ModBlocks {
             () -> new ShelfBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_SHELF = registerBlock("warped_shelf",
             () -> new ShelfBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
+    // TABLES
+
     public static final RegistryObject<Block> OAK_TABLE = registerBlock("oak_table",
             () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SPRUCE_TABLE = registerBlock("spruce_table",
@@ -73,38 +82,41 @@ public class ModBlocks {
             () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_TABLE = registerBlock("warped_table",
             () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
+    // STOOLS
+
     public static final RegistryObject<Block> WHITE_STOOL = registerBlock("white_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> ORANGE_STOOL = registerBlock("orange_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> MAGENTA_STOOL = registerBlock("magenta_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> LIGHT_BLUE_STOOL = registerBlock("light_blue_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> YELLOW_STOOL = registerBlock("yellow_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> LIME_STOOL = registerBlock("lime_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> PINK_STOOL = registerBlock("pink_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> GRAY_STOOL = registerBlock("gray_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> LIGHT_GRAY_STOOL = registerBlock("light_gray_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> CYAN_STOOL = registerBlock("cyan_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> PURPLE_STOOL = registerBlock("purple_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> BLUE_STOOL = registerBlock("blue_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> BROWN_STOOL = registerBlock("brown_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> GREEN_STOOL = registerBlock("green_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> RED_STOOL = registerBlock("red_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> BLACK_STOOL = registerBlock("black_stool",
-            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOL)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> registryObject = BLOCKS.register(name, block);
