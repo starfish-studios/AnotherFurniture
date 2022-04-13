@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.0'
+version = '1.0.1'
 group = 'com.crispytwig.another_furniture' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'another_furniture'
 
