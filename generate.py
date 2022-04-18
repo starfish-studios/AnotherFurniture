@@ -61,12 +61,12 @@ def make_file_if_not_exist(path, json_dict):
 
 
 current_dir = os.getcwd()
-block_loot_tables = f"{current_dir}\\data\\{namespace}\\loot_tables\\blocks"
-recipes = f"{current_dir}\\data\\{namespace}\\recipes"
-block_model = f"{current_dir}\\assets\\{namespace}\\models\\block"
-item_model = f"{current_dir}\\assets\\{namespace}\\models\\item"
-blockstates = f"{current_dir}\\assets\\{namespace}\\blockstates"
-langs = f"{current_dir}\\assets\\{namespace}\\lang\\en_us.json"
+block_loot_tables = f"{current_dir}\\src\\main\\resources\\data\\{namespace}\\loot_tables\\blocks"
+recipes = f"{current_dir}\\src\\main\\resources\\data\\{namespace}\\recipes"
+block_model = f"{current_dir}\\src\\main\\resources\\assets\\{namespace}\\models\\block"
+item_model = f"{current_dir}\\src\\main\\resources\\assets\\{namespace}\\models\\item"
+blockstates = f"{current_dir}\\src\\main\\resources\\assets\\{namespace}\\blockstates"
+langs = f"{current_dir}\\src\\main\\resources\\assets\\{namespace}\\lang\\en_us.json"
 
 def generate_list(generate_pre):
     generate = []
@@ -187,10 +187,11 @@ def generate_all(generate):
         if item_name.endswith("stool"):
             if not item["color"] == "white":
                 make_file_if_not_exist(f"{recipes}\\{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result": {"item": f"{namespace}:{item_name}","count": 1},"group": "stools"})
-
+        #####
+        #Compat - Corail Woodcutter
         if item["wood_types"]:
-            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}.json", {"type": "corail_woodcutter:woodcutting","conditions": [{"type": "forge:mod_loaded","modid": "corail_woodcutter"}],"ingredient": {"item": f"minecraft:{item['wood_type']}_planks"},"result": f"{namespace}:{item_name}","count": 1})
-            
+            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_plank.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"item":f"minecraft:{item['wood_type']}_planks"},"result": f"{namespace}:{item_name}","count": 1})
+            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_log.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result": f"{namespace}:{item_name}","count": 4})
         #########################
         #Tags #1
 
