@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ShelfBlockEntity extends BlockEntity implements Clearable {
-    private static final int NUM_SLOTS = 4;
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
 
     public ShelfBlockEntity(BlockPos p_155301_, BlockState p_155302_) {
@@ -56,15 +55,15 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         return false;
     }
 
-    public boolean removeItem(int position) {
-        if (!this.items.get(position).isEmpty()) {
-            double posX = worldPosition.getX() + 0.3 + 0.4 * (position % 2);
+    public boolean removeItem(int index) {
+        if (!this.items.get(index).isEmpty()) {
+            double posX = worldPosition.getX() + 0.3 + 0.4 * (index % 2);
             double posY = worldPosition.getY() + 1.0;
-            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (position / 2);
+            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (index / 2);
 
-            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(position).copy());
+            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(index).copy());
             this.level.addFreshEntity(entity);
-            this.items.set(position, ItemStack.EMPTY);
+            this.items.set(index, ItemStack.EMPTY);
             this.markUpdated();
             return true;
         }
@@ -80,4 +79,22 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         this.items.clear();
     }
 
+    public void removeAllItems() {
+        boolean update = false;
+        for (int i = 0; i < 4; i++) {
+            if (!this.items.get(i).isEmpty()) {
+                double posX = worldPosition.getX() + 0.3 + 0.4 * (i % 2);
+                double posY = worldPosition.getY() + 1.0;
+                double posZ = worldPosition.getZ() + 0.3 + 0.4 * (i / 2);
+
+                ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
+                this.level.addFreshEntity(entity);
+                this.items.set(i, ItemStack.EMPTY);
+                update = true;
+            }
+        }
+        if (update) {
+            this.markUpdated();
+        }
+    }
 }

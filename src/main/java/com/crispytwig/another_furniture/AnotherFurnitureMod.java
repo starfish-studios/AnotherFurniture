@@ -42,7 +42,7 @@ public class AnotherFurnitureMod
     @SubscribeEvent
     public void onInteract(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getPlayer();
-        if(player.isPassenger())
+        if(player.isPassenger() || player.isSpectator())
             return;
 
         Level world = event.getWorld();

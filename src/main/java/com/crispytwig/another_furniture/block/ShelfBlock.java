@@ -12,10 +12,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -105,6 +102,12 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
+        if (level.getBlockState(pos.above()).isFaceSturdy(level, pos, Direction.DOWN)) {
+            BlockEntity blockentity = level.getBlockEntity(pos);
+            if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
+                shelfblockentity.removeAllItems();
+            }
+        }
         Direction facing = state.getValue(FACING);
         BlockState l_state = level.getBlockState(pos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(pos.relative(facing.getCounterClockWise()));
@@ -134,7 +137,6 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         return new ShelfBlockEntity(p_152759_, p_152760_);
     }
 
-
     private int getPosition(BlockHitResult hit, BlockPos pos)
     {
         Vec3 hitVec = hit.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
@@ -142,5 +144,15 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         if(hitVec.x() > 0.5) position += 1;
         if(hitVec.z() > 0.5) position += 2;
         return position;
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rot) {
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 }
