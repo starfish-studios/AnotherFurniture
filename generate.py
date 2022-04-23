@@ -30,7 +30,7 @@ def class_names(item_name):
 def material_names(item_name):
     material_type = "WOOD"
     for wood_type in wood_types:
-        if wood_type in item_name:
+        if wood_type.split(":")[1] in item_name:
             material_type = "WOOD"
             for non_flammable_wood in non_flammable_woods:
                 if non_flammable_wood in item_name:
@@ -47,7 +47,7 @@ colors = [
 ]
 
 wood_types = [
-    "oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"
+    "minecraft:oak", "minecraft:spruce", "minecraft:birch", "minecraft:jungle", "minecraft:acacia", "minecraft:dark_oak", "minecraft:crimson", "minecraft:warped", "quark:azalea", "quark:blossom"
 ]
 
 non_flammable_woods = [
@@ -71,7 +71,7 @@ langs = f"{current_dir}\\src\\main\\resources\\assets\\{namespace}\\lang\\en_us.
 def generate_list(generate_pre):
     generate = []
     for item in generate_pre:
-        item2 = {**{"colored": False, "wood_types": False, "blockstate_preset": "normal", "tags": [], "recipe": {}}, **item}
+        item2 = {**{"colored": False, "wood_types": False, "made_from_block_namespace": "minecraft", "blockstate_preset": "normal", "tags": [], "recipe": {}}, **item}
         item_name1 = item2["name"]
         if "colored" in item2 and item2["colored"]:
             for color in colors:
@@ -80,7 +80,9 @@ def generate_list(generate_pre):
                 
         elif "wood_types" in item2 and item2["wood_types"]:
             for wood_type in wood_types:
-                dct = {**item2, **{"name": item_name1.replace("WOODTYPE", wood_type), **{"wood_type": wood_type}}}
+                wood_type_namespace = wood_type.split(":")[0]
+                wood_type_no_namespace = wood_type.split(":")[1]
+                dct = {**item2, **{"name": item_name1.replace("WOODTYPE", wood_type_no_namespace)}, **{"made_from_block_namespace": wood_type_namespace}, **{"wood_type": wood_type_no_namespace}}
                 generate.append(dct)
                 
         else:
@@ -96,6 +98,7 @@ def generate_all(generate):
     lang = {}
     namespaced_items = []
     for item in generate:
+        
         item_name = item["name"]
         type_of_item = item_name.split("_")[-1]
 
@@ -116,24 +119,24 @@ def generate_all(generate):
         elif item["wood_types"]:
             if item["blockstate_preset"] == "table":
                 make_file_if_not_exist(f"{block_model}\\table\\{item['wood_type']}_leg.json",
-                    {"parent": f"{namespace}:block/template/table_leg","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_leg","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
                 make_file_if_not_exist(f"{block_model}\\table\\{item['wood_type']}_top.json",
-                    {"parent": f"{namespace}:block/template/table_top","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_top","textures":{"all":f"{namespace}:block/table/{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
             elif item["blockstate_preset"] == "shelf":
                 make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_top.json",
-                    {"parent": f"{namespace}:block/template/shelf_top","textures":{"all":f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_top","textures":{"all":f"{namespace}:block/shelf/{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
                 make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_l.json",
-                    {"parent": f"{namespace}:block/template/shelf_l","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_l","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
                 make_file_if_not_exist(f"{block_model}\\shelf\\{item['wood_type']}_r.json",
-                    {"parent": f"{namespace}:block/template/shelf_r","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_r","textures": {"all": f"{namespace}:block/shelf/{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
             else:
                 make_file_if_not_exist(f"{block_model}\\{item_name}.json",
-                    {"parent": f"{namespace}:block/template/{type_of_item}","textures":{"all":f"{namespace}:block/{type_of_item}/{item['wood_type']}","particle": f"minecraft:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/{type_of_item}","textures":{"all":f"{namespace}:block/{type_of_item}/{item['wood_type']}","particle": f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
                 )
         #########################
         #Item Models
@@ -180,18 +183,27 @@ def generate_all(generate):
                 
             recipe = item["recipe"]
             key_namespace = recipe["key"][key]["item"].split(":")[0]
-            recipe["key"][key]["item"] = f"{key_namespace}:{data}_{extra}"
+            recipe["key"][key]["item"] = f"{item['made_from_block_namespace']}:{data}_{extra}"
             recipe["result"]["item"] = f"{namespace}:{item_name}"
+            if item["made_from_block_namespace"] != "minecraft":
+                recipe["conditions"] = [{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}]
             make_file_if_not_exist(f"{recipes}\\{item_name}.json", recipe)
 
         if item_name.endswith("stool"):
             if not item["color"] == "white":
-                make_file_if_not_exist(f"{recipes}\\{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result": {"item": f"{namespace}:{item_name}","count": 1},"group": "stools"})
+                make_file_if_not_exist(f"{recipes}\\{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result":{"item":f"{namespace}:{item_name}","count": 1},"group":"stools"})
         #####
         #Compat - Corail Woodcutter
         if item["wood_types"]:
-            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_plank.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"item":f"minecraft:{item['wood_type']}_planks"},"result": f"{namespace}:{item_name}","count": 1})
-            make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_log.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result": f"{namespace}:{item_name}","count": 4})
+            if item["made_from_block_namespace"] == "minecraft":
+                make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_plank.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"item":f"minecraft:{item['wood_type']}_planks"},"result":f"{namespace}:{item_name}","count":1})
+                make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_log.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":f"{namespace}:{item_name}","count":4})
+            else:
+                make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_plank.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"item":f"{item['made_from_block_namespace']}:{item['wood_type']}_planks"},"result":f"{namespace}:{item_name}","count":1})
+                make_file_if_not_exist(f"{recipes}\\compat\\corail_woodcutter\\{item_name}_from_log.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":f"{namespace}:{item_name}","count":4})
+
+
+
         #########################
         #Tags #1
 
@@ -219,8 +231,11 @@ def generate_all(generate):
         #Code
         class_type = class_names(item_name)
         material_name = material_names(item_name)
-        
-        print(f'public static final RegistryObject<Block> {item_name.upper()} = registerBlock("{item_name.lower()}",\n() -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
+
+        if item["made_from_block_namespace"] == "minecraft":
+            print(f'public static final RegistryObject<Block> {item_name.upper()} = RegistryUtil.createBlockAndItem("{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
+        else:
+            print(f'public static final RegistryObject<Block> {item_name.upper()} = RegistryUtil.createBlockAndItemCompat(CompatUtil.{item["made_from_block_namespace"].upper()}_ID, "{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
 
         
         #########################
@@ -246,7 +261,7 @@ generate_all(generate)
 #Tags #2
 
 for tag in tags_dict:
-    block_tags = f"{current_dir}\\data\\{tag.replace(':', '/tags/')}.json"
+    block_tags = f"{current_dir}\\src\\main\\resources\\data\\{tag.replace(':', '/tags/')}.json"
     make_file_if_not_exist(block_tags, {"replace": False, "values": tags_dict[tag]})
 
 

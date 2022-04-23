@@ -19,7 +19,9 @@ public class ModBlockEntities {
                     ModBlocks.ACACIA_SHELF.get(),
                     ModBlocks.DARK_OAK_SHELF.get(),
                     ModBlocks.CRIMSON_SHELF.get(),
-                    ModBlocks.WARPED_SHELF.get()
+                    ModBlocks.WARPED_SHELF.get(),
+                    ModBlocks.AZALEA_SHELF.get(),
+                    ModBlocks.BLOSSOM_SHELF.get()
             ).build(null));
 
 }

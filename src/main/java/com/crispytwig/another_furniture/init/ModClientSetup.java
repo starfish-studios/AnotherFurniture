@@ -26,5 +26,7 @@ public class ModClientSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.AZALEA_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLOSSOM_CHAIR.get(), RenderType.cutout());
     }
 }

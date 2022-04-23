@@ -5,10 +5,10 @@ license="All rights reserved"
 
 [[mods]]
 modId="another_furniture"
-version="1.0.1"
+version="1.0.2"
 displayName="Another Furniture Mod"
-#updateJSONURL="https://change.me.example.invalid/updates.json"
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/another-furniture"
+issueTrackerURL="https://github.com/crispytwig/Another-Furniture-Mod/issues"
 logoFile="mod_icon.png"
 credits=""
 authors="crispytwig, Synthestra"
