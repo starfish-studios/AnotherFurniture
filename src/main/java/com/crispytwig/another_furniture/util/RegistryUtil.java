@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class RegistryUtil {
-    private static boolean dev = true;
+    private static boolean dev = false;
 
     public static <T extends Block> RegistryObject<T> createBlockAndItem(String name, Supplier<? extends T> supplier) {
         RegistryObject<T> registryObject = ModBlocks.BLOCKS.register(name, supplier);
