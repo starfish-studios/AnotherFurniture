@@ -1,7 +1,7 @@
 {
     "variants": {
         "": {
-            "model": "another_furniture:block/gray_stool"
+            "model": "another_furniture:block/stool/gray"
         }
     }
 }

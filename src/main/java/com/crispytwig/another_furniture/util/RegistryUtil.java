@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class RegistryUtil {
-    private static boolean dev = false;
+    private static boolean dev = true;
 
     public static <T extends Block> RegistryObject<T> createBlockAndItem(String name, Supplier<? extends T> supplier) {
         RegistryObject<T> registryObject = ModBlocks.BLOCKS.register(name, supplier);
@@ -23,8 +23,8 @@ public class RegistryUtil {
 
     public static <T extends Block> RegistryObject<T> createBlockAndItemCompat(String mod, String name, Supplier<? extends T> supplier) {
         CreativeModeTab group = ModList.get().isLoaded(mod) || dev ? AnotherFurnitureMod.TAB : null;
-        RegistryObject<T> registryObject = ModBlocks.BLOCKS.register(name, supplier);
-        ModItems.ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(group)));
+        RegistryObject<T> registryObject = ModBlocks.BLOCKS.register(mod + "_" + name, supplier);
+        ModItems.ITEMS.register(mod + "_" + name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(group)));
         return registryObject;
     }
 }

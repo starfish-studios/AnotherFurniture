@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/shelf_top",
+    "textures": {
+        "all": "another_furniture:block/shelf/ecologics_coconut",
+        "particle": "ecologics:block/coconut_planks"
+    }
+}

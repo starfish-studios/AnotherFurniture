@@ -1,9 +1,6 @@
 package com.crispytwig.another_furniture.init;
 
-import com.crispytwig.another_furniture.block.ChairBlock;
-import com.crispytwig.another_furniture.block.ShelfBlock;
-import com.crispytwig.another_furniture.block.StoolBlock;
-import com.crispytwig.another_furniture.block.TableBlock;
+import com.crispytwig.another_furniture.block.*;
 import com.crispytwig.another_furniture.util.CompatUtil;
 import com.crispytwig.another_furniture.util.RegistryUtil;
 import net.minecraft.world.level.block.Block;
@@ -29,8 +26,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> DARK_OAK_CHAIR = RegistryUtil.createBlockAndItem("dark_oak_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CRIMSON_CHAIR = RegistryUtil.createBlockAndItem("crimson_chair", () -> new ChairBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_CHAIR = RegistryUtil.createBlockAndItem("warped_chair", () -> new ChairBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> AZALEA_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> BLOSSOM_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_AZALEA_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_BLOSSOM_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_AZALEA_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "azalea_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_COCONUT_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "coconut_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_WALNUT_CHAIR = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "walnut_chair", () -> new ChairBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> OAK_SHELF = RegistryUtil.createBlockAndItem("oak_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SPRUCE_SHELF = RegistryUtil.createBlockAndItem("spruce_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> BIRCH_SHELF = RegistryUtil.createBlockAndItem("birch_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -39,8 +39,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> DARK_OAK_SHELF = RegistryUtil.createBlockAndItem("dark_oak_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CRIMSON_SHELF = RegistryUtil.createBlockAndItem("crimson_shelf", () -> new ShelfBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_SHELF = RegistryUtil.createBlockAndItem("warped_shelf", () -> new ShelfBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> AZALEA_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> BLOSSOM_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_AZALEA_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_BLOSSOM_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_AZALEA_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "azalea_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_COCONUT_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "coconut_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_WALNUT_SHELF = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "walnut_shelf", () -> new ShelfBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> OAK_TABLE = RegistryUtil.createBlockAndItem("oak_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SPRUCE_TABLE = RegistryUtil.createBlockAndItem("spruce_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> BIRCH_TABLE = RegistryUtil.createBlockAndItem("birch_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -49,8 +52,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> DARK_OAK_TABLE = RegistryUtil.createBlockAndItem("dark_oak_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CRIMSON_TABLE = RegistryUtil.createBlockAndItem("crimson_table", () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WARPED_TABLE = RegistryUtil.createBlockAndItem("warped_table", () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> AZALEA_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> BLOSSOM_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_AZALEA_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "azalea_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> QUARK_BLOSSOM_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.QUARK_ID, "blossom_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_AZALEA_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "azalea_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_COCONUT_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "coconut_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ECOLOGICS_WALNUT_TABLE = RegistryUtil.createBlockAndItemCompat(CompatUtil.ECOLOGICS_ID, "walnut_table", () -> new TableBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WHITE_STOOL = RegistryUtil.createBlockAndItem("white_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> ORANGE_STOOL = RegistryUtil.createBlockAndItem("orange_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> MAGENTA_STOOL = RegistryUtil.createBlockAndItem("magenta_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -67,4 +73,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_STOOL = RegistryUtil.createBlockAndItem("green_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> RED_STOOL = RegistryUtil.createBlockAndItem("red_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> BLACK_STOOL = RegistryUtil.createBlockAndItem("black_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> SERVICE_BELL = RegistryUtil.createBlockAndItem("service_bell", () -> new ServiceBellBlock(Block.Properties.of(Material.METAL).strength(2.0F, 3.0F).sound(SoundType.METAL)));
+
 }

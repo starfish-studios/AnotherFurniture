@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/chair",
-    "textures": {
-        "all": "another_furniture:block/chair/azalea",
-        "particle": "quark:block/azalea_planks"
-    }
-}

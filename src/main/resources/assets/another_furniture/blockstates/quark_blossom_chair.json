@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/chair/quark_blossom"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/chair/quark_blossom",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/chair/quark_blossom",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/chair/quark_blossom",
+            "y": 270
+        }
+    }
+}

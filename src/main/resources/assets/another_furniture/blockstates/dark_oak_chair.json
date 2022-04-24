@@ -1,18 +1,18 @@
 {
     "variants": {
         "facing=north": {
-            "model": "another_furniture:block/dark_oak_chair"
+            "model": "another_furniture:block/chair/dark_oak"
         },
         "facing=east": {
-            "model": "another_furniture:block/dark_oak_chair",
+            "model": "another_furniture:block/chair/dark_oak",
             "y": 90
         },
         "facing=south": {
-            "model": "another_furniture:block/dark_oak_chair",
+            "model": "another_furniture:block/chair/dark_oak",
             "y": 180
         },
         "facing=west": {
-            "model": "another_furniture:block/dark_oak_chair",
+            "model": "another_furniture:block/chair/dark_oak",
             "y": 270
         }
     }

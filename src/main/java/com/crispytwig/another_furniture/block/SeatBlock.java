@@ -26,7 +26,7 @@ public class SeatBlock extends BaseBlock {
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 
-        if(player.isPassenger() || player.isSpectator())
+        if(player.isPassenger() || player.isCrouching())
             return InteractionResult.PASS;
 
         if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty())

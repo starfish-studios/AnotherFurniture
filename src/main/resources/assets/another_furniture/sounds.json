@@ -1,10 +1,9 @@
 {
 	"block.service_bell.use": {
-		"category": "master",
+		"category": "block",
 		"sounds": [
-			{
-				"name": "another_furniture:service_bell"
-			}
-		]
+			"another_furniture:service_bell"
+		],
+		"subtitle": "block.another_furniture.service_bell.use"
 	}
 }

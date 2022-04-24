@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/shelf_l",
+    "textures": {
+        "all": "another_furniture:block/shelf/ecologics_azalea",
+        "particle": "ecologics:block/azalea_planks"
+    }
+}

@@ -1,9 +1,6 @@
 package com.crispytwig.another_furniture;
 
-import com.crispytwig.another_furniture.init.ModBlockEntities;
-import com.crispytwig.another_furniture.init.ModBlocks;
-import com.crispytwig.another_furniture.init.ModEntities;
-import com.crispytwig.another_furniture.init.ModItems;
+import com.crispytwig.another_furniture.init.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,10 +17,13 @@ public class AnotherFurnitureMod
     public AnotherFurnitureMod()
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
         ModBlockEntities.BLOCK_ENTITIES.register(bus);
         ModEntities.ENTITIES.register(bus);
+        ModSoundEvents.SOUND_EVENTS.register(bus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 

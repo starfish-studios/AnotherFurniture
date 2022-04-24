@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shelf_r",
-    "textures": {
-        "all": "another_furniture:block/shelf/blossom",
-        "particle": "quark:block/blossom_planks"
-    }
-}

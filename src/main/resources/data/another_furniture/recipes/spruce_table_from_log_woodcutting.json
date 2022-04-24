@@ -1,0 +1,14 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        }
+    ],
+    "ingredient": {
+        "tag": "minecraft:spruce_logs"
+    },
+    "result": "another_furniture:spruce_table",
+    "count": 4
+}
