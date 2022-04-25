@@ -8,6 +8,11 @@
         "another_furniture:acacia_table",
         "another_furniture:dark_oak_table",
         "another_furniture:crimson_table",
-        "another_furniture:warped_table"
+        "another_furniture:warped_table",
+        "another_furniture:quark_azalea_table",
+        "another_furniture:quark_blossom_table",
+        "another_furniture:ecologics_azalea_table",
+        "another_furniture:ecologics_coconut_table",
+        "another_furniture:ecologics_walnut_table"
     ]
 }

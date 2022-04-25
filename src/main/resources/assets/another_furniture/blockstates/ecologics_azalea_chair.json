@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/chair/ecologics_azalea"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/chair/ecologics_azalea",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/chair/ecologics_azalea",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/chair/ecologics_azalea",
+            "y": 270
+        }
+    }
+}

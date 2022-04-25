@@ -8,6 +8,11 @@
         "another_furniture:acacia_shelf",
         "another_furniture:dark_oak_shelf",
         "another_furniture:crimson_shelf",
-        "another_furniture:warped_shelf"
+        "another_furniture:warped_shelf",
+        "another_furniture:quark_azalea_shelf",
+        "another_furniture:quark_blossom_shelf",
+        "another_furniture:ecologics_azalea_shelf",
+        "another_furniture:ecologics_coconut_shelf",
+        "another_furniture:ecologics_walnut_shelf"
     ]
 }

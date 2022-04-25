@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/stool",
-    "textures": {
-        "all": "another_furniture:block/stool/black",
-        "particle": "minecraft:block/black_wool"
-    }
-}

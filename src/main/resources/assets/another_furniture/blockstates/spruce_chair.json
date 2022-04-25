@@ -1,18 +1,18 @@
 {
     "variants": {
         "facing=north": {
-            "model": "another_furniture:block/spruce_chair"
+            "model": "another_furniture:block/chair/spruce"
         },
         "facing=east": {
-            "model": "another_furniture:block/spruce_chair",
+            "model": "another_furniture:block/chair/spruce",
             "y": 90
         },
         "facing=south": {
-            "model": "another_furniture:block/spruce_chair",
+            "model": "another_furniture:block/chair/spruce",
             "y": 180
         },
         "facing=west": {
-            "model": "another_furniture:block/spruce_chair",
+            "model": "another_furniture:block/chair/spruce",
             "y": 270
         }
     }

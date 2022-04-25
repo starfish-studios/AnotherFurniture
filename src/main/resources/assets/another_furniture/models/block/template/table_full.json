@@ -2,7 +2,7 @@
 	"texture_size": [64, 64],
 	"parent": "minecraft:block/block",
 	"textures": {
-		"all": "another_furniture:block/oak_table"
+		"all": "another_furniture:block/table/oak"
 	},
 	"elements": [
 		{

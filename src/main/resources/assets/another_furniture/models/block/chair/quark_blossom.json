@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/chair",
+    "textures": {
+        "all": "another_furniture:block/chair/quark_blossom",
+        "particle": "quark:block/blossom_planks"
+    }
+}

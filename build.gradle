@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.1'
+version = '1.18.1-1.0.2'
 group = 'com.crispytwig.another_furniture' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'another_furniture'
 
@@ -172,7 +172,7 @@ jar {
         attributes([
                 "Specification-Title"     : "another_furniture",
                 "Specification-Vendor"    : "crispytwig",
-                "Specification-Version"   : "1.1", // We are version 1 of ourselves
+                "Specification-Version"   : "1.0.2", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "crispytwig",

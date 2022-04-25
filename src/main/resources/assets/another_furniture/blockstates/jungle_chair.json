@@ -1,18 +1,18 @@
 {
     "variants": {
         "facing=north": {
-            "model": "another_furniture:block/jungle_chair"
+            "model": "another_furniture:block/chair/jungle"
         },
         "facing=east": {
-            "model": "another_furniture:block/jungle_chair",
+            "model": "another_furniture:block/chair/jungle",
             "y": 90
         },
         "facing=south": {
-            "model": "another_furniture:block/jungle_chair",
+            "model": "another_furniture:block/chair/jungle",
             "y": 180
         },
         "facing=west": {
-            "model": "another_furniture:block/jungle_chair",
+            "model": "another_furniture:block/chair/jungle",
             "y": 270
         }
     }

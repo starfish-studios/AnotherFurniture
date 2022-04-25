@@ -5,9 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -94,5 +92,24 @@ public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, LEG1, LEG2, LEG3, LEG4, UPDATE, WATERLOGGED);
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rot) {
+        boolean leg1 = state.getValue(LEG1);
+        boolean leg2 = state.getValue(LEG2);
+        boolean leg3 = state.getValue(LEG3);
+        boolean leg4 = state.getValue(LEG4);
+        return switch(rot) {
+            case NONE -> state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+            case CLOCKWISE_90 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg4).setValue(LEG2, leg1).setValue(LEG3, leg2).setValue(LEG4, leg3);
+            case CLOCKWISE_180 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg3).setValue(LEG2, leg4).setValue(LEG3, leg1).setValue(LEG4, leg2);
+            case COUNTERCLOCKWISE_90 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg2).setValue(LEG2, leg3).setValue(LEG3, leg4).setValue(LEG4, leg1);
+        };
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 }

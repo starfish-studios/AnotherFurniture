@@ -8,6 +8,11 @@
         "another_furniture:acacia_chair",
         "another_furniture:dark_oak_chair",
         "another_furniture:crimson_chair",
-        "another_furniture:warped_chair"
+        "another_furniture:warped_chair",
+        "another_furniture:quark_azalea_chair",
+        "another_furniture:quark_blossom_chair",
+        "another_furniture:ecologics_azalea_chair",
+        "another_furniture:ecologics_coconut_chair",
+        "another_furniture:ecologics_walnut_chair"
     ]
 }
