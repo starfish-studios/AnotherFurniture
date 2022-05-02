@@ -232,11 +232,9 @@ def generate_all(generate):
         #Compat - Corail Woodcutter
         if item["wood_types"]:
             if item["made_from_block_namespace"] == "minecraft":
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_plank_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"item":f"minecraft:{item['wood_type']}_planks"},"result":namespaced_item,"count":1})
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":namespaced_item,"count":4})
+                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
             else:
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_plank_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"item":f"{item['made_from_block_namespace']}:{item['wood_type']}_planks"},"result":namespaced_item,"count":1})
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":namespaced_item,"count":4})
+                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
 
 
 
