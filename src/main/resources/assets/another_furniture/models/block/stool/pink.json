@@ -1,7 +1,10 @@
 {
     "parent": "another_furniture:block/template/stool",
     "textures": {
-        "all": "another_furniture:block/stool/pink",
-        "particle": "minecraft:block/pink_wool"
+        "bottom": "another_furniture:block/stool/bottom",
+        "legs": "another_furniture:block/stool/legs",
+        "side": "another_furniture:block/stool/pink_side",
+        "top": "another_furniture:block/stool/pink_top",
+        "particle": "another_furniture:block/stool/pink_top"
     }
 }

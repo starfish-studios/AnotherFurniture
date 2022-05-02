@@ -1,7 +1,7 @@
 {
     "parent": "another_furniture:block/template/table_leg",
     "textures": {
-        "all": "another_furniture:block/table/quark_azalea",
-        "particle": "quark:block/azalea_planks"
+        "sides": "another_furniture:block/table/quark_azalea_sides",
+        "particle": "another_furniture:block/table/quark_azalea_top"
     }
 }

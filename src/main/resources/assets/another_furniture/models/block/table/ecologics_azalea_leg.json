@@ -1,7 +1,7 @@
 {
     "parent": "another_furniture:block/template/table_leg",
     "textures": {
-        "all": "another_furniture:block/table/ecologics_azalea",
-        "particle": "ecologics:block/azalea_planks"
+        "sides": "another_furniture:block/table/ecologics_azalea_sides",
+        "particle": "another_furniture:block/table/ecologics_azalea_top"
     }
 }

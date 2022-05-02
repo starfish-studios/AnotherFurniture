@@ -1,20 +1,21 @@
 {
 	"parent": "minecraft:block/block",
 	"textures": {
-		"all": "another_furniture:block/shelf/oak",
-		"particle": "minecraft:block/oak_planks"
+		"particle": "another_furniture:block/shelf/oak_top",
+		"top": "another_furniture:block/shelf/oak_top",
+		"sides": "another_furniture:block/shelf/oak_sides"
 	},
 	"elements": [
 		{
 			"from": [0, 14, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [4.025, 4.025, 7.975, 4.475], "texture": "#all", "cullface": "north"},
-				"east": {"uv": [0.025, 4.025, 3.975, 4.475], "texture": "#all", "cullface": "east"},
-				"south": {"uv": [12.025, 4.025, 15.975, 4.475], "texture": "#all", "cullface": "south"},
-				"west": {"uv": [8.025, 4.025, 11.975, 4.475], "texture": "#all", "cullface": "west"},
-				"up": {"uv": [7.975, 3.975, 4.025, 0.025], "texture": "#all", "cullface": "up"},
-				"down": {"uv": [11.975, 0.025, 8.025, 3.975], "texture": "#all"}
+				"north": {"uv": [0, 2, 16, 4], "texture": "#sides", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 2], "texture": "#sides", "cullface": "east"},
+				"south": {"uv": [0, 4, 16, 6], "texture": "#sides", "cullface": "south"},
+				"west": {"uv": [0, 6, 16, 8], "texture": "#sides", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#top"}
 			}
 		}
 	]

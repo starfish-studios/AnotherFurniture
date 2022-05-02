@@ -1,7 +1,9 @@
 {
     "parent": "another_furniture:block/template/chair",
     "textures": {
-        "all": "another_furniture:block/chair/warped",
-        "particle": "minecraft:block/warped_planks"
+        "back": "another_furniture:block/chair/warped_back",
+        "bottom": "another_furniture:block/chair/warped_bottom",
+        "seat": "another_furniture:block/chair/warped_seat",
+        "particle": "another_furniture:block/chair/warped_seat"
     }
 }

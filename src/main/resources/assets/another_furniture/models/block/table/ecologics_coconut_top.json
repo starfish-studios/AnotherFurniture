@@ -1,7 +1,8 @@
 {
     "parent": "another_furniture:block/template/table_top",
     "textures": {
-        "all": "another_furniture:block/table/ecologics_coconut",
-        "particle": "ecologics:block/coconut_planks"
+        "top": "another_furniture:block/table/ecologics_coconut_top",
+        "sides": "another_furniture:block/table/ecologics_coconut_sides",
+        "particle": "another_furniture:block/table/ecologics_coconut_top"
     }
 }

@@ -14,12 +14,12 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class RegistryUtil {
-    private static boolean dev = false;
+    private static final boolean dev = false;
 
     private static final String[] hide_items = {"service_bell"};
 
     public static <T extends Block> RegistryObject<T> createBlockAndItem(String name, Supplier<? extends T> supplier) {
-        CreativeModeTab group = !Arrays.stream(hide_items).anyMatch(name::equals) ? AnotherFurnitureMod.TAB : null;
+        CreativeModeTab group = Arrays.stream(hide_items).noneMatch(name::equals) ? AnotherFurnitureMod.TAB : null;
         RegistryObject<T> registryObject = ModBlocks.BLOCKS.register(name, supplier);
         ModItems.ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(group)));
         return registryObject;

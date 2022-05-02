@@ -26,6 +26,8 @@ def class_names(item_name):
         class_type = "StoolBlock"
     elif item_name.endswith("table"):
         class_type = "TableBlock"
+    elif item_name.endswith("service_bell"):
+        class_type = "ServiceBellBlock"
     return class_type
 
 def material_names(item_name):
@@ -123,29 +125,32 @@ def generate_all(generate):
         
         if type_of_item in ["stool"]:
             make_file_if_not_exist(f"{block_model_pre}\\{type_of_item}\\{item['color']}.json",
-                {"parent":f"{namespace}:block/template/{type_of_item}","textures":{"all":f"{namespace}:block/{type_of_item}/{item['color']}","particle":f"minecraft:block/{item['color']}_wool"}}
+                {"parent":f"{namespace}:block/template/{type_of_item}","textures": {"bottom": "another_furniture:block/stool/bottom","legs": "another_furniture:block/stool/legs","side": f"another_furniture:block/stool/{item['color']}_side","top": f"another_furniture:block/stool/{item['color']}_top","particle": f"another_furniture:block/stool/{item['color']}_top"}}
             )
         elif item["wood_types"]:
             if item["blockstate_preset"] == "table":
                 make_file_if_not_exist(f"{block_model_pre}\\table\\{made_from_block_namepath}{item['wood_type']}_leg.json",
-                    {"parent": f"{namespace}:block/template/table_leg","textures":{"all":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_leg","textures":{"sides":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_sides","particle":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_top"}}
                 )
                 make_file_if_not_exist(f"{block_model_pre}\\table\\{made_from_block_namepath}{item['wood_type']}_top.json",
-                    {"parent": f"{namespace}:block/template/table_top","textures":{"all":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/table_top","textures":{"top":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_sides","particle":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_top"}}
                 )
             elif item["blockstate_preset"] == "shelf":
                 make_file_if_not_exist(f"{block_model_pre}\\shelf\\{made_from_block_namepath}{item['wood_type']}_top.json",
-                    {"parent": f"{namespace}:block/template/shelf_top","textures":{"all":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_top","textures":{"top":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_sides","particle":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"}}
                 )
                 make_file_if_not_exist(f"{block_model_pre}\\shelf\\{made_from_block_namepath}{item['wood_type']}_l.json",
-                    {"parent": f"{namespace}:block/template/shelf_l","textures": {"all": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_l","textures":{"top":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_sides","supports":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_supports","particle":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"}}
                 )
                 make_file_if_not_exist(f"{block_model_pre}\\shelf\\{made_from_block_namepath}{item['wood_type']}_r.json",
-                    {"parent": f"{namespace}:block/template/shelf_r","textures": {"all": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/shelf_r","textures":{"top":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_sides","supports":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_supports","particle":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"}}
+                )
+                make_file_if_not_exist(f"{block_model_pre}\\shelf\\{made_from_block_namepath}{item['wood_type']}_full.json",
+                    {"parent": f"{namespace}:block/template/shelf_full","textures":{"top":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_sides","supports":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_supports","particle":f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"}}
                 )
             elif type_of_item == "chair":
                 make_file_if_not_exist(f"{block_model_pre}\\chair\\{made_from_block_namepath}{item['wood_type']}.json",
-                    {"parent": f"{namespace}:block/template/chair","textures": {"all": f"{namespace}:block/chair/{made_from_block_namepath}{item['wood_type']}","particle":f"{item['made_from_block_namespace']}:block/{item['wood_type']}_planks"}}
+                    {"parent": f"{namespace}:block/template/chair","textures": {"back": f"{namespace}:block/chair/{made_from_block_namepath}{item['wood_type']}_back","bottom": f"{namespace}:block/chair/{made_from_block_namepath}{item['wood_type']}_bottom","seat": f"{namespace}:block/chair/{made_from_block_namepath}{item['wood_type']}_seat","particle": f"{namespace}:block/chair/{made_from_block_namepath}{item['wood_type']}_seat"}}
                 )
             else:
                 make_file_if_not_exist(f"{block_model_pre}\\{item_name}.json",
@@ -157,9 +162,13 @@ def generate_all(generate):
             )
         #########################
         #Item Models
-        if type_of_item in ["table", "shelf"]:
+        if type_of_item in ["table"]:
             make_file_if_not_exist(f"{item_model_pre}\\{made_from_block_namepath}{item_name}.json",
-                {"parent": f"{namespace}:block/template/{type_of_item}_full", "textures": {"all": f"{namespace}:block/{type_of_item}/{made_from_block_namepath}{item['wood_type']}"}}
+                {"parent": f"{namespace}:block/template/{type_of_item}_full", "textures": {"top":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_top","sides":f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_sides"}}
+            )
+        elif type_of_item in ["shelf"]:
+            make_file_if_not_exist(f"{item_model_pre}\\{made_from_block_namepath}{item_name}.json",
+                {"parent": f"{namespace}:block/{type_of_item}/{made_from_block_namepath}{item['wood_type']}_full"}
             )
         elif type_of_item in ["chair"]:
             make_file_if_not_exist(f"{item_model_pre}\\{made_from_block_namepath}{item_name}.json",
@@ -185,10 +194,7 @@ def generate_all(generate):
             blockstate_model_1 = f"{namespace}:block/{type_of_item}/{made_from_block_namepath}{item['wood_type']}"
             blockstate = {"variants": {"facing=north": {"model": blockstate_model_1},"facing=east": {"model": blockstate_model_1,"y": 90},"facing=south": {"model": blockstate_model_1,"y": 180},"facing=west": {"model": blockstate_model_1,"y": 270}}}
         elif item["blockstate_preset"] == "shelf":
-            blockstate_model_1 = f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"
-            blockstate_model_2 = f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_l"
-            blockstate_model_3 = f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_r"
-            blockstate = {"multipart":[{"when":{"facing":"north"},"apply":{"model":blockstate_model_1}},{"when":{"facing":"east"},"apply":{"model":blockstate_model_1,"y":90}},{"when":{"facing":"south"},"apply":{"model":blockstate_model_1,"y":180}},{"when":{"facing":"west"},"apply":{"model":blockstate_model_1,"y":270}},{"when":{"facing":"north","type":"0|1"},"apply":{"model":blockstate_model_2}},{"when":{"facing":"east","type":"0|1"},"apply":{"model":blockstate_model_2,"y":90}},{"when":{"facing":"south","type":"0|1"},"apply":{"model":blockstate_model_2,"y":180}},{"when":{"facing":"west","type":"0|1"},"apply":{"model":blockstate_model_2,"y":270}},{"when":{"facing":"north","type":"0|3"},"apply":{"model":blockstate_model_3}},{"when":{"facing":"east","type":"0|3"},"apply":{"model":blockstate_model_3,"y":90}},{"when":{"facing":"south","type":"0|3"},"apply":{"model":blockstate_model_3,"y":180}},{"when":{"facing":"west","type":"0|3"},"apply":{"model":blockstate_model_3,"y":270}}]}
+            blockstate = {"variants": {"facing=north,type=0": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_full"},"facing=east,type=0": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_full","y": 90},"facing=south,type=0": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_full","y": 180},"facing=west,type=0": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_full","y": 270},"facing=north,type=1": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_l"},"facing=east,type=1": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_l","y": 90},"facing=south,type=1": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_l","y": 180},"facing=west,type=1": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_l","y": 270},"facing=north,type=2": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top"},"facing=east,type=2": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","y": 90},"facing=south,type=2": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","y": 180},"facing=west,type=2": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_top","y": 270},"facing=north,type=3": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_r"},"facing=east,type=3": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_r","y": 90},"facing=south,type=3": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_r","y": 180},"facing=west,type=3": {"model": f"{namespace}:block/shelf/{made_from_block_namepath}{item['wood_type']}_r","y": 270}}}
         elif item["blockstate_preset"] == "table":
             blockstate_model_1 = f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_top"
             blockstate_model_2 = f"{namespace}:block/table/{made_from_block_namepath}{item['wood_type']}_leg"
