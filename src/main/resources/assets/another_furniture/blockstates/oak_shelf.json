@@ -1,117 +1,64 @@
 {
-    "multipart": [
-        {
-            "when": {
-                "facing": "north"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_top"
-            }
+    "variants": {
+        "facing=north,type=0": {
+            "model": "another_furniture:block/shelf/oak_full"
         },
-        {
-            "when": {
-                "facing": "east"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_top",
-                "y": 90
-            }
+        "facing=east,type=0": {
+            "model": "another_furniture:block/shelf/oak_full",
+            "y": 90
         },
-        {
-            "when": {
-                "facing": "south"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_top",
-                "y": 180
-            }
+        "facing=south,type=0": {
+            "model": "another_furniture:block/shelf/oak_full",
+            "y": 180
         },
-        {
-            "when": {
-                "facing": "west"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_top",
-                "y": 270
-            }
+        "facing=west,type=0": {
+            "model": "another_furniture:block/shelf/oak_full",
+            "y": 270
         },
-        {
-            "when": {
-                "facing": "north",
-                "type": "0|1"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_l"
-            }
+        "facing=north,type=1": {
+            "model": "another_furniture:block/shelf/oak_l"
         },
-        {
-            "when": {
-                "facing": "east",
-                "type": "0|1"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_l",
-                "y": 90
-            }
+        "facing=east,type=1": {
+            "model": "another_furniture:block/shelf/oak_l",
+            "y": 90
         },
-        {
-            "when": {
-                "facing": "south",
-                "type": "0|1"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_l",
-                "y": 180
-            }
+        "facing=south,type=1": {
+            "model": "another_furniture:block/shelf/oak_l",
+            "y": 180
         },
-        {
-            "when": {
-                "facing": "west",
-                "type": "0|1"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_l",
-                "y": 270
-            }
+        "facing=west,type=1": {
+            "model": "another_furniture:block/shelf/oak_l",
+            "y": 270
         },
-        {
-            "when": {
-                "facing": "north",
-                "type": "0|3"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_r"
-            }
+        "facing=north,type=2": {
+            "model": "another_furniture:block/shelf/oak_top"
         },
-        {
-            "when": {
-                "facing": "east",
-                "type": "0|3"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_r",
-                "y": 90
-            }
+        "facing=east,type=2": {
+            "model": "another_furniture:block/shelf/oak_top",
+            "y": 90
         },
-        {
-            "when": {
-                "facing": "south",
-                "type": "0|3"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_r",
-                "y": 180
-            }
+        "facing=south,type=2": {
+            "model": "another_furniture:block/shelf/oak_top",
+            "y": 180
         },
-        {
-            "when": {
-                "facing": "west",
-                "type": "0|3"
-            },
-            "apply": {
-                "model": "another_furniture:block/shelf/oak_r",
-                "y": 270
-            }
+        "facing=west,type=2": {
+            "model": "another_furniture:block/shelf/oak_top",
+            "y": 270
+        },
+        "facing=north,type=3": {
+            "model": "another_furniture:block/shelf/oak_r"
+        },
+        "facing=east,type=3": {
+            "model": "another_furniture:block/shelf/oak_r",
+            "y": 90
+        },
+        "facing=south,type=3": {
+            "model": "another_furniture:block/shelf/oak_r",
+            "y": 180
+        },
+        "facing=west,type=3": {
+            "model": "another_furniture:block/shelf/oak_r",
+            "y": 270
         }
-    ]
+    }
 }

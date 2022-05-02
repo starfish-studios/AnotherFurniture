@@ -1,7 +1,7 @@
 {
     "parent": "another_furniture:block/template/table_leg",
     "textures": {
-        "all": "another_furniture:block/table/birch",
-        "particle": "minecraft:block/birch_planks"
+        "sides": "another_furniture:block/table/birch_sides",
+        "particle": "another_furniture:block/table/birch_top"
     }
 }

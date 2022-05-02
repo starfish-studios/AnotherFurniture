@@ -1,7 +1,9 @@
 {
     "parent": "another_furniture:block/template/chair",
     "textures": {
-        "all": "another_furniture:block/chair/ecologics_walnut",
-        "particle": "ecologics:block/walnut_planks"
+        "back": "another_furniture:block/chair/ecologics_walnut_back",
+        "bottom": "another_furniture:block/chair/ecologics_walnut_bottom",
+        "seat": "another_furniture:block/chair/ecologics_walnut_seat",
+        "particle": "another_furniture:block/chair/ecologics_walnut_seat"
     }
 }

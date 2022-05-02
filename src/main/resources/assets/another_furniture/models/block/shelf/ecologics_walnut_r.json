@@ -1,7 +1,9 @@
 {
     "parent": "another_furniture:block/template/shelf_r",
     "textures": {
-        "all": "another_furniture:block/shelf/ecologics_walnut",
-        "particle": "ecologics:block/walnut_planks"
+        "top": "another_furniture:block/shelf/ecologics_walnut_top",
+        "sides": "another_furniture:block/shelf/ecologics_walnut_sides",
+        "supports": "another_furniture:block/shelf/ecologics_walnut_supports",
+        "particle": "another_furniture:block/shelf/ecologics_walnut_top"
     }
 }

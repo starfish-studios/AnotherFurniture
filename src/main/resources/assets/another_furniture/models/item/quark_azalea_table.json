@@ -1,6 +1,7 @@
 {
     "parent": "another_furniture:block/template/table_full",
     "textures": {
-        "all": "another_furniture:block/table/quark_azalea"
+        "top": "another_furniture:block/table/quark_azalea_top",
+        "sides": "another_furniture:block/table/quark_azalea_sides"
     }
 }
