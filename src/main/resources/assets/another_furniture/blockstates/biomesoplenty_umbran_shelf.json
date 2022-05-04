@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "facing=north,type=0": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_full"
+        },
+        "facing=east,type=0": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_full",
+            "y": 90
+        },
+        "facing=south,type=0": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_full",
+            "y": 180
+        },
+        "facing=west,type=0": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_full",
+            "y": 270
+        },
+        "facing=north,type=1": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_l"
+        },
+        "facing=east,type=1": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_l",
+            "y": 90
+        },
+        "facing=south,type=1": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_l",
+            "y": 180
+        },
+        "facing=west,type=1": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_l",
+            "y": 270
+        },
+        "facing=north,type=2": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_top"
+        },
+        "facing=east,type=2": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_top",
+            "y": 90
+        },
+        "facing=south,type=2": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_top",
+            "y": 180
+        },
+        "facing=west,type=2": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_top",
+            "y": 270
+        },
+        "facing=north,type=3": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_r"
+        },
+        "facing=east,type=3": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_r",
+            "y": 90
+        },
+        "facing=south,type=3": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_r",
+            "y": 180
+        },
+        "facing=west,type=3": {
+            "model": "another_furniture:block/shelf/biomesoplenty_umbran_r",
+            "y": 270
+        }
+    }
+}

@@ -50,9 +50,18 @@ colors = [
 ]
 
 wood_types = [
+    "biomesoplenty:cherry", "biomesoplenty:dead", "biomesoplenty:fir", "biomesoplenty:hellbark",
+    "biomesoplenty:jacaranda", "biomesoplenty:magic", "biomesoplenty:mahogany", "biomesoplenty:palm",
+    "biomesoplenty:redwood", "biomesoplenty:umbran", "biomesoplenty:willow",
+    
+    "ecologics:azalea", "ecologics:coconut", "ecologics:walnut",
+    
+    "enhanced_mushrooms:brown_mushroom", "enhanced_mushrooms:red_mushroom",
+    
     "minecraft:oak", "minecraft:spruce", "minecraft:birch", "minecraft:jungle", "minecraft:acacia",
-    "minecraft:dark_oak", "minecraft:crimson", "minecraft:warped", "quark:azalea", "quark:blossom",
-    "ecologics:azalea", "ecologics:coconut", "ecologics:walnut"
+    "minecraft:dark_oak", "minecraft:crimson", "minecraft:warped",
+    
+    "quark:azalea", "quark:blossom"
 ]
 
 non_flammable_woods = [

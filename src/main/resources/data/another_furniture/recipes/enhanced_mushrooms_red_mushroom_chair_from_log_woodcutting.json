@@ -1,0 +1,18 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "enhanced_mushrooms"
+        }
+    ],
+    "ingredient": {
+        "tag": "enhanced_mushrooms:red_mushroom_logs"
+    },
+    "result": "another_furniture:enhanced_mushrooms_red_mushroom_chair",
+    "count": 1
+}

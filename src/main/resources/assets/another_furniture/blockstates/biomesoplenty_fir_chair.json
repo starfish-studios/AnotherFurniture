@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/chair/biomesoplenty_fir"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/chair/biomesoplenty_fir",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/chair/biomesoplenty_fir",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/chair/biomesoplenty_fir",
+            "y": 270
+        }
+    }
+}

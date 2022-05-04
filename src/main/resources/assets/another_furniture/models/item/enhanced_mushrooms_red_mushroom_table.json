@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/table_full",
+    "textures": {
+        "top": "another_furniture:block/table/enhanced_mushrooms_red_mushroom_top",
+        "sides": "another_furniture:block/table/enhanced_mushrooms_red_mushroom_sides"
+    }
+}
