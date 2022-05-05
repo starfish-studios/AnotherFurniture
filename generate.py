@@ -2,9 +2,9 @@ import os, json
 
 ###################################
 """
-Edit here. COLOR will be replaced with an item of each 16 colors.
-white colored block models will not be made, as it will be treated
-as the base the other colors will parent from.
+Edit here.
+COLOR will be replaced with an item of each 16 colors.
+WOODTYPE will be replaced with all of the existing wood types registered.
 """
 namespace = "another_furniture"
 generate_pre = [
@@ -15,6 +15,29 @@ generate_pre = [
     {"name": "service_bell"}
 ]
 
+wood_types = [
+    "biomesoplenty:cherry", "biomesoplenty:dead", "biomesoplenty:fir", "biomesoplenty:hellbark",
+    "biomesoplenty:jacaranda", "biomesoplenty:magic", "biomesoplenty:mahogany", "biomesoplenty:palm",
+    "biomesoplenty:redwood", "biomesoplenty:umbran", "biomesoplenty:willow",
+    
+    "ecologics:azalea", "ecologics:coconut", "ecologics:walnut",
+    
+    "enhanced_mushrooms:brown_mushroom", "enhanced_mushrooms:red_mushroom",
+    
+    "minecraft:oak", "minecraft:spruce", "minecraft:birch", "minecraft:jungle", "minecraft:acacia",
+    "minecraft:dark_oak", "minecraft:crimson", "minecraft:warped",
+    
+    "quark:azalea", "quark:blossom"
+]
+
+non_flammable_woods = [
+    "crimson", "warped", "hellbark"
+]
+
+colors = [
+    "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
+    "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+]
 
 def class_names(item_name):
     class_type = "CLASS"
@@ -44,29 +67,7 @@ def material_names(item_name):
     return material_type
 
 ###################################
-colors = [
-    "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
-    "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-]
 
-wood_types = [
-    "biomesoplenty:cherry", "biomesoplenty:dead", "biomesoplenty:fir", "biomesoplenty:hellbark",
-    "biomesoplenty:jacaranda", "biomesoplenty:magic", "biomesoplenty:mahogany", "biomesoplenty:palm",
-    "biomesoplenty:redwood", "biomesoplenty:umbran", "biomesoplenty:willow",
-    
-    "ecologics:azalea", "ecologics:coconut", "ecologics:walnut",
-    
-    "enhanced_mushrooms:brown_mushroom", "enhanced_mushrooms:red_mushroom",
-    
-    "minecraft:oak", "minecraft:spruce", "minecraft:birch", "minecraft:jungle", "minecraft:acacia",
-    "minecraft:dark_oak", "minecraft:crimson", "minecraft:warped",
-    
-    "quark:azalea", "quark:blossom"
-]
-
-non_flammable_woods = [
-    "crimson", "warped"
-]
 
 def make_file_if_not_exist(path, json_dict):
     if not os.path.exists(path):
@@ -230,20 +231,26 @@ def generate_all(generate):
             key_namespace = recipe["key"][key]["item"].split(":")[0]
             recipe["key"][key]["item"] = f"{item['made_from_block_namespace']}:{data}_{extra}"
             recipe["result"]["item"] = namespaced_item
+            
             if item["made_from_block_namespace"] != "minecraft":
                 recipe["conditions"] = [{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}]
+            elif "conditions" in recipe:
+                recipe.pop("conditions")
+                
             make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}.json", recipe)
 
         if item_name.endswith("stool"):
             if not item["color"] == "white":
                 make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_dyeing.json", {"type": "minecraft:crafting_shapeless","ingredients": [{"item": f"{namespace}:white_{type_of_item}"},{"item": f"minecraft:{item['color']}_dye"}],"result":{"item":namespaced_item,"count": 1},"group":"stools"})
         #####
-        #Compat - Corail Woodcutter
+        #Compat - Corail Woodcutter and Environmental's Sawmill
         if item["wood_types"]:
             if item["made_from_block_namespace"] == "minecraft":
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
+                make_file_if_not_exist(f"{recipes_pre}\\corail_woodcutter\\{made_from_block_namepath}{item_name}_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
+                make_file_if_not_exist(f"{recipes_pre}\\environmental\\{made_from_block_namepath}{item_name}_sawmill.json",{"type":"environmental:sawing","conditions":[{"type":"forge:mod_loaded","modid":"environmental"}],"ingredient":{"tag":f"minecraft:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
             else:
-                make_file_if_not_exist(f"{recipes_pre}\\{made_from_block_namepath}{item_name}_from_log_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
+                make_file_if_not_exist(f"{recipes_pre}\\corail_woodcutter\\{made_from_block_namepath}{item_name}_woodcutting.json",{"type":"corail_woodcutter:woodcutting","conditions":[{"type":"forge:mod_loaded","modid":"corail_woodcutter"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
+                make_file_if_not_exist(f"{recipes_pre}\\environmental\\{made_from_block_namepath}{item_name}_sawmill.json",{"type":"environmental:sawing","conditions":[{"type":"forge:mod_loaded","modid":"environmental"},{"type":"forge:mod_loaded","modid":item['made_from_block_namespace']}],"ingredient":{"tag":f"{item['made_from_block_namespace']}:{item['wood_type']}_logs"},"result":namespaced_item,"count":1})
 
 
 
@@ -275,10 +282,10 @@ def generate_all(generate):
         class_type = class_names(item_name)
         material_name = material_names(item_name)
 
-        if item["made_from_block_namespace"] == "minecraft":
-            print(f'public static final RegistryObject<Block> {made_from_block_namepath.upper()}{item_name.upper()} = RegistryUtil.createBlockAndItem("{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
-        else:
-            print(f'public static final RegistryObject<Block> {made_from_block_namepath.upper()}{item_name.upper()} = RegistryUtil.createBlockAndItemCompat(CompatUtil.{item["made_from_block_namespace"].upper()}_ID, "{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
+        #if item["made_from_block_namespace"] == "minecraft":
+            #print(f'public static final RegistryObject<Block> {made_from_block_namepath.upper()}{item_name.upper()} = RegistryUtil.createBlockAndItem("{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
+        #else:
+            #print(f'public static final RegistryObject<Block> {made_from_block_namepath.upper()}{item_name.upper()} = RegistryUtil.createBlockAndItemCompat(CompatUtil.{item["made_from_block_namespace"].upper()}_ID, "{item_name.lower()}", () -> new {class_type}(Block.Properties.of(Material.{material_name}).strength(2.0F, 3.0F).sound(SoundType.WOOD)));')
 
 
         
@@ -302,11 +309,11 @@ def generate_all(generate):
 generate = generate_list(generate_pre)
 generate_all(generate)
 
-for x in wood_types:
-    print(f"ModBlocks.{x.replace('minecraft:','').replace(':','_').upper()}_SHELF.get(),")
+#for x in wood_types:
+    #print(f"ModBlocks.{x.replace('minecraft:','').replace(':','_').upper()}_SHELF.get(),")
 
-for x in wood_types:
-    print(f"ItemBlockRenderTypes.setRenderLayer(ModBlocks.{x.replace('minecraft:','').replace(':','_').upper()}_CHAIR.get(), RenderType.cutout());")
+#for x in wood_types:
+    #print(f"ItemBlockRenderTypes.setRenderLayer(ModBlocks.{x.replace('minecraft:','').replace(':','_').upper()}_CHAIR.get(), RenderType.cutout());")
 
 #########################
 #Tags #2

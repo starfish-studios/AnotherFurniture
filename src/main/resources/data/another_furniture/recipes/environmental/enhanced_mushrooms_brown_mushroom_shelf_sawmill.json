@@ -1,0 +1,18 @@
+{
+    "type": "environmental:sawing",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "enhanced_mushrooms"
+        }
+    ],
+    "ingredient": {
+        "tag": "enhanced_mushrooms:brown_mushroom_logs"
+    },
+    "result": "another_furniture:enhanced_mushrooms_brown_mushroom_shelf",
+    "count": 1
+}
