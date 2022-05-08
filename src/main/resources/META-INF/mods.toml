@@ -5,7 +5,7 @@ license="All rights reserved"
 
 [[mods]]
 modId="another_furniture"
-version="1.0.2"
+version="1.0.3"
 displayName="Another Furniture Mod"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/another-furniture"
 issueTrackerURL="https://github.com/crispytwig/Another-Furniture-Mod/issues"

@@ -1,0 +1,14 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        }
+    ],
+    "ingredient": {
+        "tag": "minecraft:crimson_logs"
+    },
+    "result": "another_furniture:crimson_table",
+    "count": 1
+}

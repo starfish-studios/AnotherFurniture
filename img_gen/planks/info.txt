@@ -1,0 +1,8 @@
+place plank textures in this folder.
+
+rename them to "<namespace>_<type>". do not include "_planks".
+examples:
+-minecraft_oak
+-minecraft_dark_oak
+-quark_azalea
+-enhanced_mushrooms_red_mushroom

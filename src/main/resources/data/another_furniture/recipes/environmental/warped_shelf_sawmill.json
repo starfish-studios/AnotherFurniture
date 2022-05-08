@@ -1,0 +1,14 @@
+{
+    "type": "environmental:sawing",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        }
+    ],
+    "ingredient": {
+        "tag": "minecraft:warped_logs"
+    },
+    "result": "another_furniture:warped_shelf",
+    "count": 1
+}

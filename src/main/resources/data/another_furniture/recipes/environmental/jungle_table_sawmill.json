@@ -1,0 +1,14 @@
+{
+    "type": "environmental:sawing",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        }
+    ],
+    "ingredient": {
+        "tag": "minecraft:jungle_logs"
+    },
+    "result": "another_furniture:jungle_table",
+    "count": 1
+}

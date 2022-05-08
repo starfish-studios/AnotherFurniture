@@ -1,0 +1,18 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "quark"
+        }
+    ],
+    "ingredient": {
+        "tag": "quark:blossom_logs"
+    },
+    "result": "another_furniture:quark_blossom_table",
+    "count": 1
+}

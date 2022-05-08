@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/chair/enhanced_mushrooms_brown_mushroom"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/chair/enhanced_mushrooms_brown_mushroom",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/chair/enhanced_mushrooms_brown_mushroom",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/chair/enhanced_mushrooms_brown_mushroom",
+            "y": 270
+        }
+    }
+}

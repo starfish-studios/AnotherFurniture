@@ -1,0 +1,18 @@
+{
+    "type": "environmental:sawing",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "ecologics"
+        }
+    ],
+    "ingredient": {
+        "tag": "ecologics:walnut_logs"
+    },
+    "result": "another_furniture:ecologics_walnut_chair",
+    "count": 1
+}

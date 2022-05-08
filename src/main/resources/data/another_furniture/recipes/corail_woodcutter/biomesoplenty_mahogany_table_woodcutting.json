@@ -1,0 +1,18 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomesoplenty"
+        }
+    ],
+    "ingredient": {
+        "tag": "biomesoplenty:mahogany_logs"
+    },
+    "result": "another_furniture:biomesoplenty_mahogany_table",
+    "count": 1
+}

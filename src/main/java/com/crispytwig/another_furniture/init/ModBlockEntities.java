@@ -12,6 +12,22 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<ShelfBlockEntity>> SHELF = BLOCK_ENTITIES.register("shelf",
             () -> BlockEntityType.Builder.of(ShelfBlockEntity::new,
+                    ModBlocks.BIOMESOPLENTY_CHERRY_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_DEAD_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_FIR_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_HELLBARK_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_JACARANDA_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_MAGIC_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_MAHOGANY_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_PALM_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_REDWOOD_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_UMBRAN_SHELF.get(),
+                    ModBlocks.BIOMESOPLENTY_WILLOW_SHELF.get(),
+                    ModBlocks.ECOLOGICS_AZALEA_SHELF.get(),
+                    ModBlocks.ECOLOGICS_COCONUT_SHELF.get(),
+                    ModBlocks.ECOLOGICS_WALNUT_SHELF.get(),
+                    ModBlocks.ENHANCED_MUSHROOMS_BROWN_MUSHROOM_SHELF.get(),
+                    ModBlocks.ENHANCED_MUSHROOMS_RED_MUSHROOM_SHELF.get(),
                     ModBlocks.OAK_SHELF.get(),
                     ModBlocks.SPRUCE_SHELF.get(),
                     ModBlocks.BIRCH_SHELF.get(),
@@ -21,10 +37,7 @@ public class ModBlockEntities {
                     ModBlocks.CRIMSON_SHELF.get(),
                     ModBlocks.WARPED_SHELF.get(),
                     ModBlocks.QUARK_AZALEA_SHELF.get(),
-                    ModBlocks.QUARK_BLOSSOM_SHELF.get(),
-                    ModBlocks.ECOLOGICS_AZALEA_SHELF.get(),
-                    ModBlocks.ECOLOGICS_COCONUT_SHELF.get(),
-                    ModBlocks.ECOLOGICS_WALNUT_SHELF.get()
+                    ModBlocks.QUARK_BLOSSOM_SHELF.get()
             ).build(null));
 
 }
