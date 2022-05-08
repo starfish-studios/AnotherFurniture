@@ -59,6 +59,7 @@ for plank in planks:
             img_new = input_img
             
         img_new.save(save_path)
+        print(f"saved {save_path}")
 
 
 

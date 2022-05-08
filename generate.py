@@ -111,6 +111,8 @@ tags_dict = {}
 
 def generate_all(generate):
     lang = {}
+    lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
+    lang[f"block.{namespace}.service_bell.use"] = "Bell chimes"
     namespaced_items = []
     for item in generate:
             
@@ -291,8 +293,7 @@ def generate_all(generate):
         
         #########################
         #Lang
-        lang[f"itemGroup.{namespace}"] = "Another Furniture Mod"
-        lang[f"block.{namespace}.service_bell.use"] = "Bell chimes"
+        
         lang[f"block.{namespace}.{made_from_block_namepath}{item_name}"] = item_name.replace("_", " ").title()
         #########################
         namespaced_items.append(namespaced_item)
