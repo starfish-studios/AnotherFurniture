@@ -43,7 +43,7 @@ public class ServiceBellBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        level.playSound((Player)null, pos, ModSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
+        level.playSound(null, pos, ModSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
         return InteractionResult.SUCCESS;
     }
 

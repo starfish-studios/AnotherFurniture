@@ -112,4 +112,14 @@ public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
+
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public float getShadeBrightness(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return 1.0f;
+    }
 }

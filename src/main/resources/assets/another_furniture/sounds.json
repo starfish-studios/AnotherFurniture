@@ -5,5 +5,19 @@
 			"another_furniture:service_bell"
 		],
 		"subtitle": "block.another_furniture.service_bell.use"
+	},
+	"block.chair.tuck": {
+		"category": "block",
+		"sounds": [
+			"another_furniture:chair_tuck"
+		],
+		"subtitle": "block.another_furniture.chair.tuck"
+	},
+	"block.chair.untuck": {
+		"category": "block",
+		"sounds": [
+			"another_furniture:chair_untuck"
+		],
+		"subtitle": "block.another_furniture.chair.untuck"
 	}
 }

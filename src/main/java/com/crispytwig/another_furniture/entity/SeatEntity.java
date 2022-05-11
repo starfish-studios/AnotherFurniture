@@ -1,5 +1,7 @@
 package com.crispytwig.another_furniture.entity;
 
+import com.crispytwig.another_furniture.block.ChairBlock;
+import com.crispytwig.another_furniture.block.SeatBlock;
 import com.crispytwig.another_furniture.init.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -34,7 +37,14 @@ public class SeatEntity extends Entity
         super.tick();
         if(!this.level.isClientSide)
         {
-            if(this.getPassengers().isEmpty() || this.level.isEmptyBlock(this.blockPosition()))
+            boolean remove = false;
+            BlockState state = this.level.getBlockState(this.blockPosition());
+            if (state.getBlock() instanceof ChairBlock) {
+                if (state.getValue(ChairBlock.TUCKED)) {
+                    remove = true;
+                }
+            }
+            if(this.getPassengers().isEmpty() || !(state.getBlock() instanceof SeatBlock) || remove)
             {
                 this.remove(RemovalReason.DISCARDED);
                 this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());

@@ -1,18 +1,33 @@
 {
     "variants": {
-        "facing=north": {
+        "facing=north,tucked=false": {
             "model": "another_furniture:block/chair/biomesoplenty_dead"
         },
-        "facing=east": {
+        "facing=east,tucked=false": {
             "model": "another_furniture:block/chair/biomesoplenty_dead",
             "y": 90
         },
-        "facing=south": {
+        "facing=south,tucked=false": {
             "model": "another_furniture:block/chair/biomesoplenty_dead",
             "y": 180
         },
-        "facing=west": {
+        "facing=west,tucked=false": {
             "model": "another_furniture:block/chair/biomesoplenty_dead",
+            "y": 270
+        },
+        "facing=north,tucked=true": {
+            "model": "another_furniture:block/chair/biomesoplenty_dead_tucked"
+        },
+        "facing=east,tucked=true": {
+            "model": "another_furniture:block/chair/biomesoplenty_dead_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true": {
+            "model": "another_furniture:block/chair/biomesoplenty_dead_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true": {
+            "model": "another_furniture:block/chair/biomesoplenty_dead_tucked",
             "y": 270
         }
     }

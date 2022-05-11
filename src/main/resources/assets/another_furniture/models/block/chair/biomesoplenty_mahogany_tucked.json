@@ -1,0 +1,9 @@
+{
+    "parent": "another_furniture:block/template/chair_tucked",
+    "textures": {
+        "back": "another_furniture:block/chair/biomesoplenty_mahogany_back",
+        "bottom": "another_furniture:block/chair/biomesoplenty_mahogany_bottom",
+        "seat": "another_furniture:block/chair/biomesoplenty_mahogany_seat",
+        "particle": "another_furniture:block/chair/biomesoplenty_mahogany_seat"
+    }
+}

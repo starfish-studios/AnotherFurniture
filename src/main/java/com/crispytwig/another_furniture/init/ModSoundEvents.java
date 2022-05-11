@@ -11,6 +11,8 @@ public class ModSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AnotherFurnitureMod.MOD_ID);
 
     public static final RegistryObject<SoundEvent> SERVICE_BELL = register("block.service_bell.use");
+    public static final RegistryObject<SoundEvent> CHAIR_TUCK = register("block.chair.tuck");
+    public static final RegistryObject<SoundEvent> CHAIR_UNTUCK = register("block.chair.untuck");
 
     public static RegistryObject<SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(AnotherFurnitureMod.MOD_ID, name)));

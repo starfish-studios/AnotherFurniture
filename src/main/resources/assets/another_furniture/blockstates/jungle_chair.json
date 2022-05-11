@@ -1,18 +1,33 @@
 {
     "variants": {
-        "facing=north": {
+        "facing=north,tucked=false": {
             "model": "another_furniture:block/chair/jungle"
         },
-        "facing=east": {
+        "facing=east,tucked=false": {
             "model": "another_furniture:block/chair/jungle",
             "y": 90
         },
-        "facing=south": {
+        "facing=south,tucked=false": {
             "model": "another_furniture:block/chair/jungle",
             "y": 180
         },
-        "facing=west": {
+        "facing=west,tucked=false": {
             "model": "another_furniture:block/chair/jungle",
+            "y": 270
+        },
+        "facing=north,tucked=true": {
+            "model": "another_furniture:block/chair/jungle_tucked"
+        },
+        "facing=east,tucked=true": {
+            "model": "another_furniture:block/chair/jungle_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true": {
+            "model": "another_furniture:block/chair/jungle_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true": {
+            "model": "another_furniture:block/chair/jungle_tucked",
             "y": 270
         }
     }

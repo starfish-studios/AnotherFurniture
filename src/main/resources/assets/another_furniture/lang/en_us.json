@@ -1,6 +1,8 @@
 {
     "itemGroup.another_furniture": "Another Furniture Mod",
     "block.another_furniture.service_bell.use": "Bell chimes",
+    "block.another_furniture.chair.tuck": "Chair tucked",
+    "block.another_furniture.chair.untuck": "Chair untucked",
     "block.another_furniture.biomesoplenty_cherry_chair": "Cherry Chair",
     "block.another_furniture.biomesoplenty_dead_chair": "Dead Chair",
     "block.another_furniture.biomesoplenty_fir_chair": "Fir Chair",
