@@ -93,6 +93,14 @@
     "block.another_furniture.warped_table": "Warped Table",
     "block.another_furniture.quark_azalea_table": "Azalea Table",
     "block.another_furniture.quark_blossom_table": "Blossom Table",
+    "block.another_furniture.oak_shutter": "Oak Shutter",
+    "block.another_furniture.spruce_shutter": "Spruce Shutter",
+    "block.another_furniture.birch_shutter": "Birch Shutter",
+    "block.another_furniture.jungle_shutter": "Jungle Shutter",
+    "block.another_furniture.acacia_shutter": "Acacia Shutter",
+    "block.another_furniture.dark_oak_shutter": "Dark Oak Shutter",
+    "block.another_furniture.crimson_shutter": "Crimson Shutter",
+    "block.another_furniture.warped_shutter": "Warped Shutter",
     "block.another_furniture.white_stool": "White Stool",
     "block.another_furniture.orange_stool": "Orange Stool",
     "block.another_furniture.magenta_stool": "Magenta Stool",
@@ -109,5 +117,6 @@
     "block.another_furniture.green_stool": "Green Stool",
     "block.another_furniture.red_stool": "Red Stool",
     "block.another_furniture.black_stool": "Black Stool",
-    "block.another_furniture.service_bell": "Service Bell"
+    "block.another_furniture.service_bell": "Service Bell",
+    "block.another_furniture.curtain": "Curtain"
 }

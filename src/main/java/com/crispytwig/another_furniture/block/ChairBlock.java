@@ -1,6 +1,7 @@
 package com.crispytwig.another_furniture.block;
 
 import com.crispytwig.another_furniture.init.ModSoundEvents;
+import com.crispytwig.another_furniture.init.ModTags;
 import com.ibm.icu.impl.UResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +28,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty TUCKED = BooleanProperty.create("tucked");
     protected static final VoxelShape SEAT = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D);
@@ -87,10 +88,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-
-        if (player.isCrouching() && player.getMainHandItem().isEmpty() && player.getOffhandItem().isEmpty() &&
-                level.getBlockState(pos.relative(state.getValue(FACING))).getBlock() instanceof TableBlock) {
-            if (state.getValue(TUCKED)) {
+        boolean tucked = state.getValue(TUCKED);
+        if ((player.isCrouching() || tucked) && player.getMainHandItem().isEmpty() && player.getOffhandItem().isEmpty() &&
+                level.getBlockState(pos.relative(state.getValue(FACING))).is(ModTags.CHAIRS_CAN_TUCK_UNDER)) {
+            if (tucked) {
                 level.setBlockAndUpdate(pos, state.setValue(TUCKED, false));
                 level.playSound(null, pos, ModSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
@@ -99,13 +100,8 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
                 Direction facing = state.getValue(FACING);
                 BlockState left = level.getBlockState(pos.relative(facing).relative(facing.getCounterClockWise()));
                 BlockState right = level.getBlockState(pos.relative(facing).relative(facing.getClockWise()));
-                if (left.getBlock() instanceof ChairBlock) {
-                    if (left.getValue(TUCKED) && left.getValue(FACING) == facing.getClockWise()) {
-                        push_in = false;
-                    }
-                }
-                if (right.getBlock() instanceof ChairBlock) {
-                    if (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise()) {
+                if (left.getBlock() instanceof ChairBlock || right.getBlock() instanceof ChairBlock) {
+                    if ((left.getValue(TUCKED) && left.getValue(FACING) == facing.getClockWise()) || (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise())) {
                         push_in = false;
                     }
                 }
@@ -115,10 +111,6 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
                     return InteractionResult.SUCCESS;
                 }
             }
-            return InteractionResult.FAIL;
-        }
-
-        if (state.getValue(TUCKED)) {
             return InteractionResult.FAIL;
         }
         return super.use(state, level, pos, player, hand, hit);

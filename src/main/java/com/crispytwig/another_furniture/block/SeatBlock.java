@@ -1,6 +1,7 @@
 package com.crispytwig.another_furniture.block;
 
 import com.crispytwig.another_furniture.entity.SeatEntity;
+import com.crispytwig.another_furniture.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -29,7 +30,7 @@ public class SeatBlock extends BaseBlock {
         if(player.isPassenger() || player.isCrouching())
             return InteractionResult.PASS;
 
-        if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty())
+        if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() && !level.getBlockState(pos.above()).is(ModTags.BYPASS_SEAT_COLLISION_CHECK))
             return InteractionResult.PASS;
 
         Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);

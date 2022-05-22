@@ -85,8 +85,8 @@ public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
         return state.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
     }
 
-    public FluidState getFluidState(BlockState p_52362_) {
-        return p_52362_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_52362_);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
@@ -111,15 +111,5 @@ public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter blockGetter, BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    public float getShadeBrightness(BlockState state, BlockGetter blockGetter, BlockPos pos) {
-        return 1.0f;
     }
 }

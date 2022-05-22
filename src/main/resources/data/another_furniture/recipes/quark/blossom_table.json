@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "###",
-        "/  "
+        "/ /"
     ],
     "key": {
         "#": {
@@ -13,14 +13,18 @@
         }
     },
     "result": {
-        "item": "another_furniture:quark_blossom_shelf",
+        "item": "another_furniture:quark_blossom_table",
         "count": 1
     },
-    "group": "shelves",
+    "group": "tables",
     "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "quark"
+        },
+        {
+            "type": "quark:flag",
+            "flag": "blossom_trees"
         }
     ]
 }

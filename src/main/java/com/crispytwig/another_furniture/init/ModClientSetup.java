@@ -48,5 +48,14 @@ public class ModClientSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.QUARK_AZALEA_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.QUARK_BLOSSOM_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAK_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRUCE_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIRCH_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.JUNGLE_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ACACIA_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_SHUTTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CURTAIN.get(), RenderType.cutout());
     }
 }

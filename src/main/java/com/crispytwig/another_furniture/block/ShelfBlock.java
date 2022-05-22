@@ -1,8 +1,13 @@
 package com.crispytwig.another_furniture.block;
 
 import com.crispytwig.another_furniture.block.entity.ShelfBlockEntity;
+import com.crispytwig.another_furniture.block.properties.CurtainType;
+import com.crispytwig.another_furniture.block.properties.ModBlockStateProperties;
+import com.crispytwig.another_furniture.block.properties.ShelfType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,10 +21,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
@@ -30,7 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    public static final IntegerProperty TYPE = IntegerProperty.create("type", 0, 3);
+    public static final EnumProperty<ShelfType> TYPE = ModBlockStateProperties.SHELF_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape TOP = Block.box(0, 14, 0.0, 16, 16, 16);
@@ -60,7 +62,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         super(p_49795_);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, 0)
+                .setValue(TYPE, ShelfType.SINGLE)
                 .setValue(WATERLOGGED, false)
         );
     }
@@ -72,11 +74,12 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
                 ItemStack itemstack = player.getItemInHand(hand);
                 if (!itemstack.isEmpty()) {
                     if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
+                        level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
                         return InteractionResult.SUCCESS;
                     }
                     return InteractionResult.CONSUME;
                 }
-                if (!level.isClientSide && shelfblockentity.removeItem(this.getPosition(hit, pos))) {
+                if (!level.isClientSide && shelfblockentity.removeItem(this.getPosition(hit, pos), player)) {
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -99,40 +102,39 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         return true;
     }
 
-    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
+    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
         Direction direction = state.getValue(FACING);
-        int type = state.getValue(TYPE);
+        ShelfType type = state.getValue(TYPE);
 
         if (direction == Direction.NORTH) {
             return switch (type) {
-                case 0 -> T_NLR;
-                case 1 -> T_NL;
-                case 3 -> T_NR;
+                case SINGLE -> T_NLR;
+                case LEFT -> T_NL;
+                case RIGHT -> T_NR;
                 default -> TOP;
             };
         } else if (direction == Direction.EAST) {
             return switch (type) {
-                case 0 -> T_ELR;
-                case 1 -> T_EL;
-                case 3 -> T_ER;
+                case SINGLE -> T_ELR;
+                case LEFT -> T_EL;
+                case RIGHT -> T_ER;
                 default -> TOP;
             };
         } else if (direction == Direction.SOUTH) {
             return switch (type) {
-                case 0 -> T_SLR;
-                case 1 -> T_SL;
-                case 3 -> T_SR;
+                case SINGLE -> T_SLR;
+                case LEFT -> T_SL;
+                case RIGHT -> T_SR;
                 default -> TOP;
             };
-        } else if (direction == Direction.WEST) {
+        } else {
             return switch (type) {
-                case 0 -> T_WLR;
-                case 1 -> T_WL;
-                case 3 -> T_WR;
+                case SINGLE -> T_WLR;
+                case LEFT -> T_WL;
+                case RIGHT -> T_WR;
                 default -> TOP;
             };
         }
-        return TOP;
     }
 
     public RenderShape getRenderShape(BlockState state) {
@@ -158,24 +160,18 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
                 shelfblockentity.removeAllItems();
             }
         }
+
         Direction facing = state.getValue(FACING);
         BlockState l_state = level.getBlockState(pos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(pos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof ShelfBlock && l_state.getValue(FACING) == facing);
         boolean r_side = (r_state.getBlock() instanceof ShelfBlock && r_state.getValue(FACING) == facing);
-        int type = 0;
-        if (l_side && r_side) {
-            type = 2;
-        } else if (r_side) {
-            type = 1;
-        } else if (l_side) {
-            type = 3;
-        }
+        ShelfType type = l_side && r_side ? ShelfType.MIDDLE : (r_side ? ShelfType.LEFT : (l_side ? ShelfType.RIGHT : ShelfType.SINGLE));
         return state.setValue(TYPE, type);
     }
 
-    public FluidState getFluidState(BlockState p_52362_) {
-        return p_52362_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_52362_);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
@@ -183,8 +179,8 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         builder.add(FACING, TYPE, WATERLOGGED);
     }
 
-    public BlockEntity newBlockEntity(BlockPos p_152759_, BlockState p_152760_) {
-        return new ShelfBlockEntity(p_152759_, p_152760_);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new ShelfBlockEntity(pos, state);
     }
 
     private int getPosition(BlockHitResult hit, BlockPos pos)

@@ -5,7 +5,7 @@
             "item": "another_furniture:white_stool"
         },
         {
-            "item": "minecraft:purple_dye"
+            "tag": "forge:dyes/purple"
         }
     ],
     "result": {

@@ -7,7 +7,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -55,14 +57,14 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         return false;
     }
 
-    public boolean removeItem(int index) {
+    public boolean removeItem(int index, Player player) {
         if (!this.items.get(index).isEmpty()) {
             double posX = worldPosition.getX() + 0.3 + 0.4 * (index % 2);
             double posY = worldPosition.getY() + 1.0;
             double posZ = worldPosition.getZ() + 0.3 + 0.4 * (index / 2);
 
-            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(index).copy());
-            this.level.addFreshEntity(entity);
+            ItemStack item = this.items.get(index).copy();
+            player.setItemSlot(EquipmentSlot.MAINHAND, item);
             this.items.set(index, ItemStack.EMPTY);
             this.markUpdated();
             return true;

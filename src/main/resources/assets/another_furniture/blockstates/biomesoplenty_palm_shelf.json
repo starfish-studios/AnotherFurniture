@@ -1,62 +1,62 @@
 {
     "variants": {
-        "facing=north,type=0": {
+        "facing=north,type=single": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_full"
         },
-        "facing=east,type=0": {
+        "facing=east,type=single": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_full",
             "y": 90
         },
-        "facing=south,type=0": {
+        "facing=south,type=single": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_full",
             "y": 180
         },
-        "facing=west,type=0": {
+        "facing=west,type=single": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_full",
             "y": 270
         },
-        "facing=north,type=1": {
+        "facing=north,type=left": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_l"
         },
-        "facing=east,type=1": {
+        "facing=east,type=left": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_l",
             "y": 90
         },
-        "facing=south,type=1": {
+        "facing=south,type=left": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_l",
             "y": 180
         },
-        "facing=west,type=1": {
+        "facing=west,type=left": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_l",
             "y": 270
         },
-        "facing=north,type=2": {
+        "facing=north,type=middle": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_top"
         },
-        "facing=east,type=2": {
+        "facing=east,type=middle": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_top",
             "y": 90
         },
-        "facing=south,type=2": {
+        "facing=south,type=middle": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_top",
             "y": 180
         },
-        "facing=west,type=2": {
+        "facing=west,type=middle": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_top",
             "y": 270
         },
-        "facing=north,type=3": {
+        "facing=north,type=right": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_r"
         },
-        "facing=east,type=3": {
+        "facing=east,type=right": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_r",
             "y": 90
         },
-        "facing=south,type=3": {
+        "facing=south,type=right": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_r",
             "y": 180
         },
-        "facing=west,type=3": {
+        "facing=west,type=right": {
             "model": "another_furniture:block/shelf/biomesoplenty_palm_r",
             "y": 270
         }

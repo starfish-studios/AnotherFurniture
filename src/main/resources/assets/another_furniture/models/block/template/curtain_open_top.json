@@ -1,0 +1,16 @@
+{
+	"textures": {
+		"1": "another_furniture:block/closed_curtain_top",
+		"particle": "another_furniture:block/closed_curtain_bottom"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 15],
+			"to": [16, 16, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#1"}
+			}
+		}
+	]
+}
