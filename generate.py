@@ -19,6 +19,8 @@ wood_types = [
     "biomesoplenty:cherry", "biomesoplenty:dead", "biomesoplenty:fir", "biomesoplenty:hellbark",
     "biomesoplenty:jacaranda", "biomesoplenty:magic", "biomesoplenty:mahogany", "biomesoplenty:palm",
     "biomesoplenty:redwood", "biomesoplenty:umbran", "biomesoplenty:willow",
+
+    "biomemakeover:ancient_oak", "biomemakeover:blighted_balsa", "biomemakeover:willow", "biomemakeover:swamp_cypress",
     
     "ecologics:azalea", "ecologics:coconut", "ecologics:walnut",
     

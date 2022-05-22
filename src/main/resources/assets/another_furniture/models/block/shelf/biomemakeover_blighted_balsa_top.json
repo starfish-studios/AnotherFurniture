@@ -1,0 +1,8 @@
+{
+    "parent": "another_furniture:block/template/shelf_top",
+    "textures": {
+        "top": "another_furniture:block/shelf/biomemakeover_blighted_balsa_top",
+        "sides": "another_furniture:block/shelf/biomemakeover_blighted_balsa_sides",
+        "particle": "another_furniture:block/shelf/biomemakeover_blighted_balsa_top"
+    }
+}

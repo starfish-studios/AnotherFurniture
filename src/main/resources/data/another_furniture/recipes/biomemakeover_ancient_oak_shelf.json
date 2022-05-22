@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "/  "
+    ],
+    "key": {
+        "#": {
+            "item": "biomemakeover:ancient_oak_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:biomemakeover_ancient_oak_shelf",
+        "count": 1
+    },
+    "group": "shelves",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomemakeover"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomemakeover"
+        }
+    ],
+    "ingredient": {
+        "tag": "biomemakeover:ancient_oak_logs"
+    },
+    "result": "another_furniture:biomemakeover_ancient_oak_shelf",
+    "count": 1
+}

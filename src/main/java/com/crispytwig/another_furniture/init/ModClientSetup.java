@@ -32,6 +32,10 @@ public class ModClientSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ECOLOGICS_AZALEA_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ECOLOGICS_COCONUT_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ECOLOGICS_WALNUT_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMEMAKEOVER_WILLOW_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMEMAKEOVER_SWAMP_CYPRESS_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMEMAKEOVER_BLIGHTED_BALSA_CHAIR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMEMAKEOVER_ANCIENT_OAK_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENHANCED_MUSHROOMS_BROWN_MUSHROOM_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENHANCED_MUSHROOMS_RED_MUSHROOM_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAK_CHAIR.get(), RenderType.cutout());
