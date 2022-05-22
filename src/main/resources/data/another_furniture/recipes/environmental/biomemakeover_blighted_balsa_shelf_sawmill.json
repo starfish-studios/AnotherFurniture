@@ -1,0 +1,18 @@
+{
+    "type": "environmental:sawing",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomemakeover"
+        }
+    ],
+    "ingredient": {
+        "tag": "biomemakeover:blighted_balsa_logs"
+    },
+    "result": "another_furniture:biomemakeover_blighted_balsa_shelf",
+    "count": 1
+}

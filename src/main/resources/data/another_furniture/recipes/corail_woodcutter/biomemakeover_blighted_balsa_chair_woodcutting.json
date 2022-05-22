@@ -1,0 +1,18 @@
+{
+    "type": "corail_woodcutter:woodcutting",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "corail_woodcutter"
+        },
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomemakeover"
+        }
+    ],
+    "ingredient": {
+        "tag": "biomemakeover:blighted_balsa_logs"
+    },
+    "result": "another_furniture:biomemakeover_blighted_balsa_chair",
+    "count": 1
+}

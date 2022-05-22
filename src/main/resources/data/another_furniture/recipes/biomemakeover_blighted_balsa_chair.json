@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# ",
+        "##",
+        "//"
+    ],
+    "key": {
+        "#": {
+            "item": "biomemakeover:blighted_balsa_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:biomemakeover_blighted_balsa_chair",
+        "count": 1
+    },
+    "group": "chairs",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomemakeover"
+        }
+    ]
+}
