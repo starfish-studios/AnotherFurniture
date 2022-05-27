@@ -33,19 +33,22 @@ public abstract class BaseEntityBlock extends Block implements EntityBlock {
         return super.getFlammability(state, level, pos, direction);
     }
 
-    public RenderShape getRenderShape(BlockState p_49232_) {
+    @Override
+    public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.INVISIBLE;
     }
 
-    public boolean triggerEvent(BlockState p_49226_, Level p_49227_, BlockPos p_49228_, int p_49229_, int p_49230_) {
-        super.triggerEvent(p_49226_, p_49227_, p_49228_, p_49229_, p_49230_);
-        BlockEntity blockentity = p_49227_.getBlockEntity(p_49228_);
-        return blockentity == null ? false : blockentity.triggerEvent(p_49229_, p_49230_);
+    @Override
+    public boolean triggerEvent(BlockState pState, Level pLevel, BlockPos pPos, int pId, int pParam) {
+        super.triggerEvent(pState, pLevel, pPos, pId, pParam);
+        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+        return blockentity != null && blockentity.triggerEvent(pId, pParam);
     }
 
-    @Nullable
-    public MenuProvider getMenuProvider(BlockState p_49234_, Level p_49235_, BlockPos p_49236_) {
-        BlockEntity blockentity = p_49235_.getBlockEntity(p_49236_);
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
+        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
         return blockentity instanceof MenuProvider ? (MenuProvider)blockentity : null;
     }
 

@@ -1,0 +1,22 @@
+{
+	"parent": "minecraft:block/block",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "another_furniture:block/curtain/pole",
+		"particle": "another_furniture:block/curtain/pole"
+	},
+	"elements": [
+		{
+			"from": [0, 14, 14],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0.5, 0.5, 4.5, 1], "texture": "#0"},
+				"east": {"uv": [0, 0.5, 0.5, 1], "texture": "#0", "cullface": "east"},
+				"south": {"uv": [5, 0.5, 9, 1], "texture": "#0", "cullface": "south"},
+				"west": {"uv": [4.5, 0.5, 5, 1], "texture": "#0", "cullface": "west"},
+				"up": {"uv": [4.5, 0.5, 0.5, 0], "texture": "#0", "cullface": "up"},
+				"down": {"uv": [8.5, 0, 4.5, 0.5], "texture": "#0"}
+			}
+		}
+	]
+}

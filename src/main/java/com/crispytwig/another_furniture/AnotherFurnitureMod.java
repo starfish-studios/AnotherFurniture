@@ -3,7 +3,6 @@ package com.crispytwig.another_furniture;
 import com.crispytwig.another_furniture.init.*;
 import com.crispytwig.another_furniture.util.CompatUtil;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -44,4 +43,5 @@ public class AnotherFurnitureMod
     public static ResourceLocation res(String name) {
         return new ResourceLocation(MOD_ID, name);
     }
+
 }

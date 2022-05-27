@@ -1,11 +1,15 @@
 package com.crispytwig.another_furniture.init;
 
+import com.crispytwig.another_furniture.AnotherFurnitureMod;
+import com.crispytwig.another_furniture.render.CurtainRenderer;
 import com.crispytwig.another_furniture.render.SeatRenderer;
 import com.crispytwig.another_furniture.render.ShelfRenderer;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -17,6 +21,7 @@ public class ModClientSetup {
     {
         EntityRenderers.register(ModEntities.SEAT.get(), SeatRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.SHELF.get(), ShelfRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.CURTAIN.get(), CurtainRenderer::new);
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMESOPLENTY_CHERRY_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMESOPLENTY_DEAD_CHAIR.get(), RenderType.cutout());
@@ -57,5 +62,15 @@ public class ModClientSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_SHUTTER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_SHUTTER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CURTAIN.get(), RenderType.cutout());
+    }
+    public static ModelLayerLocation CURTAIN_MODEL = loc("curtain");
+
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(CURTAIN_MODEL, CurtainRenderer::createBodyLayer);
+    }
+
+    private static ModelLayerLocation loc(String name) {
+        return new ModelLayerLocation(AnotherFurnitureMod.res(name), name);
     }
 }

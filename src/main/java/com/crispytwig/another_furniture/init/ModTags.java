@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
-    public static final TagKey<Block> CHAIRS_CAN_TUCK_UNDER = blockTag("chairs_can_tuck_under");
-    public static final TagKey<Block> BYPASS_SEAT_COLLISION_CHECK = blockTag("bypass_seat_collision_check");
+    public static final TagKey<Block> CHAIRS_TUCKABLE_UNDER = blockTag("chairs_tuckable_under");
+    public static final TagKey<Block> NO_SEAT_COLLISION_CHECK = blockTag("no_seat_collision_check");
 
     private static TagKey<Item> itemTag(String name) {
         return TagKey.create(Registry.ITEM_REGISTRY, AnotherFurnitureMod.res(name));

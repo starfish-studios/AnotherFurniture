@@ -1,6 +1,7 @@
 package com.crispytwig.another_furniture.init;
 
 import com.crispytwig.another_furniture.AnotherFurnitureMod;
+import com.crispytwig.another_furniture.block.entity.CurtainBlockEntity;
 import com.crispytwig.another_furniture.block.entity.ShelfBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -44,4 +45,6 @@ public class ModBlockEntities {
                     ModBlocks.QUARK_BLOSSOM_SHELF.get()
             ).build(null));
 
+    public static final RegistryObject<BlockEntityType<CurtainBlockEntity>> CURTAIN = BLOCK_ENTITIES.register("curtain",
+            () -> BlockEntityType.Builder.of(CurtainBlockEntity::new, ModBlocks.CURTAIN.get()).build(null));
 }

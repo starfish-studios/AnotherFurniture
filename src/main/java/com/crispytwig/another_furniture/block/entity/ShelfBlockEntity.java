@@ -12,28 +12,31 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ShelfBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
 
-    public ShelfBlockEntity(BlockPos p_155301_, BlockState p_155302_) {
-        super(ModBlockEntities.SHELF.get(), p_155301_, p_155302_);
+    public ShelfBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
+        super(ModBlockEntities.SHELF.get(), pWorldPosition, pBlockState);
     }
 
     public NonNullList<ItemStack> getItems() {
         return this.items;
     }
 
-    public void load(CompoundTag p_155312_) {
-        super.load(p_155312_);
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
         this.items.clear();
-        ContainerHelper.loadAllItems(p_155312_, this.items);
+        ContainerHelper.loadAllItems(pTag, this.items);
     }
 
-    protected void saveAdditional(CompoundTag p_187486_) {
-        super.saveAdditional(p_187486_);
-        ContainerHelper.saveAllItems(p_187486_, this.items, true);
+    @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        ContainerHelper.saveAllItems(pTag, this.items, true);
     }
 
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -99,4 +102,5 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
             this.markUpdated();
         }
     }
+
 }

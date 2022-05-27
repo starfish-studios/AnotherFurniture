@@ -18,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 8.0D, 16.0D);
@@ -39,34 +40,38 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return 0.2F;
     }
 
-    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPES;
     }
 
+    @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        boolean waterlogged = ctx.getLevel().getFluidState(ctx.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState().setValue(WATERLOGGED, waterlogged);
     }
 
-    public FluidState getFluidState(BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    @Override
+    public FluidState getFluidState(BlockState pState) {
+        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(WATERLOGGED);
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
         super.fallOn(level, state, pos, entity, dmg * 0.5F);
     }
 
-    public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity entity) {
-        if (entity.isSuppressingBounce()) {
-            super.updateEntityAfterFallOn(blockGetter, entity);
+    @Override
+    public void updateEntityAfterFallOn(BlockGetter pLevel, Entity pEntity) {
+        if (pEntity.isSuppressingBounce()) {
+            super.updateEntityAfterFallOn(pLevel, pEntity);
         } else {
-            this.bounceUp(entity);
+            this.bounceUp(pEntity);
         }
     }
 

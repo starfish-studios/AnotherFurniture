@@ -15,7 +15,8 @@ import net.minecraft.world.item.ItemStack;
 
 public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
 
-    public ShelfRenderer(BlockEntityRendererProvider.Context p_173602_) {
+    public ShelfRenderer(BlockEntityRendererProvider.Context context) {
+
     }
 
     @Override
@@ -26,8 +27,8 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
         for(int j = 0; j < items.size(); j++) {
             ItemStack stack = items.get(j);
             if (!stack.isEmpty()) {
-                int renderCount = getAmount(stack.getCount());
 
+                int renderCount = getAmount(stack.getCount());
                 for (int i = 0; i < renderCount; ++i) {
                     float fx = (-0.12375f * (float)(i - 1) * 0.5f) % 0.09f;
                     float fy = (-0.08375f * (float)(i - 1) * 0.5f) % 0.09f;
@@ -44,10 +45,11 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
                     poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
 
                     poseStack.scale(0.375F, 0.375F, 0.375F);
-
                     Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, poseStack, source, 0);
+
                     poseStack.popPose();
                 }
+
             }
         }
     }

@@ -16,9 +16,10 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LEG1 = BooleanProperty.create("leg_1");
     public static final BooleanProperty LEG2 = BooleanProperty.create("leg_2");
     public static final BooleanProperty LEG3 = BooleanProperty.create("leg_3");
@@ -51,65 +52,68 @@ public class TableBlock extends BaseBlock implements SimpleWaterloggedBlock {
                 .setValue(WATERLOGGED, false));
     }
 
-    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx) {
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         int shape = 0;
-        if (state.getValue(LEG1)) shape += 1;
-        if (state.getValue(LEG2)) shape += 2;
-        if (state.getValue(LEG3)) shape += 4;
-        if (state.getValue(LEG4)) shape += 8;
+        if (pState.getValue(LEG1)) shape += 1;
+        if (pState.getValue(LEG2)) shape += 2;
+        if (pState.getValue(LEG3)) shape += 4;
+        if (pState.getValue(LEG4)) shape += 8;
         return SHAPES[shape];
     }
 
+    @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        boolean waterlogged = ctx.getLevel().getFluidState(ctx.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
-                .setValue(FACING, ctx.getHorizontalDirection().getOpposite())
+                .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState newState, LevelAccessor level, BlockPos pos, BlockPos newPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        if (pState.getValue(WATERLOGGED)) {
+            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
-        boolean n = level.getBlockState(pos.north()).getBlock() instanceof TableBlock;
-        boolean e = level.getBlockState(pos.east()).getBlock() instanceof TableBlock;
-        boolean s = level.getBlockState(pos.south()).getBlock() instanceof TableBlock;
-        boolean w = level.getBlockState(pos.west()).getBlock() instanceof TableBlock;
-        boolean leg1 = (!n && !e) || (n && e && !(level.getBlockState(pos.north().east()).getBlock() instanceof TableBlock));
-        boolean leg2 = (!e && !s) || (e && s && !(level.getBlockState(pos.south().east()).getBlock() instanceof TableBlock));
-        boolean leg3 = (!s && !w) || (s && w && !(level.getBlockState(pos.south().west()).getBlock() instanceof TableBlock));
-        boolean leg4 = (!n && !w) || (n && w && !(level.getBlockState(pos.north().west()).getBlock() instanceof TableBlock));
+        boolean n = pLevel.getBlockState(pCurrentPos.north()).getBlock() instanceof TableBlock;
+        boolean e = pLevel.getBlockState(pCurrentPos.east()).getBlock() instanceof TableBlock;
+        boolean s = pLevel.getBlockState(pCurrentPos.south()).getBlock() instanceof TableBlock;
+        boolean w = pLevel.getBlockState(pCurrentPos.west()).getBlock() instanceof TableBlock;
+        boolean leg1 = (!n && !e) || (n && e && !(pLevel.getBlockState(pCurrentPos.north().east()).getBlock() instanceof TableBlock));
+        boolean leg2 = (!e && !s) || (e && s && !(pLevel.getBlockState(pCurrentPos.south().east()).getBlock() instanceof TableBlock));
+        boolean leg3 = (!s && !w) || (s && w && !(pLevel.getBlockState(pCurrentPos.south().west()).getBlock() instanceof TableBlock));
+        boolean leg4 = (!n && !w) || (n && w && !(pLevel.getBlockState(pCurrentPos.north().west()).getBlock() instanceof TableBlock));
         boolean update = ((n ? 1 : 0) + (e ? 1 : 0) + (s ? 1 : 0) + (w ? 1 : 0)) % 2 == 0;
-        return state.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
-    }
-
-    public FluidState getFluidState(BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+        return pState.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LEG1, LEG2, LEG3, LEG4, UPDATE, WATERLOGGED);
+    public FluidState getFluidState(BlockState pState) {
+        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
-        boolean leg1 = state.getValue(LEG1);
-        boolean leg2 = state.getValue(LEG2);
-        boolean leg3 = state.getValue(LEG3);
-        boolean leg4 = state.getValue(LEG4);
-        return switch(rot) {
-            case NONE -> state.setValue(FACING, rot.rotate(state.getValue(FACING)));
-            case CLOCKWISE_90 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg4).setValue(LEG2, leg1).setValue(LEG3, leg2).setValue(LEG4, leg3);
-            case CLOCKWISE_180 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg3).setValue(LEG2, leg4).setValue(LEG3, leg1).setValue(LEG4, leg2);
-            case COUNTERCLOCKWISE_90 -> state.setValue(FACING, rot.rotate(state.getValue(FACING))).setValue(LEG1, leg2).setValue(LEG2, leg3).setValue(LEG3, leg4).setValue(LEG4, leg1);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(FACING, LEG1, LEG2, LEG3, LEG4, UPDATE, WATERLOGGED);
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        boolean leg1 = pState.getValue(LEG1);
+        boolean leg2 = pState.getValue(LEG2);
+        boolean leg3 = pState.getValue(LEG3);
+        boolean leg4 = pState.getValue(LEG4);
+        return switch(pRotation) {
+            case NONE -> pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+            case CLOCKWISE_90 -> pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING))).setValue(LEG1, leg4).setValue(LEG2, leg1).setValue(LEG3, leg2).setValue(LEG4, leg3);
+            case CLOCKWISE_180 -> pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING))).setValue(LEG1, leg3).setValue(LEG2, leg4).setValue(LEG3, leg1).setValue(LEG4, leg2);
+            case COUNTERCLOCKWISE_90 -> pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING))).setValue(LEG1, leg2).setValue(LEG2, leg3).setValue(LEG3, leg4).setValue(LEG4, leg1);
         };
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 }

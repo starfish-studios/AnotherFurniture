@@ -25,29 +25,29 @@ public class SeatBlock extends BaseBlock {
         return 0.25F;
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-
-        if(player.isPassenger() || player.isCrouching())
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if(pPlayer.isPassenger() || pPlayer.isCrouching())
             return InteractionResult.PASS;
 
-        if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() && !level.getBlockState(pos.above()).is(ModTags.BYPASS_SEAT_COLLISION_CHECK))
+        if(!pLevel.getBlockState(pPos.above()).getCollisionShape(pLevel, pPos).isEmpty() && !pLevel.getBlockState(pPos.above()).is(ModTags.NO_SEAT_COLLISION_CHECK))
             return InteractionResult.PASS;
 
-        Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+        Vec3 vec = new Vec3(pPos.getX() + 0.5, pPos.getY(), pPos.getZ() + 0.5);
         double maxDist = 3;
-        if((vec.x - player.getX()) * (vec.x - player.getX()) + (vec.y - player.getY()) * (vec.y - player.getY()) + (vec.z - player.getZ()) * (vec.z - player.getZ()) > maxDist * maxDist)
+        if((vec.x - pPlayer.getX()) * (vec.x - pPlayer.getX()) + (vec.y - pPlayer.getY()) * (vec.y - pPlayer.getY()) + (vec.z - pPlayer.getZ()) * (vec.z - pPlayer.getZ()) > maxDist * maxDist)
             return InteractionResult.PASS;
 
-        ItemStack stack1 = player.getMainHandItem();
-        ItemStack stack2 = player.getOffhandItem();
+        ItemStack stack1 = pPlayer.getMainHandItem();
+        ItemStack stack2 = pPlayer.getOffhandItem();
         if(!stack1.isEmpty() || !stack2.isEmpty())
             return InteractionResult.PASS;
 
-        List<SeatEntity> seats = level.getEntitiesOfClass(SeatEntity.class, new AABB(pos, pos.offset(1, 1, 1)));
+        List<SeatEntity> seats = pLevel.getEntitiesOfClass(SeatEntity.class, new AABB(pPos, pPos.offset(1, 1, 1)));
         if(seats.isEmpty()) {
-            SeatEntity seat = new SeatEntity(level, pos, this.seatHeight());
-            level.addFreshEntity(seat);
-            player.startRiding(seat);
+            SeatEntity seat = new SeatEntity(pLevel, pPos, this.seatHeight());
+            pLevel.addFreshEntity(seat);
+            pPlayer.startRiding(seat);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
