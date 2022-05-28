@@ -1,7 +1,9 @@
 package com.crispytwig.another_furniture.init;
 
 import com.crispytwig.another_furniture.AnotherFurnitureMod;
+import com.crispytwig.another_furniture.block.entity.PlanterBoxBlockEntity;
 import com.crispytwig.another_furniture.render.CurtainRenderer;
+import com.crispytwig.another_furniture.render.PlanterBoxRenderer;
 import com.crispytwig.another_furniture.render.SeatRenderer;
 import com.crispytwig.another_furniture.render.ShelfRenderer;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -22,6 +24,7 @@ public class ModClientSetup {
         EntityRenderers.register(ModEntities.SEAT.get(), SeatRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.SHELF.get(), ShelfRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.CURTAIN.get(), CurtainRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.PLANTER_BOX.get(), PlanterBoxRenderer::new);
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMESOPLENTY_CHERRY_CHAIR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIOMESOPLENTY_DEAD_CHAIR.get(), RenderType.cutout());
@@ -62,6 +65,7 @@ public class ModClientSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_SHUTTER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_SHUTTER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CURTAIN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAK_PLANTER_BOX.get(), RenderType.cutout());
     }
     public static ModelLayerLocation CURTAIN_MODEL = loc("curtain");
 

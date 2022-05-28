@@ -148,4 +148,7 @@ public class ModBlocks {
     // Curtain
     public static final RegistryObject<Block> CURTAIN = RegistryUtil.createBlockAndItem("curtain", () -> new CurtainBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
 
+    // Planter Box
+    public static final RegistryObject<Block> OAK_PLANTER_BOX = RegistryUtil.createBlockAndItem("oak_planter_box", () -> new PlanterBoxBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
 }
