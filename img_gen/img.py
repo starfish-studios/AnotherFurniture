@@ -1,6 +1,22 @@
 from PIL import Image
 import os
 
+current_dir = os.getcwd()
+
+def ensure_outputs_exist():
+    for file in os.walk(current_dir + "\\input\\textures\\"):
+        try:
+            os.mkdir(file[0].replace("input","output"))
+        except:
+            continue
+
+#def input_after_completion():
+    #competion_input = input("done! type 'cleanup' to remove planks and output files\n")
+    
+ensure_outputs_exist()
+
+
+
 planks = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd() + "/planks") for f in filenames if os.path.splitext(f)[1] == '.png']
 templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd() + "/input") for f in filenames if os.path.splitext(f)[1] == '.png']
 oak_1 = (184, 148, 95, 255) # 0,  0
@@ -30,8 +46,9 @@ for plank in planks:
         input_img_loaded = input_img.load()
 
         # skip swapping colors if it's minecraft oak
-        if not plank.split("\\")[-1].startswith("minecraft_oak"): 
-            img_new = Image.new("RGBA", (16, 16), color = "white")
+        if not plank.split("\\")[-1].startswith("minecraft_oak"):
+            input_img_size = input_img.size
+            img_new = Image.new("RGBA", (input_img_size[0], input_img_size[1]), color = "white")
             image_new = img_new.load()
             
             size = input_img.size

@@ -1,4 +1,4 @@
-place plank textures in this folder.
+place plank textures in "/planks/"
 
 rename them to "<namespace>_<type>". do not include "_planks".
 examples:
