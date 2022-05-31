@@ -3,11 +3,13 @@ package com.crispytwig.another_furniture.block;
 import com.crispytwig.another_furniture.block.entity.PlanterBoxBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeBlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -97,6 +100,8 @@ public class PlanterBoxBlock extends BaseEntityBlock {
             ItemStack stack = pPlayer.getItemInHand(pHand);
             if (stack.is(ItemTags.SMALL_FLOWERS) || stack.is(ItemTags.SAPLINGS)) {
                 if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack)) {
+                    Block block = ((BlockItem)stack.getItem()).getBlock();
+                    pLevel.playSound(null, pPos, block.getSoundType(block.defaultBlockState()).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
                     return InteractionResult.SUCCESS;
                 }
 

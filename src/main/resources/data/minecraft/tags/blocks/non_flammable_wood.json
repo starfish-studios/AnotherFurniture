@@ -1,14 +1,15 @@
 {
     "replace": false,
     "values": [
-        "another_furniture:biomesoplenty_hellbark_chair",
         "another_furniture:crimson_chair",
         "another_furniture:warped_chair",
-        "another_furniture:biomesoplenty_hellbark_shelf",
         "another_furniture:crimson_shelf",
         "another_furniture:warped_shelf",
-        "another_furniture:biomesoplenty_hellbark_table",
         "another_furniture:crimson_table",
-        "another_furniture:warped_table"
+        "another_furniture:warped_table",
+        "another_furniture:crimson_shutter",
+        "another_furniture:warped_shutter",
+        "another_furniture:crimson_planter_box",
+        "another_furniture:warped_planter_box"
     ]
 }

@@ -19,5 +19,13 @@
 			"another_furniture:chair_untuck"
 		],
 		"subtitle": "block.another_furniture.chair.untuck"
+	},
+	"block.curtain.use": {
+		"category": "block",
+		"sounds": [
+			"another_furniture:curtain_1",
+			"another_furniture:curtain_2"
+		],
+		"subtitle": "block.another_furniture.curtain.use"
 	}
 }

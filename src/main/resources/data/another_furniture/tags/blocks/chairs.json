@@ -1,26 +1,6 @@
 {
     "replace": false,
     "values": [
-        "another_furniture:biomesoplenty_cherry_chair",
-        "another_furniture:biomesoplenty_dead_chair",
-        "another_furniture:biomesoplenty_fir_chair",
-        "another_furniture:biomesoplenty_hellbark_chair",
-        "another_furniture:biomesoplenty_jacaranda_chair",
-        "another_furniture:biomesoplenty_magic_chair",
-        "another_furniture:biomesoplenty_mahogany_chair",
-        "another_furniture:biomesoplenty_palm_chair",
-        "another_furniture:biomesoplenty_redwood_chair",
-        "another_furniture:biomesoplenty_umbran_chair",
-        "another_furniture:biomesoplenty_willow_chair",
-        "another_furniture:biomemakeover_ancient_oak_chair",
-        "another_furniture:biomemakeover_blighted_balsa_chair",
-        "another_furniture:biomemakeover_willow_chair",
-        "another_furniture:biomemakeover_swamp_cypress_chair",
-        "another_furniture:ecologics_azalea_chair",
-        "another_furniture:ecologics_coconut_chair",
-        "another_furniture:ecologics_walnut_chair",
-        "another_furniture:enhanced_mushrooms_brown_mushroom_chair",
-        "another_furniture:enhanced_mushrooms_red_mushroom_chair",
         "another_furniture:oak_chair",
         "another_furniture:spruce_chair",
         "another_furniture:birch_chair",
@@ -28,8 +8,6 @@
         "another_furniture:acacia_chair",
         "another_furniture:dark_oak_chair",
         "another_furniture:crimson_chair",
-        "another_furniture:warped_chair",
-        "another_furniture:quark_azalea_chair",
-        "another_furniture:quark_blossom_chair"
+        "another_furniture:warped_chair"
     ]
 }

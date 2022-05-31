@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(2, ItemStack.EMPTY);
@@ -73,5 +74,10 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     @Override
     public void clearContent() {
         this.items.clear();
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        return new AABB(worldPosition.offset(0, 0, 0), worldPosition.offset(1, 1, 1));
     }
 }

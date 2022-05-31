@@ -1,9 +1,0 @@
-{
-    "parent": "another_furniture:block/template/chair_tucked",
-    "textures": {
-        "back": "another_furniture:block/chair/quark_blossom_back",
-        "bottom": "another_furniture:block/chair/quark_blossom_bottom",
-        "seat": "another_furniture:block/chair/quark_blossom_seat",
-        "particle": "another_furniture:block/chair/quark_blossom_seat"
-    }
-}

@@ -3,8 +3,10 @@ package com.crispytwig.another_furniture.block;
 import com.crispytwig.another_furniture.block.entity.CurtainBlockEntity;
 import com.crispytwig.another_furniture.block.properties.CurtainType;
 import com.crispytwig.another_furniture.block.properties.ModBlockStateProperties;
+import com.crispytwig.another_furniture.init.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -176,7 +178,7 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         if (pState.getValue(WATERLOGGED)) {
             pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
-
+        pLevel.playSound(null, pPos, ModSoundEvents.CURTAIN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(pLevel.isClientSide);
     }
 

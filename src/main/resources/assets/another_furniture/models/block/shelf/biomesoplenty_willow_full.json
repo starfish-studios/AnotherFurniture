@@ -1,9 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shelf_full",
-    "textures": {
-        "top": "another_furniture:block/shelf/biomesoplenty_willow_top",
-        "sides": "another_furniture:block/shelf/biomesoplenty_willow_sides",
-        "supports": "another_furniture:block/shelf/biomesoplenty_willow_supports",
-        "particle": "another_furniture:block/shelf/biomesoplenty_willow_top"
-    }
-}

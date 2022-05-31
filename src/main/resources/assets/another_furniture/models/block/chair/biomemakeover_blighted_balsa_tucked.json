@@ -1,9 +1,0 @@
-{
-    "parent": "another_furniture:block/template/chair_tucked",
-    "textures": {
-        "back": "another_furniture:block/chair/biomemakeover_blighted_balsa_back",
-        "bottom": "another_furniture:block/chair/biomemakeover_blighted_balsa_bottom",
-        "seat": "another_furniture:block/chair/biomemakeover_blighted_balsa_seat",
-        "particle": "another_furniture:block/chair/biomemakeover_blighted_balsa_seat"
-    }
-}

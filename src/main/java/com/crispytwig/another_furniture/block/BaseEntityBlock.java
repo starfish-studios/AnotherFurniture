@@ -45,7 +45,6 @@ public abstract class BaseEntityBlock extends Block implements EntityBlock {
         return blockentity != null && blockentity.triggerEvent(pId, pParam);
     }
 
-    @org.jetbrains.annotations.Nullable
     @Override
     public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);

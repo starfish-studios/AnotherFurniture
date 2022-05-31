@@ -1,26 +1,6 @@
 {
     "replace": false,
     "values": [
-        "another_furniture:biomesoplenty_cherry_shelf",
-        "another_furniture:biomesoplenty_dead_shelf",
-        "another_furniture:biomesoplenty_fir_shelf",
-        "another_furniture:biomesoplenty_hellbark_shelf",
-        "another_furniture:biomesoplenty_jacaranda_shelf",
-        "another_furniture:biomesoplenty_magic_shelf",
-        "another_furniture:biomesoplenty_mahogany_shelf",
-        "another_furniture:biomesoplenty_palm_shelf",
-        "another_furniture:biomesoplenty_redwood_shelf",
-        "another_furniture:biomesoplenty_umbran_shelf",
-        "another_furniture:biomesoplenty_willow_shelf",
-        "another_furniture:biomemakeover_ancient_oak_shelf",
-        "another_furniture:biomemakeover_blighted_balsa_shelf",
-        "another_furniture:biomemakeover_willow_shelf",
-        "another_furniture:biomemakeover_swamp_cypress_shelf",
-        "another_furniture:ecologics_azalea_shelf",
-        "another_furniture:ecologics_coconut_shelf",
-        "another_furniture:ecologics_walnut_shelf",
-        "another_furniture:enhanced_mushrooms_brown_mushroom_shelf",
-        "another_furniture:enhanced_mushrooms_red_mushroom_shelf",
         "another_furniture:oak_shelf",
         "another_furniture:spruce_shelf",
         "another_furniture:birch_shelf",
@@ -28,8 +8,6 @@
         "another_furniture:acacia_shelf",
         "another_furniture:dark_oak_shelf",
         "another_furniture:crimson_shelf",
-        "another_furniture:warped_shelf",
-        "another_furniture:quark_azalea_shelf",
-        "another_furniture:quark_blossom_shelf"
+        "another_furniture:warped_shelf"
     ]
 }

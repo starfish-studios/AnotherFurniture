@@ -44,15 +44,12 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
                 pPoseStack.translate( 0.6f - 0.8 * i, 0f, 0.2f); // position each flower at left and right
                 switch (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
-                    case EAST:
-                        pPoseStack.translate(0f, 0f, -1.4f);
-                        break;
-                    case WEST:
-                        pPoseStack.translate(-1.4f, 0f, 0);
-                        break;
-                    case SOUTH:
-                        pPoseStack.translate(-1.4f, 0f, -1.4f);
-                        break;
+                    case EAST -> pPoseStack.translate(0f, 0f, -1.4f);
+                    case WEST -> pPoseStack.translate(-1.4f, 0f, 0);
+                    case SOUTH -> pPoseStack.translate(-1.4f, 0f, -1.4f);
+                }
+                if (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
+                    pPoseStack.translate(0f, 0f, 0.2f);
                 }
                 blockRenderer.renderSingleBlock(state, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
                 pPoseStack.popPose();

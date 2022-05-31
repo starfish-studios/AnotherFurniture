@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/table_top",
-    "textures": {
-        "top": "another_furniture:block/table/biomemakeover_blighted_balsa_top",
-        "sides": "another_furniture:block/table/biomemakeover_blighted_balsa_sides",
-        "particle": "another_furniture:block/table/biomemakeover_blighted_balsa_top"
-    }
-}

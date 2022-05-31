@@ -1,26 +1,6 @@
 {
     "replace": false,
     "values": [
-        "another_furniture:biomesoplenty_cherry_table",
-        "another_furniture:biomesoplenty_dead_table",
-        "another_furniture:biomesoplenty_fir_table",
-        "another_furniture:biomesoplenty_hellbark_table",
-        "another_furniture:biomesoplenty_jacaranda_table",
-        "another_furniture:biomesoplenty_magic_table",
-        "another_furniture:biomesoplenty_mahogany_table",
-        "another_furniture:biomesoplenty_palm_table",
-        "another_furniture:biomesoplenty_redwood_table",
-        "another_furniture:biomesoplenty_umbran_table",
-        "another_furniture:biomesoplenty_willow_table",
-        "another_furniture:biomemakeover_ancient_oak_table",
-        "another_furniture:biomemakeover_blighted_balsa_table",
-        "another_furniture:biomemakeover_willow_table",
-        "another_furniture:biomemakeover_swamp_cypress_table",
-        "another_furniture:ecologics_azalea_table",
-        "another_furniture:ecologics_coconut_table",
-        "another_furniture:ecologics_walnut_table",
-        "another_furniture:enhanced_mushrooms_brown_mushroom_table",
-        "another_furniture:enhanced_mushrooms_red_mushroom_table",
         "another_furniture:oak_table",
         "another_furniture:spruce_table",
         "another_furniture:birch_table",
@@ -28,8 +8,6 @@
         "another_furniture:acacia_table",
         "another_furniture:dark_oak_table",
         "another_furniture:crimson_table",
-        "another_furniture:warped_table",
-        "another_furniture:quark_azalea_table",
-        "another_furniture:quark_blossom_table"
+        "another_furniture:warped_table"
     ]
 }

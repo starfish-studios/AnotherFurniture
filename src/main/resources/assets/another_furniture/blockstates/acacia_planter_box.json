@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "facing=north,attached=true": {
+            "model": "another_furniture:block/planter_box/acacia_attached"
+        },
+        "facing=south,attached=true": {
+            "model": "another_furniture:block/planter_box/acacia_attached",
+            "y": 180
+        },
+        "facing=east,attached=true": {
+            "model": "another_furniture:block/planter_box/acacia_attached",
+            "y": 90
+        },
+        "facing=west,attached=true": {
+            "model": "another_furniture:block/planter_box/acacia_attached",
+            "y": 270
+        },
+        "facing=north,attached=false": {
+            "model": "another_furniture:block/planter_box/acacia"
+        },
+        "facing=south,attached=false": {
+            "model": "another_furniture:block/planter_box/acacia",
+            "y": 180
+        },
+        "facing=east,attached=false": {
+            "model": "another_furniture:block/planter_box/acacia",
+            "y": 90
+        },
+        "facing=west,attached=false": {
+            "model": "another_furniture:block/planter_box/acacia",
+            "y": 270
+        }
+    }
+}

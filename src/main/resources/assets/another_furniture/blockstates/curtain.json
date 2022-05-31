@@ -3,15 +3,15 @@
         "facing=north": {
             "model": "another_furniture:block/template/curtain_pole"
         },
-        "facing=east": {
+		"facing=east": {
             "model": "another_furniture:block/template/curtain_pole",
             "y": 90
         },
-        "facing=south": {
+		"facing=south": {
             "model": "another_furniture:block/template/curtain_pole",
             "y": 180
         },
-        "facing=west": {
+		"facing=west": {
             "model": "another_furniture:block/template/curtain_pole",
             "y": 270
         }

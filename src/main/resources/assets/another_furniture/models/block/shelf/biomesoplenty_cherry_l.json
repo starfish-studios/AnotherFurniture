@@ -1,9 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shelf_l",
-    "textures": {
-        "top": "another_furniture:block/shelf/biomesoplenty_cherry_top",
-        "sides": "another_furniture:block/shelf/biomesoplenty_cherry_sides",
-        "supports": "another_furniture:block/shelf/biomesoplenty_cherry_supports",
-        "particle": "another_furniture:block/shelf/biomesoplenty_cherry_top"
-    }
-}

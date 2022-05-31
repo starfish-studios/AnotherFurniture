@@ -13,6 +13,7 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> SERVICE_BELL = register("block.service_bell.use");
     public static final RegistryObject<SoundEvent> CHAIR_TUCK = register("block.chair.tuck");
     public static final RegistryObject<SoundEvent> CHAIR_UNTUCK = register("block.chair.untuck");
+    public static final RegistryObject<SoundEvent> CURTAIN = register("block.curtain.use");
 
     public static RegistryObject<SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(AnotherFurnitureMod.MOD_ID, name)));

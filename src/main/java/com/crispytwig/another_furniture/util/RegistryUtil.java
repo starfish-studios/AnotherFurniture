@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 public class RegistryUtil {
     private static final boolean dev = false;
 
-    private static final String[] hide_items = {"service_bell"};
+    private static final String[] hide_items = {};
 
     public static <T extends Block> RegistryObject<T> createBlockAndItem(String name, Supplier<? extends T> supplier) {
         CreativeModeTab group = Arrays.stream(hide_items).noneMatch(name::equals) ? AnotherFurnitureMod.TAB : null;
