@@ -22,16 +22,14 @@ import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> {
-    public static final Material CURTAIN_OPEN_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain")); //change to open dyeable texturesheet
-    public static final Material CURTAIN_CLOSED_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain"));//change to closed dyeable texturesheet
+    //public static final Material CURTAIN_OPEN_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain")); //change to open dyeable texturesheet
+    //public static final Material CURTAIN_CLOSED_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain"));//change to closed dyeable texturesheet
     private static final String CURTAIN = "curtain";
     private final ModelPart curtain;
     private final ModelPart curtain_l;
