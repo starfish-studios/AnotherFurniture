@@ -5,10 +5,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -57,6 +60,8 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
         for(int i = 0; i < this.items.size(); ++i) {
             ItemStack itemstack = this.items.get(i);
             if (itemstack.isEmpty()) {
+                Block block = ((BlockItem)stack.getItem()).getBlock();
+                this.getLevel().playSound(null, this.getBlockPos(), block.getSoundType(block.defaultBlockState()).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 this.items.set(i, stack.split(1));
                 this.markUpdated();
                 return true;

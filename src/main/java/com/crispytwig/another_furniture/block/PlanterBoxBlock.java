@@ -100,8 +100,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
             ItemStack stack = pPlayer.getItemInHand(pHand);
             if (stack.is(ItemTags.SMALL_FLOWERS) || stack.is(ItemTags.SAPLINGS)) {
                 if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack)) {
-                    Block block = ((BlockItem)stack.getItem()).getBlock();
-                    pLevel.playSound(null, pPos, block.getSoundType(block.defaultBlockState()).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+
                     return InteractionResult.SUCCESS;
                 }
 
