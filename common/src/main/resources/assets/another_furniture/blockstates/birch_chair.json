@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "facing=north,tucked=false": {
+            "model": "another_furniture:block/chair/birch"
+        },
+        "facing=east,tucked=false": {
+            "model": "another_furniture:block/chair/birch",
+            "y": 90
+        },
+        "facing=south,tucked=false": {
+            "model": "another_furniture:block/chair/birch",
+            "y": 180
+        },
+        "facing=west,tucked=false": {
+            "model": "another_furniture:block/chair/birch",
+            "y": 270
+        },
+        "facing=north,tucked=true": {
+            "model": "another_furniture:block/chair/birch_tucked"
+        },
+        "facing=east,tucked=true": {
+            "model": "another_furniture:block/chair/birch_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true": {
+            "model": "another_furniture:block/chair/birch_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true": {
+            "model": "another_furniture:block/chair/birch_tucked",
+            "y": 270
+        }
+    }
+}

@@ -17,5 +17,5 @@ public interface ClientPlatformHelper {
 
     <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider);
 
-    <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<? extends T>> type, BlockEntityRendererProvider<T> renderProvider);
+    <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider);
 }

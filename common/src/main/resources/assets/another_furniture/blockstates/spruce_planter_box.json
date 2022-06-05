@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "facing=north,attached=true": {
+            "model": "another_furniture:block/planter_box/spruce_attached"
+        },
+        "facing=south,attached=true": {
+            "model": "another_furniture:block/planter_box/spruce_attached",
+            "y": 180
+        },
+        "facing=east,attached=true": {
+            "model": "another_furniture:block/planter_box/spruce_attached",
+            "y": 90
+        },
+        "facing=west,attached=true": {
+            "model": "another_furniture:block/planter_box/spruce_attached",
+            "y": 270
+        },
+        "facing=north,attached=false": {
+            "model": "another_furniture:block/planter_box/spruce"
+        },
+        "facing=south,attached=false": {
+            "model": "another_furniture:block/planter_box/spruce",
+            "y": 180
+        },
+        "facing=east,attached=false": {
+            "model": "another_furniture:block/planter_box/spruce",
+            "y": 90
+        },
+        "facing=west,attached=false": {
+            "model": "another_furniture:block/planter_box/spruce",
+            "y": 270
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "facing=north,type=single": {
+            "model": "another_furniture:block/shelf/dark_oak_full"
+        },
+        "facing=east,type=single": {
+            "model": "another_furniture:block/shelf/dark_oak_full",
+            "y": 90
+        },
+        "facing=south,type=single": {
+            "model": "another_furniture:block/shelf/dark_oak_full",
+            "y": 180
+        },
+        "facing=west,type=single": {
+            "model": "another_furniture:block/shelf/dark_oak_full",
+            "y": 270
+        },
+        "facing=north,type=left": {
+            "model": "another_furniture:block/shelf/dark_oak_l"
+        },
+        "facing=east,type=left": {
+            "model": "another_furniture:block/shelf/dark_oak_l",
+            "y": 90
+        },
+        "facing=south,type=left": {
+            "model": "another_furniture:block/shelf/dark_oak_l",
+            "y": 180
+        },
+        "facing=west,type=left": {
+            "model": "another_furniture:block/shelf/dark_oak_l",
+            "y": 270
+        },
+        "facing=north,type=middle": {
+            "model": "another_furniture:block/shelf/dark_oak_top"
+        },
+        "facing=east,type=middle": {
+            "model": "another_furniture:block/shelf/dark_oak_top",
+            "y": 90
+        },
+        "facing=south,type=middle": {
+            "model": "another_furniture:block/shelf/dark_oak_top",
+            "y": 180
+        },
+        "facing=west,type=middle": {
+            "model": "another_furniture:block/shelf/dark_oak_top",
+            "y": 270
+        },
+        "facing=north,type=right": {
+            "model": "another_furniture:block/shelf/dark_oak_r"
+        },
+        "facing=east,type=right": {
+            "model": "another_furniture:block/shelf/dark_oak_r",
+            "y": 90
+        },
+        "facing=south,type=right": {
+            "model": "another_furniture:block/shelf/dark_oak_r",
+            "y": 180
+        },
+        "facing=west,type=right": {
+            "model": "another_furniture:block/shelf/dark_oak_r",
+            "y": 270
+        }
+    }
+}

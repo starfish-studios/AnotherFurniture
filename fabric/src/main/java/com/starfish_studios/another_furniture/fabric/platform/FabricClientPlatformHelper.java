@@ -27,7 +27,7 @@ public class FabricClientPlatformHelper implements ClientPlatformHelper {
     }
 
     @Override
-    public <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<? extends T>> type, BlockEntityRendererProvider<T> renderProvider) {
+    public <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
         BlockEntityRendererRegistry.register(type.get(), renderProvider);
     }
 }

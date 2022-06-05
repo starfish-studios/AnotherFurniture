@@ -27,7 +27,7 @@ public class ForgeClientPlatformHelper implements ClientPlatformHelper {
     }
 
     @Override
-    public <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<? extends T>> type, BlockEntityRendererProvider<T> renderProvider) {
+    public <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
         BlockEntityRenderers.register(type.get(), renderProvider);
     }
 }

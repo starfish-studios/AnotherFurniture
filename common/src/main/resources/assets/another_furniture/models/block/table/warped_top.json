@@ -1,0 +1,8 @@
+{
+    "parent": "another_furniture:block/template/table_top",
+    "textures": {
+        "top": "another_furniture:block/table/warped_top",
+        "sides": "another_furniture:block/table/warped_sides",
+        "particle": "another_furniture:block/table/warped_top"
+    }
+}

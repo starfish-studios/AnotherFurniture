@@ -24,23 +24,28 @@ import java.util.function.Supplier;
 public class AFRegistryImpl {
 
     public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
-        return () -> Registry.register(Registry.BLOCK, new ResourceLocation(AnotherFurniture.MOD_ID, name), block.get());
+        var registry = Registry.register(Registry.BLOCK, new ResourceLocation(AnotherFurniture.MOD_ID, name), block.get());
+        return () -> registry;
     }
 
     public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
-        return () -> Registry.register(Registry.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name), item.get());
+        var registry = Registry.register(Registry.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name), item.get());
+        return () -> registry;
     }
 
     public <T extends SoundEvent> Supplier<T> registerSoundEvent(String name, Supplier<T> soundEvent) {
-        return () -> Registry.register(Registry.SOUND_EVENT, new ResourceLocation(AnotherFurniture.MOD_ID, name), soundEvent.get());
+        var registry = Registry.register(Registry.SOUND_EVENT, new ResourceLocation(AnotherFurniture.MOD_ID, name), soundEvent.get());
+        return () -> registry;
     }
 
     public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height) {
-        return () -> Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), FabricEntityTypeBuilder.create(category, factory).dimensions(EntityDimensions.fixed(width, height)).build());
+        var registry = Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), FabricEntityTypeBuilder.create(category, factory).dimensions(EntityDimensions.fixed(width, height)).build());
+        return () -> registry;
     }
 
     public <T extends BlockEntityType<E>, E extends BlockEntity> Supplier<T> registerBlockEntityType(String name, Supplier<T> blockEntity) {
-        return () -> Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), blockEntity.get());
+        var registry = Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), blockEntity.get());
+        return () -> registry;
     }
 
     public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(CommonPlatformHelper.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
