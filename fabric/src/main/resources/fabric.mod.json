@@ -5,7 +5,7 @@
   "name": "AnotherFurniture",
   "description": "Another Furniture Mod aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.",
   "authors": [
-    "StarfishStudios"
+    "Starfish Studios"
   ],
   "contact": {
     "website": "https://www.curseforge.com/minecraft/mc-mods/another-furniture",
@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "com.starfish_studios.another_furniture.fabric.AnotherFurnitureFabric"
+    ],
+    "client": [
+      "com.starfish_studios.another_furniture.fabric.AnotherFurnitureFabricClient"
     ]
   },
   "depends": {

@@ -31,7 +31,7 @@ logoFile = "icon.png" #optional
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
-authors = "StarfishStudios" #optional
+authors = "Starfish Studios" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
 Another Furniture Mod aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.

@@ -9,7 +9,6 @@ import com.starfish_studios.another_furniture.platform.ClientServices;
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFBlocks;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 
 public class AnotherFurnitureClient {
