@@ -1,7 +1,10 @@
 package com.starfish_studios.another_furniture.registry;
 
-import com.starfish_studios.another_furniture.platform.services.CommonPlatformHelper;
 import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -13,6 +16,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -43,12 +48,32 @@ public class AFRegistry {
     }
 
     @ExpectPlatform
-    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(CommonPlatformHelper.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
+    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
         throw new AssertionError();
+    }
+
+    @FunctionalInterface
+    public interface BlockEntitySupplier<T extends BlockEntity> {
+        @NotNull T create(BlockPos var1, BlockState var2);
     }
 
     @ExpectPlatform
     public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
         throw new AssertionError();
     }
 }

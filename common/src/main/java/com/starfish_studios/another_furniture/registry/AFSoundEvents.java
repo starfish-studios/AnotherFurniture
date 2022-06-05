@@ -1,7 +1,6 @@
 package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
-import com.starfish_studios.another_furniture.platform.CommonServices;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 
@@ -14,7 +13,7 @@ public class AFSoundEvents {
     public static final Supplier<SoundEvent> CURTAIN = register("block.curtain.use");
 
     public static Supplier<SoundEvent> register(String name) {
-        return CommonServices.HELPER.registerSoundEvent(name, () -> new SoundEvent(new ResourceLocation(AnotherFurniture.MOD_ID, name)));
+        return AFRegistry.registerSoundEvent(name, () -> new SoundEvent(new ResourceLocation(AnotherFurniture.MOD_ID, name)));
     }
 
     public static void init() {}

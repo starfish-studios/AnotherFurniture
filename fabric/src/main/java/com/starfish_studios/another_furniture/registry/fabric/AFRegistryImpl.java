@@ -1,10 +1,16 @@
 package com.starfish_studios.another_furniture.registry.fabric;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
-import com.starfish_studios.another_furniture.platform.services.CommonPlatformHelper;
+import com.starfish_studios.another_furniture.registry.AFRegistry;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -23,36 +29,48 @@ import java.util.function.Supplier;
 
 public class AFRegistryImpl {
 
-    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
+    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         var registry = Registry.register(Registry.BLOCK, new ResourceLocation(AnotherFurniture.MOD_ID, name), block.get());
         return () -> registry;
     }
 
-    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
         var registry = Registry.register(Registry.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name), item.get());
         return () -> registry;
     }
 
-    public <T extends SoundEvent> Supplier<T> registerSoundEvent(String name, Supplier<T> soundEvent) {
+    public static <T extends SoundEvent> Supplier<T> registerSoundEvent(String name, Supplier<T> soundEvent) {
         var registry = Registry.register(Registry.SOUND_EVENT, new ResourceLocation(AnotherFurniture.MOD_ID, name), soundEvent.get());
         return () -> registry;
     }
 
-    public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height) {
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height) {
         var registry = Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), FabricEntityTypeBuilder.create(category, factory).dimensions(EntityDimensions.fixed(width, height)).build());
         return () -> registry;
     }
 
-    public <T extends BlockEntityType<E>, E extends BlockEntity> Supplier<T> registerBlockEntityType(String name, Supplier<T> blockEntity) {
+    public static <T extends BlockEntityType<E>, E extends BlockEntity> Supplier<T> registerBlockEntityType(String name, Supplier<T> blockEntity) {
         var registry = Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name), blockEntity.get());
         return () -> registry;
     }
 
-    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(CommonPlatformHelper.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
+    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(AFRegistry.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
         return FabricBlockEntityTypeBuilder.create(blockEntity::create, validBlocks).build();
     }
 
-    public CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
+    public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
         return FabricItemGroupBuilder.build(name, icon);
+    }
+
+    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block.get(), type);
+    }
+
+    public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
+        EntityRendererRegistry.register(type.get(), renderProvider);
+    }
+
+    public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
+        BlockEntityRendererRegistry.register(type.get(), renderProvider);
     }
 }

@@ -1,7 +1,7 @@
 package com.starfish_studios.another_furniture.forge;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
-import com.starfish_studios.another_furniture.forge.platform.ForgeCommonPlatformHelper;
+import com.starfish_studios.another_furniture.registry.forge.AFRegistryImpl;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -12,11 +12,11 @@ public class AnotherFurnitureForge {
     public AnotherFurnitureForge() {
         AnotherFurniture.init();
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ForgeCommonPlatformHelper.BLOCKS.register(bus);
-        ForgeCommonPlatformHelper.ITEMS.register(bus);
-        ForgeCommonPlatformHelper.SOUND_EVENTS.register(bus);
-        ForgeCommonPlatformHelper.ENTITY_TYPES.register(bus);
-        ForgeCommonPlatformHelper.BLOCK_ENTITY_TYPES.register(bus);
+        AFRegistryImpl.BLOCKS.register(bus);
+        AFRegistryImpl.ITEMS.register(bus);
+        AFRegistryImpl.SOUND_EVENTS.register(bus);
+        AFRegistryImpl.ENTITY_TYPES.register(bus);
+        AFRegistryImpl.BLOCK_ENTITY_TYPES.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 }

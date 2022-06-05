@@ -2,7 +2,6 @@ package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.*;
-import com.starfish_studios.another_furniture.platform.CommonServices;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -87,8 +86,8 @@ public class AFBlocks {
     public static final Supplier<Block> CURTAIN = registerBlock("curtain", () -> new CurtainBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
-        Supplier<T> supplier = CommonServices.HELPER.registerBlock(name, block);
-        CommonServices.HELPER.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties().tab(AnotherFurniture.TAB)));
+        Supplier<T> supplier = AFRegistry.registerBlock(name, block);
+        AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties().tab(AnotherFurniture.TAB)));
         return supplier;
     }
 

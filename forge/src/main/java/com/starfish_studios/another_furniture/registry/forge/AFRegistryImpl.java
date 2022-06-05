@@ -1,7 +1,13 @@
 package com.starfish_studios.another_furniture.registry.forge;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
-import com.starfish_studios.another_furniture.platform.services.CommonPlatformHelper;
+import com.starfish_studios.another_furniture.registry.AFRegistry;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -25,36 +31,48 @@ public class AFRegistryImpl {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AnotherFurniture.MOD_ID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, AnotherFurniture.MOD_ID);
 
-    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
+    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
     }
 
-    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);
     }
 
-    public <T extends SoundEvent> Supplier<T> registerSoundEvent(String name, Supplier<T> soundEvent) {
+    public static <T extends SoundEvent> Supplier<T> registerSoundEvent(String name, Supplier<T> soundEvent) {
         return SOUND_EVENTS.register(name, soundEvent);
     }
 
-    public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height) {
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height) {
         return ENTITY_TYPES.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(name));
     }
 
-    public <T extends BlockEntityType<E>, E extends BlockEntity> Supplier<T> registerBlockEntityType(String name, Supplier<T> blockEntity) {
+    public static <T extends BlockEntityType<E>, E extends BlockEntity> Supplier<T> registerBlockEntityType(String name, Supplier<T> blockEntity) {
         return BLOCK_ENTITY_TYPES.register(name, blockEntity);
     }
 
-    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(CommonPlatformHelper.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
+    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(AFRegistry.BlockEntitySupplier<T> blockEntity, Block... validBlocks) {
         return BlockEntityType.Builder.of(blockEntity::create, validBlocks).build(null);
     }
 
-    public CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
+    public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
         return new CreativeModeTab(name.getNamespace()) {
             @Override
             public ItemStack makeIcon() {
                 return icon.get();
             }
         };
+    }
+
+    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
+        ItemBlockRenderTypes.setRenderLayer(block.get(), type);
+    }
+
+    public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
+        EntityRenderers.register(type.get(), renderProvider);
+    }
+
+    public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
+        BlockEntityRenderers.register(type.get(), renderProvider);
     }
 }
