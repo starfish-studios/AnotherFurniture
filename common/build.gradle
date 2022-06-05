@@ -8,6 +8,10 @@ architectury {
     common()
 }
 
+loom {
+    accessWidenerPath = file("src/main/resources/another_furniture.accesswidener")
+}
+
 publishing {
     publications {
         mavenCommon(MavenPublication) {
