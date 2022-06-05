@@ -3,6 +3,7 @@ package com.crispytwig.another_furniture.init;
 import com.crispytwig.another_furniture.AnotherFurnitureMod;
 import com.crispytwig.another_furniture.block.entity.CurtainBlockEntity;
 import com.crispytwig.another_furniture.block.entity.PlanterBoxBlockEntity;
+import com.crispytwig.another_furniture.block.entity.ServiceBellBlockEntity;
 import com.crispytwig.another_furniture.block.entity.ShelfBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +27,9 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<CurtainBlockEntity>> CURTAIN = BLOCK_ENTITIES.register("curtain",
             () -> BlockEntityType.Builder.of(CurtainBlockEntity::new, ModBlocks.CURTAIN.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ServiceBellBlockEntity>> SERVICE_BELL = BLOCK_ENTITIES.register("service_bell",
+            () -> BlockEntityType.Builder.of(ServiceBellBlockEntity::new, ModBlocks.SERVICE_BELL.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<PlanterBoxBlockEntity>> PLANTER_BOX = BLOCK_ENTITIES.register("planter_box",
             () -> BlockEntityType.Builder.of(PlanterBoxBlockEntity::new,

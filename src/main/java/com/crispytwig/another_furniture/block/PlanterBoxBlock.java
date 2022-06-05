@@ -79,7 +79,10 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(ATTACHED, !pContext.getClickedFace().equals(Direction.UP)).setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+        Direction clicked_face = pContext.getClickedFace();
+        boolean attached = !(clicked_face == Direction.UP || clicked_face == Direction.DOWN);
+        Direction facing = attached ? clicked_face : pContext.getHorizontalDirection().getOpposite();
+        return this.defaultBlockState().setValue(ATTACHED, attached).setValue(FACING, facing);
     }
 
     @Override

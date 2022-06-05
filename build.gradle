@@ -7,15 +7,15 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
 		classpath 'org.parchmentmc:librarian:1.+'
+		classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.+'
 	}
 }
 
-plugins {
-    id 'eclipse'
-    id 'maven-publish'
-}
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 version = "${minecraft_version}-${mod_version}"
 group = "com.crispytwig.${mod_id}"
@@ -90,21 +90,39 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-    // flatDir {
-    //     dir 'libs'
-    // }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
 
+    config "${mod_id}.mixins.json"
+
+    debug.export = true
+}
 
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
+	annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+	
+	// every compat optional compat
+	// https://www.curseforge.com/minecraft/mc-mods/selene/files
+	implementation fg.deobf("curse.maven:selene-499980:3816884")
+	// https://www.curseforge.com/minecraft/mc-mods/every-compat/files
+	implementation fg.deobf("curse.maven:everycomp-628539:3816926")
+	
+	
+	//https://www.curseforge.com/minecraft/mc-mods/geckolib/files
+	//implementation fg.deobf("curse.maven:geckolib-388172:3817009")
+	//https://www.curseforge.com/minecraft/mc-mods/ecologics/files
+	//implementation fg.deobf("curse.maven:ecologics-570463:3810999")
+	
 }
 
 jar {

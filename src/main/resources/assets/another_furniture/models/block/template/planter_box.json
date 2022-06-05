@@ -1,8 +1,10 @@
 {
-	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "flower_box"
+		"box": "another_furniture:block/planter_box/oak",
+		"dirt": "block/dirt",
+		"particle": "#box"
 	},
 	"elements": [
 		{
@@ -10,12 +12,12 @@
 			"to": [16, 6, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
 			"faces": {
-				"north": {"uv": [0, 4, 8, 7], "texture": "#1"},
-				"east": {"uv": [8, 4, 12, 7], "texture": "#1"},
-				"south": {"uv": [0, 4, 8, 7], "texture": "#1"},
-				"west": {"uv": [8, 4, 12, 7], "texture": "#1"},
-				"up": {"uv": [8, 4, 0, 0], "texture": "#1"},
-				"down": {"uv": [8, 7, 0, 11], "texture": "#1"}
+				"north": {"uv": [0, 4, 8, 7], "texture": "#box"},
+				"east": {"uv": [8, 4, 12, 7], "texture": "#box", "cullface": "east"},
+				"south": {"uv": [0, 4, 8, 7], "texture": "#box"},
+				"west": {"uv": [8, 4, 12, 7], "texture": "#box", "cullface": "west"},
+				"up": {"uv": [8, 4, 0, 0], "texture": "#box", "cullface": "up"},
+				"down": {"uv": [8, 7, 0, 11], "texture": "#box", "cullface": "down"}
 			}
 		},
 		{
@@ -23,12 +25,7 @@
 			"to": [15, 5, 11],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1, -4]},
 			"faces": {
-				"north": {"uv": [8, 7, 8, 7], "texture": "#1"},
-				"east": {"uv": [8, 7, 8, 7], "texture": "#1"},
-				"south": {"uv": [8, 7, 8, 7], "texture": "#1"},
-				"west": {"uv": [8, 7, 8, 7], "texture": "#1"},
-				"up": {"uv": [8.5, 0.5, 15.5, 3.5], "texture": "#1"},
-				"down": {"uv": [8, 7, 8, 7], "texture": "#1"}
+				"up": {"uv": [1, 5, 15, 11], "texture": "#dirt", "cullface": "up"}
 			}
 		},
 		{
@@ -36,12 +33,10 @@
 			"to": [1, 6, 11],
 			"rotation": {"angle": 0, "axis": "y", "origin": [14, -1, -4]},
 			"faces": {
-				"north": {"uv": [0.5, 3.5, 7.5, 4], "texture": "#1"},
-				"east": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#1"},
-				"south": {"uv": [0.5, 3.5, 7.5, 4], "texture": "#1"},
-				"west": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#1"},
-				"up": {"uv": [8.5, 0.5, 8.5, 0.5], "texture": "#1"},
-				"down": {"uv": [8.5, 0.5, 8.5, 0.5], "texture": "#1"}
+				"north": {"uv": [0.5, 3.5, 7.5, 4], "texture": "#box", "cullface": "up"},
+				"east": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "up"},
+				"south": {"uv": [0.5, 3.5, 7.5, 4], "texture": "#box", "cullface": "up"},
+				"west": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "up"}
 			}
 		}
 	]
