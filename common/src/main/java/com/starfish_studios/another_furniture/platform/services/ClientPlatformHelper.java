@@ -1,0 +1,16 @@
+package com.starfish_studios.another_furniture.platform.services;
+
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
+import java.util.function.Supplier;
+
+public interface ClientPlatformHelper {
+
+    void setRenderLayer(Supplier<Block> block, RenderType type);
+
+    <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<? extends T>> type, BlockEntityRendererProvider<T> renderProvider);
+}
