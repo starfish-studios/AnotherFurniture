@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture.registry.forge;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
+import com.starfish_studios.another_furniture.mixin.forge.FireBlockAccessor;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -74,5 +76,9 @@ public class AFRegistryImpl {
 
     public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
         BlockEntityRenderers.register(type.get(), renderProvider);
+    }
+
+    public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
+        ((FireBlockAccessor)fireBlock).invokeSetFlammable(block.get(), encouragement, flammability);
     }
 }

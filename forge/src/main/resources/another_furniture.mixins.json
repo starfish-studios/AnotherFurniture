@@ -5,6 +5,7 @@
   "client": [
   ],
   "mixins": [
+    "FireBlockAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

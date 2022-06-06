@@ -23,6 +23,10 @@
       "com.starfish_studios.another_furniture.fabric.AnotherFurnitureFabricClient"
     ]
   },
+  "mixins": [
+    "another_furniture.mixins.json",
+    "another_furniture-common.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.14.6",
     "minecraft": ">=1.18.2"

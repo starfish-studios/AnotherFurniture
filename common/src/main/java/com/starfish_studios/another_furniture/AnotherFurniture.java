@@ -18,4 +18,58 @@ public class AnotherFurniture {
         AFEntityTypes.init();
         AFBlockEntityTypes.init();
     }
+
+    public static void registerFlammables() {
+        AFRegistry.setFlammable(AFBlocks.OAK_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.SPRUCE_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BIRCH_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.JUNGLE_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ACACIA_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.DARK_OAK_CHAIR, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.OAK_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.SPRUCE_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BIRCH_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.JUNGLE_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ACACIA_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.DARK_OAK_SHELF, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.OAK_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.SPRUCE_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BIRCH_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.JUNGLE_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ACACIA_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.DARK_OAK_TABLE, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.OAK_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.SPRUCE_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BIRCH_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.JUNGLE_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ACACIA_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.DARK_OAK_SHUTTER, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.OAK_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.SPRUCE_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BIRCH_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.JUNGLE_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ACACIA_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.DARK_OAK_PLANTER_BOX, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.WHITE_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ORANGE_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MAGENTA_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIGHT_BLUE_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.YELLOW_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIME_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.PINK_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.GRAY_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIGHT_GRAY_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.CYAN_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.PURPLE_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BLUE_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BROWN_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.GREEN_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.RED_STOOL, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BLACK_STOOL, 5, 20);
+    }
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -74,6 +75,15 @@ public class AFRegistry {
 
     @ExpectPlatform
     public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
+        throw new AssertionError();
+    }
+
+    public static <T extends Block> void setFlammable(Supplier<T> block, int encouragement, int flammability) {
+        setFlammable(Blocks.FIRE, block, encouragement, flammability);
+    }
+
+    @ExpectPlatform
+    public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
         throw new AssertionError();
     }
 }

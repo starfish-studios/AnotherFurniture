@@ -7,5 +7,6 @@ public class AnotherFurnitureFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         AnotherFurniture.init();
+        AnotherFurniture.registerFlammables();
     }
 }

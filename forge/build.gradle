@@ -13,6 +13,8 @@ loom {
     forge {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+        mixinConfig "another_furniture-common.mixins.json"
+        mixinConfig "another_furniture.mixins.json"
     }
 }
 
