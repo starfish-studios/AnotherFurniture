@@ -12,11 +12,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -32,12 +30,12 @@ import org.jetbrains.annotations.Nullable;
 public class PlanterBoxBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-    protected static final VoxelShape NORTH_AABB = Block.box(0, 0, 4, 16, 6, 16);
-    protected static final VoxelShape SOUTH_AABB = Block.box(0, 0, 0, 16, 6, 12);
-    protected static final VoxelShape WEST_AABB = Block.box(4, 0, 0, 16, 6, 16);
-    protected static final VoxelShape EAST_AABB = Block.box(0, 0, 0, 12, 6, 16);
-    protected static final VoxelShape Z_AXIS_AABB = Block.box(0, 0, 2, 16, 6, 14);
-    protected static final VoxelShape X_AXIS_AABB = Block.box(2, 0, 0, 14, 6, 16);
+    protected static final VoxelShape NORTH_AABB = Block.box(0, 10, 8, 16, 16, 16);
+    protected static final VoxelShape SOUTH_AABB = Block.box(0, 10, 0, 16, 16, 8);
+    protected static final VoxelShape WEST_AABB = Block.box(8, 10, 0, 16, 16, 16);
+    protected static final VoxelShape EAST_AABB = Block.box(0, 10, 0, 8, 16, 16);
+    protected static final VoxelShape Z_AXIS_AABB = Block.box(0, 0, 4, 16, 6, 12);
+    protected static final VoxelShape X_AXIS_AABB = Block.box(4, 0, 0, 12, 6, 16);
 
     public PlanterBoxBlock(Properties properties) {
         super(properties);
@@ -69,12 +67,31 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        if (state.getValue(ATTACHED)) {
+            Direction direction = state.getValue(FACING);
+            BlockPos facingPos = pos.relative(direction.getOpposite());
+            BlockState facingState = level.getBlockState(facingPos);
+            return facingState.isFaceSturdy(level, facingPos, direction);
+        }
+        return super.canSurvive(state, level, pos);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(ATTACHED) && direction.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, currentPos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+    }
+
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        Direction clicked_face = pContext.getClickedFace();
-        boolean attached = !(clicked_face == Direction.UP || clicked_face == Direction.DOWN);
-        Direction facing = attached ? clicked_face : pContext.getHorizontalDirection().getOpposite();
+        Direction clickedFace = pContext.getClickedFace();
+        boolean attached = !(clickedFace == Direction.UP || clickedFace == Direction.DOWN);
+        Direction facing = attached ? clickedFace : pContext.getHorizontalDirection().getOpposite();
         return this.defaultBlockState().setValue(ATTACHED, attached).setValue(FACING, facing);
     }
 
