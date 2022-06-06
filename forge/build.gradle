@@ -1,6 +1,11 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.github.johnrengelman.shadow" version "7.0.0"
 }
+
+archivesBaseName = "${rootProject.archivesBaseName}-${project.name}"
 
 architectury {
     platformSetupLoomIde()
@@ -9,8 +14,15 @@ architectury {
 
 loom {
     forge {
-        mixinConfig "another_furniture-common.mixins.json"
-        mixinConfig "another_furniture.mixins.json"
+        mixinConfig "${project.mod_id}-common.mixins.json"
+        mixinConfig "${project.mod_id}.mixins.json"
+
+        dataGen {
+            mod project.mod_id
+        }
+    }
+    mixin {
+        defaultRefmapName = "${project.mod_id}-refmap.json"
     }
 }
 
@@ -22,23 +34,37 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
 
 processResources {
-    inputs.property "version", project.version
+    inputs.property "id", rootProject.mod_id
+    inputs.property "name", rootProject.mod_name
+    inputs.property "version", rootProject.mod_version
+    inputs.property "repo", rootProject.name
 
-    filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+    filesMatching(["META-INF/mods.toml", "pack.mcmeta"]) {
+        expand "id": rootProject.mod_id,
+                "name": rootProject.mod_name,
+                "version": rootProject.mod_version,
+                "repo": rootProject.name
+    }
+
+    doLast {
+        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
+            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
+        }
     }
 }
 
 shadowJar {
     exclude "fabric.mod.json"
+    exclude "archiectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
     classifier "dev-shadow"
@@ -69,13 +95,8 @@ components.java {
 publishing {
     publications {
         mavenForge(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
+            artifactId = project.archivesBaseName
             from components.java
         }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
     }
 }
