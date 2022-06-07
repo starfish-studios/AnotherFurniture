@@ -1,0 +1,156 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "all": "another_furniture:block/curtain/red"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                7
+            ],
+            "to": [
+                16,
+                32,
+                8
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        7.75,
+                        4,
+                        11.75,
+                        12
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        7.5,
+                        4,
+                        7.75,
+                        12
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        11.75,
+                        4,
+                        7.75,
+                        12
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        11.75,
+                        4,
+                        12,
+                        12
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "uv": [
+                        11.75,
+                        3.75,
+                        7.75,
+                        4
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ],
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "translation": [
+                0,
+                2,
+                0.5
+            ],
+            "scale": [
+                0.375,
+                0.375,
+                0.375
+            ]
+        },
+        "firstperson_righthand": {
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                0.375,
+                0.375,
+                0.375
+            ]
+        },
+        "ground": {
+            "translation": [
+                0,
+                1,
+                0
+            ],
+            "scale": [
+                0.25,
+                0.25,
+                0.25
+            ]
+        },
+        "gui": {
+            "rotation": [
+                30,
+                20,
+                0
+            ],
+            "translation": [
+                0,
+                -3.25,
+                0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        "head": {
+            "rotation": [
+                0,
+                180,
+                0
+            ],
+            "translation": [
+                0,
+                16,
+                7
+            ],
+            "scale": [
+                1.5,
+                1.5,
+                1.5
+            ]
+        },
+        "fixed": {
+            "rotation": [
+                0,
+                180,
+                0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        }
+    }
+}

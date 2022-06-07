@@ -1,6 +1,10 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
+import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.block.properties.PlanterBoxType;
+import com.starfish_studios.another_furniture.block.properties.ShelfType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.ItemTags;
@@ -21,6 +25,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,6 +35,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class PlanterBoxBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<PlanterBoxType> TYPE = ModBlockStateProperties.PLANTER_BOX_TYPE;
     public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
     protected static final VoxelShape NORTH_AABB = Block.box(0, 10, 8, 16, 16, 16);
     protected static final VoxelShape SOUTH_AABB = Block.box(0, 10, 0, 16, 16, 8);
@@ -39,7 +46,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
 
     public PlanterBoxBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(ATTACHED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, PlanterBoxType.SINGLE).setValue(ATTACHED, false));
     }
 
     @Override
@@ -79,11 +86,17 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(ATTACHED) && direction.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, currentPos)) {
+    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        if (pState.getValue(ATTACHED) && pDirection.getOpposite() == pState.getValue(FACING) && !pState.canSurvive(pLevel, pCurrentPos)) {
             return Blocks.AIR.defaultBlockState();
         }
-        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+        Direction facing = pState.getValue(FACING);
+        BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
+        BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
+        boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(FACING) == facing);
+        boolean r_side = (r_state.getBlock() instanceof PlanterBoxBlock && r_state.getValue(FACING) == facing);
+        PlanterBoxType type = l_side && r_side ? PlanterBoxType.MIDDLE : (r_side ? PlanterBoxType.LEFT : (l_side ? PlanterBoxType.RIGHT : PlanterBoxType.SINGLE));
+        return pState.setValue(TYPE, type);
     }
 
     @Nullable
@@ -95,9 +108,10 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         return this.defaultBlockState().setValue(ATTACHED, attached).setValue(FACING, facing);
     }
 
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, ATTACHED);
+        pBuilder.add(FACING, TYPE, ATTACHED);
     }
 
     @Nullable

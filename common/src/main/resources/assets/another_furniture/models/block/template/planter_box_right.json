@@ -4,7 +4,7 @@
 	"textures": {
 		"box": "another_furniture:block/planter_box/oak",
 		"dirt": "another_furniture:block/dirt",
-		"particle": ""
+		"particle": "#box"
 	},
 	"elements": [
 		{
@@ -42,16 +42,6 @@
 				"south": {"uv": [0, 4, 8, 4.5], "texture": "#box"},
 				"west": {"uv": [0, 4, 0.5, 4.5], "texture": "#box", "cullface": "west"},
 				"up": {"uv": [8, 4.5, 0, 4], "texture": "#box", "cullface": "up"}
-			}
-		},
-		{
-			"from": [15, 5, 5],
-			"to": [16, 6, 11],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
-			"faces": {
-				"east": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "east"},
-				"west": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "west"},
-				"up": {"uv": [11.5, 4.5, 8.5, 4], "rotation": 90, "texture": "#box", "cullface": "up"}
 			}
 		},
 		{

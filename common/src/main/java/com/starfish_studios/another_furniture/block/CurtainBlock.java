@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -49,9 +50,12 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     protected static final VoxelShape SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1.0D);
     protected static final VoxelShape NORTH = Block.box(0.0D, 0.0D, 15.0D, 16.0D, 16.0D, 16.0D);
 
-    public CurtainBlock(Properties properties) {
+    private final DyeColor color;
+
+    public CurtainBlock(DyeColor color, Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, CurtainType.LEFT).setValue(TOP, true).setValue(OPEN, true).setValue(WATERLOGGED, false));
+        this.color = color;
     }
 
     @Override
@@ -206,5 +210,9 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
+    }
+
+    public String getColor() {
+        return this.color.toString();
     }
 }

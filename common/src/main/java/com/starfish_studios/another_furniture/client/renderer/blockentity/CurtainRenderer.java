@@ -82,7 +82,7 @@ public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> 
     }
 
     public void render(CurtainBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-        VertexConsumer vertexconsumer = pBufferSource.getBuffer(RenderType.entityCutout(new ResourceLocation(AnotherFurniture.MOD_ID, "textures/block/curtain/red.png")));
+        VertexConsumer vertexconsumer = pBufferSource.getBuffer(RenderType.entityCutout(new ResourceLocation(AnotherFurniture.MOD_ID, "textures/block/curtain/" + ((CurtainBlock)pBlockEntity.getBlockState().getBlock()).getColor() + ".png")));
         long i;
         pPoseStack.pushPose();
         //pPoseStack.translate(0.5D, 0.5D, 0.5D);

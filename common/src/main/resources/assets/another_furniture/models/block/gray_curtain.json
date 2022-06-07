@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/template/gray_curtain",
+    "textures": {
+        "all": "another_furniture:block/gray_curtain"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/template/lime_curtain",
+    "textures": {
+        "all": "another_furniture:block/lime_curtain"
+    }
+}
