@@ -8,9 +8,8 @@
     "Starfish Studios"
   ],
   "contact": {
-    "website": "https://www.curseforge.com/minecraft/mc-mods/another-furniture",
-    "repo": "https://github.com/starfish-studios/Another-Furniture-Mod",
-    "issues": "https://github.com/starfish-studios/Another-Furniture-Mod/issues"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/another-furniture",
+    "issues": "https://github.com/starfish-studios/AnotherFurniture/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
