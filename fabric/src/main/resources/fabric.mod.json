@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "another_furniture",
   "version": "${version}",
-  "name": "AnotherFurniture",
+  "name": "Another Furniture",
   "description": "Another Furniture Mod aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.",
   "authors": [
     "Starfish Studios"
