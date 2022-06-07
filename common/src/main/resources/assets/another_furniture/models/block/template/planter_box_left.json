@@ -50,7 +50,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
 			"faces": {
 				"east": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "east"},
-				"west": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box", "cullface": "west"},
+				"west": {"uv": [8.5, 4, 11.5, 4.5], "texture": "#box"},
 				"up": {"uv": [11.5, 4.5, 8.5, 4], "rotation": 90, "texture": "#box", "cullface": "up"}
 			}
 		}

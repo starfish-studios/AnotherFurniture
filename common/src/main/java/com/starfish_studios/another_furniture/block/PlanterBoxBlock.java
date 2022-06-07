@@ -84,14 +84,17 @@ public class PlanterBoxBlock extends BaseEntityBlock {
 
     @Override
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(ATTACHED) && pDirection.getOpposite() == pState.getValue(FACING) && !pState.canSurvive(pLevel, pCurrentPos)) {
+        boolean attached = pState.getValue(ATTACHED);
+        Direction facing = pState.getValue(FACING);
+        if (attached && pDirection.getOpposite() == facing && !pState.canSurvive(pLevel, pCurrentPos)) {
             return Blocks.AIR.defaultBlockState();
         }
-        Direction facing = pState.getValue(FACING);
+
+
         BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
         BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(FACING) == facing);
-        boolean r_side = (r_state.getBlock() instanceof PlanterBoxBlock && r_state.getValue(FACING) == facing);
+        boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(ATTACHED) == attached && (l_state.getValue(FACING) == facing || (!attached && l_state.getValue(FACING) == facing.getOpposite())));
+        boolean r_side = (r_state.getBlock() instanceof PlanterBoxBlock && r_state.getValue(ATTACHED) == attached && (r_state.getValue(FACING) == facing || (!attached && r_state.getValue(FACING) == facing.getOpposite())));
         HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
         return pState.setValue(TYPE, type);
     }
