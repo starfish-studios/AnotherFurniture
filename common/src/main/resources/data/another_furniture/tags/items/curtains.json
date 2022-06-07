@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:white_curtain",
+        "another_furniture:orange_curtain",
+        "another_furniture:magenta_curtain",
+        "another_furniture:light_blue_curtain",
+        "another_furniture:yellow_curtain",
+        "another_furniture:lime_curtain",
+        "another_furniture:pink_curtain",
+        "another_furniture:gray_curtain",
+        "another_furniture:light_gray_curtain",
+        "another_furniture:cyan_curtain",
+        "another_furniture:purple_curtain",
+        "another_furniture:blue_curtain",
+        "another_furniture:brown_curtain",
+        "another_furniture:green_curtain",
+        "another_furniture:red_curtain",
+        "another_furniture:black_curtain"
+    ]
+}

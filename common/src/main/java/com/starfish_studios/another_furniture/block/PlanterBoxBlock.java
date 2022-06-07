@@ -1,8 +1,10 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
+import com.starfish_studios.another_furniture.registry.AFTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.ItemTags;
@@ -125,9 +127,18 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
         if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
             ItemStack stack = pPlayer.getItemInHand(pHand);
-            if (stack.is(ItemTags.SMALL_FLOWERS) || stack.is(ItemTags.SAPLINGS)) {
-                if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack)) {
 
+            Direction facing = pState.getValue(FACING);
+            boolean slot_0;
+            if (facing.getAxis() == Direction.Axis.X) {
+                slot_0 = pHit.getLocation().z - (double)pHit.getBlockPos().getZ() > 0.5D;
+            } else {
+                slot_0 = pHit.getLocation().x - (double)pHit.getBlockPos().getX() > 0.5D;
+            }
+            if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
+
+            if (stack.is(AFTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFTags.PLANTER_BOX_BANNED)) {
+                if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
                     return InteractionResult.SUCCESS;
                 }
 

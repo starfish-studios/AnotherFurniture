@@ -56,16 +56,15 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
         return compoundtag;
     }
 
-    public boolean placeFlower(ItemStack stack) {
-        for(int i = 0; i < this.items.size(); ++i) {
-            ItemStack itemstack = this.items.get(i);
-            if (itemstack.isEmpty()) {
-                Block block = ((BlockItem)stack.getItem()).getBlock();
-                this.getLevel().playSound(null, this.getBlockPos(), block.getSoundType(block.defaultBlockState()).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                this.items.set(i, stack.split(1));
-                this.markUpdated();
-                return true;
-            }
+    public boolean placeFlower(ItemStack stack, int slot) {
+
+        ItemStack itemstack = this.items.get(slot);
+        if (itemstack.isEmpty()) {
+            Block block = ((BlockItem)stack.getItem()).getBlock();
+            this.getLevel().playSound(null, this.getBlockPos(), block.getSoundType(block.defaultBlockState()).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.items.set(slot, stack.split(1));
+            this.markUpdated();
+            return true;
         }
 
         return false;

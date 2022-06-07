@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:oak_planter_box",
+        "another_furniture:spruce_planter_box",
+        "another_furniture:birch_planter_box",
+        "another_furniture:jungle_planter_box",
+        "another_furniture:acacia_planter_box",
+        "another_furniture:dark_oak_planter_box",
+        "another_furniture:crimson_planter_box",
+        "another_furniture:warped_planter_box"
+    ]
+}

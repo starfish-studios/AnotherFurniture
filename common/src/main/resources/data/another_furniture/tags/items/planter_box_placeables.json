@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "#minecraft:small_flowers",
+		"#minecraft:saplings",
+		"minecraft:sea_pickle",
+		"minecraft:bamboo",
+		"minecraft:red_mushroom",
+		"minecraft:brown_mushroom",
+		"minecraft:crimson_fungus",
+		"minecraft:warped_fungus"
+    ]
+}

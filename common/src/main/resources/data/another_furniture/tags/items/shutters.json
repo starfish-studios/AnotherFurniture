@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "another_furniture:oak_shutter",
+        "another_furniture:spruce_shutter",
+        "another_furniture:birch_shutter",
+        "another_furniture:jungle_shutter",
+        "another_furniture:acacia_shutter",
+        "another_furniture:dark_oak_shutter",
+        "another_furniture:crimson_shutter",
+        "another_furniture:warped_shutter"
+    ]
+}
