@@ -2,7 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
-import com.starfish_studios.another_furniture.block.properties.ShelfType;
+import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final EnumProperty<ShelfType> TYPE = ModBlockStateProperties.SHELF_TYPE;
+    public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape TOP = Block.box(0, 14, 0.0, 16, 16, 16);
@@ -66,7 +66,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         super(properties);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, ShelfType.SINGLE)
+                .setValue(TYPE, HorizontalConnectionType.SINGLE)
                 .setValue(WATERLOGGED, false)
         );
     }
@@ -112,7 +112,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         Direction direction = pState.getValue(FACING);
-        ShelfType type = pState.getValue(TYPE);
+        HorizontalConnectionType type = pState.getValue(TYPE);
 
         if (direction == Direction.NORTH) {
             return switch (type) {
@@ -175,7 +175,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof ShelfBlock && l_state.getValue(FACING) == facing);
         boolean r_side = (r_state.getBlock() instanceof ShelfBlock && r_state.getValue(FACING) == facing);
-        ShelfType type = l_side && r_side ? ShelfType.MIDDLE : (r_side ? ShelfType.LEFT : (l_side ? ShelfType.RIGHT : ShelfType.SINGLE));
+        HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
         return pState.setValue(TYPE, type);
     }
 

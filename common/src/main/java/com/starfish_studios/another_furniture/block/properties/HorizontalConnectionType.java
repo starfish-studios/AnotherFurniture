@@ -2,7 +2,7 @@ package com.starfish_studios.another_furniture.block.properties;
 
 import net.minecraft.util.StringRepresentable;
 
-public enum ShelfType implements StringRepresentable {
+public enum HorizontalConnectionType implements StringRepresentable {
     SINGLE("single"),
     LEFT("left"),
     MIDDLE("middle"),
@@ -10,7 +10,7 @@ public enum ShelfType implements StringRepresentable {
 
     private final String name;
 
-    private ShelfType(String type) {
+    private HorizontalConnectionType(String type) {
         this.name = type;
     }
 
