@@ -2,6 +2,8 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
+archivesBaseName = "${rootProject.archives_base_name}-${project.name}"
+
 architectury {
     platformSetupLoomIde()
     fabric()
@@ -69,7 +71,7 @@ components.java {
 publishing {
     publications {
         mavenFabric(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
+            artifactId = project.archivesBaseName
             from components.java
         }
     }
