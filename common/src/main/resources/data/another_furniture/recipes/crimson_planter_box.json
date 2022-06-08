@@ -2,11 +2,14 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "SDS",
-        "SSS"
+        "###"
     ],
     "key": {
         "S": {
             "item": "minecraft:crimson_slab"
+        },
+        "#": {
+            "item": "minecraft:crimson_planks"
         },
         "D": {
             "item": "minecraft:dirt"
