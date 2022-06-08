@@ -13,7 +13,7 @@ logoFile = "icon.png"
 #credits="Thanks for this example mod goes to Java"
 authors = "Starfish Studios"
 description = '''
-Another Furniture Mod aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.
+Another Furniture aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.
 '''
 
 [[dependencies.another_furniture]]
