@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
 import com.starfish_studios.another_furniture.registry.AFTags;
 import net.minecraft.core.BlockPos;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -110,7 +112,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
                         push_in = false;
                     }
                 }
-                if (push_in) {
+                if (push_in && level.getEntitiesOfClass(SeatEntity.class, new AABB(pos)).size() == 0) {
                     level.setBlockAndUpdate(pos, state.setValue(TUCKED, true));
                     level.playSound(null, pos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                     return InteractionResult.SUCCESS;
