@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SDS",
+        "SSS"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:spruce_slab"
+        },
+        "D": {
+            "item": "minecraft:dirt"
+        }
+    },
+    "result": {
+        "item": "another_furniture:spruce_planter_box",
+        "count": 1
+    },
+    "group": "planter_boxes"
+}

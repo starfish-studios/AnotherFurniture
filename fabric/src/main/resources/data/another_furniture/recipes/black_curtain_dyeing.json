@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "another_furniture:white_curtain"
+        },
+        {
+            "tag": "c:black_dyes"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:black_curtain",
+        "count": 1
+    },
+    "group": "curtains"
+}

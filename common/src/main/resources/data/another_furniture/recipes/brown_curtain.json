@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "//",
+        "WW",
+        "WW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:brown_wool"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:brown_curtain",
+        "count": 1
+    },
+    "group": "curtains"
+}

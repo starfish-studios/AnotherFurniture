@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "another_furniture:white_curtain"
+        },
+        {
+            "tag": "forge:dyes/magenta"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:magenta_curtain",
+        "count": 1
+    },
+    "group": "curtains"
+}

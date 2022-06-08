@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "another_furniture:white_stool"
+        },
+        {
+            "tag": "c:green_dyes"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:green_stool",
+        "count": 1
+    },
+    "group": "stools"
+}

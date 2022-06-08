@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SS",
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:acacia_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:acacia_shutter",
+        "count": 1
+    },
+    "group": "shutters"
+}

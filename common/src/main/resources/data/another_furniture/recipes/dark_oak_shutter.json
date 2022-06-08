@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SS",
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:dark_oak_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:dark_oak_shutter",
+        "count": 1
+    },
+    "group": "shutters"
+}
