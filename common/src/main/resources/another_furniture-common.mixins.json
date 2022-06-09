@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "BlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
