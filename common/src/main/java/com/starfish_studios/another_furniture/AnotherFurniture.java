@@ -71,5 +71,22 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.GREEN_STOOL, 5, 20);
         AFRegistry.setFlammable(AFBlocks.RED_STOOL, 5, 20);
         AFRegistry.setFlammable(AFBlocks.BLACK_STOOL, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.WHITE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.ORANGE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MAGENTA_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIGHT_BLUE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.YELLOW_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIME_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.PINK_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.GRAY_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.LIGHT_GRAY_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.CYAN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.PURPLE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BLUE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BROWN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.GREEN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.RED_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.BLACK_CURTAIN, 5, 20);
     }
 }
