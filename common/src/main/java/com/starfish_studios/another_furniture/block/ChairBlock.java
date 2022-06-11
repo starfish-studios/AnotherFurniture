@@ -94,33 +94,22 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        boolean tucked = state.getValue(TUCKED);
-        if ((player.isCrouching() || tucked) && player.getMainHandItem().isEmpty() && player.getOffhandItem().isEmpty() &&
-                level.getBlockState(pos.relative(state.getValue(FACING))).is(AFTags.CHAIRS_TUCKABLE_UNDER)) {
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        boolean tucked = pState.getValue(TUCKED);
+        if ((pPlayer.isCrouching() || tucked) && pPlayer.getMainHandItem().isEmpty() && pPlayer.getOffhandItem().isEmpty() &&
+                pLevel.getBlockState(pPos.relative(pState.getValue(FACING))).is(AFTags.CHAIRS_TUCKABLE_UNDER)) {
             if (tucked) {
-                level.setBlockAndUpdate(pos, state.setValue(TUCKED, false));
-                level.playSound(null, pos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, false));
+                pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
-            } else {
-                boolean push_in = true;
-                Direction facing = state.getValue(FACING);
-                BlockState left = level.getBlockState(pos.relative(facing).relative(facing.getCounterClockWise()));
-                BlockState right = level.getBlockState(pos.relative(facing).relative(facing.getClockWise()));
-                if (left.getBlock() instanceof ChairBlock || right.getBlock() instanceof ChairBlock) {
-                    if ((left.getValue(TUCKED) && left.getValue(FACING) == facing.getClockWise()) || (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise())) {
-                        push_in = false;
-                    }
-                }
-                if (push_in && level.getEntitiesOfClass(SeatEntity.class, new AABB(pos)).size() == 0) {
-                    level.setBlockAndUpdate(pos, state.setValue(TUCKED, true));
-                    level.playSound(null, pos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                    return InteractionResult.SUCCESS;
-                }
+            } else if (canTuckIn(pState, pLevel, pPos)) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, true));
+                pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.SUCCESS;
             }
             return InteractionResult.FAIL;
         }
-        return super.use(state, level, pos, player, hand, hit);
+        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
@@ -146,5 +135,20 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
     @Override
     public BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    }
+
+    public boolean canTuckIn(BlockState state, Level level, BlockPos pos) {
+        if (!level.getEntitiesOfClass(SeatEntity.class, new AABB(pos)).isEmpty()) {
+            return false;
+        }
+        Direction facing = state.getValue(FACING);
+        BlockState left = level.getBlockState(pos.relative(facing).relative(facing.getCounterClockWise()));
+        BlockState right = level.getBlockState(pos.relative(facing).relative(facing.getClockWise()));
+        if (left.getBlock() instanceof ChairBlock) {
+            return !left.getValue(TUCKED) || left.getValue(FACING) != facing.getClockWise();
+        } else if (right.getBlock() instanceof ChairBlock) {
+            return !right.getValue(TUCKED) || right.getValue(FACING) != facing.getCounterClockWise();
+        }
+        return true;
     }
 }
