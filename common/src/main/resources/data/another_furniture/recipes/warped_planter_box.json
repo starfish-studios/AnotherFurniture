@@ -2,11 +2,14 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "SDS",
-        "SSS"
+        "###"
     ],
     "key": {
         "S": {
             "item": "minecraft:warped_slab"
+        },
+        "#": {
+            "item": "minecraft:warped_planks"
         },
         "D": {
             "item": "minecraft:dirt"
@@ -14,7 +17,7 @@
     },
     "result": {
         "item": "another_furniture:warped_planter_box",
-        "count": 1
+        "count": 3
     },
     "group": "planter_boxes"
 }
