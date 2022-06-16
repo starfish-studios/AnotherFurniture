@@ -26,6 +26,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.JUNGLE_CHAIR, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ACACIA_CHAIR, 5, 20);
         AFRegistry.setFlammable(AFBlocks.DARK_OAK_CHAIR, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MANGROVE_CHAIR, 5, 20);
 
         AFRegistry.setFlammable(AFBlocks.OAK_SHELF, 5, 20);
         AFRegistry.setFlammable(AFBlocks.SPRUCE_SHELF, 5, 20);
@@ -33,6 +34,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.JUNGLE_SHELF, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ACACIA_SHELF, 5, 20);
         AFRegistry.setFlammable(AFBlocks.DARK_OAK_SHELF, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MANGROVE_SHELF, 5, 20);
 
         AFRegistry.setFlammable(AFBlocks.OAK_TABLE, 5, 20);
         AFRegistry.setFlammable(AFBlocks.SPRUCE_TABLE, 5, 20);
@@ -40,6 +42,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.JUNGLE_TABLE, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ACACIA_TABLE, 5, 20);
         AFRegistry.setFlammable(AFBlocks.DARK_OAK_TABLE, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MANGROVE_TABLE, 5, 20);
 
         AFRegistry.setFlammable(AFBlocks.OAK_SHUTTER, 5, 20);
         AFRegistry.setFlammable(AFBlocks.SPRUCE_SHUTTER, 5, 20);
@@ -47,6 +50,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.JUNGLE_SHUTTER, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ACACIA_SHUTTER, 5, 20);
         AFRegistry.setFlammable(AFBlocks.DARK_OAK_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MANGROVE_SHUTTER, 5, 20);
 
         AFRegistry.setFlammable(AFBlocks.OAK_PLANTER_BOX, 5, 20);
         AFRegistry.setFlammable(AFBlocks.SPRUCE_PLANTER_BOX, 5, 20);
@@ -54,6 +58,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.JUNGLE_PLANTER_BOX, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ACACIA_PLANTER_BOX, 5, 20);
         AFRegistry.setFlammable(AFBlocks.DARK_OAK_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(AFBlocks.MANGROVE_PLANTER_BOX, 5, 20);
 
         AFRegistry.setFlammable(AFBlocks.WHITE_STOOL, 5, 20);
         AFRegistry.setFlammable(AFBlocks.ORANGE_STOOL, 5, 20);

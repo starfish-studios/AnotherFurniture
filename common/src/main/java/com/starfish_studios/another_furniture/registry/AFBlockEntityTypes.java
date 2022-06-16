@@ -17,6 +17,7 @@ public class AFBlockEntityTypes {
                     AFBlocks.JUNGLE_SHELF.get(),
                     AFBlocks.ACACIA_SHELF.get(),
                     AFBlocks.DARK_OAK_SHELF.get(),
+                    AFBlocks.MANGROVE_SHELF.get(),
                     AFBlocks.CRIMSON_SHELF.get(),
                     AFBlocks.WARPED_SHELF.get()
             ));
@@ -51,6 +52,7 @@ public class AFBlockEntityTypes {
                     AFBlocks.JUNGLE_PLANTER_BOX.get(),
                     AFBlocks.ACACIA_PLANTER_BOX.get(),
                     AFBlocks.DARK_OAK_PLANTER_BOX.get(),
+                    AFBlocks.MANGROVE_PLANTER_BOX.get(),
                     AFBlocks.CRIMSON_PLANTER_BOX.get(),
                     AFBlocks.WARPED_PLANTER_BOX.get()
             ));

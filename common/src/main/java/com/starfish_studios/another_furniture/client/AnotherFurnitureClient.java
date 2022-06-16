@@ -20,6 +20,7 @@ public class AnotherFurnitureClient {
         AFRegistry.setRenderLayer(AFBlocks.JUNGLE_CHAIR, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.ACACIA_CHAIR, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.DARK_OAK_CHAIR, RenderType.cutout());
+        AFRegistry.setRenderLayer(AFBlocks.MANGROVE_CHAIR, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.CRIMSON_CHAIR, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.WARPED_CHAIR, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.OAK_SHUTTER, RenderType.cutout());
@@ -28,6 +29,7 @@ public class AnotherFurnitureClient {
         AFRegistry.setRenderLayer(AFBlocks.JUNGLE_SHUTTER, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.ACACIA_SHUTTER, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.DARK_OAK_SHUTTER, RenderType.cutout());
+        AFRegistry.setRenderLayer(AFBlocks.MANGROVE_SHUTTER, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.CRIMSON_SHUTTER, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.WARPED_SHUTTER, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.OAK_PLANTER_BOX, RenderType.cutout());
@@ -36,6 +38,7 @@ public class AnotherFurnitureClient {
         AFRegistry.setRenderLayer(AFBlocks.JUNGLE_PLANTER_BOX, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.ACACIA_PLANTER_BOX, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.DARK_OAK_PLANTER_BOX, RenderType.cutout());
+        AFRegistry.setRenderLayer(AFBlocks.MANGROVE_PLANTER_BOX, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.CRIMSON_PLANTER_BOX, RenderType.cutout());
         AFRegistry.setRenderLayer(AFBlocks.WARPED_PLANTER_BOX, RenderType.cutout());
 
