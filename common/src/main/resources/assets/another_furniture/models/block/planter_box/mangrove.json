@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/planter_box",
+    "textures": {
+        "box": "another_furniture:block/planter_box/mangrove",
+        "dirt": "minecraft:block/dirt"
+    }
+}

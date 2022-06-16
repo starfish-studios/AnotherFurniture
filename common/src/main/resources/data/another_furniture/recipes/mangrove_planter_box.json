@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SDS",
+        "###"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:mangrove_slab"
+        },
+        "#": {
+            "item": "minecraft:mangrove_planks"
+        },
+        "D": {
+            "item": "minecraft:dirt"
+        }
+    },
+    "result": {
+        "item": "another_furniture:mangrove_planter_box",
+        "count": 3
+    },
+    "group": "planter_boxes"
+}

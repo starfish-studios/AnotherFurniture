@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SS",
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:mangrove_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:mangrove_shutter",
+        "count": 4
+    },
+    "group": "shutters"
+}
