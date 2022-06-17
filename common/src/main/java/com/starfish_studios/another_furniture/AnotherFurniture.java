@@ -14,6 +14,7 @@ public class AnotherFurniture {
 
     public static void init() {
         AFBlocks.init();
+        AFItems.init();
         AFSoundEvents.init();
         AFEntityTypes.init();
         AFBlockEntityTypes.init();
