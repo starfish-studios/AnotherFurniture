@@ -2,7 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
-import com.starfish_studios.another_furniture.registry.AFTags;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -97,7 +97,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         boolean tucked = pState.getValue(TUCKED);
         if ((pPlayer.isCrouching() || tucked) && pPlayer.getMainHandItem().isEmpty() && pPlayer.getOffhandItem().isEmpty() &&
-                pLevel.getBlockState(pPos.relative(pState.getValue(FACING))).is(AFTags.CHAIRS_TUCKABLE_UNDER)) {
+                pLevel.getBlockState(pPos.relative(pState.getValue(FACING))).is(AFBlockTags.CHAIRS_TUCKABLE_UNDER)) {
             if (tucked) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, false));
                 pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -145,9 +145,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         BlockState left = level.getBlockState(pos.relative(facing).relative(facing.getCounterClockWise()));
         BlockState right = level.getBlockState(pos.relative(facing).relative(facing.getClockWise()));
         if (left.getBlock() instanceof ChairBlock) {
-            return !left.getValue(TUCKED) || left.getValue(FACING) != facing.getClockWise();
-        } else if (right.getBlock() instanceof ChairBlock) {
-            return !right.getValue(TUCKED) || right.getValue(FACING) != facing.getCounterClockWise();
+            if (left.getValue(TUCKED) && left.getValue(FACING) == facing.getClockWise()) return false;
+        }
+        if (right.getBlock() instanceof ChairBlock) {
+            if (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise()) return false;
         }
         return true;
     }
