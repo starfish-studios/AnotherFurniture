@@ -1,13 +1,12 @@
 package com.starfish_studios.another_furniture.block;
 
-import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
-import com.starfish_studios.another_furniture.registry.AFTags;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
+import com.starfish_studios.another_furniture.registry.AFItemTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -137,7 +136,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
             }
             if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
 
-            if (stack.is(AFTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFTags.PLANTER_BOX_BANNED)) {
+            if (stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
                 if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
                     return InteractionResult.SUCCESS;
                 }

@@ -1,7 +1,7 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.entity.SeatEntity;
-import com.starfish_studios.another_furniture.registry.AFTags;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -31,7 +31,7 @@ public class SeatBlock extends Block {
         if(pPlayer.isPassenger() || pPlayer.isCrouching())
             return InteractionResult.PASS;
 
-        if(!pLevel.getBlockState(pPos.above()).getCollisionShape(pLevel, pPos).isEmpty() && !pLevel.getBlockState(pPos.above()).is(AFTags.NO_SEAT_COLLISION_CHECK))
+        if(!pLevel.getBlockState(pPos.above()).getCollisionShape(pLevel, pPos).isEmpty() && !pLevel.getBlockState(pPos.above()).is(AFBlockTags.NO_SEAT_COLLISION_CHECK))
             return InteractionResult.PASS;
 
         Vec3 vec = new Vec3(pPos.getX() + 0.5, pPos.getY(), pPos.getZ() + 0.5);

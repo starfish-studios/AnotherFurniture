@@ -1,6 +1,6 @@
 package com.starfish_studios.another_furniture.item;
 
-import com.starfish_studios.another_furniture.registry.AFTags;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,7 +13,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
@@ -70,6 +69,6 @@ public class HammerItem extends Item {
         if (state.hasProperty(BlockStateProperties.EXTENDED)) {
             if (state.getValue(BlockStateProperties.EXTENDED)) return true;
         }
-        return state.is(AFTags.HAMMER_INVALID);
+        return state.is(AFBlockTags.HAMMER_INVALID);
     }
 }
