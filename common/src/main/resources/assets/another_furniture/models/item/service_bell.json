@@ -2,7 +2,7 @@
 	"parent": "minecraft:block/block",
 	"texture_size": [32, 32],
 	"textures": {
-		"particle": "another_furniture:block/iron_block",
+		"particle": "minecraft:block/iron_block",
 		"all": "another_furniture:block/service_bell"
 	},
 	"elements": [
