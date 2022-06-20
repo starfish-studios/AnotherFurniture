@@ -4,9 +4,9 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "BlockMixin"
   ],
   "mixins": [
+    "BlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

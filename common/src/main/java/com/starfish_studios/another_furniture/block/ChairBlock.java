@@ -1,8 +1,9 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
-import com.starfish_studios.another_furniture.registry.AFTags;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -13,15 +14,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
@@ -86,7 +82,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
         if (pState.getValue(TUCKED)) {
-            if (!(pLevel.getBlockState(pCurrentPos.relative(pState.getValue(FACING))).getBlock() instanceof TableBlock)) {
+            if (!canTuckUnderFacing(pState, (Level)pLevel, pCurrentPos)) {
                 return pState.setValue(TUCKED, false);
             }
         }
@@ -97,12 +93,13 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         boolean tucked = pState.getValue(TUCKED);
         if ((pPlayer.isCrouching() || tucked) && pPlayer.getMainHandItem().isEmpty() && pPlayer.getOffhandItem().isEmpty() &&
-                pLevel.getBlockState(pPos.relative(pState.getValue(FACING))).is(AFTags.CHAIRS_TUCKABLE_UNDER)) {
+                canTuckUnderFacing(pState, pLevel, pPos)) {
             if (tucked) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, false));
                 pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
-            } else if (canTuckIn(pState, pLevel, pPos)) {
+
+            } else if (isChairBlocking(pState, pLevel, pPos)) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, true));
                 pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
@@ -137,7 +134,25 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 
-    public boolean canTuckIn(BlockState state, Level level, BlockPos pos) {
+    public boolean canTuckUnderFacing(BlockState state, Level level, BlockPos pos) {
+        Direction dir = state.getValue(FACING);
+        BlockState facing_state = level.getBlockState(pos.relative(dir));
+        Block facing_state_block = facing_state.getBlock();
+        if (facing_state_block instanceof ShelfBlock) {
+            return facing_state.getValue(ShelfBlock.TYPE) == HorizontalConnectionType.MIDDLE || facing_state.getValue(FACING) != dir;
+        } else if (facing_state_block instanceof SlabBlock) {
+            return facing_state.getValue(SlabBlock.TYPE) == SlabType.TOP;
+        } else if (facing_state_block instanceof StairBlock) {
+            StairsShape shape = facing_state.getValue(StairBlock.SHAPE);
+            Direction facing_dir = facing_state.getValue(FACING);
+            return facing_state.getValue(StairBlock.HALF) == Half.TOP && (dir == facing_dir ||
+                    shape == StairsShape.OUTER_LEFT && dir == facing_dir.getCounterClockWise() ||
+                    shape == StairsShape.OUTER_RIGHT && dir == facing_dir.getClockWise());
+        }
+        return facing_state.is(AFBlockTags.CHAIRS_TUCKABLE_UNDER);
+    }
+
+    public boolean isChairBlocking(BlockState state, Level level, BlockPos pos) {
         if (!level.getEntitiesOfClass(SeatEntity.class, new AABB(pos)).isEmpty()) {
             return false;
         }
@@ -145,9 +160,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         BlockState left = level.getBlockState(pos.relative(facing).relative(facing.getCounterClockWise()));
         BlockState right = level.getBlockState(pos.relative(facing).relative(facing.getClockWise()));
         if (left.getBlock() instanceof ChairBlock) {
-            return !left.getValue(TUCKED) || left.getValue(FACING) != facing.getClockWise();
-        } else if (right.getBlock() instanceof ChairBlock) {
-            return !right.getValue(TUCKED) || right.getValue(FACING) != facing.getCounterClockWise();
+            if (left.getValue(TUCKED) && left.getValue(FACING) == facing.getClockWise()) return false;
+        }
+        if (right.getBlock() instanceof ChairBlock) {
+            if (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise()) return false;
         }
         return true;
     }
