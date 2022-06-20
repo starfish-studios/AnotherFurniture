@@ -167,9 +167,10 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public ShutterType getType(BlockState state, BlockState above, BlockState below) {
-        int shape = (state.getValue(FACING).get2DDataValue() + (state.getValue(OPEN) ? (state.getValue(LEFT) ? 3 : 1) : 0)) % 4;
-        boolean shape_above_same = above.is(state.getBlock()) && (above.getValue(FACING).get2DDataValue() + (above.getValue(OPEN) ? (above.getValue(LEFT) ? 3 : 1) : 0)) % 4 == shape;
-        boolean shape_below_same = below.is(state.getBlock()) && (below.getValue(FACING).get2DDataValue() + (below.getValue(OPEN) ? (below.getValue(LEFT) ? 3 : 1) : 0)) % 4 == shape;
+        boolean shape_above_same = above.is(state.getBlock()) && above.getValue(FACING) == state.getValue(FACING)
+                && above.getValue(OPEN) == state.getValue(OPEN) && above.getValue(LEFT) == state.getValue(LEFT);
+        boolean shape_below_same = below.is(state.getBlock()) && below.getValue(FACING) == state.getValue(FACING)
+                && below.getValue(OPEN) == state.getValue(OPEN) && below.getValue(LEFT) == state.getValue(LEFT);
 
         if (shape_above_same && !shape_below_same) {
             return ShutterType.BOTTOM;
