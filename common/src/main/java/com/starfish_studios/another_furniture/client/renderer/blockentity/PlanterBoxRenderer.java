@@ -15,7 +15,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
 @Environment(value= EnvType.CLIENT)
 public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEntity> {
@@ -29,6 +32,8 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
     public void render(PlanterBoxBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         Direction facing = pBlockEntity.getBlockState().getValue(PlanterBoxBlock.FACING).getOpposite();
         float rotation = -facing.toYRot();
+        BlockState lower;
+        BlockState upper = null;
 
         pPoseStack.pushPose();
 
@@ -39,11 +44,19 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
             Item item = pBlockEntity.getItemFromSlot(i);
 
             if (item != Items.AIR) {
-                BlockState state = ((BlockItem)item).getBlock().defaultBlockState();
+                Block block = ((BlockItem)item).getBlock();
+                if (block instanceof DoublePlantBlock) {
+                    lower = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER);
+                    upper = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER);
+                }
+                else {
+                    lower = block.defaultBlockState();
+                }
 
                 pPoseStack.pushPose();
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
-                pPoseStack.translate( 0.6f - 0.8 * i, 0f, 0.2f); // position each flower at left and right
+                pPoseStack.translate( 0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
+                pPoseStack.translate( 0f, 0.001f * i, 0.001f * i); // prevent z-clipping
 
                 switch (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
                     case EAST -> pPoseStack.translate(0f, 0f, -1.4f);
@@ -53,7 +66,12 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
                 if (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
                     pPoseStack.translate(0f, 0.9f, 0.36f);
                 }
-                blockRenderer.renderSingleBlock(state, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+
+                blockRenderer.renderSingleBlock(lower, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+                if (upper != null) {
+                    pPoseStack.translate(0f, 1.0f, 0f);
+                    blockRenderer.renderSingleBlock(upper, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+                }
                 pPoseStack.popPose();
             }
         }
