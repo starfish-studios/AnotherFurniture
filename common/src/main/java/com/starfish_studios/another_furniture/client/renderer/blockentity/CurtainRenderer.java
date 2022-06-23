@@ -8,6 +8,8 @@ import com.starfish_studios.another_furniture.block.CurtainBlock;
 import com.starfish_studios.another_furniture.block.entity.CurtainBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.CurtainType;
 import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -23,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 
+@Environment(value= EnvType.CLIENT)
 public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> {
     //public static final Material CURTAIN_OPEN_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain")); //change to open dyeable texturesheet
     //public static final Material CURTAIN_CLOSED_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain"));//change to closed dyeable texturesheet

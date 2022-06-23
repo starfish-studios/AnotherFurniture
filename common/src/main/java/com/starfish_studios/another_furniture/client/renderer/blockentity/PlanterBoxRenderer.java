@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.starfish_studios.another_furniture.block.PlanterBoxBlock;
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -15,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 
+@Environment(value= EnvType.CLIENT)
 public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEntity> {
     private BlockRenderDispatcher blockRenderer;
 
