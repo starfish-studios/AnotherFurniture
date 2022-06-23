@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
 import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -19,6 +21,7 @@ import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 
+@Environment(value= EnvType.CLIENT)
 public class ServiceBellButtonRenderer implements BlockEntityRenderer<ServiceBellBlockEntity> {
     public static final Material BELL_TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurniture.MOD_ID, "block/service_bell"));
     public static ModelLayerLocation SERVICE_BELL_MODEL = new ModelLayerLocation(new ResourceLocation(AnotherFurniture.MOD_ID, "service_bell"), "service_bell");
