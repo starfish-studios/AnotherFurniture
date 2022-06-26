@@ -85,7 +85,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
                     }
                     return InteractionResult.CONSUME;
                 }
-                if (!pLevel.isClientSide && shelfblockentity.removeItem(this.getPosition(pHit, pPos), pPlayer)) {
+                if (shelfblockentity.removeItem(this.getPosition(pHit, pPos), pPlayer, pLevel)) {
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -97,8 +97,8 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (!pState.is(pNewState.getBlock())) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof ShelfBlockEntity) {
-                Containers.dropContents(pLevel, pPos, ((ShelfBlockEntity)blockentity).getItems());
+            if (blockentity instanceof ShelfBlockEntity shelfBlockEntity) {
+                Containers.dropContents(pLevel, pPos, shelfBlockEntity.getItems());
             }
 
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
@@ -164,7 +164,8 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         if (pState.getValue(WATERLOGGED)) {
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
-        if (pLevel.getBlockState(pCurrentPos.above()).isFaceSturdy(pLevel, pCurrentPos, Direction.DOWN)) {
+        BlockState above = pLevel.getBlockState(pCurrentPos.above());
+        if (pDirection == Direction.UP && (above.isFaceSturdy(pLevel, pCurrentPos, Direction.DOWN) && !above.getVisualShape(pLevel, pCurrentPos.above(), CollisionContext.empty()).isEmpty())) {
             BlockEntity blockentity = pLevel.getBlockEntity(pCurrentPos);
             if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
                 shelfblockentity.removeAllItems();

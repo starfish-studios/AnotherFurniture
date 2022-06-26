@@ -3,7 +3,9 @@
     "values": [
         "#minecraft:flowers",
 		"#minecraft:saplings",
+		"#minecraft:leaves",
 		{"id":"#quark:hedges","required":false},
+		"minecraft:mangrove_roots",
 		"minecraft:sea_pickle",
 		"minecraft:bamboo",
 		"minecraft:red_mushroom",
