@@ -1,20 +1,20 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        "/ /"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:warped_planks"
-        },
-        "/": {
-            "item": "minecraft:stick"
-        }
+  "type": "minecraft:crafting_shaped",
+  "group": "tables",
+  "key": {
+    "#": {
+      "item": "minecraft:warped_planks"
     },
-    "result": {
-        "item": "another_furniture:warped_table",
-        "count": 3
-    },
-    "group": "tables"
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "/ /"
+  ],
+  "result": {
+    "count": 3,
+    "item": "another_furniture:warped_table"
+  }
 }

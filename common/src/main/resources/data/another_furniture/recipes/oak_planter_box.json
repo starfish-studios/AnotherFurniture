@@ -1,23 +1,23 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "SDS",
-        "###"
-    ],
-    "key": {
-        "S": {
-            "item": "minecraft:oak_slab"
-        },
-        "#": {
-            "item": "minecraft:oak_planks"
-        },
-        "D": {
-            "item": "minecraft:dirt"
-        }
+  "type": "minecraft:crafting_shaped",
+  "group": "planter_boxes",
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
     },
-    "result": {
-        "item": "another_furniture:oak_planter_box",
-        "count": 3
+    "D": {
+      "item": "minecraft:dirt"
     },
-    "group": "planter_boxes"
+    "S": {
+      "item": "minecraft:oak_slab"
+    }
+  },
+  "pattern": [
+    "SDS",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "item": "another_furniture:oak_planter_box"
+  }
 }

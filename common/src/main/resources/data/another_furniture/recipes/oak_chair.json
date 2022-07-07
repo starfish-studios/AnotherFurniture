@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "# ",
-        "##",
-        "//"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:oak_planks"
-        },
-        "/": {
-            "item": "minecraft:stick"
-        }
+  "type": "minecraft:crafting_shaped",
+  "group": "chairs",
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
     },
-    "result": {
-        "item": "another_furniture:oak_chair",
-        "count": 3
-    },
-    "group": "chairs"
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "# ",
+    "##",
+    "//"
+  ],
+  "result": {
+    "count": 3,
+    "item": "another_furniture:oak_chair"
+  }
 }

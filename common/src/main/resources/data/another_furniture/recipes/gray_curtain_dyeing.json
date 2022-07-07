@@ -1,16 +1,15 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "another_furniture:white_curtain"
-        },
-        {
-            "item": "minecraft:gray_dye"
-        }
-    ],
-    "result": {
-        "item": "another_furniture:gray_curtain",
-        "count": 1
+  "type": "minecraft:crafting_shapeless",
+  "group": "curtains",
+  "ingredients": [
+    {
+      "item": "minecraft:gray_dye"
     },
-    "group": "curtains"
+    {
+      "item": "another_furniture:white_curtain"
+    }
+  ],
+  "result": {
+    "item": "another_furniture:gray_curtain"
+  }
 }
