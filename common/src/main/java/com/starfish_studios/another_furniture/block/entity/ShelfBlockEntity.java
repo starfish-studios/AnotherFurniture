@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture.block.entity;
 
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
+import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 public class ShelfBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
@@ -88,7 +90,7 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
 
     public void removeAllItems() {
         boolean update = false;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < items.size(); i++) {
             if (!this.items.get(i).isEmpty()) {
                 double posX = worldPosition.getX() + 0.3 + 0.4 * (i % 2);
                 double posY = worldPosition.getY() + 1.0;
@@ -105,4 +107,8 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         }
     }
 
+    @PlatformOnly(PlatformOnly.FORGE)
+    public AABB getRenderBoundingBox() {
+        return new AABB(worldPosition.offset(0, 0, 0), worldPosition.offset(1, 2, 1));
+    }
 }

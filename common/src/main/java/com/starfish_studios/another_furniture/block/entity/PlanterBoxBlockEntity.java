@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture.block.entity;
 
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
+import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -8,6 +9,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -78,5 +80,29 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     @Override
     public void clearContent() {
         this.items.clear();
+    }
+
+    public void removeAllItems() {
+        boolean update = false;
+        for (int i = 0; i < items.size(); i++) {
+            if (!this.items.get(i).isEmpty()) {
+                double posX = worldPosition.getX() + 0.5;
+                double posY = worldPosition.getY() + 0.5;
+                double posZ = worldPosition.getZ() + 0.5;
+
+                ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
+                this.level.addFreshEntity(entity);
+                this.items.set(i, ItemStack.EMPTY);
+                update = true;
+            }
+        }
+        if (update) {
+            this.markUpdated();
+        }
+    }
+
+    @PlatformOnly(PlatformOnly.FORGE)
+    public AABB getRenderBoundingBox() {
+        return new AABB(worldPosition.offset(0, 0, 0), worldPosition.offset(1, 2, 1));
     }
 }

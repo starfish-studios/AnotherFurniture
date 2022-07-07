@@ -2,13 +2,11 @@ package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.*;
-import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 
 import java.util.function.Supplier;
@@ -47,8 +45,8 @@ public class AFBlocks {
     public static final Supplier<Block> CRIMSON_TABLE = registerBlock("crimson_table", () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> WARPED_TABLE = registerBlock("warped_table", () -> new TableBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
-    // Chair
-    public static final Supplier<Block> OAK_BENCH = registerBlock("oak_bench", () -> new BenchBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    // Bench
+    //public static final Supplier<Block> OAK_BENCH = registerBlock("oak_bench", () -> new BenchBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
     // Shutter
     public static final Supplier<Block> OAK_SHUTTER = registerBlock("oak_shutter", () -> new ShutterBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
@@ -92,7 +90,7 @@ public class AFBlocks {
 
     // Bell
     public static final Supplier<Block> SERVICE_BELL = registerBlock("service_bell", () -> new ServiceBellBlock(Block.Properties.of(Material.METAL).strength(2.0F, 3.0F).sound(SoundType.METAL)));
-    public static final Supplier<Block> LAMP = registerBlock("lamp", () -> new LampBlock(Block.Properties.of(Material.METAL).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_4) * 4) - 1 : 0).strength(2.0F, 3.0F).sound(SoundType.METAL)));
+    //public static final Supplier<Block> LAMP = registerBlock("lamp", () -> new LampBlock(Block.Properties.of(Material.METAL).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_4) * 4) - 1 : 0).strength(2.0F, 3.0F).sound(SoundType.METAL)));
 
     // Curtain
     public static final Supplier<Block> WHITE_CURTAIN = registerBlock("white_curtain", () -> new CurtainBlock(DyeColor.WHITE, Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
@@ -113,8 +111,8 @@ public class AFBlocks {
     public static final Supplier<Block> BLACK_CURTAIN = registerBlock("black_curtain", () -> new CurtainBlock(DyeColor.BLACK, Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
 
     // Sofa
-    public static final Supplier<Block> WHITE_SOFA = registerBlock("white_sofa", () -> new SofaBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> ORANGE_SOFA = registerBlock("orange_sofa", () -> new SofaBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
+    //public static final Supplier<Block> WHITE_SOFA = registerBlock("white_sofa", () -> new SofaBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
+    //public static final Supplier<Block> ORANGE_SOFA = registerBlock("orange_sofa", () -> new SofaBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);

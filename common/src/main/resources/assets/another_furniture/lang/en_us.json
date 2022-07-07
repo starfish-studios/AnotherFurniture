@@ -1,15 +1,10 @@
 {
     "itemGroup.another_furniture": "Another Furniture",
     "itemGroup.another_furniture.tab": "Another Furniture",
-    "block.another_furniture.service_bell.use": "Bell chimes",
-    "block.another_furniture.chair.tuck": "Chair tucked",
-    "block.another_furniture.chair.untuck": "Chair untucked",
-    "block.another_furniture.curtain.use": "Curtain moved",
-    "block.everycomp.table": "%s Table",
-    "block.everycomp.chair": "%s Chair",
-    "block.everycomp.shelf": "%s Shelf",
-    "block.everycomp.shutter": "%s Shutter",
-    "block.everycomp.planter_box": "%s Planter Box",
+    "subtitles.block.another_furniture.service_bell.use": "Bell chimes",
+    "subtitles.block.another_furniture.chair.tuck": "Chair tucked",
+    "subtitles.block.another_furniture.chair.untuck": "Chair untucked",
+    "subtitles.block.another_furniture.curtain.use": "Curtain moved",
     "item.another_furniture.hammer": "Hammer",
     "item.another_furniture.hammer.tooltip.1": "Right-click blocks to rotate them. Crouch",
     "item.another_furniture.hammer.tooltip.2": "to rotate in the opposite direction.",
@@ -74,7 +69,6 @@
     "block.another_furniture.green_stool": "Green Stool",
     "block.another_furniture.red_stool": "Red Stool",
     "block.another_furniture.black_stool": "Black Stool",
-    "block.another_furniture.service_bell": "Service Bell",
     "block.another_furniture.white_curtain": "White Curtain",
     "block.another_furniture.orange_curtain": "Orange Curtain",
     "block.another_furniture.magenta_curtain": "Magenta Curtain",
@@ -90,5 +84,6 @@
     "block.another_furniture.brown_curtain": "Brown Curtain",
     "block.another_furniture.green_curtain": "Green Curtain",
     "block.another_furniture.red_curtain": "Red Curtain",
-    "block.another_furniture.black_curtain": "Black Curtain"
+    "block.another_furniture.black_curtain": "Black Curtain",
+    "block.another_furniture.service_bell": "Service Bell"
 }

@@ -1,9 +1,9 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
-import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
-import com.starfish_studios.another_furniture.registry.AFBlockTags;
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFItemTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -44,32 +44,21 @@ public class PlanterBoxBlock extends BaseEntityBlock {
 
     public PlanterBoxBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, HorizontalConnectionType.SINGLE).setValue(ATTACHED, false));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(TYPE, HorizontalConnectionType.SINGLE)
+                .setValue(ATTACHED, false));
     }
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         boolean attached = pState.getValue(ATTACHED);
-        switch (pState.getValue(FACING)) {
-            case WEST:
-                return attached ? WEST_AABB : X_AXIS_AABB;
-            case EAST:
-                return attached ? EAST_AABB : X_AXIS_AABB;
-            case SOUTH:
-                return attached ? SOUTH_AABB : Z_AXIS_AABB;
-            default:
-                return attached ? NORTH_AABB : Z_AXIS_AABB;
-        }
-    }
-
-    @Override
-    public BlockState rotate(BlockState pState, Rotation pRot) {
-        return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+        return switch (pState.getValue(FACING)) {
+            case WEST -> attached ? WEST_AABB : X_AXIS_AABB;
+            case EAST -> attached ? EAST_AABB : X_AXIS_AABB;
+            case SOUTH -> attached ? SOUTH_AABB : Z_AXIS_AABB;
+            default -> attached ? NORTH_AABB : Z_AXIS_AABB;
+        };
     }
 
     @Override
@@ -85,13 +74,19 @@ public class PlanterBoxBlock extends BaseEntityBlock {
 
     @Override
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        BlockState above = pLevel.getBlockState(pCurrentPos.above());
         boolean attached = pState.getValue(ATTACHED);
+        if (pDirection == Direction.UP && attached && above.isFaceSturdy(pLevel, pCurrentPos, Direction.DOWN)) {
+            BlockEntity blockentity = pLevel.getBlockEntity(pCurrentPos);
+            if (blockentity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
+                planterBoxBlockEntity.removeAllItems();
+            }
+        }
+
         Direction facing = pState.getValue(FACING);
         if (attached && pDirection.getOpposite() == facing && !pState.canSurvive(pLevel, pCurrentPos)) {
             return Blocks.AIR.defaultBlockState();
         }
-
-
         BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
         BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(ATTACHED) == attached && (l_state.getValue(FACING) == facing || (!attached && l_state.getValue(FACING) == facing.getOpposite())));
@@ -126,17 +121,15 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
         if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
             ItemStack stack = pPlayer.getItemInHand(pHand);
-
-            Direction facing = pState.getValue(FACING);
-            boolean slot_0;
-            if (facing.getAxis() == Direction.Axis.X) {
-                slot_0 = pHit.getLocation().z - (double)pHit.getBlockPos().getZ() > 0.5D;
-            } else {
-                slot_0 = pHit.getLocation().x - (double)pHit.getBlockPos().getX() > 0.5D;
-            }
-            if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
-
             if (stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
+                Direction facing = pState.getValue(FACING);
+                boolean slot_0;
+                if (facing.getAxis() == Direction.Axis.X) {
+                    slot_0 = pHit.getLocation().z - (double)pHit.getBlockPos().getZ() > 0.5D;
+                } else {
+                    slot_0 = pHit.getLocation().x - (double)pHit.getBlockPos().getX() > 0.5D;
+                }
+                if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
                 if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
                     return InteractionResult.SUCCESS;
                 }
@@ -166,5 +159,15 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     @Override
     public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
         return false;
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRot) {
+        return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 }

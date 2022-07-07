@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/bench_right",
-    "textures": {
-        "top": "another_furniture:block/table/oak_top",
-        "sides": "another_furniture:block/table/oak_sides",
-        "particle": "another_furniture:block/table/oak_top"
-    }
-}
