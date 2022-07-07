@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,8 +28,8 @@ public class HammerItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        //tooltipComponents.add(Component.translatable("item.another_furniture.hammer.tooltip.1").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
-        //tooltipComponents.add(Component.translatable("item.another_furniture.hammer.tooltip.2").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(new TranslatableComponent("item.another_furniture.hammer.tooltip.1").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(new TranslatableComponent("item.another_furniture.hammer.tooltip.2").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

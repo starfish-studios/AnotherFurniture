@@ -1,22 +1,83 @@
 {
-	"parent": "minecraft:block/block",
-	"textures": {
-		"sides": "another_furniture:block/table/oak_sides",
-		"particle": "another_furniture:block/table/oak_top"
-	},
-	"elements": [
-		{
-			"name": "right_front_leg",
-			"from": [14, 0, 0],
-			"to": [16, 14, 2],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
-			"faces": {
-				"north": {"uv": [0, 10, 14, 12], "rotation": 270, "texture": "#sides"},
-				"east": {"uv": [0, 8, 14, 10], "rotation": 270, "texture": "#sides"},
-				"south": {"uv": [0, 12, 14, 14], "rotation": 270, "texture": "#sides"},
-				"west": {"uv": [0, 14, 14, 16], "rotation": 270, "texture": "#sides"},
-				"down": {"uv": [14, 8, 16, 10], "texture": "#sides", "cullface": "down"}
-			}
-		}
-	]
+    "parent": "minecraft:block/block",
+    "textures": {
+        "sides": "another_furniture:block/table/oak_sides",
+        "particle": "another_furniture:block/table/oak_top"
+    },
+    "elements": [
+        {
+            "name": "right_front_leg",
+            "from": [
+                14,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                14,
+                2
+            ],
+            "rotation": {
+                "angle": 0,
+                "axis": "y",
+                "origin": [
+                    0,
+                    -2,
+                    0
+                ]
+            },
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        10,
+                        14,
+                        12
+                    ],
+                    "rotation": 270,
+                    "texture": "#sides"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        8,
+                        14,
+                        10
+                    ],
+                    "rotation": 270,
+                    "texture": "#sides"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        12,
+                        14,
+                        14
+                    ],
+                    "rotation": 270,
+                    "texture": "#sides"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        14,
+                        14,
+                        16
+                    ],
+                    "rotation": 270,
+                    "texture": "#sides"
+                },
+                "down": {
+                    "uv": [
+                        14,
+                        8,
+                        16,
+                        10
+                    ],
+                    "texture": "#sides",
+                    "cullface": "down"
+                }
+            }
+        }
+    ]
 }

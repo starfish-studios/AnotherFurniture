@@ -1,18 +1,22 @@
 package com.starfish_studios.another_furniture.block.entity;
 
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
+import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 public class ShelfBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
@@ -59,11 +63,12 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         return false;
     }
 
-    public boolean removeItem(int index, Player player) {
+    public boolean removeItem(int index, Player player, Level level) {
         if (!this.items.get(index).isEmpty()) {
-            double posX = worldPosition.getX() + 0.3 + 0.4 * (index % 2);
-            double posY = worldPosition.getY() + 1.0;
-            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (index / 2);
+            if (level.isClientSide()) {
+                player.playSound(SoundEvents.ITEM_PICKUP, 1.0f, 1.0f);
+                return true;
+            }
 
             ItemStack item = this.items.get(index).copy();
             player.setItemSlot(EquipmentSlot.MAINHAND, item);
@@ -85,7 +90,7 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
 
     public void removeAllItems() {
         boolean update = false;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < items.size(); i++) {
             if (!this.items.get(i).isEmpty()) {
                 double posX = worldPosition.getX() + 0.3 + 0.4 * (i % 2);
                 double posY = worldPosition.getY() + 1.0;
@@ -102,4 +107,8 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
         }
     }
 
+    @PlatformOnly(PlatformOnly.FORGE)
+    public AABB getRenderBoundingBox() {
+        return new AABB(worldPosition.offset(0, 0, 0), worldPosition.offset(1, 2, 1));
+    }
 }

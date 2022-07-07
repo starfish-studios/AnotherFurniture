@@ -3,7 +3,6 @@ package com.starfish_studios.another_furniture.client.renderer.blockentity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
-import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayerLocation;

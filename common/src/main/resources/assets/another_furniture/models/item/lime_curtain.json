@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:item/curtain",
+    "parent": "another_furniture:item/template/curtain",
     "textures": {
         "all": "another_furniture:block/curtain/lime"
     }

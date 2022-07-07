@@ -27,8 +27,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 @Environment(value= EnvType.CLIENT)
 public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> {
-    //public static final Material CURTAIN_OPEN_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain")); //change to open dyeable texturesheet
-    //public static final Material CURTAIN_CLOSED_RESOURCE_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurnitureMod.MOD_ID, "block/curtain"));//change to closed dyeable texturesheet
     public static ModelLayerLocation CURTAIN_MODEL = new ModelLayerLocation(new ResourceLocation(AnotherFurniture.MOD_ID, "curtain"), "curtain");
     private static final String CURTAIN = "curtain";
     private final ModelPart curtain;
