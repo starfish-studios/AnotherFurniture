@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "//",
-        "WW",
-        "WW"
-    ],
-    "key": {
-        "W": {
-            "item": "minecraft:magenta_wool"
-        },
-        "/": {
-            "item": "minecraft:stick"
-        }
+  "type": "minecraft:crafting_shaped",
+  "group": "curtains",
+  "key": {
+    "/": {
+      "item": "minecraft:stick"
     },
-    "result": {
-        "item": "another_furniture:magenta_curtain",
-        "count": 3
-    },
-    "group": "curtains"
+    "W": {
+      "item": "minecraft:magenta_wool"
+    }
+  },
+  "pattern": [
+    "//",
+    "WW",
+    "WW"
+  ],
+  "result": {
+    "count": 3,
+    "item": "another_furniture:magenta_curtain"
+  }
 }
