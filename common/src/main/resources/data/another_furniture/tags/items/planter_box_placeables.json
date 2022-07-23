@@ -18,6 +18,7 @@
         "minecraft:brown_mushroom",
         "minecraft:crimson_fungus",
         "minecraft:warped_fungus",
+        "minecraft:fern",
         {
             "id": "quark:glow_shroom",
             "required": false
