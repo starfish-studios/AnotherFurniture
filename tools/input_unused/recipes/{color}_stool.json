@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#W#",
+        "/ /"
+    ],
+    "key": {
+        "#": {
+            "tag": "minecraft:planks"
+        },
+        "W": {
+            "item": "minecraft:{color}_wool"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:{color}_stool",
+        "count": 3
+    },
+    "group": "stools"
+}

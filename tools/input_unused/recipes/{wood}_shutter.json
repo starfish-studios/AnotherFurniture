@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SS",
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:{wood}_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:{wood}_shutter",
+        "count": 4
+    },
+    "group": "shutters"
+}

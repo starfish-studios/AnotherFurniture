@@ -63,10 +63,6 @@ public class AFRegistryImpl {
         return FabricItemGroupBuilder.build(name, icon);
     }
 
-    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
-        BlockRenderLayerMap.INSTANCE.putBlock(block.get(), type);
-    }
-
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
         EntityRendererRegistry.register(type.get(), renderProvider);
     }

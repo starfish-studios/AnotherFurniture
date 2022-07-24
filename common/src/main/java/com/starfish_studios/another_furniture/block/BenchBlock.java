@@ -2,33 +2,45 @@ package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.util.block.HammerableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock {
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
+public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
+    public static final BooleanProperty HAMMERABLE_ATTACHMENT = ModBlockStateProperties.HAMMERABLE_ATTACHMENT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape AABB_Z = Block.box(0, 0, 2, 16, 7, 14);
     protected static final VoxelShape AABB_X = Block.box(2, 0, 0, 14, 7, 16);
+
+    protected static final VoxelShape AABB_EAST = Shapes.or(AABB_X, Block.box(2.0D, 7.0D, 0.0D, 4.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_WEST = Shapes.or(AABB_X, Block.box(12.0D, 7.0D, 0.0D, 14.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_SOUTH = Shapes.or(AABB_Z, Block.box(0.0D, 7.0D, 2.0D, 16.0D, 16.0D, 4.0D));
+    protected static final VoxelShape AABB_NORTH = Shapes.or(AABB_Z, Block.box(0.0D, 7.0D, 12.0D, 16.0D, 16.0D, 14.0D));
 
     @Override
     public float seatHeight() {
@@ -38,15 +50,25 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public BenchBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.stateDefinition.any()
-                .setValue(AXIS, Direction.Axis.Z)
+                .setValue(FACING, Direction.NORTH)
                 .setValue(TYPE, HorizontalConnectionType.SINGLE)
+                .setValue(HAMMERABLE_ATTACHMENT, true)
                 .setValue(WATERLOGGED, false)
         );
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(AXIS) == Direction.Axis.Z ? AABB_Z : AABB_X;
+        Direction facing = state.getValue(FACING);
+        if (state.getValue(HAMMERABLE_ATTACHMENT)) {
+            return switch (facing) {
+                case EAST -> AABB_EAST;
+                case SOUTH -> AABB_SOUTH;
+                case WEST -> AABB_WEST;
+                default -> AABB_NORTH;
+            };
+        }
+        return facing.getAxis() == Direction.Axis.Z ? AABB_Z : AABB_X;
     }
 
     @Nullable
@@ -54,8 +76,16 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
-                .setValue(AXIS, pContext.getHorizontalDirection().getAxis())
+                .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (tryHammerBlock(pPlayer, pLevel, pPos, pState)) {
+            return InteractionResult.SUCCESS;
+        }
+        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
@@ -64,12 +94,11 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock {
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
 
-        Direction.Axis axis = pState.getValue(AXIS);
-        Direction facing = axis == Direction.Axis.Z ? Direction.NORTH : Direction.EAST;
+        Direction facing = pState.getValue(FACING);
         BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
         BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof BenchBlock && l_state.getValue(AXIS) == axis);
-        boolean r_side = (r_state.getBlock() instanceof BenchBlock && r_state.getValue(AXIS) == axis);
+        boolean l_side = (l_state.getBlock() instanceof BenchBlock && l_state.getValue(FACING) == facing);
+        boolean r_side = (r_state.getBlock() instanceof BenchBlock && r_state.getValue(FACING) == facing);
         HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
         return pState.setValue(TYPE, type);
     }
@@ -79,17 +108,18 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
-        if (rotation == Rotation.CLOCKWISE_90 || rotation == Rotation.COUNTERCLOCKWISE_90) {
-            if (state.getValue(AXIS) == Direction.Axis.Z) return state.setValue(AXIS, Direction.Axis.X);
-            else return state.setValue(AXIS, Direction.Axis.Z);
-        }
-        return state;
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AXIS, TYPE, WATERLOGGED);
+        pBuilder.add(FACING, TYPE, HAMMERABLE_ATTACHMENT, WATERLOGGED);
     }
 
     @Override

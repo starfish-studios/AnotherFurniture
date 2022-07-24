@@ -56,6 +56,17 @@ public class RecipeGenerator extends RecipeProvider {
         table(consumer, AFBlocks.CRIMSON_TABLE.get(), Items.CRIMSON_PLANKS);
         table(consumer, AFBlocks.WARPED_TABLE.get(), Items.WARPED_PLANKS);
 
+        // Benches
+        bench(consumer, AFBlocks.OAK_BENCH.get(), Items.OAK_PLANKS);
+        bench(consumer, AFBlocks.SPRUCE_BENCH.get(), Items.SPRUCE_PLANKS);
+        bench(consumer, AFBlocks.BIRCH_BENCH.get(), Items.BIRCH_PLANKS);
+        bench(consumer, AFBlocks.JUNGLE_BENCH.get(), Items.JUNGLE_PLANKS);
+        bench(consumer, AFBlocks.ACACIA_BENCH.get(), Items.ACACIA_PLANKS);
+        bench(consumer, AFBlocks.DARK_OAK_BENCH.get(), Items.DARK_OAK_PLANKS);
+        bench(consumer, AFBlocks.MANGROVE_BENCH.get(), Items.MANGROVE_PLANKS);
+        bench(consumer, AFBlocks.CRIMSON_BENCH.get(), Items.CRIMSON_PLANKS);
+        bench(consumer, AFBlocks.WARPED_BENCH.get(), Items.WARPED_PLANKS);
+
         // Shutters
         shutter(consumer, AFBlocks.OAK_SHUTTER.get(), Items.OAK_SLAB);
         shutter(consumer, AFBlocks.SPRUCE_SHUTTER.get(), Items.SPRUCE_SLAB);
@@ -154,7 +165,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .pattern("III")
                 .define('N', Items.IRON_NUGGET)
                 .define('I', Items.IRON_INGOT)
-                .unlockedBy("has_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WHITE_WOOL))
+                .unlockedBy("has_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
                 .save(consumer);
     }
 
@@ -189,6 +200,18 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('/', Items.STICK)
                 .unlockedBy("has_planks", InventoryChangeTrigger.TriggerInstance.hasItems(planks))
                 .group("tables")
+                .save(consumer);
+    }
+
+    private static void bench(Consumer<FinishedRecipe> consumer, ItemLike table, ItemLike slab) {
+        ShapedRecipeBuilder.shaped(table, 3)
+                .pattern("/  ")
+                .pattern("SSS")
+                .pattern("/ /")
+                .define('S', slab)
+                .define('/', Items.STICK)
+                .unlockedBy("has_planks", InventoryChangeTrigger.TriggerInstance.hasItems(slab))
+                .group("benches")
                 .save(consumer);
     }
 

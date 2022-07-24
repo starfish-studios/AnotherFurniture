@@ -29,23 +29,24 @@ import org.jetbrains.annotations.Nullable;
 
 public class LampBlock extends Block implements SimpleWaterloggedBlock {
     protected static final int LEVEL_MIN = 1;
-    protected static final int LEVEL_MAX = 4;
+    protected static final int LEVEL_MAX = 3;
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final DirectionProperty FACING = ModBlockStateProperties.FACING_EXCEPT_DOWN;
-    public static final IntegerProperty LEVEL = ModBlockStateProperties.LEVEL_1_4;
+    public static final IntegerProperty LEVEL = ModBlockStateProperties.LEVEL_1_3;
 
-    protected static final VoxelShape AABB_UP = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
-    protected static final VoxelShape AABB_NORTH = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
-    protected static final VoxelShape AABB_EAST = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
-    protected static final VoxelShape AABB_SOUTH = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
-    protected static final VoxelShape AABB_WEST = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
+    protected static final VoxelShape AABB_UP = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 13.0D, 12.0D);
+    protected static final VoxelShape AABB_NORTH = Block.box(3.0D, 4.0D, 6.0D, 13.0D, 16.0D, 16.0D);
+    protected static final VoxelShape AABB_EAST = Block.box(0.0D, 4.0D, 3.0D, 10.0D, 16.0D, 13.0D);
+    protected static final VoxelShape AABB_SOUTH = Block.box(3.0D, 4.0D, 0.0D, 13.0D, 16.0D, 10.0D);
+    protected static final VoxelShape AABB_WEST = Block.box(6.0D, 4.0D, 3.0D, 16.0D, 16.0D, 13.0D);
 
     public LampBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.UP)
                 .setValue(LEVEL, LEVEL_MAX)
                 .setValue(LIT, true)
                 .setValue(POWERED, false)

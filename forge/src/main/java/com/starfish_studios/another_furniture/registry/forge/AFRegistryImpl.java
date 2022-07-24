@@ -3,8 +3,6 @@ package com.starfish_studios.another_furniture.registry.forge;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.mixin.forge.FireBlockAccessor;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -18,7 +16,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,9 +26,9 @@ import java.util.function.Supplier;
 public class AFRegistryImpl {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AnotherFurniture.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, AnotherFurniture.MOD_ID);
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, AnotherFurniture.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, AnotherFurniture.MOD_ID);
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AnotherFurniture.MOD_ID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, AnotherFurniture.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, AnotherFurniture.MOD_ID);
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
@@ -64,10 +61,6 @@ public class AFRegistryImpl {
                 return icon.get();
             }
         };
-    }
-
-    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
-        ItemBlockRenderTypes.setRenderLayer(block.get(), type);
     }
 
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {

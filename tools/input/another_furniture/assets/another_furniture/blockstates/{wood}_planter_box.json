@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "facing=north,attached=true,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}_attached"
+        },
+        "facing=east,attached=true,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}_attached",
+            "y": 90
+        },
+        "facing=south,attached=true,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}_attached",
+            "y": 180
+        },
+        "facing=west,attached=true,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}_attached",
+            "y": 270
+        },
+        "facing=north,attached=true,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_left"
+        },
+        "facing=east,attached=true,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_left",
+            "y": 90
+        },
+        "facing=south,attached=true,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_left",
+            "y": 180
+        },
+        "facing=west,attached=true,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_left",
+            "y": 270
+        },
+        "facing=north,attached=true,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_middle"
+        },
+        "facing=east,attached=true,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_middle",
+            "y": 90
+        },
+        "facing=south,attached=true,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_middle",
+            "y": 180
+        },
+        "facing=west,attached=true,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_middle",
+            "y": 270
+        },
+        "facing=north,attached=true,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_right"
+        },
+        "facing=east,attached=true,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_right",
+            "y": 90
+        },
+        "facing=south,attached=true,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_right",
+            "y": 180
+        },
+        "facing=west,attached=true,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_attached_right",
+            "y": 270
+        },
+        "facing=north,attached=false,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}"
+        },
+        "facing=east,attached=false,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}",
+            "y": 90
+        },
+        "facing=south,attached=false,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}",
+            "y": 180
+        },
+        "facing=west,attached=false,type=single": {
+            "model": "another_furniture:block/planter_box/{wood}",
+            "y": 270
+        },
+        "facing=north,attached=false,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_left"
+        },
+        "facing=east,attached=false,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_left",
+            "y": 90
+        },
+        "facing=south,attached=false,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_left",
+            "y": 180
+        },
+        "facing=west,attached=false,type=left": {
+            "model": "another_furniture:block/planter_box/{wood}_left",
+            "y": 270
+        },
+        "facing=north,attached=false,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_middle"
+        },
+        "facing=east,attached=false,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_middle",
+            "y": 90
+        },
+        "facing=south,attached=false,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_middle",
+            "y": 180
+        },
+        "facing=west,attached=false,type=middle": {
+            "model": "another_furniture:block/planter_box/{wood}_middle",
+            "y": 270
+        },
+        "facing=north,attached=false,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_right"
+        },
+        "facing=east,attached=false,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_right",
+            "y": 90
+        },
+        "facing=south,attached=false,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_right",
+            "y": 180
+        },
+        "facing=west,attached=false,type=right": {
+            "model": "another_furniture:block/planter_box/{wood}_right",
+            "y": 270
+        }
+    }
+}

@@ -7,7 +7,6 @@ import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.CurtainBlock;
 import com.starfish_studios.another_furniture.block.entity.CurtainBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.CurtainType;
-import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayerLocation;

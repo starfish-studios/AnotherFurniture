@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/lamp_wall",
+    "textures": {
+        "colored": "another_furniture:block/lamp/{color}",
+        "particle": "another_furniture:block/lamp/{color}"
+    }
+}
