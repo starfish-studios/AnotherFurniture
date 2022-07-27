@@ -1,5 +1,6 @@
 {
     "parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
     "textures": {
         "back": "another_furniture:block/chair/oak_back",
         "bottom": "another_furniture:block/chair/oak_bottom",
@@ -11,12 +12,12 @@
             "from": [
                 3,
                 2,
-                -6
+                3
             ],
             "to": [
                 13,
                 4,
-                4
+                13
             ],
             "rotation": {
                 "angle": 0,
@@ -70,12 +71,12 @@
             "from": [
                 13,
                 2,
-                -6
+                3
             ],
             "to": [
                 3,
                 4,
-                4
+                13
             ],
             "rotation": {
                 "angle": 0,
@@ -129,12 +130,12 @@
             "from": [
                 2,
                 7,
-                3
+                12
             ],
             "to": [
                 4,
                 16,
-                5
+                14
             ],
             "rotation": {
                 "angle": 0,
@@ -198,12 +199,12 @@
             "from": [
                 12,
                 7,
-                3
+                12
             ],
             "to": [
                 14,
                 16,
-                5
+                14
             ],
             "rotation": {
                 "angle": 0,
@@ -267,12 +268,12 @@
             "from": [
                 4,
                 7,
-                4
+                13
             ],
             "to": [
                 12,
                 16,
-                4
+                13
             ],
             "rotation": {
                 "angle": 0,
@@ -308,12 +309,12 @@
             "from": [
                 2,
                 5,
-                -7
+                2
             ],
             "to": [
                 14,
                 7,
-                5
+                14
             ],
             "rotation": {
                 "angle": 0,
@@ -388,12 +389,12 @@
             "from": [
                 2,
                 0,
-                3
+                12
             ],
             "to": [
                 4,
                 5,
-                5
+                14
             ],
             "rotation": {
                 "angle": 0,
@@ -457,12 +458,12 @@
             "from": [
                 12,
                 0,
-                -7
+                2
             ],
             "to": [
                 14,
                 5,
-                -5
+                4
             ],
             "rotation": {
                 "angle": 0,
@@ -517,7 +518,8 @@
                         16,
                         2
                     ],
-                    "texture": "#bottom"
+                    "texture": "#bottom",
+                    "cullface": "down"
                 }
             }
         },
@@ -525,12 +527,12 @@
             "from": [
                 12,
                 0,
-                3
+                12
             ],
             "to": [
                 14,
                 5,
-                5
+                14
             ],
             "rotation": {
                 "angle": 0,
@@ -594,12 +596,12 @@
             "from": [
                 2,
                 0,
-                -7
+                2
             ],
             "to": [
                 4,
                 5,
-                -5
+                4
             ],
             "rotation": {
                 "angle": 0,
@@ -654,7 +656,8 @@
                         16,
                         2
                     ],
-                    "texture": "#bottom"
+                    "texture": "#bottom",
+                    "cullface": "down"
                 }
             }
         }

@@ -1,8 +1,10 @@
 {
     "parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
     "textures": {
-        "particle": "another_furniture:block/shutter/oak_middle",
-        "middle": "another_furniture:block/shutter/oak_middle"
+        "middle": "another_furniture:block/shutter/oak_middle",
+        "particle": "another_furniture:block/shutter/oak_top",
+        "top": "another_furniture:block/shutter/oak_top"
     },
     "elements": [
         {
@@ -24,7 +26,7 @@
                         16,
                         16
                     ],
-                    "texture": "#middle"
+                    "texture": "#top"
                 },
                 "east": {
                     "uv": [
@@ -43,7 +45,7 @@
                         16,
                         16
                     ],
-                    "texture": "#middle",
+                    "texture": "#top",
                     "cullface": "south"
                 },
                 "west": {
@@ -55,6 +57,17 @@
                     ],
                     "texture": "#middle",
                     "cullface": "west"
+                },
+                "up": {
+                    "uv": [
+                        3,
+                        0,
+                        0,
+                        16
+                    ],
+                    "rotation": 90,
+                    "texture": "#middle",
+                    "cullface": "up"
                 }
             }
         }

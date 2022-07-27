@@ -19,7 +19,7 @@ Another Furniture aims to add furniture, like many other mods, with a goal of st
 [[dependencies.another_furniture]]
 modId = "forge"
 mandatory = true
-versionRange = "[41,41.0.64)"
+versionRange = "[41.1.0,)"
 ordering = "NONE"
 side = "BOTH"
 

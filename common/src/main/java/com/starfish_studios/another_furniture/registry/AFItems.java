@@ -14,7 +14,5 @@ import java.util.function.Supplier;
 
 public class AFItems {
 
-    //public static final Supplier<HammerItem> HAMMER = AFRegistry.registerItem("hammer", () -> new HammerItem(new Item.Properties().tab(AnotherFurniture.TAB)));
-
     public static void init() {}
 }

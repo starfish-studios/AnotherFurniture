@@ -154,7 +154,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .pattern("III")
                 .define('N', Items.IRON_NUGGET)
                 .define('I', Items.IRON_INGOT)
-                .unlockedBy("has_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WHITE_WOOL))
+                .unlockedBy("has_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
                 .save(consumer);
     }
 
