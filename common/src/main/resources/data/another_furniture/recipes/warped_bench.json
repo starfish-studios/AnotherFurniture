@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/  ",
+        "SSS",
+        "/ /"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:warped_slab"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:warped_bench",
+        "count": 3
+    },
+    "group": "benches"
+}

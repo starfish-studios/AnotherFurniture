@@ -6,15 +6,16 @@ import com.starfish_studios.another_furniture.client.renderer.blockentity.Servic
 import com.starfish_studios.another_furniture.client.renderer.blockentity.ShelfRenderer;
 import com.starfish_studios.another_furniture.client.renderer.entity.SeatRenderer;
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
-import com.starfish_studios.another_furniture.registry.AFBlocks;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
-import net.minecraft.client.renderer.RenderType;
 
 public class AnotherFurnitureClient {
 
     public static void init() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> features/2.1.0
         AFRegistry.registerEntityRenderers(AFEntityTypes.SEAT, SeatRenderer::new);
 
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SHELF, ShelfRenderer::new);

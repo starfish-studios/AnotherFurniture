@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "facing=north,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak"
+        },
+        "facing=east,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak",
+            "y": 90
+        },
+        "facing=south,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak",
+            "y": 180
+        },
+        "facing=west,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak",
+            "y": 270
+        },
+        "facing=north,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_left"
+        },
+        "facing=east,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_left",
+            "y": 90
+        },
+        "facing=south,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_left",
+            "y": 180
+        },
+        "facing=west,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_left",
+            "y": 270
+        },
+        "facing=north,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_middle"
+        },
+        "facing=east,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_middle",
+            "y": 90
+        },
+        "facing=south,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_middle",
+            "y": 180
+        },
+        "facing=west,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_middle",
+            "y": 270
+        },
+        "facing=north,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_right"
+        },
+        "facing=east,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_right",
+            "y": 90
+        },
+        "facing=south,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_right",
+            "y": 180
+        },
+        "facing=west,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/dark_oak_right",
+            "y": 270
+        },
+        "facing=north,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless"
+        },
+        "facing=east,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless",
+            "y": 90
+        },
+        "facing=south,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless",
+            "y": 180
+        },
+        "facing=west,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless",
+            "y": 270
+        },
+        "facing=north,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_left"
+        },
+        "facing=east,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_left",
+            "y": 90
+        },
+        "facing=south,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_left",
+            "y": 180
+        },
+        "facing=west,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_left",
+            "y": 270
+        },
+        "facing=north,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_middle"
+        },
+        "facing=east,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_middle",
+            "y": 90
+        },
+        "facing=south,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_middle",
+            "y": 180
+        },
+        "facing=west,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_middle",
+            "y": 270
+        },
+        "facing=north,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_right"
+        },
+        "facing=east,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_right",
+            "y": 90
+        },
+        "facing=south,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_right",
+            "y": 180
+        },
+        "facing=west,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/dark_oak_backless_right",
+            "y": 270
+        }
+    }
+}

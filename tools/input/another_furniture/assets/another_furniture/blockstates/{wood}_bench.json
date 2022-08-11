@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "facing=north,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}"
+        },
+        "facing=east,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}",
+            "y": 90
+        },
+        "facing=south,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}",
+            "y": 180
+        },
+        "facing=west,type=single,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}",
+            "y": 270
+        },
+        "facing=north,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_left"
+        },
+        "facing=east,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_left",
+            "y": 90
+        },
+        "facing=south,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_left",
+            "y": 180
+        },
+        "facing=west,type=left,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_left",
+            "y": 270
+        },
+        "facing=north,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_middle"
+        },
+        "facing=east,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_middle",
+            "y": 90
+        },
+        "facing=south,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_middle",
+            "y": 180
+        },
+        "facing=west,type=middle,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_middle",
+            "y": 270
+        },
+        "facing=north,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_right"
+        },
+        "facing=east,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_right",
+            "y": 90
+        },
+        "facing=south,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_right",
+            "y": 180
+        },
+        "facing=west,type=right,hammer_state=true": {
+            "model": "another_furniture:block/bench/{wood}_right",
+            "y": 270
+        },
+		"facing=north,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless"
+        },
+        "facing=east,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless",
+            "y": 90
+        },
+        "facing=south,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless",
+            "y": 180
+        },
+        "facing=west,type=single,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless",
+            "y": 270
+        },
+        "facing=north,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_left"
+        },
+        "facing=east,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_left",
+            "y": 90
+        },
+        "facing=south,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_left",
+            "y": 180
+        },
+        "facing=west,type=left,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_left",
+            "y": 270
+        },
+        "facing=north,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_middle"
+        },
+        "facing=east,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_middle",
+            "y": 90
+        },
+        "facing=south,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_middle",
+            "y": 180
+        },
+        "facing=west,type=middle,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_middle",
+            "y": 270
+        },
+        "facing=north,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_right"
+        },
+        "facing=east,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_right",
+            "y": 90
+        },
+        "facing=south,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_right",
+            "y": 180
+        },
+        "facing=west,type=right,hammer_state=false": {
+            "model": "another_furniture:block/bench/{wood}_backless_right",
+            "y": 270
+        }
+    }
+}

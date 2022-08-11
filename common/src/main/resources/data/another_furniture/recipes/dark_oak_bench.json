@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/  ",
+        "SSS",
+        "/ /"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:dark_oak_slab"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:dark_oak_bench",
+        "count": 3
+    },
+    "group": "benches"
+}

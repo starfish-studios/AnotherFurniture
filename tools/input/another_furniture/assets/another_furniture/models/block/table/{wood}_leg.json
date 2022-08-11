@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/table_leg",
+    "textures": {
+        "sides": "another_furniture:block/table/{wood}_sides",
+        "particle": "another_furniture:block/table/{wood}_top"
+    }
+}

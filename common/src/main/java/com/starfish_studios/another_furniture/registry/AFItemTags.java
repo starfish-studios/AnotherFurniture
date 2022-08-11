@@ -19,6 +19,7 @@ public class AFItemTags {
 
     public static final TagKey<Item> PLANTER_BOX_PLACEABLES = itemTag("planter_box_placeables");
     public static final TagKey<Item> PLANTER_BOX_BANNED = itemTag("planter_box_banned");
+    public static final TagKey<Item> FURNITURE_HAMMER = itemTag("furniture_hammers");
 
     private static TagKey<Item> itemTag(String name) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));

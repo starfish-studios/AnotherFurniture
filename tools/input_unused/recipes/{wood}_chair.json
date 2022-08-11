@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# ",
+        "##",
+        "//"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:{wood}_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "another_furniture:{wood}_chair",
+        "count": 3
+    },
+    "group": "chairs"
+}
