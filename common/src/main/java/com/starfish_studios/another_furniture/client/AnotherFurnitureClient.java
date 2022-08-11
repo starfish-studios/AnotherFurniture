@@ -12,10 +12,6 @@ import com.starfish_studios.another_furniture.registry.AFRegistry;
 public class AnotherFurnitureClient {
 
     public static void init() {
-<<<<<<< HEAD
-
-=======
->>>>>>> features/2.1.0
         AFRegistry.registerEntityRenderers(AFEntityTypes.SEAT, SeatRenderer::new);
 
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SHELF, ShelfRenderer::new);

@@ -1,5 +1,6 @@
 {
 	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
 	"texture_size": [64, 64],
 	"textures": {
 		"1": "another_furniture:block/bench/oak"
