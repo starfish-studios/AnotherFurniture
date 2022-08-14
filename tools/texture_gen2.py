@@ -9,7 +9,11 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\planks", template_name =
 
     palette_data = []
     for y in range(img_size[0]):
+        if y > 15:
+            continue
         for x in range(img_size[1]):
+            if x > 15:
+                continue
             add = True
             for palette_data_entry in palette_data:
                 if palette_data_entry["color"] == img_loaded[x,y] or img_loaded[x,y][3] == 0:
@@ -88,12 +92,13 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
 
     
 
-    colors = [os.path.join(dp, f) for dp, dn, filenames in os.walk(color_path) for f in filenames if os.path.splitext(f)[1] == '.png']
+    colors = [os.path.join(dp, f) for dp, dn, filenames in os.walk(color_path) for f in filenames if os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0] in color]
     templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(template_path) for f in filenames if (os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0].startswith("white_"))]
     
     primary_palette_data = get_palette_data(color_path, "white")
     
     for color in colors:
+        print(color)
         plank_nopng = color.replace(".png", "")
         palette_noload = Image.open(color).convert("RGBA",dither=Image.Dither.NONE,colors=7)
         palette = palette_noload.load()
