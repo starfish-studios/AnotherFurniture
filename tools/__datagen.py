@@ -174,7 +174,7 @@ def getInputFiles():
     return input_files
 #################################################################
 
-def generateHardcodedTags(namespace: str = "minecraft", item: dict, variant: str = None):
+def generateHardcodedTags(item: dict, namespace: str = "minecraft", variant: str = None):
     item_name, full_item_name = getItemName(item, variant)
     path_non_flammable_wood = f"{output_path}\\{namespace}\\data\\minecraft\\tags\\blocks\\non_flammable_wood.json"
     if "variant_type" in item and "non_flammable_wood" in variants and variant in variants["non_flammable_wood"]:
@@ -204,7 +204,7 @@ def generateHardcodedTags(namespace: str = "minecraft", item: dict, variant: str
             print(f"[Save][Tags][Blocks][mineable/{mineable_type}] {full_item_name}")
     
 
-def generateLang(namespace: str = "minecraft", item: dict, variant: str = None):
+def generateLang(item: dict, namespace: str = "minecraft", variant: str = None):
     item_name, full_item_name = getItemName(item, variant)
     save_path = f"{output_path}\\{namespace}\\assets\\{namespace}\\lang\\en_us.json"
     if os.path.exists(save_path):
@@ -221,7 +221,7 @@ def generateLang(namespace: str = "minecraft", item: dict, variant: str = None):
         print(f"[Save][Lang][en_us] {lang} = {lang_string}")
 
 
-def generateTag(namespace: str = "minecraft", item: dict, variant: str = None):
+def generateTag(item: dict, namespace: str = "minecraft", variant: str = None):
     if variant != None:
         item_name, full_item_name = getItemName(item, variant)
         plural_item_name = tryGetPlural(item["type"])
@@ -250,10 +250,10 @@ def generateTag(namespace: str = "minecraft", item: dict, variant: str = None):
 
 
 
-def generateDataForItem(namespace: str = "minecraft", item: dict, variant: str = None, version: str = ""):
-    generateLang(namespace, item, variant)
-    generateTag(namespace, item, variant)
-    generateHardcodedTags(namespace, item, variant)
+def generateDataForItem(item: dict, namespace: str = "minecraft", variant: str = None, version: str = ""):
+    generateLang(namespace, variant, item)
+    generateTag(namespace, variant, item)
+    generateHardcodedTags(namespace, variant, item)
 
 
 def generateDataForVariants():
@@ -290,9 +290,9 @@ def generateAllData():
     for item in block_item_registry:
         if "variant_type" in item and item["variant_type"] in variants:
             for variant in variants[item["variant_type"]]:
-                generateDataForItem(item, variant)
+                generateDataForItem(item, namespace, variant)
         else:
-            generateDataForItem(item)
+            generateDataForItem(item, namespace)
             
 settings_print_saves = False
 
@@ -311,5 +311,5 @@ ensure_outputs_exist()
 
 input_files = getInputFiles()
 addInputLangsFromOutput()
-variants = getVariantList()
+variants = getVariantList(namespace)
 generateAllData()

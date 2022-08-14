@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "facing=north,tucked=false": {
+            "model": "another_furniture:block/chair/acacia"
+        },
+        "facing=east,tucked=false": {
+            "model": "another_furniture:block/chair/acacia",
+            "y": 90
+        },
+        "facing=south,tucked=false": {
+            "model": "another_furniture:block/chair/acacia",
+            "y": 180
+        },
+        "facing=west,tucked=false": {
+            "model": "another_furniture:block/chair/acacia",
+            "y": 270
+        },
+        "facing=north,tucked=true": {
+            "model": "another_furniture:block/chair/acacia_tucked"
+        },
+        "facing=east,tucked=true": {
+            "model": "another_furniture:block/chair/acacia_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true": {
+            "model": "another_furniture:block/chair/acacia_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true": {
+            "model": "another_furniture:block/chair/acacia_tucked",
+            "y": 270
+        }
+    }
+}

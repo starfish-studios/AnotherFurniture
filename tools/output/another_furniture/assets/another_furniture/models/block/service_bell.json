@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/service_bell",
+    "textures": {
+        "all": "another_furniture:block/service_bell",
+        "particle": "another_furniture:block/service_bell"
+    }
+}

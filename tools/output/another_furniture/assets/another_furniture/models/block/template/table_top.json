@@ -1,0 +1,85 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "another_furniture:block/table/oak_top",
+        "top": "another_furniture:block/table/oak_top",
+        "sides": "another_furniture:block/table/oak_sides"
+    },
+    "elements": [
+        {
+            "name": "top",
+            "from": [
+                0,
+                14,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        2,
+                        16,
+                        4
+                    ],
+                    "texture": "#sides",
+                    "cullface": "north"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#sides",
+                    "cullface": "east"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        6,
+                        16,
+                        8
+                    ],
+                    "texture": "#sides",
+                    "cullface": "south"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        4,
+                        16,
+                        6
+                    ],
+                    "texture": "#sides",
+                    "cullface": "west"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#top",
+                    "cullface": "up"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "rotation": 180,
+                    "texture": "#top"
+                }
+            }
+        }
+    ]
+}

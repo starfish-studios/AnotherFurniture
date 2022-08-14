@@ -1,0 +1,10 @@
+{
+    "parent": "another_furniture:block/template/stool",
+    "textures": {
+        "bottom": "another_furniture:block/stool/bottom",
+        "legs": "another_furniture:block/stool/legs",
+        "side": "another_furniture:block/stool/orange_side",
+        "top": "another_furniture:block/stool/orange_top",
+        "particle": "another_furniture:block/stool/orange_top"
+    }
+}
