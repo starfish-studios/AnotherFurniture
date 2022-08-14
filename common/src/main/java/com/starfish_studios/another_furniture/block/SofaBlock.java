@@ -6,6 +6,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
@@ -22,6 +24,18 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
 
     protected static final VoxelShape BOTTOM_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+
+    protected static final VoxelShape AABB_EAST = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 0.0D, 5.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_WEST = Shapes.or(BOTTOM_AABB, Block.box(11.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_SOUTH = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 5.0D));
+    protected static final VoxelShape AABB_NORTH = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 11.0D, 16.0D, 16.0D, 16.0D));
+
+    protected static final VoxelShape BOTTOM_AABB_RENDER = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+
+    protected static final VoxelShape AABB_EAST_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 0.0D, 5.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_WEST_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(11.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D));
+    protected static final VoxelShape AABB_SOUTH_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 5.0D));
+    protected static final VoxelShape AABB_NORTH_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 11.0D, 16.0D, 16.0D, 16.0D));
 
     public SofaBlock(Properties properties) {
         super(properties);
@@ -35,7 +49,7 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
         BlockPos blockPos = context.getClickedPos();
         FluidState fluidState = context.getLevel().getFluidState(blockPos);
         BlockState blockState = this.defaultBlockState()
-                .setValue(FACING, context.getHorizontalDirection())
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
         return blockState.setValue(SHAPE, getConnection(blockState, context.getLevel(), blockPos));
     }
@@ -49,8 +63,15 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return direction.getAxis().isHorizontal() ? state.setValue(SHAPE, getConnection(state, level, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return BOTTOM_AABB;
+        Direction facing = state.getValue(FACING);
+        return switch (facing) {
+            case EAST -> AABB_EAST;
+            case SOUTH -> AABB_SOUTH;
+            case WEST -> AABB_WEST;
+            default -> AABB_NORTH;
+        };
     }
 
     @Override

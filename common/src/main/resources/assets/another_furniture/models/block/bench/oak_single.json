@@ -1,5 +1,5 @@
 {
-	"parent": "another_furniture:block/template/bench_middle",
+	"parent": "another_furniture:block/template/bench_single",
 	"textures": {
 		"2": "another_furniture:block/bench/oak",
 		"particle": "another_furniture:block/bench/oak"

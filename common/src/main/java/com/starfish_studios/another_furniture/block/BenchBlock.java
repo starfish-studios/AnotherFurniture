@@ -30,7 +30,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
+    public static final EnumProperty<HorizontalConnectionType> CONNECTION_TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE_1;
+    public static final EnumProperty<HorizontalConnectionType> BACK_TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE_2;
     public static final BooleanProperty HAMMERABLE_ATTACHMENT = ModBlockStateProperties.HAMMERABLE_ATTACHMENT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -51,7 +52,8 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
         super(properties);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, HorizontalConnectionType.SINGLE)
+                .setValue(CONNECTION_TYPE, HorizontalConnectionType.SINGLE)
+                .setValue(BACK_TYPE, HorizontalConnectionType.SINGLE)
                 .setValue(HAMMERABLE_ATTACHMENT, true)
                 .setValue(WATERLOGGED, false)
         );
@@ -99,8 +101,12 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
         BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof BenchBlock && l_state.getValue(FACING) == facing);
         boolean r_side = (r_state.getBlock() instanceof BenchBlock && r_state.getValue(FACING) == facing);
-        HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
-        return pState.setValue(TYPE, type);
+        boolean back_l_side = (l_state.getBlock() instanceof BenchBlock && l_state.getValue(FACING) == facing && l_state.getValue(HAMMERABLE_ATTACHMENT));
+        boolean back_r_side = (r_state.getBlock() instanceof BenchBlock && r_state.getValue(FACING) == facing && r_state.getValue(HAMMERABLE_ATTACHMENT));
+
+        HorizontalConnectionType connection_type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
+        HorizontalConnectionType back_type = back_l_side && back_r_side ? HorizontalConnectionType.MIDDLE : (back_r_side ? HorizontalConnectionType.LEFT : (back_l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
+        return pState.setValue(CONNECTION_TYPE, connection_type).setValue(BACK_TYPE, back_type);
     }
 
     public FluidState getFluidState(BlockState state) {
@@ -119,7 +125,7 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TYPE, HAMMERABLE_ATTACHMENT, WATERLOGGED);
+        pBuilder.add(FACING, CONNECTION_TYPE, BACK_TYPE, HAMMERABLE_ATTACHMENT, WATERLOGGED);
     }
 
     @Override
