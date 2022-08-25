@@ -3,7 +3,7 @@
   "id": "another_furniture",
   "version": "${version}",
   "name": "Another Furniture",
-  "description": "Another Furniture aims to add furniture, like many other mods, with a goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.",
+  "description": "Decorating your home just got better! Another Furniture adds various furniture, with the goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.",
   "authors": [
     "Starfish Studios"
   ],
@@ -27,7 +27,7 @@
     "another_furniture-common.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.6",
-    "minecraft": ">=1.19"
+    "fabricloader": ">=0.14.9",
+    "minecraft": ">=1.19.2"
   }
 }

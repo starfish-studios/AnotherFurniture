@@ -18,7 +18,6 @@ public class AFBlockTags {
 
     public static final TagKey<Block> CHAIRS_TUCKABLE_UNDER = blockTag("chairs_tuckable_under");
     public static final TagKey<Block> NO_SEAT_COLLISION_CHECK = blockTag("no_seat_collision_check");
-    public static final TagKey<Block> HAMMER_INVALID = blockTag("hammer_invalid");
 
     private static TagKey<Block> blockTag(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));

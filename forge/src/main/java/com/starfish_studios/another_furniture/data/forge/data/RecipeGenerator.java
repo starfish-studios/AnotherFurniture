@@ -57,15 +57,15 @@ public class RecipeGenerator extends RecipeProvider {
         table(consumer, AFBlocks.WARPED_TABLE.get(), Items.WARPED_PLANKS);
 
         // Benches
-        bench(consumer, AFBlocks.OAK_BENCH.get(), Items.OAK_PLANKS);
-        bench(consumer, AFBlocks.SPRUCE_BENCH.get(), Items.SPRUCE_PLANKS);
-        bench(consumer, AFBlocks.BIRCH_BENCH.get(), Items.BIRCH_PLANKS);
-        bench(consumer, AFBlocks.JUNGLE_BENCH.get(), Items.JUNGLE_PLANKS);
-        bench(consumer, AFBlocks.ACACIA_BENCH.get(), Items.ACACIA_PLANKS);
-        bench(consumer, AFBlocks.DARK_OAK_BENCH.get(), Items.DARK_OAK_PLANKS);
-        bench(consumer, AFBlocks.MANGROVE_BENCH.get(), Items.MANGROVE_PLANKS);
-        bench(consumer, AFBlocks.CRIMSON_BENCH.get(), Items.CRIMSON_PLANKS);
-        bench(consumer, AFBlocks.WARPED_BENCH.get(), Items.WARPED_PLANKS);
+//        bench(consumer, AFBlocks.OAK_BENCH.get(), Items.OAK_PLANKS);
+//        bench(consumer, AFBlocks.SPRUCE_BENCH.get(), Items.SPRUCE_PLANKS);
+//        bench(consumer, AFBlocks.BIRCH_BENCH.get(), Items.BIRCH_PLANKS);
+//        bench(consumer, AFBlocks.JUNGLE_BENCH.get(), Items.JUNGLE_PLANKS);
+//        bench(consumer, AFBlocks.ACACIA_BENCH.get(), Items.ACACIA_PLANKS);
+//        bench(consumer, AFBlocks.DARK_OAK_BENCH.get(), Items.DARK_OAK_PLANKS);
+//        bench(consumer, AFBlocks.MANGROVE_BENCH.get(), Items.MANGROVE_PLANKS);
+//        bench(consumer, AFBlocks.CRIMSON_BENCH.get(), Items.CRIMSON_PLANKS);
+//        bench(consumer, AFBlocks.WARPED_BENCH.get(), Items.WARPED_PLANKS);
 
         // Shutters
         shutter(consumer, AFBlocks.OAK_SHUTTER.get(), Items.OAK_SLAB);

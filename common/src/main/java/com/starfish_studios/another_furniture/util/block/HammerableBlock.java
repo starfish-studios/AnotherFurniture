@@ -18,10 +18,10 @@ public interface HammerableBlock {
     default boolean tryHammerBlock(Player player, LevelAccessor level, BlockPos pos, BlockState state) {
         ItemStack mainhand = player.getMainHandItem();
         ItemStack offhand = player.getOffhandItem();
-        boolean isMainhand = true;
+        EquipmentSlot handslot = EquipmentSlot.MAINHAND;
         if (!mainhand.is(AFItemTags.FURNITURE_HAMMER)) {
             if (offhand.is(AFItemTags.FURNITURE_HAMMER)) {
-                isMainhand = false;
+                handslot = EquipmentSlot.OFFHAND;
             } else {
                 return false;
             }
@@ -36,11 +36,9 @@ public interface HammerableBlock {
                 level.setBlock(pos, state.setValue(ModBlockStateProperties.HAMMERABLE_ATTACHMENT, true), 3);
                 level.playSound(null, pos, getAddSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
             }
-            if (isMainhand) {
-                mainhand.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-            } else {
-                offhand.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(EquipmentSlot.OFFHAND));
-            }
+
+            EquipmentSlot finalHandslot = handslot;
+            offhand.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(finalHandslot));
             return true;
         }
         return false;
