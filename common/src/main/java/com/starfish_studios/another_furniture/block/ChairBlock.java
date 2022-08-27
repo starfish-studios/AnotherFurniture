@@ -81,8 +81,8 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         if (pState.getValue(WATERLOGGED)) {
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
-        if (pState.getValue(TUCKED)) {
-            if (!canTuckUnderFacing(pState, (Level)pLevel, pCurrentPos)) {
+        if (pState.getValue(TUCKED) && pLevel instanceof Level level) {
+            if (!canTuckUnderFacing(pState, level, pCurrentPos)) {
                 return pState.setValue(TUCKED, false);
             }
         }
