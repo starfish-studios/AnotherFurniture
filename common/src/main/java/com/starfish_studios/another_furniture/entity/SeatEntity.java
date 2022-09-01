@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.entity;
 
 import com.starfish_studios.another_furniture.block.ChairBlock;
 import com.starfish_studios.another_furniture.block.SeatBlock;
+import com.starfish_studios.another_furniture.block.TallStoolBlock;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,17 +30,13 @@ public class SeatEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if(!this.level.isClientSide)
-        {
+        if(!this.level.isClientSide) {
             boolean remove = false;
             BlockState state = this.level.getBlockState(this.blockPosition());
-            if (state.getBlock() instanceof ChairBlock) {
-                if (state.getValue(ChairBlock.TUCKED)) {
-                    remove = true;
-                }
+            if (state.getBlock() instanceof SeatBlock seatBlock) {
+                remove = !seatBlock.isSittable(state);
             }
-            if(this.getPassengers().isEmpty() || !(state.getBlock() instanceof SeatBlock) || remove)
-            {
+            if(this.getPassengers().isEmpty() || !(state.getBlock() instanceof SeatBlock) || remove) {
                 this.remove(RemovalReason.DISCARDED);
                 this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());
             }
@@ -76,11 +73,13 @@ public class SeatEntity extends Entity {
     public Vec3 getDismountLocationForPassenger(LivingEntity entity) {
         Direction original = this.getDirection();
         Direction[] offsets = {original, original.getClockWise(), original.getCounterClockWise(), original.getOpposite()};
-        for(Direction dir : offsets)
-        {
-            Vec3 safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, this.blockPosition().relative(dir), false);
-            if(safeVec != null)
-            {
+        for(Direction dir : offsets) {
+            BlockPos pos = this.blockPosition();
+            if (this.level.getBlockState(pos).getBlock() instanceof SeatBlock seatBlock) {
+                pos = seatBlock.dismountLocationOffset(pos);
+            }
+            Vec3 safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, pos.relative(dir), false);
+            if(safeVec != null) {
                 return safeVec.add(0, 0.25, 0);
             }
         }

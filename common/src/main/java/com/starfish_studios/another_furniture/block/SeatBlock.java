@@ -26,6 +26,14 @@ public class SeatBlock extends Block {
         return 0.25F;
     }
 
+    public boolean isSittable(BlockState state) {
+        return true;
+    }
+
+    public BlockPos dismountLocationOffset(BlockPos pos) {
+        return pos;
+    }
+
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if(pPlayer.isPassenger() || pPlayer.isCrouching())

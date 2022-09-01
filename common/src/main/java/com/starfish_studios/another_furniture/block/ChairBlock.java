@@ -60,6 +60,9 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return 0.2F;
     }
 
+    public boolean isSittable(BlockState state) {
+        return !state.getValue(TUCKED);
+    }
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         int shape = pState.getValue(FACING).get2DDataValue();
