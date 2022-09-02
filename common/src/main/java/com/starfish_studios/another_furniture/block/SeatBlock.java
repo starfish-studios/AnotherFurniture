@@ -47,17 +47,17 @@ public class SeatBlock extends Block {
         if((vec.x - pPlayer.getX()) * (vec.x - pPlayer.getX()) + (vec.y - pPlayer.getY()) * (vec.y - pPlayer.getY()) + (vec.z - pPlayer.getZ()) * (vec.z - pPlayer.getZ()) > maxDist * maxDist)
             return InteractionResult.PASS;
 
-        ItemStack stack1 = pPlayer.getMainHandItem();
-        ItemStack stack2 = pPlayer.getOffhandItem();
-        if(!stack1.isEmpty() || !stack2.isEmpty())
-            return InteractionResult.PASS;
+//        ItemStack stack1 = pPlayer.getMainHandItem();
+//        ItemStack stack2 = pPlayer.getOffhandItem();
+//        if(!stack1.isEmpty() || !stack2.isEmpty())
+//            return InteractionResult.PASS;
 
         List<SeatEntity> seats = pLevel.getEntitiesOfClass(SeatEntity.class, new AABB(pPos, pPos.offset(1, 1, 1)));
         if(seats.isEmpty()) {
             SeatEntity seat = new SeatEntity(pLevel, pPos, this.seatHeight());
             pLevel.addFreshEntity(seat);
             pPlayer.startRiding(seat);
-            return InteractionResult.SUCCESS;
+            return InteractionResult.CONSUME;
         }
         return InteractionResult.PASS;
     }
