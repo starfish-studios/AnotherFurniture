@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.client;
 
+import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.CurtainRenderer;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.PlanterBoxRenderer;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.ServiceBellButtonRenderer;
@@ -8,8 +9,13 @@ import com.starfish_studios.another_furniture.client.renderer.entity.SeatRendere
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
+import com.starfish_studios.another_furniture.util.block.WallpaperManager;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class AnotherFurnitureClient {
+    public static final ResourceLocation TEST = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":tablecloth");
 
     public static void init() {
         AFRegistry.registerEntityRenderers(AFEntityTypes.SEAT, SeatRenderer::new);
@@ -19,4 +25,5 @@ public class AnotherFurnitureClient {
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SERVICE_BELL, ServiceBellButtonRenderer::new);
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.PLANTER_BOX, PlanterBoxRenderer::new);
     }
+
 }

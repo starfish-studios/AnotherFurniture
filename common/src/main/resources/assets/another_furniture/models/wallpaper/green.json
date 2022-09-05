@@ -1,0 +1,14 @@
+{
+	"textures": {
+		"wallpaper": "another_furniture:wallpaper/green"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 16],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#wallpaper"}
+			}
+		}
+	]
+}

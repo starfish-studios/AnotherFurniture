@@ -12,6 +12,7 @@ public class ModBlockStateProperties {
     public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE_2 = EnumProperty.create("type_2", HorizontalConnectionType.class);
     public static final EnumProperty<ShutterType> SHUTTER_TYPE = EnumProperty.create("type", ShutterType.class);
     public static final EnumProperty<CurtainType> CURTAIN_TYPE = EnumProperty.create("type", CurtainType.class);
+    public static final EnumProperty<SofaType> SOFA_TYPE = EnumProperty.create("type", SofaType.class);
     public static final DirectionProperty FACING_EXCEPT_DOWN = DirectionProperty.create("facing", (direction) -> direction != Direction.DOWN);
     public static final IntegerProperty LEVEL_1_3 = IntegerProperty.create("level", 1, 3);
     public static final BooleanProperty HAMMERABLE_ATTACHMENT = BooleanProperty.create("hammer_state");

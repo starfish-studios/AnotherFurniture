@@ -1,5 +1,8 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.block.properties.SofaType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -21,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
+    public static final EnumProperty<SofaType> TYPE = ModBlockStateProperties.SOFA_TYPE;
 
     protected static final VoxelShape BOTTOM_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
 
@@ -51,7 +54,7 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
         BlockState blockState = this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
-        return blockState.setValue(SHAPE, getConnection(blockState, context.getLevel(), blockPos));
+        return blockState.setValue(TYPE, getConnection(blockState, context.getLevel(), blockPos));
     }
 
     @Override
@@ -60,7 +63,7 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return direction.getAxis().isHorizontal() ? state.setValue(SHAPE, getConnection(state, level, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+        return direction.getAxis().isHorizontal() ? state.setValue(TYPE, getConnection(state, level, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
@@ -76,16 +79,16 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, SHAPE, WATERLOGGED);
+        pBuilder.add(FACING, TYPE, WATERLOGGED);
     }
 
-    private static StairsShape getConnection(BlockState state, BlockGetter level, BlockPos pos) {
+    private static SofaType getConnection(BlockState state, BlockGetter level, BlockPos pos) {
         Direction direction = state.getValue(FACING);
         BlockState blockState = level.getBlockState(pos.relative(direction));
         if (state.is(blockState.getBlock())) {
             Direction direction2 = blockState.getValue(FACING);
             if (direction2.getAxis() != (state.getValue(FACING)).getAxis() && canTakeShape(state, level, pos, direction2.getOpposite())) {
-                return direction2 == direction.getCounterClockWise() ? StairsShape.OUTER_LEFT : StairsShape.OUTER_RIGHT;
+                return direction2 == direction.getCounterClockWise() ? SofaType.INNER_LEFT : SofaType.INNER_RIGHT;
             }
         }
 
@@ -93,11 +96,15 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
         if (state.is(blockState2.getBlock())) {
             Direction direction3 = blockState2.getValue(FACING);
             if (direction3.getAxis() != (state.getValue(FACING)).getAxis() && canTakeShape(state, level, pos, direction3)) {
-                return direction3 == direction.getCounterClockWise() ? StairsShape.INNER_LEFT : StairsShape.INNER_RIGHT;
+                return direction3 == direction.getCounterClockWise() ? SofaType.OUTER_LEFT : SofaType.OUTER_RIGHT;
             }
         }
 
-        return StairsShape.STRAIGHT;
+        BlockState l_state = level.getBlockState(pos.relative(direction.getClockWise()));
+        BlockState r_state = level.getBlockState(pos.relative(direction.getCounterClockWise()));
+        boolean l_side = (l_state.getBlock() instanceof SofaBlock);
+        boolean r_side = (r_state.getBlock() instanceof SofaBlock);
+        return l_side && r_side ? SofaType.MIDDLE : (r_side ? SofaType.LEFT : (l_side ? SofaType.RIGHT : SofaType.SINGLE));
     }
 
     private static boolean canTakeShape(BlockState state, BlockGetter level, BlockPos pos, Direction face) {

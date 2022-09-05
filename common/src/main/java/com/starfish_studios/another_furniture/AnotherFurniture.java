@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture;
 
 import com.starfish_studios.another_furniture.registry.*;
+import com.starfish_studios.another_furniture.util.block.WallpaperManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,7 @@ public class AnotherFurniture {
     public static final String MOD_ID = "another_furniture";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final CreativeModeTab TAB = AFRegistry.registerCreativeModeTab(new ResourceLocation(MOD_ID, "tab"), () -> new ItemStack(AFBlocks.OAK_CHAIR.get()));
+    //public static final WallpaperManager wallpaperManager = new WallpaperManager();
 
     public static void init() {
         AFBlocks.init();
