@@ -3,11 +3,12 @@
 	"textures": {
 		"1": "another_furniture:block/sofa/white"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"from": [0, 7, 12],
 			"to": [16, 12, 16],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.5, 14]},
 			"faces": {
 				"north": {"uv": [2.5, 3, 0.5, 3.625], "texture": "#1"},
@@ -20,7 +21,7 @@
 		{
 			"from": [1.98, 6.98, 11.98],
 			"to": [14.02, 15.02, 15.02],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 11, 13.5]},
 			"faces": {
 				"north": {"uv": [1.875, 6.375, 0.375, 7.375], "texture": "#1"},
@@ -33,7 +34,7 @@
 		{
 			"from": [0, 3, 0],
 			"to": [16, 7, 16],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, -3, 16]},
 			"faces": {
 				"north": {"uv": [4, 2, 2, 2.5], "texture": "#1"},
@@ -83,7 +84,7 @@
 		{
 			"from": [0, 7, 0],
 			"to": [2, 12, 2],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 7, 4]},
 			"faces": {
 				"north": {"uv": [0.5, 0.25, 0.25, 0.875], "texture": "#1"},
@@ -96,7 +97,7 @@
 		{
 			"from": [0, 10, 2],
 			"to": [2, 12, 12],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 7, 14]},
 			"faces": {
 				"east": {"uv": [6.5, 4.25, 5.25, 4.5], "texture": "#1"},
@@ -108,7 +109,7 @@
 		{
 			"from": [1, 7, 2],
 			"to": [1, 10, 12],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 4, 14]},
 			"faces": {
 				"east": {"uv": [1.75, 4.875, 3, 5.25], "texture": "#1"},
@@ -118,7 +119,7 @@
 		{
 			"from": [14, 10, 2],
 			"to": [16, 12, 12],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [12, 7, 14]},
 			"faces": {
 				"east": {"uv": [3.75, 4.25, 5, 4.5], "texture": "#1"},
@@ -130,7 +131,7 @@
 		{
 			"from": [14, 7, 0],
 			"to": [16, 12, 2],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [12, 7, 4]},
 			"faces": {
 				"north": {"uv": [0.25, 0.25, 0.5, 0.875], "texture": "#1"},
@@ -143,7 +144,7 @@
 		{
 			"from": [15, 7, 2],
 			"to": [15, 10, 12],
-			"shade": false,
+			"shade": true,
 			"rotation": {"angle": 0, "axis": "y", "origin": [12, 4, 14]},
 			"faces": {
 				"east": {"uv": [1.75, 4.875, 3, 5.25], "texture": "#1"},

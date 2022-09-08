@@ -1,0 +1,34 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "another_furniture:block/lamp/white"
+	},
+	"elements": [
+		{
+			"from": [7, 2, 7],
+			"to": [9, 16, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-8, 32, -8]},
+			"faces": {
+				"north": {"uv": [14, 9, 13, 16], "texture": "#particle"},
+				"east": {"uv": [13, 9, 14, 16], "texture": "#particle"},
+				"south": {"uv": [14, 9, 13, 16], "texture": "#particle"},
+				"west": {"uv": [13, 9, 14, 16], "texture": "#particle"},
+				"up": {"uv": [1, 1, 0, 0], "texture": "#particle"},
+				"down": {"uv": [1, 0, 0, 1], "texture": "#particle"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"faces": {
+				"north": {"uv": [6, 3, 9, 4], "texture": "#particle"},
+				"east": {"uv": [6, 3, 9, 4], "texture": "#particle"},
+				"south": {"uv": [6, 3, 9, 4], "texture": "#particle"},
+				"west": {"uv": [6, 3, 9, 4], "texture": "#particle"},
+				"up": {"uv": [9, 3, 6, 0], "texture": "#particle"},
+				"down": {"uv": [9, 6, 6, 9], "texture": "#particle"}
+			}
+		}
+	]
+}
