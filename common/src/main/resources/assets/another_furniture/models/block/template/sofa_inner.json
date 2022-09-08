@@ -1,5 +1,7 @@
 {
+	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
+	"texture_size": [128, 128],
 	"textures": {
 		"1": "another_furniture:block/sofa/white_inner"
 	},
@@ -48,6 +50,31 @@
 				"south": {"uv": [7.875, 3, 9.75, 4], "texture": "#1"},
 				"west": {"uv": [7.5, 3, 7.875, 4], "texture": "#1"},
 				"up": {"uv": [7.5, 3, 5.625, 2.625], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 12, 15],
+			"to": [16, 15, 16],
+			"faces": {
+				"north": {"uv": [9.125, 5.25, 11.125, 5.625], "texture": "#1"},
+				"east": {"uv": [9, 5.25, 9.125, 5.625], "texture": "#1"},
+				"south": {"uv": [7, 5.25, 9, 5.625], "texture": "#1"},
+				"west": {"uv": [6.875, 5.25, 7, 5.625], "texture": "#1"},
+				"up": {"uv": [7, 5.125, 9, 5.25], "texture": "#1"},
+				"down": {"uv": [9, 5.125, 11, 5.25], "texture": "#1"}
+			}
+		},
+		{
+			"from": [15, 12, 0],
+			"to": [16, 15, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 13.5, 15.5]},
+			"faces": {
+				"north": {"uv": [9, 6, 9.125, 6.375], "texture": "#1"},
+				"east": {"uv": [7, 6, 8.875, 6.375], "texture": "#1"},
+				"south": {"uv": [6.875, 6, 7, 6.375], "texture": "#1"},
+				"west": {"uv": [9.125, 6, 11, 6.375], "texture": "#1"},
+				"up": {"uv": [7, 5.875, 8.875, 6], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [9, 5.875, 10.875, 6], "rotation": 90, "texture": "#1"}
 			}
 		},
 		{
