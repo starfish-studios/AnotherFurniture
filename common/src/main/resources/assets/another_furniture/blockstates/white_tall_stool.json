@@ -1,10 +1,7 @@
 {
     "variants": {
-        "top=true": {
-            "model": "another_furniture:block/template/tall_stool_top"
-        },
-		"top=false": {
-            "model": "another_furniture:block/template/tall_stool_bottom"
+        "": {
+            "model": "another_furniture:block/tall_stool/white"
         }
     }
 }

@@ -1,5 +1,4 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"texture_size": [128, 128],
 	"textures": {
@@ -72,19 +71,6 @@
 			}
 		},
 		{
-			"from": [0, 0, 0],
-			"to": [2, 3, 2],
-			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0, 4]},
-			"faces": {
-				"north": {"uv": [4.5, 4.75, 4.75, 5.125], "texture": "#0"},
-				"east": {"uv": [4.25, 4.75, 4.5, 5.125], "texture": "#0"},
-				"south": {"uv": [5, 4.75, 5.25, 5.125], "texture": "#0"},
-				"west": {"uv": [4.75, 4.75, 5, 5.125], "texture": "#0"},
-				"up": {"uv": [4.75, 4.75, 4.5, 4.5], "texture": "#0"},
-				"down": {"uv": [5, 4.5, 4.75, 4.75], "texture": "#0", "cullface": "down"}
-			}
-		},
-		{
 			"from": [14, 0, 0],
 			"to": [16, 3, 2],
 			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0, 4]},
@@ -147,19 +133,6 @@
 				"west": {"uv": [3, 4.875, 1.75, 5.25], "texture": "#0"},
 				"up": {"uv": [3, 4.875, 3, 3.625], "texture": "#0"},
 				"down": {"uv": [3, 3.625, 3, 4.875], "texture": "#0", "cullface": "down"}
-			}
-		},
-		{
-			"from": [0, 0, 14],
-			"to": [2, 3, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0, 18]},
-			"faces": {
-				"north": {"uv": [4.5, 4.75, 4.75, 5.125], "texture": "#0"},
-				"east": {"uv": [4.25, 4.75, 4.5, 5.125], "texture": "#0"},
-				"south": {"uv": [5, 4.75, 5.25, 5.125], "texture": "#0"},
-				"west": {"uv": [4.75, 4.75, 5, 5.125], "texture": "#0"},
-				"up": {"uv": [4.75, 4.75, 4.5, 4.5], "texture": "#0"},
-				"down": {"uv": [5, 4.5, 4.75, 4.75], "texture": "#0", "cullface": "down"}
 			}
 		},
 		{

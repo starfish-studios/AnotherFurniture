@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shutter_none",
-    "textures": {
-        "middle": "another_furniture:block/shutter/birch_middle",
-        "none": "another_furniture:block/shutter/birch_none",
-        "particle": "another_furniture:block/shutter/birch_none"
-    }
-}

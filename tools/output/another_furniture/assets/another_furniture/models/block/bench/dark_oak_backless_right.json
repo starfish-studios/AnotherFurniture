@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/bench_backless_right",
-    "textures": {
-        "1": "another_furniture:block/bench/dark_oak",
-        "particle": "another_furniture:block/bench/dark_oak"
-    }
-}

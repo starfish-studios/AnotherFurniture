@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shutter_top",
-    "textures": {
-        "middle": "another_furniture:block/shutter/mangrove_middle",
-        "top": "another_furniture:block/shutter/mangrove_top",
-        "particle": "another_furniture:block/shutter/mangrove_top"
-    }
-}

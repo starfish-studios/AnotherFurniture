@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/shelf_top",
-    "textures": {
-        "top": "another_furniture:block/shelf/{wood}_top",
-        "sides": "another_furniture:block/shelf/{wood}_sides",
-        "particle": "another_furniture:block/shelf/{wood}_top"
-    }
-}

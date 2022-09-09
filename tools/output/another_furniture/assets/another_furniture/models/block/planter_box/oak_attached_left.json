@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/planter_box_attached_left",
-    "textures": {
-        "box": "another_furniture:block/planter_box/oak",
-        "dirt": "minecraft:block/dirt"
-    }
-}

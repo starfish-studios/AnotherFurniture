@@ -1,9 +1,0 @@
-{
-    "parent": "another_furniture:block/template/chair_tucked",
-    "textures": {
-        "back": "another_furniture:block/chair/dark_oak_back",
-        "bottom": "another_furniture:block/chair/dark_oak_bottom",
-        "seat": "another_furniture:block/chair/dark_oak_seat",
-        "particle": "another_furniture:block/chair/dark_oak_seat"
-    }
-}
