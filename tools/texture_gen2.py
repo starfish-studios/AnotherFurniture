@@ -87,7 +87,7 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
 
 def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
                          template_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-                         banned_variants = ["curtain", "stool", "tablecloth"]):
+                         banned_variants = ["curtain", "sofa_old", "tablecloth"]):
     color = ["white","orange","magenta","light_blue","yellow","lime","pink","gray","light_gray","cyan","purple","blue","brown","green","red","black"]
 
     
@@ -149,6 +149,8 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
                     img_new = input_img
                     
                 save_path = template.replace("white", color.split("\\")[-1].replace(".png","")).replace("_planks","")
+                if save_path.endswith("_.png"):
+                    save_path = save_path[:-5] + ".png"
                 img_new.save(save_path)
                 print(f"saved {save_path}")
 

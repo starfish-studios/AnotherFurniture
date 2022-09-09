@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:wallpaper/green",
+	"textures": {
+		"wallpaper": "another_furniture:wallpaper/red_stripes"
+	}
+}

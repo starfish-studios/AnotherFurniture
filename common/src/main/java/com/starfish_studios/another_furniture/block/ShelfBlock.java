@@ -3,6 +3,7 @@ package com.starfish_studios.another_furniture.block;
 import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
+import com.starfish_studios.another_furniture.util.block.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -43,25 +44,19 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     protected static final VoxelShape TOP = Block.box(0, 14, 0.0, 16, 16, 16);
     protected static final VoxelShape NL = Block.box(12, 6, 6, 16, 14, 16);
     protected static final VoxelShape NR = Block.box(0, 6, 6, 4, 14, 16);
-    protected static final VoxelShape EL = Block.box(0, 6, 12, 10, 14, 16);
-    protected static final VoxelShape ER = Block.box(0, 6, 0, 10, 14, 4);
-    protected static final VoxelShape SL = Block.box(0, 6, 0, 4, 14, 10);
-    protected static final VoxelShape SR = Block.box(12, 6, 0, 16, 14, 10);
-    protected static final VoxelShape WL = Block.box(6, 6, 0, 16, 14, 4);
-    protected static final VoxelShape WR = Block.box(6, 6, 12, 16, 14, 16);
 
     protected static final VoxelShape T_NL = Shapes.or(TOP, NL);
     protected static final VoxelShape T_NR = Shapes.or(TOP, NR);
     protected static final VoxelShape T_NLR = Shapes.or(TOP, NL, NR);
-    protected static final VoxelShape T_EL = Shapes.or(TOP, EL);
-    protected static final VoxelShape T_ER = Shapes.or(TOP, ER);
-    protected static final VoxelShape T_ELR = Shapes.or(TOP, EL, ER);
-    protected static final VoxelShape T_SL = Shapes.or(TOP, SL);
-    protected static final VoxelShape T_SR = Shapes.or(TOP, SR);
-    protected static final VoxelShape T_SLR = Shapes.or(TOP, SL, SR);
-    protected static final VoxelShape T_WL = Shapes.or(TOP, WL);
-    protected static final VoxelShape T_WR = Shapes.or(TOP, WR);
-    protected static final VoxelShape T_WLR = Shapes.or(TOP, WL, WR);
+    protected static final VoxelShape T_EL = ShapeUtil.rotateShape(T_NL, Direction.EAST);
+    protected static final VoxelShape T_ER = ShapeUtil.rotateShape(T_NR, Direction.EAST);
+    protected static final VoxelShape T_ELR = ShapeUtil.rotateShape(T_NLR, Direction.EAST);
+    protected static final VoxelShape T_SL = ShapeUtil.rotateShape(T_NL, Direction.SOUTH);
+    protected static final VoxelShape T_SR = ShapeUtil.rotateShape(T_NR, Direction.SOUTH);
+    protected static final VoxelShape T_SLR = ShapeUtil.rotateShape(T_NLR, Direction.SOUTH);
+    protected static final VoxelShape T_WL = ShapeUtil.rotateShape(T_NL, Direction.WEST);
+    protected static final VoxelShape T_WR = ShapeUtil.rotateShape(T_NLR, Direction.WEST);
+    protected static final VoxelShape T_WLR = ShapeUtil.rotateShape(T_NLR, Direction.WEST);
 
     public ShelfBlock(Properties properties) {
         super(properties);

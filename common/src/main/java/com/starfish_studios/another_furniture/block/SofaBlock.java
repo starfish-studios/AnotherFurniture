@@ -1,15 +1,14 @@
 package com.starfish_studios.another_furniture.block;
 
-import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.SofaType;
+import com.starfish_studios.another_furniture.util.block.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,19 +25,47 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<SofaType> TYPE = ModBlockStateProperties.SOFA_TYPE;
 
-    protected static final VoxelShape BOTTOM_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+    public static final VoxelShape SEAT_BASE = Block.box(0, 3, 0, 16, 7, 16);
+    public static final VoxelShape SEAT_BACK = Block.box(0, 7, 12, 16, 16, 16);
 
-    protected static final VoxelShape AABB_EAST = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 0.0D, 5.0D, 16.0D, 16.0D));
-    protected static final VoxelShape AABB_WEST = Shapes.or(BOTTOM_AABB, Block.box(11.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D));
-    protected static final VoxelShape AABB_SOUTH = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 5.0D));
-    protected static final VoxelShape AABB_NORTH = Shapes.or(BOTTOM_AABB, Block.box(0.0D, 8.0D, 11.0D, 16.0D, 16.0D, 16.0D));
+    public static final VoxelShape LEG_BL = Block.box(14.0D, 0.0D, 14.0D, 16.0D, 3.0D, 16.0D);
+    public static final VoxelShape LEG_BR = Block.box(0.0D, 0.0D, 14.0D, 2.0D, 3.0D, 16.0D);
+    public static final VoxelShape LEG_FR = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 3.0D, 2.0D);
+    public static final VoxelShape LEG_FL = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 3.0D, 2.0D);
 
-    protected static final VoxelShape BOTTOM_AABB_RENDER = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+    public static final VoxelShape ARM_L = Block.box(14, 7, 0, 16, 12, 12);
+    public static final VoxelShape ARM_R = Block.box(0, 7, 0, 2, 12, 12);
 
-    protected static final VoxelShape AABB_EAST_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 0.0D, 5.0D, 16.0D, 16.0D));
-    protected static final VoxelShape AABB_WEST_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(11.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D));
-    protected static final VoxelShape AABB_SOUTH_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 5.0D));
-    protected static final VoxelShape AABB_NORTH_RENDER = Shapes.or(BOTTOM_AABB_RENDER, Block.box(0.0D, 8.0D, 11.0D, 16.0D, 16.0D, 16.0D));
+    public static final VoxelShape SINGLE = Shapes.or(SEAT_BASE, SEAT_BACK, ARM_L, ARM_R, LEG_BL, LEG_BR, LEG_FL, LEG_FR);
+    public static final VoxelShape SINGLE_EAST = ShapeUtil.rotateShape(SINGLE, Direction.EAST);
+    public static final VoxelShape SINGLE_SOUTH = ShapeUtil.rotateShape(SINGLE, Direction.SOUTH);
+    public static final VoxelShape SINGLE_WEST = ShapeUtil.rotateShape(SINGLE, Direction.WEST);
+
+    public static final VoxelShape MIDDLE = Shapes.or(SEAT_BASE, SEAT_BACK);
+    public static final VoxelShape MIDDLE_EAST = ShapeUtil.rotateShape(MIDDLE, Direction.EAST);
+    public static final VoxelShape MIDDLE_SOUTH = ShapeUtil.rotateShape(MIDDLE, Direction.SOUTH);
+    public static final VoxelShape MIDDLE_WEST = ShapeUtil.rotateShape(MIDDLE, Direction.WEST);
+
+    public static final VoxelShape OUTER = Shapes.or(SEAT_BASE, Block.box(12, 6, 12, 16, 16, 16));
+    public static final VoxelShape OUTER_EAST = ShapeUtil.rotateShape(OUTER, Direction.EAST);
+    public static final VoxelShape OUTER_SOUTH = ShapeUtil.rotateShape(OUTER, Direction.SOUTH);
+    public static final VoxelShape OUTER_WEST = ShapeUtil.rotateShape(OUTER, Direction.WEST);
+
+    public static final VoxelShape INNER = Shapes.or(SEAT_BASE, SEAT_BACK, Block.box(12, 7, 0, 16, 16, 12));
+    public static final VoxelShape INNER_EAST = ShapeUtil.rotateShape(INNER, Direction.EAST);
+    public static final VoxelShape INNER_SOUTH = ShapeUtil.rotateShape(INNER, Direction.SOUTH);
+    public static final VoxelShape INNER_WEST = ShapeUtil.rotateShape(INNER, Direction.WEST);
+
+    public static final VoxelShape RIGHT = Shapes.or(SEAT_BASE, SEAT_BACK, ARM_R, LEG_BR, LEG_FR);
+    public static final VoxelShape RIGHT_EAST = ShapeUtil.rotateShape(RIGHT, Direction.EAST);
+    public static final VoxelShape RIGHT_SOUTH = ShapeUtil.rotateShape(RIGHT, Direction.SOUTH);
+    public static final VoxelShape RIGHT_WEST = ShapeUtil.rotateShape(RIGHT, Direction.WEST);
+
+    public static final VoxelShape LEFT = Shapes.or(SEAT_BASE, SEAT_BACK, ARM_L, LEG_BL, LEG_FL);
+    public static final VoxelShape LEFT_EAST = ShapeUtil.rotateShape(LEFT, Direction.EAST);
+    public static final VoxelShape LEFT_SOUTH = ShapeUtil.rotateShape(LEFT, Direction.SOUTH);
+    public static final VoxelShape LEFT_WEST = ShapeUtil.rotateShape(LEFT, Direction.WEST);
+
 
     public SofaBlock(Properties properties) {
         super(properties);
@@ -69,11 +96,56 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         Direction facing = state.getValue(FACING);
-        return switch (facing) {
-            case EAST -> AABB_EAST;
-            case SOUTH -> AABB_SOUTH;
-            case WEST -> AABB_WEST;
-            default -> AABB_NORTH;
+        SofaType shape = state.getValue(TYPE);
+        return switch (shape) {
+            case SINGLE -> switch (facing) {
+                case EAST -> SINGLE_EAST;
+                case SOUTH -> SINGLE_SOUTH;
+                case WEST -> SINGLE_WEST;
+                default -> SINGLE;
+            };
+            case MIDDLE -> switch (facing) {
+                case EAST -> MIDDLE_EAST;
+                case SOUTH -> MIDDLE_SOUTH;
+                case WEST -> MIDDLE_WEST;
+                default -> MIDDLE;
+            };
+            case OUTER_LEFT -> switch (facing) {
+                case EAST -> OUTER_EAST;
+                case SOUTH -> OUTER_SOUTH;
+                case WEST -> OUTER_WEST;
+                default -> OUTER;
+            };
+            case OUTER_RIGHT -> switch (facing) {
+                case EAST -> OUTER_SOUTH;
+                case SOUTH -> OUTER_WEST;
+                case WEST -> OUTER;
+                default -> OUTER_EAST;
+            };
+            case LEFT -> switch (facing) {
+                case EAST -> LEFT_EAST;
+                case SOUTH -> LEFT_SOUTH;
+                case WEST -> LEFT_WEST;
+                default -> LEFT;
+            };
+            case RIGHT -> switch (facing) {
+                case EAST -> RIGHT_EAST;
+                case SOUTH -> RIGHT_SOUTH;
+                case WEST -> RIGHT_WEST;
+                default -> RIGHT;
+            };
+            case INNER_RIGHT -> switch (facing) {
+                case EAST -> INNER_SOUTH;
+                case SOUTH -> INNER_WEST;
+                case WEST -> INNER;
+                default -> INNER_EAST;
+            };
+            case INNER_LEFT -> switch (facing) {
+                case EAST -> INNER_EAST;
+                case SOUTH -> INNER_SOUTH;
+                case WEST -> INNER_WEST;
+                default -> INNER;
+            };
         };
     }
 

@@ -4,9 +4,7 @@ import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.CurtainRenderer;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.ServiceBellButtonRenderer;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -26,8 +24,10 @@ public class AnotherFurnitureForgeClient {
 
     }
 
-    @SubscribeEvent
-    public static void registerSpecialModels(ModelEvent.RegisterAdditional event) {
-        event.register(new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper"));
-    }
+//    @SubscribeEvent
+//    public static void registerSpecialModels(ModelEvent.RegisterAdditional event) {
+//        event.register(new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper"));
+//        event.register(new ModelResourceLocation(AnotherFurniture.MOD_ID + ":red_stripes_wallpaper"));
+//    }
+
 }

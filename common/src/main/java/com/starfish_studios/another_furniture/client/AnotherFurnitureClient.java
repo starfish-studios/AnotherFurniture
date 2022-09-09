@@ -15,7 +15,8 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 
 public class AnotherFurnitureClient {
-    public static final ResourceLocation TEST = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":tablecloth");
+    public static final ModelResourceLocation GREEN_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper");
+    public static final ModelResourceLocation RED_STRIPES_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":red_stripes_wallpaper");
 
     public static void init() {
         AFRegistry.registerEntityRenderers(AFEntityTypes.SEAT, SeatRenderer::new);
