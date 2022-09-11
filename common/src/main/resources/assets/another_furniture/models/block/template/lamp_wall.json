@@ -1,8 +1,9 @@
 {
 	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
 	"textures": {
-		"particle": "another_furniture:block/lamp/white",
-		"colored": "another_furniture:block/lamp/white"
+		"colored": "another_furniture:block/lamp/white",
+		"particle": "block/white_wool"
 	},
 	"elements": [
 		{
@@ -58,7 +59,7 @@
 			"from": [2.98, 7.98, 4.98],
 			"to": [13.02, 16.02, 15.02],
 			"faces": {
-				"north": {"uv": [1, 5, 6, 9], "texture": "#colored"},
+				"north": {"uv": [1, 5, 6, 9], "texture": "#colored", "cullface": "up"},
 				"east": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"south": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"west": {"uv": [1, 5, 6, 9], "texture": "#colored"},
@@ -69,11 +70,11 @@
 			"from": [13, 8, 5],
 			"to": [3, 16, 15],
 			"faces": {
-				"north": {"uv": [1, 5, 6, 9], "texture": "#colored"},
+				"north": {"uv": [1, 5, 6, 9], "texture": "#colored", "cullface": "up"},
 				"east": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"south": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"west": {"uv": [1, 5, 6, 9], "texture": "#colored"},
-				"up": {"uv": [6, 5, 1, 0], "texture": "#colored"},
+				"up": {"uv": [6, 5, 1, 0], "texture": "#colored", "cullface": "up"},
 				"down": {"uv": [6, 9, 1, 14], "texture": "#colored"}
 			}
 		},
@@ -81,12 +82,12 @@
 			"from": [11, 8, 7],
 			"to": [5, 16, 13],
 			"faces": {
-				"north": {"uv": [9, 3, 12, 7], "texture": "#colored"},
+				"north": {"uv": [9, 3, 12, 7], "texture": "#colored", "cullface": "up"},
 				"east": {"uv": [9, 3, 12, 7], "texture": "#colored"},
 				"south": {"uv": [9, 3, 12, 7], "texture": "#colored"},
 				"west": {"uv": [9, 3, 12, 7], "texture": "#colored"},
 				"up": {"uv": [12, 3, 9, 0], "texture": "#colored"},
-				"down": {"uv": [12, 7, 9, 10], "texture": "#colored"}
+				"down": {"uv": [12, 0, 9, 3], "texture": "#colored"}
 			}
 		},
 		{

@@ -2,6 +2,6 @@
     "parent": "another_furniture:block/template/sofa_inner",
     "textures": {
         "all": "another_furniture:block/sofa/black_inner",
-        "particle": "another_furniture:block/sofa/black_inner"
+        "particle": "minecraft:block/black_wool"
     }
 }

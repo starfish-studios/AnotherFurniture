@@ -2,6 +2,6 @@
     "parent": "another_furniture:block/template/sofa_outer",
     "textures": {
         "all": "another_furniture:block/sofa/light_gray_outer",
-        "particle": "another_furniture:block/sofa/light_gray_outer"
+        "particle": "minecraft:block/light_gray_wool"
     }
 }

@@ -1,8 +1,10 @@
 {
 	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
 	"texture_size": [128, 128],
 	"textures": {
-		"all": "another_furniture:block/sofa/white_edge"
+		"all": "another_furniture:block/sofa/white_edge",
+		"particle": "minecraft:block/white_wool"
 	},
 	"elements": [
 		{

@@ -1,9 +1,10 @@
-{
-	"credit": "Made with Blockbench",
+
 	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
 	"texture_size": [128, 128],
 	"textures": {
-		"all": "another_furniture:block/sofa/white_inner"
+		"all": "another_furniture:block/sofa/white_inner",
+		"particle": "minecraft:block/white_wool"
 	},
 	"elements": [
 		{

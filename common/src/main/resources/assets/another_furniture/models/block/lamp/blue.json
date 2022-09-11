@@ -2,6 +2,6 @@
     "parent": "another_furniture:block/template/lamp",
     "textures": {
         "colored": "another_furniture:block/lamp/blue",
-        "particle": "another_furniture:block/lamp/blue"
+        "particle": "minecraft:block/blue_wool"
     }
 }
