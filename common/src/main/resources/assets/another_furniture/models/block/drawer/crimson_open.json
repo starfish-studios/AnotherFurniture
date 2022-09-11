@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/drawer/crimson",
+	"textures": {
+		"front": "another_furniture:block/drawer/crimson_front_open"
+	}
+}

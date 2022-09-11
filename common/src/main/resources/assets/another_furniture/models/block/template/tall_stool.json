@@ -3,7 +3,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"all": "another_furniture:block/tall_stool/white",
-		"particle": ""
+		"particle": "#all"
 	},
 	"elements": [
 		{

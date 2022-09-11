@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "facing=north,type=single": {
+            "model": "another_furniture:block/sofa/lime"
+        },
+        "facing=east,type=single": {
+            "model": "another_furniture:block/sofa/lime",
+            "y": 90
+        },
+        "facing=south,type=single": {
+            "model": "another_furniture:block/sofa/lime",
+            "y": 180
+        },
+        "facing=west,type=single": {
+            "model": "another_furniture:block/sofa/lime",
+            "y": 270
+        },
+        "facing=north,type=left": {
+            "model": "another_furniture:block/sofa/lime_left"
+        },
+        "facing=east,type=left": {
+            "model": "another_furniture:block/sofa/lime_left",
+            "y": 90
+        },
+        "facing=south,type=left": {
+            "model": "another_furniture:block/sofa/lime_left",
+            "y": 180
+        },
+        "facing=west,type=left": {
+            "model": "another_furniture:block/sofa/lime_left",
+            "y": 270
+        },
+        "facing=north,type=right": {
+            "model": "another_furniture:block/sofa/lime_right"
+        },
+        "facing=east,type=right": {
+            "model": "another_furniture:block/sofa/lime_right",
+            "y": 90
+        },
+        "facing=south,type=right": {
+            "model": "another_furniture:block/sofa/lime_right",
+            "y": 180
+        },
+        "facing=west,type=right": {
+            "model": "another_furniture:block/sofa/lime_right",
+            "y": 270
+        },
+        "facing=north,type=middle": {
+            "model": "another_furniture:block/sofa/lime_middle"
+        },
+        "facing=east,type=middle": {
+            "model": "another_furniture:block/sofa/lime_middle",
+            "y": 90
+        },
+        "facing=south,type=middle": {
+            "model": "another_furniture:block/sofa/lime_middle",
+            "y": 180
+        },
+        "facing=west,type=middle": {
+            "model": "another_furniture:block/sofa/lime_middle",
+            "y": 270
+        },
+        "facing=north,type=inner_left": {
+            "model": "another_furniture:block/sofa/lime_inner"
+        },
+        "facing=east,type=inner_left": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 90
+        },
+        "facing=south,type=inner_left": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 180
+        },
+        "facing=west,type=inner_left": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 270
+        },
+        "facing=north,type=inner_right": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 90
+        },
+        "facing=east,type=inner_right": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 180
+        },
+        "facing=south,type=inner_right": {
+            "model": "another_furniture:block/sofa/lime_inner",
+            "y": 270
+        },
+        "facing=west,type=inner_right": {
+            "model": "another_furniture:block/sofa/lime_inner"
+        },
+        "facing=north,type=outer_left": {
+            "model": "another_furniture:block/sofa/lime_outer"
+        },
+        "facing=east,type=outer_left": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 90
+        },
+        "facing=south,type=outer_left": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 180
+        },
+        "facing=west,type=outer_left": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 270
+        },
+        "facing=north,type=outer_right": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 90
+        },
+        "facing=east,type=outer_right": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 180
+        },
+        "facing=south,type=outer_right": {
+            "model": "another_furniture:block/sofa/lime_outer",
+            "y": 270
+        },
+        "facing=west,type=outer_right": {
+            "model": "another_furniture:block/sofa/lime_outer"
+        }
+    }
+}

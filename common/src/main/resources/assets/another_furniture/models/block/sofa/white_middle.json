@@ -1,0 +1,7 @@
+{
+	"parent": "another_furniture:block/template/sofa_middle",
+	"textures": {
+		"all": "another_furniture:block/sofa/white_middle",
+		"particle": "another_furniture:block/sofa/white_middle"
+	}
+}

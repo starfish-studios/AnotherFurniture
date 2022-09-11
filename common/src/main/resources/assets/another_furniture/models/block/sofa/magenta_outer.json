@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/sofa_outer",
+    "textures": {
+        "all": "another_furniture:block/sofa/magenta_outer",
+        "particle": "another_furniture:block/sofa/magenta_outer"
+    }
+}

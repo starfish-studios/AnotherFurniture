@@ -1,12 +1,11 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
 		"bottom": "another_furniture:block/stool/bottom",
 		"legs": "another_furniture:block/stool/legs",
 		"side": "another_furniture:block/stool/white_side",
-		"particle": "another_furniture:block/stool/white_top",
-		"top": "another_furniture:block/stool/white_top"
+		"top": "another_furniture:block/stool/white_top",
+		"particle": "#top"
 	},
 	"elements": [
 		{
@@ -28,9 +27,9 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 6]},
 			"faces": {
 				"north": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
-				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
+				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "east"},
+				"south": {"uv": [2, 2, 4, 5], "texture": "#legs"},
+				"west": {"uv": [4, 2, 2, 5], "texture": "#legs"},
 				"down": {"uv": [4, 0, 6, 2], "texture": "#legs", "cullface": "down"}
 			}
 		},
@@ -39,10 +38,10 @@
 			"to": [16, 3, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 6]},
 			"faces": {
-				"north": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
-				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
+				"north": {"uv": [2, 2, 4, 5], "texture": "#legs"},
+				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "east"},
+				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "south"},
+				"west": {"uv": [4, 2, 2, 5], "texture": "#legs"},
 				"down": {"uv": [4, 0, 6, 2], "texture": "#legs", "cullface": "down"}
 			}
 		},
@@ -51,10 +50,10 @@
 			"to": [2, 3, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 6]},
 			"faces": {
-				"north": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
-				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
+				"north": {"uv": [2, 2, 4, 5], "texture": "#legs"},
+				"east": {"uv": [4, 2, 2, 5], "texture": "#legs"},
+				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "south"},
+				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "west"},
 				"down": {"uv": [4, 0, 6, 2], "texture": "#legs", "cullface": "down"}
 			}
 		},
@@ -64,9 +63,9 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 6]},
 			"faces": {
 				"north": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"east": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
-				"south": {"uv": [2, 2, 4, 5], "texture": "#legs", "cullface": "north"},
-				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "north"},
+				"east": {"uv": [4, 2, 2, 5], "texture": "#legs"},
+				"south": {"uv": [2, 2, 4, 5], "texture": "#legs"},
+				"west": {"uv": [4, 2, 2, 5], "texture": "#legs", "cullface": "west"},
 				"down": {"uv": [4, 0, 6, 2], "texture": "#legs", "cullface": "down"}
 			}
 		}

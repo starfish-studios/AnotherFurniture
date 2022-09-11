@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/sofa_right",
+    "textures": {
+        "all": "another_furniture:block/sofa/purple_edge",
+        "particle": "another_furniture:block/sofa/purple_edge"
+    }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/drawer/oak",
+	"textures": {
+		"front": "another_furniture:block/drawer/oak_front_open"
+	}
+}

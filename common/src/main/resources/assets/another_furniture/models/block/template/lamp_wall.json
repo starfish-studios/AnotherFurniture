@@ -1,9 +1,8 @@
 {
 	"parent": "minecraft:block/block",
-	"render_type": "minecraft:cutout",
 	"textures": {
-		"colored": "another_furniture:block/lamp/white",
-		"particle": "another_furniture:block/lamp/white"
+		"particle": "another_furniture:block/lamp/white",
+		"colored": "another_furniture:block/lamp/white"
 	},
 	"elements": [
 		{
@@ -13,10 +12,10 @@
 			"faces": {
 				"north": {"uv": [9, 3, 6, 0], "rotation": 180, "texture": "#colored"},
 				"east": {"uv": [6, 3, 9, 4], "rotation": 90, "texture": "#colored"},
-				"south": {"uv": [9, 6, 6, 9], "texture": "#colored"},
+				"south": {"uv": [9, 6, 6, 9], "texture": "#colored", "cullface": "south"},
 				"west": {"uv": [6, 3, 9, 4], "rotation": 270, "texture": "#colored"},
 				"up": {"uv": [6, 3, 9, 4], "texture": "#colored"},
-				"down": {"uv": [6, 3, 9, 4], "rotation": 180, "texture": "#colored"}
+				"down": {"uv": [6, 3, 9, 4], "rotation": 180, "texture": "#colored", "cullface": "down"}
 			}
 		},
 		{
@@ -63,8 +62,7 @@
 				"east": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"south": {"uv": [1, 5, 6, 9], "texture": "#colored"},
 				"west": {"uv": [1, 5, 6, 9], "texture": "#colored"},
-				"up": {"uv": [6, 5, 1, 0], "texture": "#colored"},
-				"down": {"uv": [6, 9, 1, 14], "texture": "#colored"}
+				"up": {"uv": [6, 5, 1, 0], "texture": "#colored", "cullface": "up"}
 			}
 		},
 		{
@@ -99,8 +97,7 @@
 				"east": {"uv": [9, 3, 12, 7], "texture": "#colored"},
 				"south": {"uv": [9, 3, 12, 7], "texture": "#colored"},
 				"west": {"uv": [9, 3, 12, 7], "texture": "#colored"},
-				"up": {"uv": [12, 3, 9, 0], "texture": "#colored"},
-				"down": {"uv": [12, 7, 9, 10], "texture": "#colored"}
+				"up": {"uv": [12, 3, 9, 0], "texture": "#colored"}
 			}
 		}
 	]

@@ -85,12 +85,12 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        Direction direction = state.getValue(FACING);
-        BlockPos facingPos = pos.relative(direction.getOpposite());
-        BlockState facingState = level.getBlockState(facingPos);
-        return facingState.isFaceSturdy(level, facingPos, direction);
-    }
+//    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+//        Direction direction = state.getValue(FACING);
+//        BlockPos facingPos = pos.relative(direction.getOpposite());
+//        BlockState facingState = level.getBlockState(facingPos);
+//        return facingState.isFaceSturdy(level, facingPos, direction);
+//    }
 
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
