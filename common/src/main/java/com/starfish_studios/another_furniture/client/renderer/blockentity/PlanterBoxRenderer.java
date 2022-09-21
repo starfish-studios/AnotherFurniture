@@ -24,24 +24,24 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEntity> {
     private BlockRenderDispatcher blockRenderer;
 
-    public PlanterBoxRenderer(BlockEntityRendererProvider.Context pContext) {
-        this.blockRenderer = pContext.getBlockRenderDispatcher();
+    public PlanterBoxRenderer(BlockEntityRendererProvider.Context context) {
+        this.blockRenderer = context.getBlockRenderDispatcher();
     }
 
     @Override
-    public void render(PlanterBoxBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-        Direction facing = pBlockEntity.getBlockState().getValue(PlanterBoxBlock.FACING).getOpposite();
+    public void render(PlanterBoxBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        Direction facing = blockEntity.getBlockState().getValue(PlanterBoxBlock.FACING).getOpposite();
         float rotation = -facing.toYRot();
         BlockState lower;
         BlockState upper = null;
 
-        pPoseStack.pushPose();
+        poseStack.pushPose();
 
-        pPoseStack.scale(0.7f, 0.7f, 0.7f);
-        pPoseStack.translate(0f, 0.4f, 0f);
+        poseStack.scale(0.7f, 0.7f, 0.7f);
+        poseStack.translate(0f, 0.4f, 0f);
 
         for (int i = 0; i < 2; i++) {
-            Item item = pBlockEntity.getItemFromSlot(i);
+            Item item = blockEntity.getItemFromSlot(i);
 
             if (item != Items.AIR) {
                 Block block = ((BlockItem)item).getBlock();
@@ -53,29 +53,29 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
                     lower = block.defaultBlockState();
                 }
 
-                pPoseStack.pushPose();
-                pPoseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
-                pPoseStack.translate( 0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
-                pPoseStack.translate( 0f, 0.001f * i, 0.001f * i); // prevent z-clipping
+                poseStack.pushPose();
+                poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
+                poseStack.translate( 0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
+                poseStack.translate( 0f, 0.001f * i, 0.001f * i); // prevent z-clipping
 
-                switch (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
-                    case EAST -> pPoseStack.translate(0f, 0f, -1.4f);
-                    case WEST -> pPoseStack.translate(-1.4f, 0f, 0);
-                    case SOUTH -> pPoseStack.translate(-1.4f, 0f, -1.4f);
+                switch (blockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
+                    case EAST -> poseStack.translate(0f, 0f, -1.4f);
+                    case WEST -> poseStack.translate(-1.4f, 0f, 0);
+                    case SOUTH -> poseStack.translate(-1.4f, 0f, -1.4f);
                 }
-                if (pBlockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
-                    pPoseStack.translate(0f, 0.9f, 0.36f);
+                if (blockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
+                    poseStack.translate(0f, 0.9f, 0.36f);
                 }
 
-                blockRenderer.renderSingleBlock(lower, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+                blockRenderer.renderSingleBlock(lower, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
                 if (upper != null) {
-                    pPoseStack.translate(0f, 1.0f, 0f);
-                    blockRenderer.renderSingleBlock(upper, pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+                    poseStack.translate(0f, 1.0f, 0f);
+                    blockRenderer.renderSingleBlock(upper, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
                 }
-                pPoseStack.popPose();
+                poseStack.popPose();
             }
         }
 
-        pPoseStack.popPose();
+        poseStack.popPose();
     }
 }

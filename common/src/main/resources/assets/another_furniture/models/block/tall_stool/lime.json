@@ -1,7 +1,6 @@
 {
     "parent": "another_furniture:block/template/tall_stool",
     "textures": {
-        "all": "another_furniture:block/tall_stool/lime",
-        "particle": "#all"
+        "top": "another_furniture:block/tall_stool/lime_top"
     }
 }

@@ -1,7 +1,9 @@
 {
     "parent": "another_furniture:block/template/sofa_inner",
     "textures": {
-        "all": "another_furniture:block/sofa/lime_inner",
-        "particle": "minecraft:block/lime_wool"
+        "seat_top": "another_furniture:block/sofa/lime_seat_inner",
+        "seat_front": "another_furniture:block/sofa/lime_seat_front",
+        "seat_back_2": "another_furniture:block/sofa/lime_seat_back_2",
+        "back": "another_furniture:block/sofa/lime_back"
     }
 }

@@ -6,7 +6,6 @@ import com.starfish_studios.another_furniture.block.properties.ModBlockStateProp
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.BarrelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -67,7 +66,6 @@ public class AFBlocks {
     public static final Supplier<Block> GREEN_STOOL = registerBlock("green_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> RED_STOOL = registerBlock("red_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> BLACK_STOOL = registerBlock("black_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> RAINBOW_STOOL = registerBlock("rainbow_stool", () -> new StoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
 
     // Version 2
     // Shutter
@@ -135,26 +133,24 @@ public class AFBlocks {
     public static final Supplier<Block> CRIMSON_DRAWER = registerBlock("crimson_drawer", () -> new DrawerBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> WARPED_DRAWER = registerBlock("warped_drawer", () -> new DrawerBlock(Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
-
-
     // Lamp
-    public static final Supplier<Block> WHITE_LAMP = registerBlock("white_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> ORANGE_LAMP = registerBlock("orange_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> MAGENTA_LAMP = registerBlock("magenta_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> LIGHT_BLUE_LAMP = registerBlock("light_blue_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> YELLOW_LAMP = registerBlock("yellow_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> LIME_LAMP = registerBlock("lime_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> PINK_LAMP = registerBlock("pink_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> GRAY_LAMP = registerBlock("gray_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> LIGHT_GRAY_LAMP = registerBlock("light_gray_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> CYAN_LAMP = registerBlock("cyan_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> PURPLE_LAMP = registerBlock("purple_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> BLUE_LAMP = registerBlock("blue_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> BROWN_LAMP = registerBlock("brown_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> GREEN_LAMP = registerBlock("green_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> RED_LAMP = registerBlock("red_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> BLACK_LAMP = registerBlock("black_lamp", () -> new LampBlock(Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> LAMP_POLE = registerBlockOnly("lamp_pole", () -> new LampPoleBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> WHITE_LAMP = registerBlock("white_lamp", () -> new LampBlock(DyeColor.WHITE, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> ORANGE_LAMP = registerBlock("orange_lamp", () -> new LampBlock(DyeColor.ORANGE, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> MAGENTA_LAMP = registerBlock("magenta_lamp", () -> new LampBlock(DyeColor.MAGENTA, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> LIGHT_BLUE_LAMP = registerBlock("light_blue_lamp", () -> new LampBlock(DyeColor.LIGHT_BLUE, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> YELLOW_LAMP = registerBlock("yellow_lamp", () -> new LampBlock(DyeColor.YELLOW, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> LIME_LAMP = registerBlock("lime_lamp", () -> new LampBlock(DyeColor.LIME, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> PINK_LAMP = registerBlock("pink_lamp", () -> new LampBlock(DyeColor.PINK, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> GRAY_LAMP = registerBlock("gray_lamp", () -> new LampBlock(DyeColor.GRAY, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> LIGHT_GRAY_LAMP = registerBlock("light_gray_lamp", () -> new LampBlock(DyeColor.LIGHT_GRAY, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> CYAN_LAMP = registerBlock("cyan_lamp", () -> new LampBlock(DyeColor.CYAN, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> PURPLE_LAMP = registerBlock("purple_lamp", () -> new LampBlock(DyeColor.PURPLE, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> BLUE_LAMP = registerBlock("blue_lamp", () -> new LampBlock(DyeColor.BLUE, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> BROWN_LAMP = registerBlock("brown_lamp", () -> new LampBlock(DyeColor.BROWN, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> GREEN_LAMP = registerBlock("green_lamp", () -> new LampBlock(DyeColor.GREEN, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> RED_LAMP = registerBlock("red_lamp", () -> new LampBlock(DyeColor.RED, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> BLACK_LAMP = registerBlock("black_lamp", () -> new LampBlock(DyeColor.BLACK, Block.Properties.of(Material.WOOD).lightLevel((blockState) -> blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> LAMP_CONNECTOR = registerBlockOnly("lamp_connector", () -> new LampConnectorBlock(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
     // Sofa
     public static final Supplier<Block> WHITE_SOFA = registerBlock("white_sofa", () -> new SofaBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
@@ -192,9 +188,16 @@ public class AFBlocks {
     public static final Supplier<Block> RED_TALL_STOOL = registerBlock("red_tall_stool", () -> new TallStoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> BLACK_TALL_STOOL = registerBlock("black_tall_stool", () -> new TallStoolBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
 
+
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);
         AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties().tab(AnotherFurniture.TAB)));
+        return supplier;
+    }
+
+    public static <T extends Block> Supplier<T> registerBlockHidden(String name, Supplier<T> block) {
+        Supplier<T> supplier = AFRegistry.registerBlock(name, block);
+        AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties()));
         return supplier;
     }
 

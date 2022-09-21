@@ -68,19 +68,19 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pHit.getDirection() == Direction.UP) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (hit.getDirection() == Direction.UP) {
+            BlockEntity blockentity = level.getBlockEntity(pos);
             if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
-                ItemStack itemstack = pPlayer.getItemInHand(pHand);
+                ItemStack itemstack = player.getItemInHand(hand);
                 if (!itemstack.isEmpty()) {
-                    if (!pLevel.isClientSide && shelfblockentity.placeItem(pPlayer.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(pHit, pPos))) {
-                        pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
+                        level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
                         return InteractionResult.SUCCESS;
                     }
                     return InteractionResult.CONSUME;
                 }
-                if (shelfblockentity.removeItem(this.getPosition(pHit, pPos), pPlayer, pLevel)) {
+                if (shelfblockentity.removeItem(this.getPosition(hit, pos), player, level)) {
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -89,26 +89,26 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockentity = level.getBlockEntity(pos);
             if (blockentity instanceof ShelfBlockEntity shelfBlockEntity) {
-                Containers.dropContents(pLevel, pPos, shelfBlockEntity.getItems());
+                Containers.dropContents(level, pos, shelfBlockEntity.getItems());
             }
 
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+            super.onRemove(state, level, pos, newState, isMoving);
         }
     }
 
     @Override
-    public boolean useShapeForLightOcclusion(BlockState pState) {
+    public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Direction direction = pState.getValue(FACING);
-        HorizontalConnectionType type = pState.getValue(TYPE);
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        Direction direction = state.getValue(FACING);
+        HorizontalConnectionType type = state.getValue(TYPE);
 
         if (direction == Direction.NORTH) {
             return switch (type) {
@@ -147,33 +147,33 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
-                .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        BlockState above = pLevel.getBlockState(pCurrentPos.above());
-        if (pDirection == Direction.UP && (above.isFaceSturdy(pLevel, pCurrentPos, Direction.DOWN) && !above.getVisualShape(pLevel, pCurrentPos.above(), CollisionContext.empty()).isEmpty())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pCurrentPos);
+        BlockState above = level.getBlockState(currentPos.above());
+        if (direction == Direction.UP && (above.isFaceSturdy(level, currentPos, Direction.DOWN) && !above.getVisualShape(level, currentPos.above(), CollisionContext.empty()).isEmpty())) {
+            BlockEntity blockentity = level.getBlockEntity(currentPos);
             if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
                 shelfblockentity.removeAllItems();
             }
         }
 
-        Direction facing = pState.getValue(FACING);
-        BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
-        BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
+        Direction facing = state.getValue(FACING);
+        BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
+        BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof ShelfBlock && l_state.getValue(FACING) == facing);
         boolean r_side = (r_state.getBlock() instanceof ShelfBlock && r_state.getValue(FACING) == facing);
         HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
-        return pState.setValue(TYPE, type);
+        return state.setValue(TYPE, type);
     }
 
     public FluidState getFluidState(BlockState state) {
@@ -182,8 +182,8 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ShelfBlockEntity(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new ShelfBlockEntity(pos, state);
     }
 
     private int getPosition(BlockHitResult hit, BlockPos pos)
@@ -196,18 +196,18 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, TYPE, WATERLOGGED);
     }
 
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TYPE, WATERLOGGED);
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override

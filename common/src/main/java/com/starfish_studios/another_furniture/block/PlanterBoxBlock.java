@@ -1,7 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFItemTags;
@@ -51,9 +50,9 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        boolean attached = pState.getValue(ATTACHED);
-        return switch (pState.getValue(FACING)) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        boolean attached = state.getValue(ATTACHED);
+        return switch (state.getValue(FACING)) {
             case WEST -> attached ? WEST_AABB : X_AXIS_AABB;
             case EAST -> attached ? EAST_AABB : X_AXIS_AABB;
             case SOUTH -> attached ? SOUTH_AABB : Z_AXIS_AABB;
@@ -73,64 +72,64 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        BlockState above = pLevel.getBlockState(pCurrentPos.above());
-        boolean attached = pState.getValue(ATTACHED);
-        if (pDirection == Direction.UP && attached && above.isFaceSturdy(pLevel, pCurrentPos, Direction.DOWN)) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pCurrentPos);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        BlockState above = level.getBlockState(currentPos.above());
+        boolean attached = state.getValue(ATTACHED);
+        if (direction == Direction.UP && attached && above.isFaceSturdy(level, currentPos, Direction.DOWN)) {
+            BlockEntity blockentity = level.getBlockEntity(currentPos);
             if (blockentity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
                 planterBoxBlockEntity.removeAllItems();
             }
         }
 
-        Direction facing = pState.getValue(FACING);
-        if (attached && pDirection.getOpposite() == facing && !pState.canSurvive(pLevel, pCurrentPos)) {
+        Direction facing = state.getValue(FACING);
+        if (attached && direction.getOpposite() == facing && !state.canSurvive(level, currentPos)) {
             return Blocks.AIR.defaultBlockState();
         }
-        BlockState l_state = pLevel.getBlockState(pCurrentPos.relative(facing.getClockWise()));
-        BlockState r_state = pLevel.getBlockState(pCurrentPos.relative(facing.getCounterClockWise()));
+        BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
+        BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(ATTACHED) == attached && (l_state.getValue(FACING) == facing || (!attached && l_state.getValue(FACING) == facing.getOpposite())));
         boolean r_side = (r_state.getBlock() instanceof PlanterBoxBlock && r_state.getValue(ATTACHED) == attached && (r_state.getValue(FACING) == facing || (!attached && r_state.getValue(FACING) == facing.getOpposite())));
         HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
-        return pState.setValue(TYPE, type);
+        return state.setValue(TYPE, type);
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        Direction clickedFace = pContext.getClickedFace();
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction clickedFace = context.getClickedFace();
         boolean attached = !(clickedFace == Direction.UP || clickedFace == Direction.DOWN);
-        Direction facing = attached ? clickedFace : pContext.getHorizontalDirection().getOpposite();
+        Direction facing = attached ? clickedFace : context.getHorizontalDirection().getOpposite();
         return this.defaultBlockState().setValue(ATTACHED, attached).setValue(FACING, facing);
     }
 
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TYPE, ATTACHED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, TYPE, ATTACHED);
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new PlanterBoxBlockEntity(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new PlanterBoxBlockEntity(pos, state);
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
-            ItemStack stack = pPlayer.getItemInHand(pHand);
+            ItemStack stack = player.getItemInHand(hand);
             if (stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
-                Direction facing = pState.getValue(FACING);
+                Direction facing = state.getValue(FACING);
                 boolean slot_0;
                 if (facing.getAxis() == Direction.Axis.X) {
-                    slot_0 = pHit.getLocation().z - (double)pHit.getBlockPos().getZ() > 0.5D;
+                    slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
                 } else {
-                    slot_0 = pHit.getLocation().x - (double)pHit.getBlockPos().getX() > 0.5D;
+                    slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
                 }
                 if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
-                if (!pLevel.isClientSide && planterBoxBlockEntity.placeFlower(pPlayer.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
+                if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
                     return InteractionResult.SUCCESS;
                 }
 
@@ -141,33 +140,33 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
-                Containers.dropContents(pLevel, pPos, planterBoxBlockEntity.getItems());
+                Containers.dropContents(level, pos, planterBoxBlockEntity.getItems());
             }
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+            super.onRemove(state, level, pos, newState, isMoving);
         }
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
         return false;
-    }
-
-    @Override
-    public BlockState rotate(BlockState pState, Rotation pRot) {
-        return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 }

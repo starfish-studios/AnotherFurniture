@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,8 +50,8 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public BlockPos dismountLocationOffset(BlockPos pos) {
-        return pos.below();
+    public Vec3i dismountLocationOffset() {
+        return new Vec3i(0, -1, 0);
     }
 
     @Override
@@ -79,38 +80,37 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        BlockState top = pState;
-        BlockPos pos = pPos;
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockState top = state;
 
-        if(!pState.getValue(TOP)) {
-            BlockState above = pLevel.getBlockState(pPos.above());
+        if(!state.getValue(TOP)) {
+            BlockState above = level.getBlockState(pos.above());
             if (above.getBlock() instanceof TwoTallSeatBlock && above.getValue(TOP)) {
                 top = above;
-                pos = pPos.above();
+                pos = pos.above();
             }
 
         }
-        return super.use(top, pLevel, pos, pPlayer, pHand, pHit);
+        return super.use(top, level, pos, player, hand, hit);
     }
 
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        Direction dir = pState.getValue(TOP) ? Direction.DOWN : Direction.UP;
-        if (pDirection == dir) {
-            if (!(pNeighborState.is(this) && pState.getValue(TOP) != pNeighborState.getValue(TOP))) {
+        Direction dir = state.getValue(TOP) ? Direction.DOWN : Direction.UP;
+        if (direction == dir) {
+            if (!(neighborState.is(this) && state.getValue(TOP) != neighborState.getValue(TOP))) {
                 return Blocks.AIR.defaultBlockState();
             }
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
@@ -119,8 +119,8 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WATERLOGGED, TOP);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED, TOP);
     }
 
 }

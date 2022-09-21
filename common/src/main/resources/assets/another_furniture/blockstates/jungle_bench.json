@@ -1,124 +1,332 @@
 {
-    "variants": {
-        "facing=north,type=single,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle"
+    "multipart": [
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_single"
+            }
         },
-        "facing=east,type=single,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_single",
+                "y": 90
+            }
         },
-        "facing=south,type=single,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_single",
+                "y": 180
+            }
         },
-        "facing=west,type=single,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_single",
+                "y": 270
+            }
         },
-        "facing=north,type=left,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_left"
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_left"
+            }
         },
-        "facing=east,type=left,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_left",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_left",
+                "y": 90
+            }
         },
-        "facing=south,type=left,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_left",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_left",
+                "y": 180
+            }
         },
-        "facing=west,type=left,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_left",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_left",
+                "y": 270
+            }
         },
-        "facing=north,type=middle,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_middle"
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_right"
+            }
         },
-        "facing=east,type=middle,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_middle",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_right",
+                "y": 90
+            }
         },
-        "facing=south,type=middle,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_middle",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_right",
+                "y": 180
+            }
         },
-        "facing=west,type=middle,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_middle",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_right",
+                "y": 270
+            }
         },
-        "facing=north,type=right,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_right"
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_middle"
+            }
         },
-        "facing=east,type=right,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_right",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_middle",
+                "y": 90
+            }
         },
-        "facing=south,type=right,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_right",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_middle",
+                "y": 180
+            }
         },
-        "facing=west,type=right,hammer_state=true": {
-            "model": "another_furniture:block/bench/jungle_right",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_middle",
+                "y": 270
+            }
         },
-        "facing=north,type=single,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless"
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_single"
+            }
         },
-        "facing=east,type=single,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_single",
+                "y": 90
+            }
         },
-        "facing=south,type=single,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_single",
+                "y": 180
+            }
         },
-        "facing=west,type=single,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_single",
+                "y": 270
+            }
         },
-        "facing=north,type=left,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_left"
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_left"
+            }
         },
-        "facing=east,type=left,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_left",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_left",
+                "y": 90
+            }
         },
-        "facing=south,type=left,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_left",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_left",
+                "y": 180
+            }
         },
-        "facing=west,type=left,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_left",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_left",
+                "y": 270
+            }
         },
-        "facing=north,type=middle,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_middle"
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_right"
+            }
         },
-        "facing=east,type=middle,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_middle",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_right",
+                "y": 90
+            }
         },
-        "facing=south,type=middle,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_middle",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_right",
+                "y": 180
+            }
         },
-        "facing=west,type=middle,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_middle",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_right",
+                "y": 270
+            }
         },
-        "facing=north,type=right,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_right"
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_middle"
+            }
         },
-        "facing=east,type=right,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_right",
-            "y": 90
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_middle",
+                "y": 90
+            }
         },
-        "facing=south,type=right,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_right",
-            "y": 180
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_middle",
+                "y": 180
+            }
         },
-        "facing=west,type=right,hammer_state=false": {
-            "model": "another_furniture:block/bench/jungle_backless_right",
-            "y": 270
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/jungle_back_middle",
+                "y": 270
+            }
         }
-    }
+    ]
 }

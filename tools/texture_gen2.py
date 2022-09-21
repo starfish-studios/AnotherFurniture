@@ -155,4 +155,7 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
                 print(f"saved {save_path}")
 
 
-generate_color_types()
+generate_color_types(
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+    ["curtain", "sofa_old", "tablecloth"])

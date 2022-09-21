@@ -50,27 +50,27 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState().setValue(WATERLOGGED, waterlogged);
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pState.getValue(POWERED)) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (state.getValue(POWERED)) {
             return InteractionResult.CONSUME;
-        } else {
-            this.press(pState, pLevel, pPos);
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_ACTIVATE, pPos);
-
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof ServiceBellBlockEntity servicebellblockentity) {
-                servicebellblockentity.onHit();
-            }
-            pLevel.playSound(null, pPos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
+
+        this.press(state, level, pos);
+        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
+
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof ServiceBellBlockEntity servicebellblockentity) {
+            servicebellblockentity.onHit();
+        }
+        level.playSound(null, pos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        return InteractionResult.sidedSuccess(level.isClientSide);
+
     }
 
     public void press(BlockState state, Level level, BlockPos pos) {
@@ -115,29 +115,28 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WATERLOGGED).add(POWERED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED, POWERED);
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ServiceBellBlockEntity(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new ServiceBellBlockEntity(pos, state);
     }
-
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, AFBlockEntityTypes.SERVICE_BELL.get(), pLevel.isClientSide ? ServiceBellBlockEntity::clientTick : null);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, AFBlockEntityTypes.SERVICE_BELL.get(), level.isClientSide ? ServiceBellBlockEntity::clientTick : null);
     }
 }

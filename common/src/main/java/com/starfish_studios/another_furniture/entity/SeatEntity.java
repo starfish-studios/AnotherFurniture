@@ -16,6 +16,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SeatEntity extends Entity {
     public SeatEntity(Level level) {
         super(AFEntityTypes.SEAT.get(), level);
@@ -71,19 +74,35 @@ public class SeatEntity extends Entity {
 
     @Override
     public Vec3 getDismountLocationForPassenger(LivingEntity entity) {
+        BlockPos pos = this.blockPosition();
+        Vec3 safeVec;
+        BlockState state = this.level.getBlockState(pos);
+        if (state.getBlock() instanceof SeatBlock seatBlock) {
+            //pos = pos.offset(seatBlock.dismountLocationOffset());
+            safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, seatBlock.primaryDismountLocation(this.level, state, pos), false);
+            if (safeVec != null) {
+                return safeVec.add(0, 0.25, 0);
+            }
+        }
+
         Direction original = this.getDirection();
         Direction[] offsets = {original, original.getClockWise(), original.getCounterClockWise(), original.getOpposite()};
         for(Direction dir : offsets) {
-            BlockPos pos = this.blockPosition();
-            if (this.level.getBlockState(pos).getBlock() instanceof SeatBlock seatBlock) {
-                pos = seatBlock.dismountLocationOffset(pos);
-            }
-            Vec3 safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, pos.relative(dir), false);
-            if(safeVec != null) {
+            safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, pos.relative(dir), false);
+            if (safeVec != null) {
                 return safeVec.add(0, 0.25, 0);
             }
         }
         return super.getDismountLocationForPassenger(entity);
     }
 
+    @Override
+    protected void addPassenger(Entity passenger) {
+        BlockPos pos = this.blockPosition();
+        BlockState state = this.level.getBlockState(pos);
+        if (state.getBlock() instanceof SeatBlock seatBlock) {
+            passenger.setYRot(seatBlock.setRiderRotation(state, passenger));
+        }
+        super.addPassenger(passenger);
+    }
 }

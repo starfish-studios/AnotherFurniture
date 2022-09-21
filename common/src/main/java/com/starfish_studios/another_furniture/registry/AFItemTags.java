@@ -9,13 +9,18 @@ import net.minecraft.world.level.block.Block;
 
 public class AFItemTags {
 
+    public static final TagKey<Item> BENCHES = itemTag("benches");
     public static final TagKey<Item> CHAIRS = itemTag("chairs");
     public static final TagKey<Item> CURTAINS = itemTag("curtains");
+    public static final TagKey<Item> DRAWERS = itemTag("drawers");
+    public static final TagKey<Item> LAMPS = itemTag("lamps");
     public static final TagKey<Item> PLANTER_BOXES = itemTag("planter_boxes");
     public static final TagKey<Item> SHELVES = itemTag("shelves");
     public static final TagKey<Item> SHUTTERS = itemTag("shutters");
+    public static final TagKey<Item> SOFAS = itemTag("sofas");
     public static final TagKey<Item> STOOLS = itemTag("stools");
     public static final TagKey<Item> TABLES = itemTag("tables");
+    public static final TagKey<Item> TALL_STOOLS = itemTag("tall_stools");
 
     public static final TagKey<Item> PLANTER_BOX_PLACEABLES = itemTag("planter_box_placeables");
     public static final TagKey<Item> PLANTER_BOX_BANNED = itemTag("planter_box_banned");

@@ -9,6 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -60,81 +61,81 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         return 0.2F;
     }
 
+    @Override
     public boolean isSittable(BlockState state) {
         return !state.getValue(TUCKED);
     }
+
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        int shape = pState.getValue(FACING).get2DDataValue();
-        if (pState.getValue(TUCKED)) shape += 4;
+    public BlockPos primaryDismountLocation(Level level, BlockState state, BlockPos pos) {
+        return pos.relative(state.getValue(FACING));
+    }
+
+    @Override
+    public float setRiderRotation(BlockState state, Entity entity) {
+        return state.getValue(FACING).toYRot();
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        int shape = state.getValue(FACING).get2DDataValue();
+        if (state.getValue(TUCKED)) shape += 4;
         return SHAPES[shape];
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
-                .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        if (pState.getValue(TUCKED) && pLevel instanceof Level level) {
-            if (!canTuckUnderFacing(pState, level, pCurrentPos)) {
-                return pState.setValue(TUCKED, false);
+        if (state.getValue(TUCKED) && level instanceof Level level1) {
+            if (!canTuckUnderFacing(state, level1, currentPos)) {
+                return state.setValue(TUCKED, false);
             }
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        boolean tucked = pState.getValue(TUCKED);
-        if ((pPlayer.isCrouching() || tucked) && pPlayer.getMainHandItem().isEmpty() && pPlayer.getOffhandItem().isEmpty() &&
-                canTuckUnderFacing(pState, pLevel, pPos)) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        boolean tucked = state.getValue(TUCKED);
+        if ((player.isCrouching() || tucked) && canTuckUnderFacing(state, level, pos)) {
             if (tucked) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, false));
-                pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlockAndUpdate(pos, state.setValue(TUCKED, false));
+                level.playSound(null, pos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
-
-            } else if (isChairBlocking(pState, pLevel, pPos)) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(TUCKED, true));
-                pLevel.playSound(null, pPos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            } else if (isChairBlocking(state, level, pos)) {
+                level.setBlockAndUpdate(pos, state.setValue(TUCKED, true));
+                level.playSound(null, pos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.FAIL;
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override
-    public PushReaction getPistonPushReaction(BlockState pState) {
-        return pState.getValue(TUCKED) ? PushReaction.BLOCK : super.getPistonPushReaction(pState);
+    public PushReaction getPistonPushReaction(BlockState state) {
+        return state.getValue(TUCKED) ? PushReaction.BLOCK : super.getPistonPushReaction(state);
     }
 
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TUCKED, WATERLOGGED);
-    }
-
-    @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, TUCKED, WATERLOGGED);
     }
 
     public boolean canTuckUnderFacing(BlockState state, Level level, BlockPos pos) {
@@ -169,5 +170,15 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
             if (right.getValue(TUCKED) && right.getValue(FACING) == facing.getCounterClockWise()) return false;
         }
         return true;
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 }

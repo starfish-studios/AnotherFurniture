@@ -160,7 +160,7 @@
             "when": {
                 "facing": "north",
 				"type_2": "single",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_single"
@@ -170,7 +170,7 @@
             "when": {
                 "facing": "east",
 				"type_2": "single",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_single",
@@ -181,7 +181,7 @@
             "when": {
                 "facing": "south",
 				"type_2": "single",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_single",
@@ -192,7 +192,7 @@
             "when": {
                 "facing": "west",
 				"type_2": "single",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_single",
@@ -203,7 +203,7 @@
             "when": {
                 "facing": "north",
 				"type_2": "left",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_left"
@@ -213,7 +213,7 @@
             "when": {
                 "facing": "east",
 				"type_2": "left",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_left",
@@ -224,7 +224,7 @@
             "when": {
                 "facing": "south",
 				"type_2": "left",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_left",
@@ -235,7 +235,7 @@
             "when": {
                 "facing": "west",
 				"type_2": "left",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_left",
@@ -246,7 +246,7 @@
             "when": {
                 "facing": "north",
 				"type_2": "right",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_right"
@@ -256,7 +256,7 @@
             "when": {
                 "facing": "east",
 				"type_2": "right",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_right",
@@ -267,7 +267,7 @@
             "when": {
                 "facing": "south",
 				"type_2": "right",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_right",
@@ -278,7 +278,7 @@
             "when": {
                 "facing": "west",
 				"type_2": "right",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_right",
@@ -289,7 +289,7 @@
             "when": {
                 "facing": "north",
 				"type_2": "middle",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_middle"
@@ -299,7 +299,7 @@
             "when": {
                 "facing": "east",
 				"type_2": "middle",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_middle",
@@ -310,7 +310,7 @@
             "when": {
                 "facing": "south",
 				"type_2": "middle",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_middle",
@@ -321,7 +321,7 @@
             "when": {
                 "facing": "west",
 				"type_2": "middle",
-				"hammer_state": "true"
+				"back": "true"
             },
             "apply": {
                 "model": "another_furniture:block/bench/oak_back_middle",

@@ -1,3 +1,6 @@
 {
-    "parent": "another_furniture:block/bench/warped"
+    "parent": "another_furniture:item/template/bench",
+    "textures": {
+        "all": "another_furniture:block/bench/warped"
+    }
 }

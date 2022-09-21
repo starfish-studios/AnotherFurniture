@@ -32,8 +32,8 @@ public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> 
     private final ModelPart curtain_l;
     private final ModelPart curtain_r;
 
-    public CurtainRenderer(BlockEntityRendererProvider.Context pContext) {
-        ModelPart modelpart = pContext.bakeLayer(CURTAIN_MODEL);
+    public CurtainRenderer(BlockEntityRendererProvider.Context context) {
+        ModelPart modelpart = context.bakeLayer(CURTAIN_MODEL);
         this.curtain = modelpart.getChild("curtain");
         this.curtain_l = modelpart.getChild("curtain_l");
         this.curtain_r = modelpart.getChild("curtain_r");
@@ -81,21 +81,22 @@ public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
-    public void render(CurtainBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-        VertexConsumer vertexconsumer = pBufferSource.getBuffer(RenderType.entityCutout(new ResourceLocation(AnotherFurniture.MOD_ID, "textures/block/curtain/" + ((CurtainBlock)pBlockEntity.getBlockState().getBlock()).getColor() + ".png")));
+    @Override
+    public void render(CurtainBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.entityCutout(new ResourceLocation(AnotherFurniture.MOD_ID, "textures/block/curtain/" + ((CurtainBlock)blockEntity.getBlockState().getBlock()).getColor() + ".png")));
         long i;
-        pPoseStack.pushPose();
+        poseStack.pushPose();
         //pPoseStack.translate(0.5D, 0.5D, 0.5D);
-        i = pBlockEntity.getLevel().getGameTime();
-        BlockState blockstate = pBlockEntity.getBlockState();
-        pPoseStack.translate(0.5D, (double)-0.16666667F, 0.5D);
+        i = blockEntity.getLevel().getGameTime();
+        BlockState blockstate = blockEntity.getBlockState();
+        poseStack.translate(0.5D, (double)-0.16666667F, 0.5D);
         float f3 = -blockstate.getValue(CurtainBlock.FACING).toYRot();
-        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f3));
-        pPoseStack.translate(0.0D, -0.3125D, -0.4575D);
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(f3));
+        poseStack.translate(0.0D, -0.3125D, -0.4575D);
 
-        pPoseStack.pushPose();
-        pPoseStack.scale(1.0F, -1.0F, -1.0F);
-        float f2 = ((float)Math.floorMod(i, 100L) + pPartialTick) / 100.0F;
+        poseStack.pushPose();
+        poseStack.scale(1.0F, -1.0F, -1.0F);
+        float f2 = ((float)Math.floorMod(i, 100L) + partialTick) / 100.0F;
         float xRot = (-0.0125F + 0.01F * Mth.cos(((float)Math.PI * 2F) * f2)) * (float)Math.PI;
         this.curtain.visible = false;
         this.curtain_l.visible = false;
@@ -107,21 +108,21 @@ public class CurtainRenderer implements BlockEntityRenderer<CurtainBlockEntity> 
                 this.curtain_l.visible = true;
                 this.curtain_l.xRot = xRot;
                 this.curtain_l.y = -32.0F;
-                this.curtain_l.render(pPoseStack, vertexconsumer, pPackedLight, pPackedOverlay);
+                this.curtain_l.render(poseStack, vertexconsumer, packedLight, packedOverlay);
             } else if (type == CurtainType.RIGHT) {
                 this.curtain_r.visible = true;
                 this.curtain_r.xRot = xRot;
                 this.curtain_r.y = -32.0F;
-                this.curtain_r.render(pPoseStack, vertexconsumer, pPackedLight, pPackedOverlay);
+                this.curtain_r.render(poseStack, vertexconsumer, packedLight, packedOverlay);
             }
         } else {
             this.curtain.visible = true;
             this.curtain.xRot = xRot;
             this.curtain.y = -32.0F;
-            this.curtain.render(pPoseStack, vertexconsumer, pPackedLight, pPackedOverlay);
+            this.curtain.render(poseStack, vertexconsumer, packedLight, packedOverlay);
         }
 
-        pPoseStack.popPose();
-        pPoseStack.popPose();
+        poseStack.popPose();
+        poseStack.popPose();
     }
 }

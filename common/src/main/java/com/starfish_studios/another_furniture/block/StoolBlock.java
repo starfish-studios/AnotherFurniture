@@ -36,46 +36,43 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     public StoolBlock(Properties properties) {
         super(properties);
-        registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
+        registerDefaultState(this.stateDefinition.any()
+                .setValue(WATERLOGGED, false));
     }
 
+    @Override
     public float seatHeight() {
         return 0.2F;
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPES;
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        boolean waterlogged = pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER;
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState().setValue(WATERLOGGED, waterlogged);
     }
 
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED);
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
@@ -83,11 +80,11 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter pLevel, Entity pEntity) {
-        if (pEntity.isSuppressingBounce()) {
-            super.updateEntityAfterFallOn(pLevel, pEntity);
+    public void updateEntityAfterFallOn(BlockGetter level, Entity entity) {
+        if (entity.isSuppressingBounce()) {
+            super.updateEntityAfterFallOn(level, entity);
         } else {
-            this.bounceUp(pEntity);
+            this.bounceUp(entity);
         }
     }
 
@@ -97,5 +94,10 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
             double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
             entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
         }
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+        return false;
     }
 }

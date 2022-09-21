@@ -1,7 +1,7 @@
 {
     "parent": "another_furniture:block/template/lamp",
     "textures": {
-        "colored": "another_furniture:block/lamp/black",
-        "particle": "minecraft:block/black_wool"
+        "top": "another_furniture:block/lamp/black_top",
+        "side": "another_furniture:block/lamp/black_side"
     }
 }

@@ -1,7 +1,6 @@
 package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.block.entity.*;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;

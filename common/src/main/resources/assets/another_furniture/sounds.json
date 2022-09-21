@@ -27,5 +27,12 @@
 			"another_furniture:curtain_2"
 		],
 		"subtitle": "subtitles.block.another_furniture.curtain.use"
+	},
+	"item.furniture_hammer.use": {
+		"category": "block",
+		"sounds": [
+			"another_furniture:hammer_hit"
+		],
+		"subtitle": "subtitles.item.another_furniture.furniture_hammer.use"
 	}
 }

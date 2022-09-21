@@ -25,8 +25,9 @@ public class ServiceBellButtonRenderer implements BlockEntityRenderer<ServiceBel
     public static final Material BELL_TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurniture.MOD_ID, "block/service_bell"));
     public static ModelLayerLocation SERVICE_BELL_MODEL = new ModelLayerLocation(new ResourceLocation(AnotherFurniture.MOD_ID, "service_bell"), "service_bell");
     private final ModelPart button;
-    public ServiceBellButtonRenderer(BlockEntityRendererProvider.Context pContext) {
-        this.button = pContext.bakeLayer(SERVICE_BELL_MODEL);
+
+    public ServiceBellButtonRenderer(BlockEntityRendererProvider.Context context) {
+        this.button = context.bakeLayer(SERVICE_BELL_MODEL);
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -38,23 +39,22 @@ public class ServiceBellButtonRenderer implements BlockEntityRenderer<ServiceBel
     }
 
 
-
     @Override
-    public void render(ServiceBellBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-        float f = (float)pBlockEntity.ticks + pPartialTick;
+    public void render(ServiceBellBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        float f = (float)blockEntity.ticks + partialTick;
         float f3 = 0f;
-        if (pBlockEntity.shaking) {
-            f3 = -(pBlockEntity.ticks / 25.0f);
+        if (blockEntity.shaking) {
+            f3 = -(blockEntity.ticks / 25.0f);
 
         }
-        pPoseStack.translate(0, f3, 0);
+        poseStack.translate(0, f3, 0);
 
 
-        pPoseStack.pushPose();
-        pPoseStack.scale(-1f, -1f, 1f);
+        poseStack.pushPose();
+        poseStack.scale(-1f, -1f, 1f);
 
-        this.button.render(pPoseStack, BELL_TEXTURE.buffer(pBufferSource, RenderType::entitySolid), pPackedLight, pPackedOverlay);
+        this.button.render(poseStack, BELL_TEXTURE.buffer(bufferSource, RenderType::entitySolid), packedLight, packedOverlay);
 
-        pPoseStack.popPose();
+        poseStack.popPose();
     }
 }

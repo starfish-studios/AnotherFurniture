@@ -1,0 +1,20 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"uncolored": "another_furniture:block/lamp/uncolored",
+		"particle": "#uncolored"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-8, 32, -8]},
+			"faces": {
+				"north": {"uv": [16, 0, 14, 16], "texture": "#uncolored"},
+				"east": {"uv": [14, 0, 16, 16], "texture": "#uncolored"},
+				"south": {"uv": [16, 0, 14, 16], "texture": "#uncolored"},
+				"west": {"uv": [14, 0, 16, 16], "texture": "#uncolored"}
+			}
+		}
+	]
+}
