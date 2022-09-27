@@ -2,7 +2,7 @@
     "parent": "another_furniture:block/template/table_top",
     "textures": {
         "top": "another_furniture:block/table/spruce_top",
-        "sides": "another_furniture:block/table/spruce_sides",
-        "particle": "another_furniture:block/table/spruce_top"
+        "bottom": "another_furniture:block/table/spruce_bottom",
+        "sides": "another_furniture:block/table/spruce_sides"
     }
 }

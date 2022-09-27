@@ -1,34 +1,34 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "another_furniture:brown_curtain"
-      },
-      "trigger": "minecraft:recipe_unlocked"
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_the_recipe": {
+            "conditions": {
+                "recipe": "another_furniture:brown_curtain"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        },
+        "has_wool": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:brown_wool"
+                        ]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
     },
-    "has_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:brown_wool"
-            ]
-          }
+    "requirements": [
+        [
+            "has_wool",
+            "has_the_recipe"
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+    ],
+    "rewards": {
+        "recipes": [
+            "another_furniture:brown_curtain"
+        ]
     }
-  },
-  "requirements": [
-    [
-      "has_wool",
-      "has_the_recipe"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "another_furniture:brown_curtain"
-    ]
-  }
 }

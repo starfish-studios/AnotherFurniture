@@ -1,12 +1,11 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"3": "another_furniture:block/shelf/oak_top",
+		"top": "another_furniture:block/shelf/oak_top",
+		"bottom": "another_furniture:block/shelf/oak_bottom",
 		"sides": "another_furniture:block/shelf/oak_sides",
 		"supports": "another_furniture:block/shelf/oak_supports",
-		"particle": "another_furniture:block/shelf/oak_bottom",
-		"top": "another_furniture:block/shelf/oak_bottom"
+		"particle": "#top"
 	},
 	"elements": [
 		{
@@ -17,8 +16,8 @@
 				"east": {"uv": [0, 0, 16, 2], "texture": "#sides", "cullface": "east"},
 				"south": {"uv": [0, 4, 16, 6], "texture": "#sides", "cullface": "south"},
 				"west": {"uv": [0, 6, 16, 8], "texture": "#sides", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#3", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom"}
 			}
 		},
 		{

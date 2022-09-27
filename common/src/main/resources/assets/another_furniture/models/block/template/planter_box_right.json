@@ -1,290 +1,58 @@
 {
-    "parent": "minecraft:block/block",
-    "texture_size": [
-        32,
-        32
-    ],
-    "textures": {
-        "box": "another_furniture:block/planter_box/oak",
-        "dirt": "another_furniture:block/dirt",
-        "particle": "#box"
-    },
-    "elements": [
-        {
-            "from": [
-                0,
-                0,
-                4
-            ],
-            "to": [
-                16,
-                5,
-                12
-            ],
-            "rotation": {
-                "angle": 0,
-                "axis": "y",
-                "origin": [
-                    0,
-                    0,
-                    -4
-                ]
-            },
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        4.5,
-                        8,
-                        7
-                    ],
-                    "texture": "#box"
-                },
-                "east": {
-                    "uv": [
-                        8,
-                        4.5,
-                        12,
-                        7
-                    ],
-                    "texture": "#box",
-                    "cullface": "east"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        4.5,
-                        8,
-                        7
-                    ],
-                    "texture": "#box"
-                },
-                "west": {
-                    "uv": [
-                        8,
-                        4.5,
-                        12,
-                        7
-                    ],
-                    "texture": "#box",
-                    "cullface": "west"
-                },
-                "up": {
-                    "uv": [
-                        16,
-                        12,
-                        0,
-                        4
-                    ],
-                    "texture": "#dirt",
-                    "cullface": "up"
-                },
-                "down": {
-                    "uv": [
-                        8,
-                        7,
-                        0,
-                        11
-                    ],
-                    "texture": "#box",
-                    "cullface": "down"
-                }
-            }
-        },
-        {
-            "from": [
-                0,
-                5,
-                4
-            ],
-            "to": [
-                16,
-                6,
-                5
-            ],
-            "rotation": {
-                "angle": 0,
-                "axis": "y",
-                "origin": [
-                    0,
-                    0,
-                    -4
-                ]
-            },
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        4,
-                        8,
-                        4.5
-                    ],
-                    "texture": "#box"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        4,
-                        0.5,
-                        4.5
-                    ],
-                    "texture": "#box",
-                    "cullface": "east"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        4,
-                        8,
-                        4.5
-                    ],
-                    "texture": "#box"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        4,
-                        0.5,
-                        4.5
-                    ],
-                    "texture": "#box",
-                    "cullface": "west"
-                },
-                "up": {
-                    "uv": [
-                        8,
-                        4.5,
-                        0,
-                        4
-                    ],
-                    "texture": "#box",
-                    "cullface": "up"
-                }
-            }
-        },
-        {
-            "from": [
-                0,
-                5,
-                11
-            ],
-            "to": [
-                16,
-                6,
-                12
-            ],
-            "rotation": {
-                "angle": 0,
-                "axis": "y",
-                "origin": [
-                    0,
-                    0,
-                    -4
-                ]
-            },
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        4,
-                        8,
-                        4.5
-                    ],
-                    "texture": "#box"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        4,
-                        0.5,
-                        4.5
-                    ],
-                    "texture": "#box",
-                    "cullface": "east"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        4,
-                        8,
-                        4.5
-                    ],
-                    "texture": "#box"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        4,
-                        0.5,
-                        4.5
-                    ],
-                    "texture": "#box",
-                    "cullface": "west"
-                },
-                "up": {
-                    "uv": [
-                        8,
-                        4.5,
-                        0,
-                        4
-                    ],
-                    "texture": "#box",
-                    "cullface": "up"
-                }
-            }
-        },
-        {
-            "from": [
-                0,
-                5,
-                5
-            ],
-            "to": [
-                1,
-                6,
-                11
-            ],
-            "rotation": {
-                "angle": 0,
-                "axis": "y",
-                "origin": [
-                    0,
-                    0,
-                    -4
-                ]
-            },
-            "faces": {
-                "east": {
-                    "uv": [
-                        8.5,
-                        4,
-                        11.5,
-                        4.5
-                    ],
-                    "texture": "#box"
-                },
-                "west": {
-                    "uv": [
-                        8.5,
-                        4,
-                        11.5,
-                        4.5
-                    ],
-                    "texture": "#box",
-                    "cullface": "west"
-                },
-                "up": {
-                    "uv": [
-                        11.5,
-                        4.5,
-                        8.5,
-                        4
-                    ],
-                    "rotation": 90,
-                    "texture": "#box",
-                    "cullface": "up"
-                }
-            }
-        }
-    ]
+	"parent": "minecraft:block/block",
+	"textures": {
+		"top_sides": "another_furniture:block/planter_box/oak_top_sides",
+		"bottom": "another_furniture:block/planter_box/oak_bottom",
+		"dirt": "minecraft:block/dirt",
+		"particle": "#top_sides"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 4],
+			"to": [16, 5, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
+			"faces": {
+				"north": {"uv": [0, 9, 16, 14], "texture": "#top_sides"},
+				"east": {"uv": [1, 2, 9, 7], "texture": "#top_sides", "cullface": "east"},
+				"south": {"uv": [0, 9, 16, 14], "texture": "#top_sides"},
+				"west": {"uv": [1, 2, 9, 7], "texture": "#top_sides", "cullface": "west"},
+				"up": {"uv": [16, 12, 0, 4], "texture": "#dirt", "cullface": "up"},
+				"down": {"uv": [16, 0, 0, 8], "texture": "#bottom", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 5, 4],
+			"to": [16, 6, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
+			"faces": {
+				"north": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
+				"east": {"uv": [0, 8, 1, 9], "texture": "#top_sides", "cullface": "east"},
+				"south": {"uv": [0, 8, 16, 9], "texture": "#top_sides", "cullface": "up"},
+				"west": {"uv": [15, 8, 16, 9], "texture": "#top_sides", "cullface": "west"},
+				"up": {"uv": [0, 7, 16, 8], "texture": "#top_sides", "cullface": "up"}
+			}
+		},
+		{
+			"from": [0, 5, 11],
+			"to": [16, 6, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
+			"faces": {
+				"north": {"uv": [0, 8, 16, 9], "texture": "#top_sides", "cullface": "up"},
+				"east": {"uv": [0, 8, 1, 9], "texture": "#top_sides", "cullface": "east"},
+				"south": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
+				"west": {"uv": [15, 8, 16, 9], "texture": "#top_sides", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#top_sides", "cullface": "up"}
+			}
+		},
+		{
+			"from": [0, 5, 5],
+			"to": [1, 6, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
+			"faces": {
+				"east": {"uv": [1, 1, 9, 2], "texture": "#top_sides", "cullface": "up"},
+				"west": {"uv": [1, 1, 9, 2], "texture": "#top_sides", "cullface": "west"},
+				"up": {"uv": [15, 1, 16, 7], "rotation": 90, "texture": "#top_sides", "cullface": "up"}
+			}
+		}
+	]
 }

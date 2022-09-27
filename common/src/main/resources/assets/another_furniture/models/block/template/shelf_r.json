@@ -1,10 +1,11 @@
 {
 	"parent": "minecraft:block/block",
 	"textures": {
-		"particle": "another_furniture:block/shelf/oak_top",
 		"top": "another_furniture:block/shelf/oak_top",
+		"bottom": "another_furniture:block/shelf/oak_bottom",
 		"sides": "another_furniture:block/shelf/oak_sides",
-		"supports": "another_furniture:block/shelf/oak_supports"
+		"supports": "another_furniture:block/shelf/oak_supports",
+		"particle": "#top"
 	},
 	"elements": [
 		{
@@ -15,7 +16,7 @@
 				"south": {"uv": [0, 4, 16, 6], "texture": "#sides", "cullface": "south"},
 				"west": {"uv": [0, 6, 16, 8], "texture": "#sides", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom"}
 			}
 		},
 		{

@@ -2,6 +2,6 @@
     "parent": "another_furniture:block/template/table_leg",
     "textures": {
         "sides": "another_furniture:block/table/acacia_sides",
-        "particle": "another_furniture:block/table/acacia_top"
+        "supports": "another_furniture:block/table/acacia_supports"
     }
 }

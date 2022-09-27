@@ -1,8 +1,6 @@
 package com.starfish_studios.another_furniture.entity;
 
-import com.starfish_studios.another_furniture.block.ChairBlock;
 import com.starfish_studios.another_furniture.block.SeatBlock;
-import com.starfish_studios.another_furniture.block.TallStoolBlock;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,9 +13,6 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SeatEntity extends Entity {
     public SeatEntity(Level level) {

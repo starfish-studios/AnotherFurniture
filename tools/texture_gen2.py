@@ -61,12 +61,13 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
                 # skip swapping colors if it's oak
                 if not plank.split("\\")[-1].startswith("oak"):
                     input_img_size = input_img.size
-                    img_new = Image.new("RGBA", (input_img_size[0], input_img_size[1]), color = "white")
+                    img_new = input_img
                     image_new = img_new.load()
                     
                     size = input_img.size
                     for y in range(size[0]):
                         for x in range(size[1]):
+
                             
                             pix = input_img_loaded[x,y]
                             for num, primary_palette_data_item in enumerate(primary_palette_data):
@@ -74,15 +75,12 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
                                     image_new[x,y] = secondary_palette_data[num]["color"]
                                 elif pix == (0, 0, 0, 0):
                                     image_new[x,y] = (0, 0, 0, 0)
-
                 else:
                     img_new = input_img
                     
                 save_path = template.replace("oak", plank.split("\\")[-1].replace(".png","")).replace("_planks","")
                 img_new.save(save_path)
                 print(f"saved {save_path}")
-
-
 
 
 def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
@@ -155,7 +153,12 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
                 print(f"saved {save_path}")
 
 
-generate_color_types(
-    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+generate_wood_types(
+    "C:\\Users\\jacec\\Desktop\\planks",
     "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    ["curtain", "sofa_old", "tablecloth"])
+    ["chair", "drawer", "shutter"])
+
+#generate_color_types(
+#    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+#    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+#    ["curtain", "sofa_old", "tablecloth"])

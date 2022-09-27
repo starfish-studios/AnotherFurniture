@@ -2,8 +2,8 @@
     "parent": "another_furniture:block/template/shelf_r",
     "textures": {
         "top": "another_furniture:block/shelf/spruce_top",
+        "bottom": "another_furniture:block/shelf/spruce_bottom",
         "sides": "another_furniture:block/shelf/spruce_sides",
-        "supports": "another_furniture:block/shelf/spruce_supports",
-        "particle": "another_furniture:block/shelf/spruce_top"
+        "supports": "another_furniture:block/shelf/spruce_supports"
     }
 }

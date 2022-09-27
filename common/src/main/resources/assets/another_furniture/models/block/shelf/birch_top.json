@@ -2,7 +2,7 @@
     "parent": "another_furniture:block/template/shelf_top",
     "textures": {
         "top": "another_furniture:block/shelf/birch_top",
-        "sides": "another_furniture:block/shelf/birch_sides",
-        "particle": "another_furniture:block/shelf/birch_top"
+        "bottom": "another_furniture:block/shelf/birch_bottom",
+        "sides": "another_furniture:block/shelf/birch_sides"
     }
 }

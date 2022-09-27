@@ -9,10 +9,7 @@ import com.starfish_studios.another_furniture.client.renderer.entity.SeatRendere
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
-import com.starfish_studios.another_furniture.util.block.WallpaperManager;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.resources.ResourceLocation;
 
 public class AnotherFurnitureClient {
     public static final ModelResourceLocation GREEN_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper");

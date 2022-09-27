@@ -214,19 +214,6 @@
 								}
 							],
 							"name": "another_furniture:black_lamp"
-						},
-						{
-							"type": "minecraft:item",
-							"conditions": [
-								{
-									"condition": "minecraft:block_state_property",
-									"block": "another_furniture:lamp_connector",
-									"properties": {
-										"color": "rainbow"
-									}
-								}
-							],
-							"name": "another_furniture:rainbow_lamp"
 						}
 					]
                 }
