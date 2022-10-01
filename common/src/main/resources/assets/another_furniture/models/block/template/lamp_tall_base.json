@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"uncolored": "another_furniture:block/lamp/uncolored",
+		"particle": "#uncolored"
+	},
+	"elements": [
+		{
+			"from": [7, 2, 7],
+			"to": [9, 16, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-8, 32, -8]},
+			"faces": {
+				"north": {"uv": [16, 0, 14, 14], "texture": "#uncolored"},
+				"east": {"uv": [14, 0, 16, 14], "texture": "#uncolored"},
+				"south": {"uv": [16, 0, 14, 14], "texture": "#uncolored"},
+				"west": {"uv": [14, 0, 16, 14], "texture": "#uncolored"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 2], "texture": "#uncolored"},
+				"east": {"uv": [0, 0, 6, 2], "texture": "#uncolored"},
+				"south": {"uv": [0, 0, 6, 2], "texture": "#uncolored"},
+				"west": {"uv": [0, 0, 6, 2], "texture": "#uncolored"},
+				"up": {"uv": [0, 10, 6, 16], "texture": "#uncolored"},
+				"down": {"uv": [6, 10, 12, 16], "texture": "#uncolored", "cullface": "down"}
+			}
+		}
+	]
+}

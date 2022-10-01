@@ -23,10 +23,9 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
     }
 
     @Override
-    public void render(ShelfBlockEntity tileEntity, float partialTicks, PoseStack poseStack, MultiBufferSource source, int light, int overlay)
-    {
-        Direction direction = tileEntity.getBlockState().getValue(ShelfBlock.FACING);
-        NonNullList<ItemStack> items = tileEntity.getItems();
+    public void render(ShelfBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        Direction direction = blockEntity.getBlockState().getValue(ShelfBlock.FACING);
+        NonNullList<ItemStack> items = blockEntity.getItems();
         for(int j = 0; j < items.size(); j++) {
             ItemStack stack = items.get(j);
             if (!stack.isEmpty()) {
@@ -48,7 +47,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
                     poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
 
                     poseStack.scale(0.375F, 0.375F, 0.375F);
-                    Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, poseStack, source, 0);
+                    Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, packedLight, packedOverlay, poseStack, bufferSource, 0);
 
                     poseStack.popPose();
                 }

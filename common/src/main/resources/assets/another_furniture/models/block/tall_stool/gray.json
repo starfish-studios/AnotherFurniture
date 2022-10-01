@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/template/tall_stool",
+    "textures": {
+        "top": "another_furniture:block/tall_stool/gray_top"
+    }
+}

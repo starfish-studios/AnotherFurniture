@@ -6,6 +6,10 @@
         "another_furniture:jungle_table",
         "another_furniture:acacia_table",
         "another_furniture:dark_oak_table",
+        {
+            "id": "another_furniture:mangrove_table",
+            "required": false
+        },
         "another_furniture:crimson_table",
         "another_furniture:warped_table"
     ]

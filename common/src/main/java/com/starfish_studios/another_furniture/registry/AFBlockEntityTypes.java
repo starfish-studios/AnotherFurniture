@@ -1,9 +1,6 @@
 package com.starfish_studios.another_furniture.registry;
 
-import com.starfish_studios.another_furniture.block.entity.CurtainBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
+import com.starfish_studios.another_furniture.block.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -53,6 +50,18 @@ public class AFBlockEntityTypes {
                     AFBlocks.DARK_OAK_PLANTER_BOX.get(),
                     AFBlocks.CRIMSON_PLANTER_BOX.get(),
                     AFBlocks.WARPED_PLANTER_BOX.get()
+            ));
+
+    public static final Supplier<BlockEntityType<DrawerBlockEntity>> DRAWER = AFRegistry.registerBlockEntityType("drawer",
+            () -> AFRegistry.createBlockEntityType(DrawerBlockEntity::new,
+                    AFBlocks.OAK_DRAWER.get(),
+                    AFBlocks.SPRUCE_DRAWER.get(),
+                    AFBlocks.BIRCH_DRAWER.get(),
+                    AFBlocks.JUNGLE_DRAWER.get(),
+                    AFBlocks.ACACIA_DRAWER.get(),
+                    AFBlocks.DARK_OAK_DRAWER.get(),
+                    AFBlocks.CRIMSON_DRAWER.get(),
+                    AFBlocks.WARPED_DRAWER.get()
             ));
 
     public static void init() {}

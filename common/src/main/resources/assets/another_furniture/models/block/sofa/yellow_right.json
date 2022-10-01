@@ -1,0 +1,10 @@
+{
+    "parent": "another_furniture:block/template/sofa_right",
+    "textures": {
+        "seat_top": "another_furniture:block/sofa/yellow_seat_edge",
+        "seat_front": "another_furniture:block/sofa/yellow_seat_front",
+        "seat_side": "another_furniture:block/sofa/yellow_seat_side",
+        "seat_back_1": "another_furniture:block/sofa/yellow_seat_back_1",
+        "back": "another_furniture:block/sofa/yellow_back"
+    }
+}

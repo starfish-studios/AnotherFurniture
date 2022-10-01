@@ -4,7 +4,6 @@
         "bottom": "another_furniture:block/stool/bottom",
         "legs": "another_furniture:block/stool/legs",
         "side": "another_furniture:block/stool/blue_side",
-        "top": "another_furniture:block/stool/blue_top",
-        "particle": "another_furniture:block/stool/blue_top"
+        "top": "another_furniture:block/stool/blue_top"
     }
 }

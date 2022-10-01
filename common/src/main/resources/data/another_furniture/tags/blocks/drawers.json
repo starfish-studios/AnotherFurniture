@@ -1,0 +1,16 @@
+{
+    "values": [
+        "another_furniture:oak_drawer",
+        "another_furniture:spruce_drawer",
+        "another_furniture:birch_drawer",
+        "another_furniture:jungle_drawer",
+        "another_furniture:acacia_drawer",
+        "another_furniture:dark_oak_drawer",
+        {
+            "id": "another_furniture:mangrove_drawer",
+            "required": false
+        },
+        "another_furniture:crimson_drawer",
+        "another_furniture:warped_drawer"
+    ]
+}

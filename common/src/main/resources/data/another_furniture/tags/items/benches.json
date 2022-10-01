@@ -1,0 +1,16 @@
+{
+    "values": [
+        "another_furniture:oak_bench",
+        "another_furniture:spruce_bench",
+        "another_furniture:birch_bench",
+        "another_furniture:jungle_bench",
+        "another_furniture:acacia_bench",
+        "another_furniture:dark_oak_bench",
+        {
+            "id": "another_furniture:mangrove_bench",
+            "required": false
+        },
+        "another_furniture:crimson_bench",
+        "another_furniture:warped_bench"
+    ]
+}

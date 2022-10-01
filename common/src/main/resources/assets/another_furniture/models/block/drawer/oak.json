@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/orientable",
+	"textures": {
+		"front": "another_furniture:block/drawer/oak_front",
+		"side": "another_furniture:block/drawer/oak_side",
+		"top": "another_furniture:block/drawer/oak_top"
+	}
+}

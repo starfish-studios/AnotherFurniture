@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/lamp_wall",
+    "textures": {
+        "top": "another_furniture:block/lamp/magenta_top",
+        "side": "another_furniture:block/lamp/magenta_side"
+    }
+}

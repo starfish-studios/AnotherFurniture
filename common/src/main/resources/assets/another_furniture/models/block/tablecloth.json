@@ -1,78 +1,20 @@
 {
-    "credit": "Made with Blockbench",
-    "textures": {
-        "0": "another_furniture:block/white_tablecloth_side",
-        "1": "another_furniture:block/white_tablecloth_top",
-        "particle": "another_furniture:block/white_tablecloth_side"
-    },
-    "elements": [
-        {
-            "from": [
-                -0.01,
-                7.99,
-                -0.01
-            ],
-            "to": [
-                16.01,
-                16.01,
-                16.01
-            ],
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        8
-                    ],
-                    "texture": "#0"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        8
-                    ],
-                    "texture": "#0"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        8
-                    ],
-                    "texture": "#0"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        8
-                    ],
-                    "texture": "#0"
-                },
-                "up": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        16
-                    ],
-                    "texture": "#1"
-                },
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "texture": "#0"
-                }
-            }
-        }
-    ]
+	"textures": {
+		"0": "another_furniture:block/tablecloth/white_side",
+		"1": "another_furniture:block/tablecloth/white_top",
+		"particle": "another_furniture:block/tablecloth/white_top"
+	},
+	"elements": [
+		{
+			"from": [-0.01, 7.99, -0.01],
+			"to": [16.01, 16.01, 16.01],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 8], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 8], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	]
 }

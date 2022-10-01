@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/drawer/warped",
+	"textures": {
+		"front": "another_furniture:block/drawer/warped_front_open"
+	}
+}

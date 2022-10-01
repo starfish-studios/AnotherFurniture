@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/lamp_off",
+    "textures": {
+        "top": "another_furniture:block/lamp/gray_top",
+        "side": "another_furniture:block/lamp/gray_side"
+    }
+}

@@ -6,6 +6,10 @@
         "another_furniture:jungle_shutter",
         "another_furniture:acacia_shutter",
         "another_furniture:dark_oak_shutter",
+        {
+            "id": "another_furniture:mangrove_shutter",
+            "required": false
+        },
         "another_furniture:crimson_shutter",
         "another_furniture:warped_shutter"
     ]

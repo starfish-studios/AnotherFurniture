@@ -6,6 +6,10 @@
         "another_furniture:jungle_shelf",
         "another_furniture:acacia_shelf",
         "another_furniture:dark_oak_shelf",
+        {
+            "id": "another_furniture:mangrove_shelf",
+            "required": false
+        },
         "another_furniture:crimson_shelf",
         "another_furniture:warped_shelf"
     ]

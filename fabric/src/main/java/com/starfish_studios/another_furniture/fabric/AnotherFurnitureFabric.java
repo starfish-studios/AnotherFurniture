@@ -9,4 +9,5 @@ public class AnotherFurnitureFabric implements ModInitializer {
         AnotherFurniture.init();
         AnotherFurniture.registerFlammables();
     }
+
 }

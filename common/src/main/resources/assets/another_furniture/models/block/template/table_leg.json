@@ -1,83 +1,44 @@
 {
-    "parent": "minecraft:block/block",
-    "textures": {
-        "sides": "another_furniture:block/table/oak_sides",
-        "particle": "another_furniture:block/table/oak_top"
-    },
-    "elements": [
-        {
-            "name": "right_front_leg",
-            "from": [
-                14,
-                0,
-                0
-            ],
-            "to": [
-                16,
-                14,
-                2
-            ],
-            "rotation": {
-                "angle": 0,
-                "axis": "y",
-                "origin": [
-                    0,
-                    -2,
-                    0
-                ]
-            },
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        10,
-                        14,
-                        12
-                    ],
-                    "rotation": 270,
-                    "texture": "#sides"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        8,
-                        14,
-                        10
-                    ],
-                    "rotation": 270,
-                    "texture": "#sides"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        12,
-                        14,
-                        14
-                    ],
-                    "rotation": 270,
-                    "texture": "#sides"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        14,
-                        14,
-                        16
-                    ],
-                    "rotation": 270,
-                    "texture": "#sides"
-                },
-                "down": {
-                    "uv": [
-                        14,
-                        8,
-                        16,
-                        10
-                    ],
-                    "texture": "#sides",
-                    "cullface": "down"
-                }
-            }
-        }
-    ]
+	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"sides": "another_furniture:block/table/oak_sides",
+		"supports": "another_furniture:block/table/oak_supports",
+		"particle": "#sides"
+	},
+	"elements": [
+		{
+			"name": "right_front_leg",
+			"from": [14, 0, 0],
+			"to": [16, 13, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
+			"faces": {
+				"north": {"uv": [0, 10, 13, 12], "rotation": 270, "texture": "#sides", "cullface": "north"},
+				"east": {"uv": [0, 8, 13, 10], "rotation": 270, "texture": "#sides", "cullface": "east"},
+				"south": {"uv": [0, 12, 13, 14], "rotation": 270, "texture": "#sides"},
+				"west": {"uv": [0, 14, 13, 16], "rotation": 270, "texture": "#sides"},
+				"down": {"uv": [14, 8, 16, 10], "texture": "#sides", "cullface": "down"}
+			}
+		},
+		{
+			"name": "right_front_leg",
+			"from": [10, 9, 1],
+			"to": [14, 13, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-2, -2, 0]},
+			"faces": {
+				"north": {"uv": [16, 0, 0, 16], "rotation": 270, "texture": "#supports"},
+				"south": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#supports"}
+			}
+		},
+		{
+			"name": "right_front_leg",
+			"from": [15, 9, 2],
+			"to": [15, 13, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [15, 12, 8]},
+			"faces": {
+				"east": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#supports"},
+				"west": {"uv": [16, 0, 0, 16], "rotation": 270, "texture": "#supports"}
+			}
+		}
+	]
 }

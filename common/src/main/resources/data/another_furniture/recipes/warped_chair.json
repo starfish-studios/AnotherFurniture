@@ -1,21 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "chairs",
-  "key": {
-    "#": {
-      "item": "minecraft:warped_planks"
+    "type": "minecraft:crafting_shaped",
+    "group": "chairs",
+    "key": {
+        "#": {
+            "item": "minecraft:warped_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
     },
-    "/": {
-      "item": "minecraft:stick"
+    "pattern": [
+        "# ",
+        "##",
+        "//"
+    ],
+    "result": {
+        "count": 3,
+        "item": "another_furniture:warped_chair"
     }
-  },
-  "pattern": [
-    "# ",
-    "##",
-    "//"
-  ],
-  "result": {
-    "count": 3,
-    "item": "another_furniture:warped_chair"
-  }
 }

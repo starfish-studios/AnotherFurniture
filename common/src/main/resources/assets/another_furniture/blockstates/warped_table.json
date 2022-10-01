@@ -41,7 +41,7 @@
             },
             "apply": {
                 "model": "another_furniture:block/table/warped_leg",
-                "uvlock": true
+                "uvlock": false
             }
         },
         {
@@ -51,7 +51,7 @@
             "apply": {
                 "model": "another_furniture:block/table/warped_leg",
                 "y": 90,
-                "uvlock": true
+                "uvlock": false
             }
         },
         {
@@ -61,7 +61,7 @@
             "apply": {
                 "model": "another_furniture:block/table/warped_leg",
                 "y": 180,
-                "uvlock": true
+                "uvlock": false
             }
         },
         {
@@ -71,7 +71,7 @@
             "apply": {
                 "model": "another_furniture:block/table/warped_leg",
                 "y": 270,
-                "uvlock": true
+                "uvlock": false
             }
         }
     ]

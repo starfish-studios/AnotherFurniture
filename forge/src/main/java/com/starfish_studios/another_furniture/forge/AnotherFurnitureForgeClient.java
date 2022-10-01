@@ -11,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = AnotherFurniture.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AnotherFurnitureForgeClient {
+
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
         AnotherFurnitureClient.init();
@@ -20,5 +21,13 @@ public class AnotherFurnitureForgeClient {
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(CurtainRenderer.CURTAIN_MODEL, CurtainRenderer::createBodyLayer);
         event.registerLayerDefinition(ServiceBellButtonRenderer.SERVICE_BELL_MODEL, ServiceBellButtonRenderer::createBodyLayer);
+
     }
+
+//    @SubscribeEvent
+//    public static void registerSpecialModels(ModelEvent.RegisterAdditional event) {
+//        event.register(new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper"));
+//        event.register(new ModelResourceLocation(AnotherFurniture.MOD_ID + ":red_stripes_wallpaper"));
+//    }
+
 }

@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/drawer/birch",
+	"textures": {
+		"front": "another_furniture:block/drawer/birch_front_open"
+	}
+}

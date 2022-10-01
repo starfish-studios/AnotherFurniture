@@ -1,0 +1,332 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_single"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_single",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_single",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "single"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_single",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_left"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_left",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_left",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "left"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_left",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_right"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_right",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_right",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "right"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_right",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_middle"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_middle",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_middle",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_1": "middle"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_middle",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_single"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_single",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_single",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "single",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_single",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_left"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_left",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_left",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "left",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_left",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_right"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_right",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_right",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "right",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_right",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_middle"
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_middle",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_middle",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "type_2": "middle",
+                "back": "true"
+            },
+            "apply": {
+                "model": "another_furniture:block/bench/acacia_back_middle",
+                "y": 270
+            }
+        }
+    ]
+}

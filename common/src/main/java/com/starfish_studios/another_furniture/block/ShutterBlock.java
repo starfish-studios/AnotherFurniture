@@ -28,6 +28,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -48,81 +49,89 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
     public ShutterBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, ShutterType.NONE).setValue(OPEN, false).setValue(LEFT, false).setValue(POWERED, false).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(TYPE, ShutterType.NONE)
+                .setValue(OPEN, false)
+                .setValue(LEFT, false)
+                .setValue(POWERED, false)
+                .setValue(WATERLOGGED, false));
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         // 3 = open + hinge left
         // 1 open + hinge right
         // 0 not open
-        int shape = pState.getValue(FACING).get2DDataValue() + (pState.getValue(OPEN) ? (pState.getValue(LEFT) ? 3 : 1) : 0);
+        int shape = state.getValue(FACING).get2DDataValue() + (state.getValue(OPEN) ? (state.getValue(LEFT) ? 3 : 1) : 0);
         return SHAPES[shape % 4];
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockState blockstate = this.defaultBlockState();
-        Direction facing = pContext.getHorizontalDirection().getOpposite();
-        blockstate = blockstate.setValue(FACING, facing);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction facing = context.getHorizontalDirection().getOpposite();
+        BlockState blockstate = this.defaultBlockState().setValue(FACING, facing);
+        Level level = context.getLevel();
+        BlockPos clickedPos = context.getClickedPos();
+        Vec3 clickLocation = context.getClickLocation();
+
         boolean left;
         if (facing.getAxis() == Direction.Axis.X) {
-            left = pContext.getClickLocation().z - (double)pContext.getClickedPos().getZ() > 0.5D;
+            left = clickLocation.z - (double)clickedPos.getZ() > 0.5D;
         } else {
-            left = pContext.getClickLocation().x - (double)pContext.getClickedPos().getX() > 0.5D;
+            left = clickLocation.x - (double)clickedPos.getX() > 0.5D;
         }
-        if (pContext.getHorizontalDirection() == Direction.NORTH || pContext.getHorizontalDirection() == Direction.EAST) left = !left;
+        if (context.getHorizontalDirection() == Direction.NORTH || context.getHorizontalDirection() == Direction.EAST) left = !left;
         blockstate = blockstate.setValue(LEFT, left);
 
-        if (pContext.getLevel().hasNeighborSignal(pContext.getClickedPos())) {
+        if (level.hasNeighborSignal(clickedPos)) {
             blockstate = blockstate.setValue(OPEN, true).setValue(POWERED, true);
         }
 
-        blockstate = blockstate.setValue(TYPE, getType(blockstate, pContext.getLevel().getBlockState(pContext.getClickedPos().above()), pContext.getLevel().getBlockState(pContext.getClickedPos().below())));
+        blockstate = blockstate.setValue(TYPE, getType(blockstate, level.getBlockState(clickedPos.above()), level.getBlockState(clickedPos.below())));
 
-        return blockstate.setValue(WATERLOGGED, pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER);
+        return blockstate.setValue(WATERLOGGED, level.getFluidState(context.getClickedPos()).getType() == Fluids.WATER);
     }
 
     @Override
-    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
-        if (!pLevel.isClientSide) {
-            boolean powered = pLevel.hasNeighborSignal(pPos);
-            if (powered != pState.getValue(POWERED)) {
-                if (pState.getValue(OPEN) != powered) {
-                    pState = pState.setValue(OPEN, powered);
-                    pLevel.playSound(null, pPos, shutterSound(powered), SoundSource.BLOCKS, 1.0F, 1.0F);
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (!level.isClientSide) {
+            boolean powered = level.hasNeighborSignal(pos);
+            if (powered != state.getValue(POWERED)) {
+                if (state.getValue(OPEN) != powered) {
+                    state = state.setValue(OPEN, powered);
+                    level.playSound(null, pos, shutterSound(powered), SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
-                pState = pState.setValue(POWERED, powered);
-                if (pState.getValue(WATERLOGGED)) {
-                    pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+                state = state.setValue(POWERED, powered);
+                if (state.getValue(WATERLOGGED)) {
+                    level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }
             }
-            ShutterType type = getType(pState, pLevel.getBlockState(pPos.above()), pLevel.getBlockState(pPos.below()));
-            if (pState.getValue(TYPE) != type) {
-                pState = pState.setValue(TYPE, type);
+            ShutterType type = getType(state, level.getBlockState(pos.above()), level.getBlockState(pos.below()));
+            if (state.getValue(TYPE) != type) {
+                state = state.setValue(TYPE, type);
             }
-            pLevel.setBlock(pPos, pState, 3);
+            level.setBlock(pos, state, 3);
         }
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (this.material == Material.METAL) {
             return InteractionResult.PASS;
         } else {
-            pState = pState.cycle(OPEN);
-            pLevel.setBlock(pPos, pState, 3);
-            if (!pPlayer.isCrouching()) {
-                toggleShutters(pState, pLevel, pPos, pState.getValue(OPEN));
+            state = state.cycle(OPEN);
+            level.setBlock(pos, state, 3);
+            if (!player.isCrouching()) {
+                toggleShutters(state, level, pos, state.getValue(OPEN));
             }
-            pLevel.playSound(null, pPos, shutterSound(pState.getValue(OPEN)), SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (pState.getValue(WATERLOGGED)) {
-                pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+            level.playSound(null, pos, shutterSound(state.getValue(OPEN)), SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (state.getValue(WATERLOGGED)) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
 
-            //this.playSound(p_57543_, p_57541_, p_57542_, p_57540_.getValue(OPEN));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
     }
 
@@ -163,9 +172,8 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     public SoundEvent shutterSound(boolean open) {
         if (open) {
             return SoundEvents.WOODEN_TRAPDOOR_OPEN;
-        } else {
-            return SoundEvents.WOODEN_TRAPDOOR_CLOSE;
         }
+        return SoundEvents.WOODEN_TRAPDOOR_CLOSE;
     }
 
     public ShutterType getType(BlockState state, BlockState above, BlockState below) {
@@ -185,31 +193,31 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TYPE, OPEN, LEFT, POWERED, WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, TYPE, OPEN, LEFT, POWERED, WATERLOGGED);
     }
 
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 }

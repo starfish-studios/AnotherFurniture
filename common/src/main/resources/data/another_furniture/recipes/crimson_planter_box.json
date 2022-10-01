@@ -1,23 +1,23 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "planter_boxes",
-  "key": {
-    "#": {
-      "item": "minecraft:crimson_planks"
+    "type": "minecraft:crafting_shaped",
+    "group": "planter_boxes",
+    "key": {
+        "#": {
+            "item": "minecraft:crimson_planks"
+        },
+        "D": {
+            "item": "minecraft:dirt"
+        },
+        "S": {
+            "item": "minecraft:crimson_slab"
+        }
     },
-    "D": {
-      "item": "minecraft:dirt"
-    },
-    "S": {
-      "item": "minecraft:crimson_slab"
+    "pattern": [
+        "SDS",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "item": "another_furniture:crimson_planter_box"
     }
-  },
-  "pattern": [
-    "SDS",
-    "###"
-  ],
-  "result": {
-    "count": 3,
-    "item": "another_furniture:crimson_planter_box"
-  }
 }

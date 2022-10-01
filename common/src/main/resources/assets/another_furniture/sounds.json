@@ -4,21 +4,21 @@
 		"sounds": [
 			"another_furniture:service_bell"
 		],
-		"subtitle": "block.another_furniture.service_bell.use"
+		"subtitle": "subtitles.block.another_furniture.service_bell.use"
 	},
 	"block.chair.tuck": {
 		"category": "block",
 		"sounds": [
 			"another_furniture:chair_tuck"
 		],
-		"subtitle": "block.another_furniture.chair.tuck"
+		"subtitle": "subtitles.block.another_furniture.chair.tuck"
 	},
 	"block.chair.untuck": {
 		"category": "block",
 		"sounds": [
 			"another_furniture:chair_untuck"
 		],
-		"subtitle": "block.another_furniture.chair.untuck"
+		"subtitle": "subtitles.block.another_furniture.chair.untuck"
 	},
 	"block.curtain.use": {
 		"category": "block",
@@ -26,6 +26,13 @@
 			"another_furniture:curtain_1",
 			"another_furniture:curtain_2"
 		],
-		"subtitle": "block.another_furniture.curtain.use"
+		"subtitle": "subtitles.block.another_furniture.curtain.use"
+	},
+	"item.furniture_hammer.use": {
+		"category": "block",
+		"sounds": [
+			"another_furniture:hammer_hit"
+		],
+		"subtitle": "subtitles.item.another_furniture.furniture_hammer.use"
 	}
 }

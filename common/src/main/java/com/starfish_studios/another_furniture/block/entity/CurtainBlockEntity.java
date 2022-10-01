@@ -14,6 +14,6 @@ public class CurtainBlockEntity extends BlockEntity {
 
     @PlatformOnly(PlatformOnly.FORGE)
     public AABB getRenderBoundingBox() {
-        return new AABB(worldPosition.offset(0, 0, 0), worldPosition.offset(1, -1, 1));
+        return new AABB(worldPosition.offset(0, 1, 0), worldPosition.offset(1, -1, 1));
     }
 }

@@ -66,7 +66,7 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
     public boolean removeItem(int index, Player player, Level level) {
         if (!this.items.get(index).isEmpty()) {
             if (level.isClientSide()) {
-                player.playSound(SoundEvents.ITEM_PICKUP, 1.0f, 1.0f);
+                player.playSound(SoundEvents.ITEM_PICKUP, 1 , 1);
                 return true;
             }
 
