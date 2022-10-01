@@ -1,7 +1,11 @@
 {
     "values": [
+        "another_furniture:crimson_bench",
+        "another_furniture:warped_bench",
         "another_furniture:crimson_chair",
         "another_furniture:warped_chair",
+		"another_furniture:crimson_drawer",
+        "another_furniture:warped_drawer",
         "another_furniture:crimson_shelf",
         "another_furniture:warped_shelf",
         "another_furniture:crimson_table",

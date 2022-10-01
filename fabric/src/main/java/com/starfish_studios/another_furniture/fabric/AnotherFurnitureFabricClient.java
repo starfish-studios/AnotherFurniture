@@ -14,6 +14,7 @@ public class AnotherFurnitureFabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         AnotherFurnitureClient.init();
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
+                AFBlocks.OAK_TABLE.get(), AFBlocks.SPRUCE_TABLE.get(), AFBlocks.BIRCH_TABLE.get(), AFBlocks.JUNGLE_TABLE.get(), AFBlocks.ACACIA_TABLE.get(), AFBlocks.DARK_OAK_TABLE.get(), AFBlocks.MANGROVE_TABLE.get(), AFBlocks.CRIMSON_TABLE.get(), AFBlocks.WARPED_TABLE.get(),
                 AFBlocks.OAK_CHAIR.get(), AFBlocks.SPRUCE_CHAIR.get(), AFBlocks.BIRCH_CHAIR.get(), AFBlocks.JUNGLE_CHAIR.get(), AFBlocks.ACACIA_CHAIR.get(), AFBlocks.DARK_OAK_CHAIR.get(), AFBlocks.MANGROVE_CHAIR.get(), AFBlocks.CRIMSON_CHAIR.get(), AFBlocks.WARPED_CHAIR.get(),
                 AFBlocks.OAK_BENCH.get(), AFBlocks.SPRUCE_BENCH.get(), AFBlocks.BIRCH_BENCH.get(), AFBlocks.JUNGLE_BENCH.get(), AFBlocks.ACACIA_BENCH.get(), AFBlocks.DARK_OAK_BENCH.get(), AFBlocks.MANGROVE_BENCH.get(), AFBlocks.CRIMSON_BENCH.get(), AFBlocks.WARPED_BENCH.get(),
                 AFBlocks.OAK_SHUTTER.get(), AFBlocks.SPRUCE_SHUTTER.get(), AFBlocks.BIRCH_SHUTTER.get(), AFBlocks.JUNGLE_SHUTTER.get(), AFBlocks.ACACIA_SHUTTER.get(), AFBlocks.DARK_OAK_SHUTTER.get(), AFBlocks.MANGROVE_SHUTTER.get(), AFBlocks.CRIMSON_SHUTTER.get(), AFBlocks.WARPED_SHUTTER.get(), AFBlocks.OAK_PLANTER_BOX.get(),
