@@ -64,6 +64,11 @@ public class AFRegistry {
     }
 
     @ExpectPlatform
+    public static void setRenderLayer(Supplier<Block> block, RenderType type) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
         throw new AssertionError();
     }
