@@ -66,7 +66,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [-24, 0, -8]},
 			"faces": {
 				"north": {"uv": [0, 11, 1, 16], "texture": "#wood_2", "cullface": "north"},
-				"east": {"uv": [16, 3, 0, 8], "texture": "#wood_1", "cullface": "east"},
+				"east": {"uv": [0, 3, 16, 8], "texture": "#wood_1", "cullface": "east"},
 				"south": {"uv": [15, 3, 16, 8], "texture": "#wood_1", "cullface": "south"}
 			}
 		},
@@ -76,7 +76,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [-24, 0, -8]},
 			"faces": {
 				"north": {"uv": [0, 8, 16, 12], "texture": "#seat_front", "cullface": "north"},
-				"east": {"uv": [0, 8, 16, 12], "texture": "#wood_1", "cullface": "east"},
+				"east": {"uv": [16, 8, 0, 12], "texture": "#wood_1", "cullface": "east"},
 				"south": {"uv": [16, 8, 0, 12], "texture": "#wood_1", "cullface": "south"},
 				"west": {"uv": [16, 8, 0, 12], "texture": "#seat_front", "cullface": "west"},
 				"up": {"uv": [16, 16, 0, 0], "texture": "#seat_top"},

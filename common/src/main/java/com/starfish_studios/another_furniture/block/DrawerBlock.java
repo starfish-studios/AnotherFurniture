@@ -4,7 +4,6 @@ import com.starfish_studios.another_furniture.block.entity.DrawerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
@@ -44,7 +43,6 @@ public class DrawerBlock extends BaseEntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
                 player.openMenu(drawerBlockEntity);
-                player.awardStat(Stats.OPEN_BARREL);
                 PiglinAi.angerNearbyPiglins(player, true);
             }
             return InteractionResult.CONSUME;

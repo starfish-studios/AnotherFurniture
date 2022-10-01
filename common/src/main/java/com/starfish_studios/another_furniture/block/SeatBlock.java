@@ -58,10 +58,10 @@ public class SeatBlock extends Block {
         if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() && !level.getBlockState(pos.above()).is(AFBlockTags.NO_SEAT_COLLISION_CHECK))
             return InteractionResult.PASS;
 
-        Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-        double maxDist = 3;
-        if((vec.x - player.getX()) * (vec.x - player.getX()) + (vec.y - player.getY()) * (vec.y - player.getY()) + (vec.z - player.getZ()) * (vec.z - player.getZ()) > maxDist * maxDist)
-            return InteractionResult.PASS;
+//        Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+//        double maxDist = 3;
+//        if((vec.x - player.getX()) * (vec.x - player.getX()) + (vec.y - player.getY()) * (vec.y - player.getY()) + (vec.z - player.getZ()) * (vec.z - player.getZ()) > maxDist * maxDist)
+//            return InteractionResult.PASS;
 
 //        ItemStack stack1 = pPlayer.getMainHandItem();
 //        ItemStack stack2 = pPlayer.getOffhandItem();

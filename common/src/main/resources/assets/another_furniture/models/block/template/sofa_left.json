@@ -20,7 +20,7 @@
 			"faces": {
 				"north": {"uv": [0, 4, 16, 8], "texture": "#seat_front", "cullface": "north"},
 				"east": {"uv": [0, 12, 16, 16], "texture": "#wood_1", "cullface": "east"},
-				"south": {"uv": [0, 8, 16, 12], "texture": "#wood_1", "cullface": "south"},
+				"south": {"uv": [16, 8, 0, 12], "texture": "#wood_1", "cullface": "south"},
 				"west": {"uv": [16, 4, 0, 8], "texture": "#seat_side", "cullface": "west"},
 				"up": {"uv": [16, 16, 0, 0], "texture": "#seat_top"},
 				"down": {"uv": [0, 16, 16, 0], "texture": "#bottom"}

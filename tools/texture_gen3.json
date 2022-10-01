@@ -1,0 +1,25 @@
+{
+	"use": "plank",
+	"palettes": {
+		"plank": {
+			"variants": ["oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "crimson", "warped"],
+			"primary_palette_path": "C:\\Users\\jacec\\Desktop\\planks\\oak_planks",
+			"secondary_palette": {
+				"folder": "C:\\Users\\jacec\\Desktop\\planks\\",
+				"files": ["oak_planks", "spruce_planks", "birch_planks", "acacia_planks", "oak_planks", "oak_planks", "oak_planks", "oak_planks"]
+			},
+			"template_path": {
+				"folder": "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\",
+				"files": [
+					"table\\oak_bottom", "table\\oak_top", "table\\oak_sides", "table\\oak_supports",
+					"shelf\\oak_bottom", "shelf\\oak_top", "shelf\\oak_sides",  "shelf\\oak_supports", 
+					"planter_box\\oak_bottom", "planter_box\\oak_top_sides", "planter_box\\oak_supports", 
+					"bench\\oak"
+				]
+			},
+			"replace_variant": "oak"
+		}
+	},
+	"keep_non_palette_pixels": true,
+	"extension": ".png"
+}
