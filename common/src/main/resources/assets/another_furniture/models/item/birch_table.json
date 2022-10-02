@@ -2,6 +2,8 @@
     "parent": "another_furniture:block/template/table_full",
     "textures": {
         "top": "another_furniture:block/table/birch_top",
-        "sides": "another_furniture:block/table/birch_sides"
+        "sides": "another_furniture:block/table/birch_sides",
+        "bottom": "another_furniture:block/table/birch_bottom",
+        "supports": "another_furniture:block/table/birch_supports"
     }
 }
