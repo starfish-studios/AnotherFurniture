@@ -2,7 +2,7 @@
 	"parent": "minecraft:block/block",
 	"textures": {
 		"wood_1": "another_furniture:block/sofa/wood_1",
-		"bottom": "another_furniture:block/sofa/bottom_corner",
+		"bottom": "another_furniture:block/sofa/bottom_outer",
 		"seat_top": "another_furniture:block/sofa/white_seat_corner",
 		"seat_front": "another_furniture:block/sofa/white_seat_front",
 		"seat_side": "another_furniture:block/sofa/white_seat_side",

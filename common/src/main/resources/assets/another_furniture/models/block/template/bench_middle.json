@@ -22,7 +22,6 @@
 			"name": "long",
 			"from": [0, 2, 3],
 			"to": [16, 4, 13],
-			"shade": false,
 			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 16]},
 			"faces": {
 				"north": {"uv": [10.25, 5, 14.25, 5.5], "texture": "#2"},
@@ -35,7 +34,6 @@
 			"name": "long",
 			"from": [16, 2, 3],
 			"to": [0, 4, 13],
-			"shade": false,
 			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 16]},
 			"faces": {
 				"north": {"uv": [10.25, 5, 14.25, 5.5], "texture": "#2"},
