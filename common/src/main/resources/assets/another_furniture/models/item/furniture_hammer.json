@@ -1,6 +1,6 @@
 {
-	"parent": "minecraft:item/generated",
+	"parent": "minecraft:item/handheld",
 	"textures": {
-		"layer0": "another_furniture:item/wood_mallet"
+		"layer0": "another_furniture:item/furniture_hammer"
 	}
 }
