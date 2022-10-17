@@ -1,5 +1,6 @@
 {
 	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"top": "another_furniture:block/table/oak_top",
 		"sides": "another_furniture:block/table/oak_sides",
