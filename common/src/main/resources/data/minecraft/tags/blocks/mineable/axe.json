@@ -10,6 +10,7 @@
 		"#another_furniture:sofas",
 		"#another_furniture:stools",
 		"#another_furniture:tables",
-		"#another_furniture:tall_stools"
+		"#another_furniture:tall_stools",
+		"another_furniture:lamp_connector"
     ]
 }
