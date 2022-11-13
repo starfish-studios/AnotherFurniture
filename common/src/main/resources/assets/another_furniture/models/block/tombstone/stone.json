@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/template/tombstone",
+	"textures": {
+		"all": "another_furniture:block/tombstone/stone"
+	}
+}

@@ -49,14 +49,6 @@ public class TombstoneRenderer implements BlockEntityRenderer<TombstoneBlockEnti
     private static final int OUTLINE_RENDER_DISTANCE = Mth.square(16);
     private final Font font;
 
-    protected static final VoxelShape AABB_X = Shapes.or(Block.box(5.0D, 0.0D, 0.0D, 11.0D, 2.0D, 16.0D), Block.box(6.0D, 2.0D, 1.0D, 10.0D, 16.0D, 15.0D));
-    protected static final VoxelShape AABB_Z = Shapes.or(Block.box(0.0D, 0.0D, 5.0D, 16.0D, 2.0D, 11.0D), Block.box(1.0D, 2.0D, 6.0D, 15.0D, 16.0D, 10.0D));
-
-
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(FACING).getAxis() == Direction.Axis.X ? AABB_X : AABB_Z;
-    }
-
     public TombstoneRenderer(BlockEntityRendererProvider.Context context) {
         this.font = context.getFont();
     }
