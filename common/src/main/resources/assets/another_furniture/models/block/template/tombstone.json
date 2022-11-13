@@ -1,0 +1,33 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"1": "another_furniture:block/tombstone/stone"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 4],
+			"to": [15, 2, 12],
+			"faces": {
+				"north": {"uv": [4, 4, 11, 5], "texture": "#1"},
+				"east": {"uv": [0, 4, 4, 5], "texture": "#1"},
+				"south": {"uv": [4, 4, 11, 5], "texture": "#1"},
+				"west": {"uv": [0, 4, 4, 5], "texture": "#1"},
+				"up": {"uv": [7, 4, 0, 0], "texture": "#1"},
+				"down": {"uv": [14, 0, 7, 4], "texture": "#1"}
+			}
+		},
+		{
+			"from": [2, 2, 6],
+			"to": [14, 16, 10],
+			"faces": {
+				"north": {"uv": [2, 7, 8, 14], "texture": "#1"},
+				"east": {"uv": [0, 7, 2, 14], "texture": "#1"},
+				"south": {"uv": [8, 7, 14, 14], "texture": "#1"},
+				"west": {"uv": [2, 7, 0, 14], "texture": "#1"},
+				"up": {"uv": [8, 7, 2, 5], "texture": "#1"},
+				"down": {"uv": [14, 5, 8, 7], "texture": "#1"}
+			}
+		}
+	]
+}

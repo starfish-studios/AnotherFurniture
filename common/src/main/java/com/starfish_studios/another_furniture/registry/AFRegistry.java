@@ -15,8 +15,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -55,6 +57,11 @@ public class AFRegistry {
 
     @FunctionalInterface
     public interface BlockEntitySupplier<T extends BlockEntity> {
+        @NotNull T create(BlockPos var1, BlockState var2);
+    }
+
+    @FunctionalInterface
+    public interface SignBlockEntitySupplier<T extends SignBlockEntity> {
         @NotNull T create(BlockPos var1, BlockState var2);
     }
 
