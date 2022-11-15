@@ -94,5 +94,7 @@ public class AnotherFurniture {
         AFRegistry.setFlammable(AFBlocks.GREEN_CURTAIN, 5, 20);
         AFRegistry.setFlammable(AFBlocks.RED_CURTAIN, 5, 20);
         AFRegistry.setFlammable(AFBlocks.BLACK_CURTAIN, 5, 20);
+
+        AFRegistry.setFlammable(AFBlocks.WHITE_AWNING, 5, 20);
     }
 }

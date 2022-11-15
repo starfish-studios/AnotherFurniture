@@ -192,6 +192,9 @@ public class AFBlocks {
     // Tombstone
     public static final Supplier<Block> STONE_TOMBSTONE = registerBlock("stone_tombstone", () -> new TombstoneBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).sound(SoundType.STONE)));
 
+    // Awnings
+    public static final Supplier<Block> WHITE_AWNING = registerBlock("white_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);
         AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties().tab(AnotherFurniture.TAB)));
