@@ -152,5 +152,21 @@
     "block.another_furniture.green_tall_stool": "Green Tall Stool",
     "block.another_furniture.red_tall_stool": "Red Tall Stool",
     "block.another_furniture.black_tall_stool": "Black Tall Stool",
-    "block.another_furniture.service_bell": "Service Bell"
+    "block.another_furniture.service_bell": "Service Bell",
+    "block.another_furniture.white_awning": "White Awning",
+    "block.another_furniture.orange_awning": "Orange Awning",
+    "block.another_furniture.magenta_awning": "Magenta Awning",
+    "block.another_furniture.light_blue_awning": "Light Blue Awning",
+    "block.another_furniture.yellow_awning": "Yellow Awning",
+    "block.another_furniture.lime_awning": "Lime Awning",
+    "block.another_furniture.pink_awning": "Pink Awning",
+    "block.another_furniture.gray_awning": "Gray Awning",
+    "block.another_furniture.light_gray_awning": "Light Gray Awning",
+    "block.another_furniture.cyan_awning": "Cyan Awning",
+    "block.another_furniture.purple_awning": "Purple Awning",
+    "block.another_furniture.blue_awning": "Blue Awning",
+    "block.another_furniture.brown_awning": "Brown Awning",
+    "block.another_furniture.green_awning": "Green Awning",
+    "block.another_furniture.red_awning": "Red Awning",
+    "block.another_furniture.black_awning": "Black Awning"
 }

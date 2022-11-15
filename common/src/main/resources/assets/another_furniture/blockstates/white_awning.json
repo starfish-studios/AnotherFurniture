@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/awning/white"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/awning/white",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/awning/white",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/awning/white",
+            "y": 270
+        }
+    }
+}

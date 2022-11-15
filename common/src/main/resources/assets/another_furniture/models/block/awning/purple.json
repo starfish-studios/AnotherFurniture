@@ -1,0 +1,8 @@
+{
+    "parent": "another_furniture:block/template/awning",
+    "textures": {
+        "particle": "another_furniture:block/awning/purple_side",
+        "side": "another_furniture:block/awning/purple_side",
+        "top": "another_furniture:block/awning/purple_top"
+    }
+}

@@ -194,6 +194,22 @@ public class AFBlocks {
 
     // Awnings
     public static final Supplier<Block> WHITE_AWNING = registerBlock("white_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> ORANGE_AWNING = registerBlock("orange_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> MAGENTA_AWNING = registerBlock("magenta_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> LIGHT_BLUE_AWNING = registerBlock("light_blue_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> YELLOW_AWNING = registerBlock("yellow_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> LIME_AWNING = registerBlock("lime_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> PINK_AWNING = registerBlock("pink_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> GRAY_AWNING = registerBlock("gray_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> LIGHT_GRAY_AWNING = registerBlock("light_gray_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> CYAN_AWNING = registerBlock("cyan_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> PURPLE_AWNING = registerBlock("purple_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> BLUE_AWNING = registerBlock("blue_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> BROWN_AWNING = registerBlock("brown_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> GREEN_AWNING = registerBlock("green_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> RED_AWNING = registerBlock("red_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+    public static final Supplier<Block> BLACK_AWNING = registerBlock("black_awning", () -> new AwningBlock(Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion()));
+
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);
