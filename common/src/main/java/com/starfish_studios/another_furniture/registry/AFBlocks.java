@@ -3,6 +3,7 @@ package com.starfish_studios.another_furniture.registry;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.*;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
