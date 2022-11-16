@@ -66,6 +66,7 @@ public class AwningBlock extends SlabBlock {
         super.fallOn(level, state, pos, entity, fallDistance * 0.5F);
     }
 
+
     public void updateEntityAfterFallOn(BlockGetter level, Entity entity) {
         if (entity.isSuppressingBounce()) {
             super.updateEntityAfterFallOn(level, entity);
@@ -81,7 +82,5 @@ public class AwningBlock extends SlabBlock {
             double d = entity instanceof LivingEntity ? 1.0 : 0.8;
             entity.setDeltaMovement(vec3.x, -vec3.y * 0.6600000262260437 * d, vec3.z);
         }
-
     }
-
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/lattice",
+    "textures": {
+        "main": "another_furniture:block/lattice/dark_oak",
+        "bar": "another_furniture:block/lattice/dark_oak_bar"
+    }
+}

@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench",
+	"render_type": "cutout",
 	"textures": {
 		"particle": "another_furniture:block/awning/white_side",
 		"side": "another_furniture:block/awning/white_side",

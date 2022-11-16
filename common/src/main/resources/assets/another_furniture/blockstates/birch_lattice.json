@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "another_furniture:block/lattice/birch"
+        },
+        "facing=east": {
+            "model": "another_furniture:block/lattice/birch",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "another_furniture:block/lattice/birch",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "another_furniture:block/lattice/birch",
+            "y": 270
+        }
+    }
+}

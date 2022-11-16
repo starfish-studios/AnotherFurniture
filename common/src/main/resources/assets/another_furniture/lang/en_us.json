@@ -168,5 +168,13 @@
     "block.another_furniture.brown_awning": "Brown Awning",
     "block.another_furniture.green_awning": "Green Awning",
     "block.another_furniture.red_awning": "Red Awning",
-    "block.another_furniture.black_awning": "Black Awning"
+    "block.another_furniture.black_awning": "Black Awning",
+    "block.another_furniture.oak_lattice": "Oak Lattice",
+    "block.another_furniture.spruce_lattice": "Spruce Lattice",
+    "block.another_furniture.birch_lattice": "Birch Lattice",
+    "block.another_furniture.jungle_lattice": "Jungle Lattice",
+    "block.another_furniture.acacia_lattice": "Acacia Lattice",
+    "block.another_furniture.dark_oak_lattice": "Dark Oak Lattice",
+    "block.another_furniture.crimson_lattice": "Crimson Lattice",
+    "block.another_furniture.warped_lattice": "Warped Lattice"
 }

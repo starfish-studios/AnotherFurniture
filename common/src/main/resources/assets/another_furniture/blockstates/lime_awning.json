@@ -1,25 +1,34 @@
 {
     "variants": {
-        "facing=north": {
+        "facing=north,type=bottom": {
             "model": "another_furniture:block/awning/lime"
         },
-        "facing=east": {
+        "facing=north,type=top": {
+            "model": "another_furniture:block/awning/lime_top"
+        },
+        "facing=east,type=bottom": {
             "model": "another_furniture:block/awning/lime",
             "y": 90
         },
-        "facing=south": {
+        "facing=east,type=top": {
+            "model": "another_furniture:block/awning/lime_top",
+            "y": 90
+        },
+        "facing=south,type=bottom": {
             "model": "another_furniture:block/awning/lime",
             "y": 180
         },
-        "facing=west": {
+        "facing=south,type=top": {
+            "model": "another_furniture:block/awning/lime_top",
+            "y": 180
+        },
+        "facing=west,type=bottom": {
             "model": "another_furniture:block/awning/lime",
             "y": 270
         },
-        "type=bottom": {
-            "model": "another_furniture:block/template/awning"
-        },
-        "type=top": {
-            "model": "another_furniture:block/template/awning_top"
+        "facing=west,type=top": {
+            "model": "another_furniture:block/awning/lime_top",
+            "y": 270
         }
     }
 }
