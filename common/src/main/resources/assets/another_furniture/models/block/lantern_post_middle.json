@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "lantern",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "another_furniture:block/lantern_post",
+		"particle": "another_furniture:block/lantern_post"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [8.75, 4.5, 9.25, 8.5], "texture": "#0"},
+				"east": {"uv": [9.25, 4.5, 8.75, 8.5], "texture": "#0"},
+				"south": {"uv": [8.75, 4.5, 9.25, 8.5], "texture": "#0"},
+				"west": {"uv": [9.25, 4.5, 8.75, 8.5], "texture": "#0"},
+				"up": {"uv": [9.25, 4, 8.75, 3.5], "texture": "#0"},
+				"down": {"uv": [9.75, 3.5, 9.25, 4], "texture": "#0"}
+			}
+		}
+	]
+}
