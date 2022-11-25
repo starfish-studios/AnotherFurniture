@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/template/path",
+    "textures": {
+        "path": "another_furniture:block/path/acacia_path"
+    }
+}
