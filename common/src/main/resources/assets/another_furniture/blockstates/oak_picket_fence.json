@@ -8,7 +8,7 @@
     {
       "apply": {
         "model": "another_furniture:block/picket_fence/oak_picket_fence_side",
-        "uvlock": true
+        "uvlock": false
       },
       "when": {
         "north": "true"
@@ -17,7 +17,7 @@
     {
       "apply": {
         "model": "another_furniture:block/picket_fence/oak_picket_fence_side",
-        "uvlock": true,
+        "uvlock": false,
         "y": 90
       },
       "when": {
@@ -27,7 +27,7 @@
     {
       "apply": {
         "model": "another_furniture:block/picket_fence/oak_picket_fence_side",
-        "uvlock": true,
+        "uvlock": false,
         "y": 180
       },
       "when": {
@@ -37,7 +37,7 @@
     {
       "apply": {
         "model": "another_furniture:block/picket_fence/oak_picket_fence_side",
-        "uvlock": true,
+        "uvlock": false,
         "y": 270
       },
       "when": {

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/_/",
+        "_/_",
+        "/_/"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "_": {
+            "item": "minecraft:crimson_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:crimson_lattice",
+        "count": 6
+    },
+    "group": "lattices"
+}

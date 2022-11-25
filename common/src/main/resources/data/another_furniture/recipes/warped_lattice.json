@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/_/",
+        "_/_",
+        "/_/"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "_": {
+            "item": "minecraft:warped_slab"
+        }
+    },
+    "result": {
+        "item": "another_furniture:warped_lattice",
+        "count": 6
+    },
+    "group": "lattices"
+}

@@ -1,7 +1,7 @@
 {
     "parent": "another_furniture:block/template/awning",
     "textures": {
-        "particle": "another_furniture:block/awning/red_side",
+        "particle": "minecraft:block/red_wool",
         "side": "another_furniture:block/awning/red_side",
         "top": "another_furniture:block/awning/red_top"
     }

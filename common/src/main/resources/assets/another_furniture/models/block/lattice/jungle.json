@@ -2,6 +2,7 @@
     "parent": "another_furniture:block/template/lattice",
     "textures": {
         "main": "another_furniture:block/lattice/jungle",
-        "bar": "another_furniture:block/lattice/jungle_bar"
+        "bar": "another_furniture:block/lattice/jungle_bar",
+        "particle": "minecraft:block/jungle_planks"
     }
 }

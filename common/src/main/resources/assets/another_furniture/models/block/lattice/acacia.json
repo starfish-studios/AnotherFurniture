@@ -2,6 +2,7 @@
     "parent": "another_furniture:block/template/lattice",
     "textures": {
         "main": "another_furniture:block/lattice/acacia",
-        "bar": "another_furniture:block/lattice/acacia_bar"
+        "bar": "another_furniture:block/lattice/acacia_bar",
+        "particle": "minecraft:block/acacia_planks"
     }
 }

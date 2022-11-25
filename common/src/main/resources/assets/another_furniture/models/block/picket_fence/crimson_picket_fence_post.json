@@ -1,0 +1,7 @@
+{
+    "parent": "another_furniture:block/template/picket_fence_post",
+    "textures": {
+        "0": "another_furniture:block/picket_fence/crimson",
+        "particle": "minecraft:block/crimson_planks"
+    }
+}

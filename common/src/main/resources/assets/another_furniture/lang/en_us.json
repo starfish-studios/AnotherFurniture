@@ -53,6 +53,7 @@
     "block.another_furniture.mangrove_planter_box": "Mangrove Flower Box",
     "block.another_furniture.crimson_planter_box": "Crimson Flower Box",
     "block.another_furniture.warped_planter_box": "Warped Flower Box",
+
     "block.another_furniture.oak_bench": "Oak Bench",
     "block.another_furniture.spruce_bench": "Spruce Bench",
     "block.another_furniture.birch_bench": "Birch Bench",
@@ -62,6 +63,7 @@
     "block.another_furniture.mangrove_bench": "Mangrove Bench",
     "block.another_furniture.crimson_bench": "Crimson Bench",
     "block.another_furniture.warped_bench": "Warped Bench",
+
 	"block.another_furniture.oak_drawer": "Oak Drawer",
     "block.another_furniture.spruce_drawer": "Spruce Drawer",
     "block.another_furniture.birch_drawer": "Birch Drawer",
@@ -71,6 +73,7 @@
     "block.another_furniture.mangrove_drawer": "Mangrove Drawer",
     "block.another_furniture.crimson_drawer": "Crimson Drawer",
     "block.another_furniture.warped_drawer": "Warped Drawer",
+
     "block.another_furniture.white_sofa": "White Sofa",
     "block.another_furniture.orange_sofa": "Orange Sofa",
     "block.another_furniture.magenta_sofa": "Magenta Sofa",
@@ -87,6 +90,7 @@
     "block.another_furniture.green_sofa": "Green Sofa",
     "block.another_furniture.red_sofa": "Red Sofa",
     "block.another_furniture.black_sofa": "Black Sofa",
+
     "block.another_furniture.white_stool": "White Stool",
     "block.another_furniture.orange_stool": "Orange Stool",
     "block.another_furniture.magenta_stool": "Magenta Stool",
@@ -103,6 +107,7 @@
     "block.another_furniture.green_stool": "Green Stool",
     "block.another_furniture.red_stool": "Red Stool",
     "block.another_furniture.black_stool": "Black Stool",
+
     "block.another_furniture.white_curtain": "White Curtain",
     "block.another_furniture.orange_curtain": "Orange Curtain",
     "block.another_furniture.magenta_curtain": "Magenta Curtain",
@@ -119,6 +124,7 @@
     "block.another_furniture.green_curtain": "Green Curtain",
     "block.another_furniture.red_curtain": "Red Curtain",
     "block.another_furniture.black_curtain": "Black Curtain",
+
     "block.another_furniture.white_lamp": "White Lamp",
     "block.another_furniture.orange_lamp": "Orange Lamp",
     "block.another_furniture.magenta_lamp": "Magenta Lamp",
@@ -136,6 +142,7 @@
     "block.another_furniture.red_lamp": "Red Lamp",
     "block.another_furniture.black_lamp": "Black Lamp",
 	"block.another_furniture.lamp_connector": "Lamp Connector",
+
     "block.another_furniture.white_tall_stool": "White Tall Stool",
     "block.another_furniture.orange_tall_stool": "Orange Tall Stool",
     "block.another_furniture.magenta_tall_stool": "Magenta Tall Stool",
@@ -152,7 +159,9 @@
     "block.another_furniture.green_tall_stool": "Green Tall Stool",
     "block.another_furniture.red_tall_stool": "Red Tall Stool",
     "block.another_furniture.black_tall_stool": "Black Tall Stool",
+
     "block.another_furniture.service_bell": "Service Bell",
+
     "block.another_furniture.white_awning": "White Awning",
     "block.another_furniture.orange_awning": "Orange Awning",
     "block.another_furniture.magenta_awning": "Magenta Awning",
@@ -169,6 +178,7 @@
     "block.another_furniture.green_awning": "Green Awning",
     "block.another_furniture.red_awning": "Red Awning",
     "block.another_furniture.black_awning": "Black Awning",
+
     "block.another_furniture.oak_lattice": "Oak Lattice",
     "block.another_furniture.spruce_lattice": "Spruce Lattice",
     "block.another_furniture.birch_lattice": "Birch Lattice",
@@ -177,5 +187,13 @@
     "block.another_furniture.dark_oak_lattice": "Dark Oak Lattice",
     "block.another_furniture.crimson_lattice": "Crimson Lattice",
     "block.another_furniture.warped_lattice": "Warped Lattice",
-    "block.another_furniture.oak_picket_fence": "Oak Picket Fence"
+
+    "block.another_furniture.oak_picket_fence": "Oak Picket Fence",
+    "block.another_furniture.spruce_picket_fence": "Spruce Picket Fence",
+    "block.another_furniture.birch_picket_fence": "Birch Picket Fence",
+    "block.another_furniture.jungle_picket_fence": "Jungle Picket Fence",
+    "block.another_furniture.acacia_picket_fence": "Acacia Picket Fence",
+    "block.another_furniture.dark_oak_picket_fence": "Dark Oak Picket Fence",
+    "block.another_furniture.crimson_picket_fence": "Crimson Picket Fence",
+    "block.another_furniture.warped_picket_fence": "Warped Picket Fence"
 }

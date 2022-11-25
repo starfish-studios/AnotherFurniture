@@ -2,6 +2,7 @@
     "parent": "another_furniture:block/template/lattice",
     "textures": {
         "main": "another_furniture:block/lattice/warped",
-        "bar": "another_furniture:block/lattice/warped_bar"
+        "bar": "another_furniture:block/lattice/warped_bar",
+        "particle": "minecraft:block/warped_planks"
     }
 }

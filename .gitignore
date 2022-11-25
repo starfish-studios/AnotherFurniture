@@ -119,3 +119,7 @@ run/
 tools/wood_gen.py
 tools/wood_items.py
 common/src/main/resources/assets/another_furniture/models/item/white.py
+common/src/main/resources/assets/another_furniture/models/block/lattice/wno.py
+common/src/main/resources/assets/another_furniture/models/block/lattice/wno.py
+common/src/main/resources/assets/another_furniture/models/block/lattice/wno.py
+*.py

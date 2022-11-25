@@ -15,6 +15,7 @@
         "another_furniture:brown_lamp",
         "another_furniture:green_lamp",
         "another_furniture:red_lamp",
-        "another_furniture:black_lamp"
+        "another_furniture:black_lamp",
+        "minecraft:lantern"
     ]
 }
