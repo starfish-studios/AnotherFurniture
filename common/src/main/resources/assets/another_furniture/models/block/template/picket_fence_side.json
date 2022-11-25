@@ -1,0 +1,49 @@
+{
+	"render_type": "cutout",
+	"parent": "picket_fence",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "another_furniture:block/picket_fence/oak"
+	},
+	"elements": [
+		{
+			"from": [8, 4, 0],
+			"to": [8, 16, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11, 0, 11, 6], "texture": "#0"},
+				"east": {"uv": [8, 0, 11, 6], "texture": "#0"},
+				"south": {"uv": [8, 0, 8, 6], "texture": "#0"},
+				"west": {"uv": [8, 0, 11, 6], "texture": "#0"},
+				"up": {"uv": [11, 0, 8, 0], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [14, 0, 11, 0], "rotation": 270, "texture": "#0", "cullface": "down"}
+			}
+		},
+		{
+			"from": [7, 1, 0],
+			"to": [9, 4, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [12, 7, 13, 8.5], "texture": "#0"},
+				"east": {"uv": [9, 7, 12, 8.5], "texture": "#0"},
+				"south": {"uv": [8, 7, 9, 8.5], "texture": "#0"},
+				"west": {"uv": [13, 7, 16, 8.5], "texture": "#0"},
+				"up": {"uv": [12, 7, 9, 6], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [15, 6, 12, 7], "rotation": 270, "texture": "#0", "cullface": "down"}
+			}
+		},
+		{
+			"from": [7, 9, 0],
+			"to": [9, 12, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [12, 7, 13, 8.5], "texture": "#0"},
+				"east": {"uv": [9, 7, 12, 8.5], "texture": "#0"},
+				"south": {"uv": [8, 7, 9, 8.5], "texture": "#0"},
+				"west": {"uv": [13, 7, 16, 8.5], "texture": "#0"},
+				"up": {"uv": [12, 7, 9, 6], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [15, 6, 12, 7], "rotation": 270, "texture": "#0", "cullface": "down"}
+			}
+		}
+	]
+}
