@@ -221,6 +221,7 @@ public class AFBlocks {
     public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
+    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
 
@@ -231,6 +232,7 @@ public class AFBlocks {
     public static final Supplier<Block> JUNGLE_PICKET_FENCE = registerBlock("jungle_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> ACACIA_PICKET_FENCE = registerBlock("acacia_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> DARK_OAK_PICKET_FENCE = registerBlock("dark_oak_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
+    public static final Supplier<Block> MANGROVE_PICKET_FENCE = registerBlock("mangrove_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> CRIMSON_PICKET_FENCE = registerBlock("crimson_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final Supplier<Block> WARPED_PICKET_FENCE = registerBlock("warped_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
 

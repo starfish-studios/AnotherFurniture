@@ -74,4 +74,5 @@ public class AFRegistryImpl {
     public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
         ((FireBlockAccessor)fireBlock).invokeSetFlammable(block.get(), encouragement, flammability);
     }
+
 }

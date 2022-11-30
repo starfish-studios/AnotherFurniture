@@ -1,9 +1,11 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
@@ -70,9 +72,10 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
-        return this.defaultBlockState()
+        BlockState state = this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
+        return getConnections(state, context.getLevel(), context.getClickedPos());
     }
 
     @Override
@@ -80,16 +83,7 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        boolean n = level.getBlockState(currentPos.north()).getBlock() instanceof TableBlock;
-        boolean e = level.getBlockState(currentPos.east()).getBlock() instanceof TableBlock;
-        boolean s = level.getBlockState(currentPos.south()).getBlock() instanceof TableBlock;
-        boolean w = level.getBlockState(currentPos.west()).getBlock() instanceof TableBlock;
-        boolean leg1 = (!n && !e) || (n && e && !(level.getBlockState(currentPos.north().east()).getBlock() instanceof TableBlock));
-        boolean leg2 = (!e && !s) || (e && s && !(level.getBlockState(currentPos.south().east()).getBlock() instanceof TableBlock));
-        boolean leg3 = (!s && !w) || (s && w && !(level.getBlockState(currentPos.south().west()).getBlock() instanceof TableBlock));
-        boolean leg4 = (!n && !w) || (n && w && !(level.getBlockState(currentPos.north().west()).getBlock() instanceof TableBlock));
-        boolean update = ((n ? 1 : 0) + (e ? 1 : 0) + (s ? 1 : 0) + (w ? 1 : 0)) % 2 == 0;
-        return state.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
+        return getConnections(state, level, currentPos);
     }
 
     @Override
@@ -124,5 +118,18 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
         return false;
+    }
+
+    public BlockState getConnections(BlockState state, LevelAccessor level, BlockPos pos) {
+        boolean n = level.getBlockState(pos.north()).is(AFBlockTags.TABLES_CONNECTABLE);
+        boolean e = level.getBlockState(pos.east()).is(AFBlockTags.TABLES_CONNECTABLE);
+        boolean s = level.getBlockState(pos.south()).is(AFBlockTags.TABLES_CONNECTABLE);
+        boolean w = level.getBlockState(pos.west()).is(AFBlockTags.TABLES_CONNECTABLE);
+        boolean leg1 = (!n && !e) || (n && e && !(level.getBlockState(pos.north().east()).is(AFBlockTags.TABLES_CONNECTABLE)));
+        boolean leg2 = (!e && !s) || (e && s && !(level.getBlockState(pos.south().east()).is(AFBlockTags.TABLES_CONNECTABLE)));
+        boolean leg3 = (!s && !w) || (s && w && !(level.getBlockState(pos.south().west()).is(AFBlockTags.TABLES_CONNECTABLE)));
+        boolean leg4 = (!n && !w) || (n && w && !(level.getBlockState(pos.north().west()).is(AFBlockTags.TABLES_CONNECTABLE)));
+        boolean update = ((n ? 1 : 0) + (e ? 1 : 0) + (s ? 1 : 0) + (w ? 1 : 0)) % 2 == 0;
+        return state.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
     }
 }
