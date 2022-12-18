@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/crimson",
         "bar": "another_furniture:block/lattice/crimson_bar",
-        "particle": "minecraft:block/crimson_planks"
+        "particle": "#main"
     }
 }

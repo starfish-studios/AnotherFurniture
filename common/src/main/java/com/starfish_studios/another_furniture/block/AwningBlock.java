@@ -69,4 +69,12 @@ public class AwningBlock extends SlabBlock {
             entity.setDeltaMovement(vec3.x, -vec3.y * 0.6600000262260437 * d, vec3.z);
         }
     }
+
+    @Override
+    public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction direction) {
+        if (adjacentBlockState.getBlock() instanceof AwningBlock && state.getValue(TYPE) == adjacentBlockState.getValue(TYPE)) {
+            return true;
+        }
+        return super.skipRendering(state, adjacentBlockState, direction);
+    }
 }

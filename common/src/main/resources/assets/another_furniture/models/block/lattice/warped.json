@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/warped",
         "bar": "another_furniture:block/lattice/warped_bar",
-        "particle": "minecraft:block/warped_planks"
+        "particle": "#main"
     }
 }

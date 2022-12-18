@@ -1,12 +1,16 @@
 {
-    "values": [
-        "another_furniture:oak_picket_fence",
-        "another_furniture:spruce_picket_fence",
-        "another_furniture:birch_picket_fence",
-        "another_furniture:jungle_picket_fence",
-        "another_furniture:acacia_picket_fence",
-        "another_furniture:dark_oak_picket_fence",
-        "another_furniture:crimson_picket_fence",
-        "another_furniture:warped_picket_fence"
-        ]
+	"values": [
+		"another_furniture:oak_picket_fence",
+		"another_furniture:spruce_picket_fence",
+		"another_furniture:birch_picket_fence",
+		"another_furniture:jungle_picket_fence",
+		"another_furniture:acacia_picket_fence",
+		"another_furniture:dark_oak_picket_fence",
+		{
+            "id": "another_furniture:mangrove_picket_fence",
+            "required": false
+        },
+		"another_furniture:crimson_picket_fence",
+		"another_furniture:warped_picket_fence"
+	]
 }

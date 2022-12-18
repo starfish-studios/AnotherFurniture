@@ -1,6 +1,6 @@
 {
 	"render_type": "cutout",
-	"parent": "picket_fence",
+	"parent": "minecraft:block/block",
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "another_furniture:block/picket_fence/oak"

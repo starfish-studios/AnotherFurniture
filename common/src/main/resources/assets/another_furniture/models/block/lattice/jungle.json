@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/jungle",
         "bar": "another_furniture:block/lattice/jungle_bar",
-        "particle": "minecraft:block/jungle_planks"
+        "particle": "#main"
     }
 }

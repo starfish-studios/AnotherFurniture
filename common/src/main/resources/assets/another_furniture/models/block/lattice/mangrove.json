@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/mangrove",
         "bar": "another_furniture:block/lattice/mangrove_bar",
-        "particle": "minecraft:block/mangrove_planks"
+        "particle": "#main"
     }
 }

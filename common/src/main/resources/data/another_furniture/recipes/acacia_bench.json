@@ -17,11 +17,5 @@
 	"result": {
 		"count": 3,
 		"item": "another_furniture:acacia_bench"
-	},
-	"conditions": [
-		{
-			"type": "another_furniture:flag",
-			"flag": "enableBenches"
-		}
-	]
+	}
 }

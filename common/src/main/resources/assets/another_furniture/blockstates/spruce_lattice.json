@@ -1,18 +1,63 @@
 {
     "variants": {
-        "facing=north": {
+        "facing=north,type=single": {
             "model": "another_furniture:block/lattice/spruce"
         },
-        "facing=east": {
+        "facing=east,type=single": {
             "model": "another_furniture:block/lattice/spruce",
             "y": 90
         },
-        "facing=south": {
+        "facing=south,type=single": {
             "model": "another_furniture:block/lattice/spruce",
             "y": 180
         },
-        "facing=west": {
+        "facing=west,type=single": {
             "model": "another_furniture:block/lattice/spruce",
+            "y": 270
+        },
+        "facing=north,type=left": {
+            "model": "another_furniture:block/lattice/spruce_left"
+        },
+        "facing=east,type=left": {
+            "model": "another_furniture:block/lattice/spruce_left",
+            "y": 90
+        },
+        "facing=south,type=left": {
+            "model": "another_furniture:block/lattice/spruce_left",
+            "y": 180
+        },
+        "facing=west,type=left": {
+            "model": "another_furniture:block/lattice/spruce_left",
+            "y": 270
+        },
+        "facing=north,type=middle": {
+            "model": "another_furniture:block/lattice/spruce_middle"
+        },
+        "facing=east,type=middle": {
+            "model": "another_furniture:block/lattice/spruce_middle",
+            "y": 90
+        },
+        "facing=south,type=middle": {
+            "model": "another_furniture:block/lattice/spruce_middle",
+            "y": 180
+        },
+        "facing=west,type=middle": {
+            "model": "another_furniture:block/lattice/spruce_middle",
+            "y": 270
+        },
+        "facing=north,type=right": {
+            "model": "another_furniture:block/lattice/spruce_right"
+        },
+        "facing=east,type=right": {
+            "model": "another_furniture:block/lattice/spruce_right",
+            "y": 90
+        },
+        "facing=south,type=right": {
+            "model": "another_furniture:block/lattice/spruce_right",
+            "y": 180
+        },
+        "facing=west,type=right": {
+            "model": "another_furniture:block/lattice/spruce_right",
             "y": 270
         }
     }

@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/acacia",
         "bar": "another_furniture:block/lattice/acacia_bar",
-        "particle": "minecraft:block/acacia_planks"
+        "particle": "#main"
     }
 }

@@ -3,6 +3,6 @@
     "textures": {
         "main": "another_furniture:block/lattice/spruce",
         "bar": "another_furniture:block/lattice/spruce_bar",
-        "particle": "minecraft:block/spruce_planks"
+        "particle": "#main"
     }
 }

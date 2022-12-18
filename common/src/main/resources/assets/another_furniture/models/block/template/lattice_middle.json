@@ -1,0 +1,23 @@
+{
+	"parent": "minecraft:block/block",
+	"render_type": "cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "another_furniture:block/lattice/oak",
+		"main": "another_furniture:block/lattice/oak"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 15],
+			"to": [16, 16, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#main", "cullface": "north"},
+				"east": {"uv": [0, 0, 0, 8], "texture": "#main"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#main", "cullface": "south"},
+				"west": {"uv": [0, 0, 0, 8], "texture": "#main"},
+				"up": {"uv": [0, 0, 8, 0], "texture": "#main"},
+				"down": {"uv": [0, 0, 8, 0], "texture": "#main"}
+			}
+		}
+	]
+}
