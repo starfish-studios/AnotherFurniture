@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.block.entity;
 
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;

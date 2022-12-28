@@ -134,18 +134,18 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (!level.isClientSide) {
-            BlockState below = level.getBlockState(pos.below());
-            boolean powered = level.hasNeighborSignal(pos) || (below.getBlock() instanceof LampConnectorBlock && below.getValue(POWERED));
-            if (powered != state.getValue(POWERED)) {
-                if (state.getValue(LIT) != powered) {
-                    state = state.setValue(LIT, powered);
-                    level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 1.0f, 1.0f);
-                }
-                state = state.setValue(POWERED, powered);
+        if (level.isClientSide) return;
+
+        BlockState below = level.getBlockState(pos.below());
+        boolean powered = level.hasNeighborSignal(pos) || (below.getBlock() instanceof LampConnectorBlock && below.getValue(POWERED));
+        if (powered != state.getValue(POWERED)) {
+            if (state.getValue(LIT) != powered) {
+                state = state.setValue(LIT, powered);
+                level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 1.0f, 1.0f);
             }
-            level.setBlock(pos, state, 3);
+            state = state.setValue(POWERED, powered);
         }
+        level.setBlock(pos, state, 3);
     }
 
     @Override

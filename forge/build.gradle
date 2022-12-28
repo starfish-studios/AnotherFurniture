@@ -24,11 +24,30 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+repositories{
+	maven {
+        name = 'tterrag.maven'
+        url = 'https://maven.tterrag.com/'
+    }
+	maven {
+		url = "https://www.cursemaven.com"
+		allowInsecureProtocol = true
+	}
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+	modImplementation("com.simibubi.create:create-1.19.2:0.5.0.e-13:all") { transitive = false }
+	modImplementation("com.jozufozu.flywheel:flywheel-forge-1.19.2:${flywheel_version}")
+    modCompileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
+	
+	modImplementation("curse.maven:jei-238222:3940099")
+	//modImplementation fileTree(dir: 'mods', include: '*.jar')
+	
 }
 
 processResources {

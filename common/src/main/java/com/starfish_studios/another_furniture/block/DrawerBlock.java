@@ -37,16 +37,14 @@ public class DrawerBlock extends BaseEntityBlock {
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
-                player.openMenu(drawerBlockEntity);
-                PiglinAi.angerNearbyPiglins(player, true);
-            }
-            return InteractionResult.CONSUME;
+        if (level.isClientSide) return InteractionResult.SUCCESS;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
+            player.openMenu(drawerBlockEntity);
+            PiglinAi.angerNearbyPiglins(player, true);
         }
+        return InteractionResult.CONSUME;
     }
 
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {

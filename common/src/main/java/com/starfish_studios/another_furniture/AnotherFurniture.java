@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture;
 
+import com.starfish_studios.another_furniture.integration.IntegrationHandler;
 import com.starfish_studios.another_furniture.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,6 +19,8 @@ public class AnotherFurniture {
         AFSoundEvents.init();
         AFEntityTypes.init();
         AFBlockEntityTypes.init();
+
+        IntegrationHandler.init();
     }
 
     public static void registerFlammables() {

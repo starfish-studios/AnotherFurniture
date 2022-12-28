@@ -4,6 +4,7 @@ import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.CurtainRenderer;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.ServiceBellButtonRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -11,10 +12,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = AnotherFurniture.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AnotherFurnitureForgeClient {
-
+    public static final ResourceLocation FLOWER_BOX_BASE_MODEL = new ResourceLocation(AnotherFurniture.MOD_ID, "block/overlay");
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
         AnotherFurnitureClient.init();
+
     }
 
     @SubscribeEvent

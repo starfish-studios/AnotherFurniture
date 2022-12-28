@@ -96,24 +96,24 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (!level.isClientSide) {
-            boolean powered = level.hasNeighborSignal(pos);
-            if (powered != state.getValue(POWERED)) {
-                if (state.getValue(OPEN) != powered) {
-                    state = state.setValue(OPEN, powered);
-                    level.playSound(null, pos, shutterSound(powered), SoundSource.BLOCKS, 1.0F, 1.0F);
-                }
-                state = state.setValue(POWERED, powered);
-                if (state.getValue(WATERLOGGED)) {
-                    level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-                }
+        if (level.isClientSide) return;
+
+        boolean powered = level.hasNeighborSignal(pos);
+        if (powered != state.getValue(POWERED)) {
+            if (state.getValue(OPEN) != powered) {
+                state = state.setValue(OPEN, powered);
+                level.playSound(null, pos, shutterSound(powered), SoundSource.BLOCKS, 1.0F, 1.0F);
             }
-            ShutterType type = getType(state, level.getBlockState(pos.above()), level.getBlockState(pos.below()));
-            if (state.getValue(TYPE) != type) {
-                state = state.setValue(TYPE, type);
+            state = state.setValue(POWERED, powered);
+            if (state.getValue(WATERLOGGED)) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
-            level.setBlock(pos, state, 3);
         }
+        ShutterType type = getType(state, level.getBlockState(pos.above()), level.getBlockState(pos.below()));
+        if (state.getValue(TYPE) != type) {
+            state = state.setValue(TYPE, type);
+        }
+        level.setBlock(pos, state, 3);
     }
 
     @Override
@@ -169,7 +169,7 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
         }
     }
 
-    public SoundEvent shutterSound(boolean open) {
+    public static SoundEvent shutterSound(boolean open) {
         if (open) {
             return SoundEvents.WOODEN_TRAPDOOR_OPEN;
         }

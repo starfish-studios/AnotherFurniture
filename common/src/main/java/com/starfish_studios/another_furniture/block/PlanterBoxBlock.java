@@ -118,25 +118,28 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
-            ItemStack stack = player.getItemInHand(hand);
-            if (stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) && !stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
-                Direction facing = state.getValue(FACING);
-                boolean slot_0;
-                if (facing.getAxis() == Direction.Axis.X) {
-                    slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
-                } else {
-                    slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
-                }
-                if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
-                if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
-                    return InteractionResult.SUCCESS;
-                }
-
-                return InteractionResult.CONSUME;
-            }
+        if (!(blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity)) {
+            return InteractionResult.PASS;
         }
-        return InteractionResult.PASS;
+
+        ItemStack stack = player.getItemInHand(hand);
+        if (!stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) || stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
+            return InteractionResult.PASS;
+        }
+
+        Direction facing = state.getValue(FACING);
+        boolean slot_0;
+        if (facing.getAxis() == Direction.Axis.X) {
+            slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
+        } else {
+            slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
+        }
+        if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
+        if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
+            return InteractionResult.SUCCESS;
+        }
+
+        return InteractionResult.CONSUME;
     }
 
     @Override

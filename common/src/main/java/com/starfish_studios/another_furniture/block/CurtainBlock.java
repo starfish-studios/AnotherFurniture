@@ -93,9 +93,8 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if (level.isClientSide) {
-            return;
-        }
+        if (level.isClientSide) return;
+
         Direction facing = state.getValue(FACING);
         CurtainType type = state.getValue(TYPE);
         BlockState l_state = level.getBlockState(pos.relative(facing.getClockWise()));

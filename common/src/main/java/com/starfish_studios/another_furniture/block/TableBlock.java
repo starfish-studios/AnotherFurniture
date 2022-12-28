@@ -7,10 +7,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -18,6 +15,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -121,15 +119,19 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public BlockState getConnections(BlockState state, LevelAccessor level, BlockPos pos) {
-        boolean n = level.getBlockState(pos.north()).is(AFBlockTags.TABLES_CONNECTABLE);
-        boolean e = level.getBlockState(pos.east()).is(AFBlockTags.TABLES_CONNECTABLE);
-        boolean s = level.getBlockState(pos.south()).is(AFBlockTags.TABLES_CONNECTABLE);
-        boolean w = level.getBlockState(pos.west()).is(AFBlockTags.TABLES_CONNECTABLE);
-        boolean leg1 = (!n && !e) || (n && e && !(level.getBlockState(pos.north().east()).is(AFBlockTags.TABLES_CONNECTABLE)));
-        boolean leg2 = (!e && !s) || (e && s && !(level.getBlockState(pos.south().east()).is(AFBlockTags.TABLES_CONNECTABLE)));
-        boolean leg3 = (!s && !w) || (s && w && !(level.getBlockState(pos.south().west()).is(AFBlockTags.TABLES_CONNECTABLE)));
-        boolean leg4 = (!n && !w) || (n && w && !(level.getBlockState(pos.north().west()).is(AFBlockTags.TABLES_CONNECTABLE)));
+        boolean n = validConnection(level.getBlockState(pos.north()));
+        boolean e = validConnection(level.getBlockState(pos.east()));
+        boolean s = validConnection(level.getBlockState(pos.south()));
+        boolean w = validConnection(level.getBlockState(pos.west()));
+        boolean leg1 = (!n && !e) || (n && e && !(validConnection(level.getBlockState(pos.north().east()))));
+        boolean leg2 = (!e && !s) || (e && s && !(validConnection(level.getBlockState(pos.south().east()))));
+        boolean leg3 = (!s && !w) || (s && w && !(validConnection(level.getBlockState(pos.south().west()))));
+        boolean leg4 = (!n && !w) || (n && w && !(validConnection(level.getBlockState(pos.north().west()))));
         boolean update = ((n ? 1 : 0) + (e ? 1 : 0) + (s ? 1 : 0) + (w ? 1 : 0)) % 2 == 0;
         return state.setValue(LEG1, leg1).setValue(LEG2, leg2).setValue(LEG3, leg3).setValue(LEG4, leg4).setValue(UPDATE, update);
+    }
+
+    public boolean validConnection(BlockState state) {
+        return this.material == Material.METAL ? state.is(this) : state.is(AFBlockTags.TABLES_CONNECTABLE);
     }
 }

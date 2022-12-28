@@ -44,19 +44,18 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
             Item item = blockEntity.getItemFromSlot(i);
 
             if (item != Items.AIR) {
-                Block block = ((BlockItem)item).getBlock();
+                Block block = ((BlockItem) item).getBlock();
                 if (block instanceof DoublePlantBlock) {
                     lower = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER);
                     upper = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER);
-                }
-                else {
+                } else {
                     lower = block.defaultBlockState();
                 }
 
                 poseStack.pushPose();
                 poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
-                poseStack.translate( 0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
-                poseStack.translate( 0f, 0.001f * i, 0.001f * i); // prevent z-clipping
+                poseStack.translate(0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
+                poseStack.translate(0f, 0.001f * i, 0.001f * i); // prevent z-clipping
 
                 switch (blockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
                     case EAST -> poseStack.translate(0f, 0f, -1.4f);

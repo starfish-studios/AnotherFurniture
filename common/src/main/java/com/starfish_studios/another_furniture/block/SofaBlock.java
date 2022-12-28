@@ -111,10 +111,8 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     @Override
     public float setRiderRotation(BlockState state, Entity entity) {
         float corner = switch (state.getValue(TYPE)) {
-            case INNER_LEFT -> -45.0F;
-            case INNER_RIGHT -> 45.0F;
-            case OUTER_LEFT -> -45.0F;
-            case OUTER_RIGHT -> 45.0F;
+            case INNER_LEFT, OUTER_LEFT -> -45.0F;
+            case INNER_RIGHT, OUTER_RIGHT -> 45.0F;
             default -> 0.0F;
         };
         return state.getValue(FACING).toYRot() + corner;

@@ -47,4 +47,6 @@ public class TallStoolBlock extends StoolBlock {
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AABB;
     }
+
+
 }

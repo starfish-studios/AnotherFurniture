@@ -21,7 +21,6 @@ public class AnotherFurnitureForge {
         AFRegistryImpl.ENTITY_TYPES.register(bus);
         AFRegistryImpl.BLOCK_ENTITY_TYPES.register(bus);
 
-
         bus.addListener(this::setup);
 
         MinecraftForge.EVENT_BUS.register(this);

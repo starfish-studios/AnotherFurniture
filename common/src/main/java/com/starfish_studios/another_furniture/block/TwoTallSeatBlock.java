@@ -69,13 +69,13 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide) {
-            boolean waterlogged = level.getFluidState(pos).getType() == Fluids.WATER;
-            BlockPos blockPos = pos.above();
-            level.setBlock(blockPos, state.setValue(WATERLOGGED, waterlogged).setValue(TOP, true), 3);
-            level.blockUpdated(pos, Blocks.AIR);
-            state.updateNeighbourShapes(level, pos, 3);
-        }
+        if (level.isClientSide) return;
+
+        boolean waterlogged = level.getFluidState(pos).getType() == Fluids.WATER;
+        BlockPos blockPos = pos.above();
+        level.setBlock(blockPos, state.setValue(WATERLOGGED, waterlogged).setValue(TOP, true), 3);
+        level.blockUpdated(pos, Blocks.AIR);
+        state.updateNeighbourShapes(level, pos, 3);
 
     }
 

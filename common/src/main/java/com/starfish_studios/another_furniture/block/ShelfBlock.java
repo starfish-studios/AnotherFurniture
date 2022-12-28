@@ -69,22 +69,29 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (hit.getDirection() == Direction.UP) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
-                ItemStack itemstack = player.getItemInHand(hand);
-                if (!itemstack.isEmpty()) {
-                    if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
-                        level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        return InteractionResult.SUCCESS;
-                    }
-                    return InteractionResult.CONSUME;
-                }
-                if (shelfblockentity.removeItem(this.getPosition(hit, pos), player, level)) {
-                    return InteractionResult.SUCCESS;
-                }
-            }
+        if (hit.getDirection() != Direction.UP) {
+            return InteractionResult.PASS;
         }
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (!(blockentity instanceof ShelfBlockEntity shelfblockentity)) {
+            return InteractionResult.PASS;
+        }
+
+        // Place
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (!itemstack.isEmpty()) {
+            if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
+                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.CONSUME;
+        }
+
+        // Remove
+        if (shelfblockentity.removeItem(this.getPosition(hit, pos), player, level)) {
+            return InteractionResult.SUCCESS;
+        }
+
         return InteractionResult.PASS;
     }
 

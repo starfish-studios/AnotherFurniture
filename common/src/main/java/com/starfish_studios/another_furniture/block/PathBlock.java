@@ -20,19 +20,17 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class LatticeBlock extends Block implements SimpleWaterloggedBlock {
+public class PathBlock extends Block implements SimpleWaterloggedBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    protected static final VoxelShape EAST = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
-    protected static final VoxelShape WEST = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
-    protected static final VoxelShape NORTH = Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape AABB = Block.box(0.0D, 0.0D, 0.0D, 0.0D, 1.0D, 0.0D);
+
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
 
-    public LatticeBlock(Properties properties) {
+    public PathBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(WATERLOGGED, false)
@@ -40,20 +38,9 @@ public class LatticeBlock extends Block implements SimpleWaterloggedBlock {
                 .setValue(TYPE, HorizontalConnectionType.SINGLE));
     }
 
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return switch (state.getValue(FACING)) {
-            case WEST -> WEST;
-            case EAST -> EAST;
-            case SOUTH -> SOUTH;
-            default -> NORTH;
-        };
+        return AABB;
     }
 
     @Override
@@ -63,8 +50,8 @@ public class LatticeBlock extends Block implements SimpleWaterloggedBlock {
         BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
 
-        boolean l_side = (l_state.getBlock() instanceof LatticeBlock && (l_state.getValue(FACING) == facing || l_state.getValue(FACING) == facing.getClockWise()));
-        boolean r_side = (r_state.getBlock() instanceof LatticeBlock && (r_state.getValue(FACING) == facing || r_state.getValue(FACING) == facing.getCounterClockWise()));
+        boolean l_side = (l_state.getBlock() instanceof PathBlock && (l_state.getValue(FACING) == facing || l_state.getValue(FACING) == facing.getClockWise()));
+        boolean r_side = (r_state.getBlock() instanceof PathBlock && (r_state.getValue(FACING) == facing || r_state.getValue(FACING) == facing.getCounterClockWise()));
         HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
         return state.setValue(TYPE, type);
     }
@@ -72,5 +59,11 @@ public class LatticeBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, TYPE, WATERLOGGED);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 }

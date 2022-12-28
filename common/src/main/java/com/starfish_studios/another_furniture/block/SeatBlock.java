@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
+import com.starfish_studios.another_furniture.registry.AFRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -52,21 +53,13 @@ public class SeatBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (AFRegistry.isFakePlayer(player)) return InteractionResult.PASS;
+
         if(!isSittable(state) || player.isPassenger() || player.isCrouching())
             return InteractionResult.PASS;
 
         if(!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() && !level.getBlockState(pos.above()).is(AFBlockTags.NO_SEAT_COLLISION_CHECK))
             return InteractionResult.PASS;
-
-//        Vec3 vec = new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-//        double maxDist = 3;
-//        if((vec.x - player.getX()) * (vec.x - player.getX()) + (vec.y - player.getY()) * (vec.y - player.getY()) + (vec.z - player.getZ()) * (vec.z - player.getZ()) > maxDist * maxDist)
-//            return InteractionResult.PASS;
-
-//        ItemStack stack1 = pPlayer.getMainHandItem();
-//        ItemStack stack2 = pPlayer.getOffhandItem();
-//        if(!stack1.isEmpty() || !stack2.isEmpty())
-//            return InteractionResult.PASS;
 
         List<SeatEntity> seats = level.getEntitiesOfClass(SeatEntity.class, new AABB(pos, pos.offset(1, 1, 1)));
         if(seats.isEmpty()) {

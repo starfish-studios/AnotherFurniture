@@ -237,7 +237,7 @@ public class AFBlocks {
     public static final Supplier<Block> WARPED_PICKET_FENCE = registerBlock("warped_picket_fence", () -> new FenceBlock(Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
 
     // Paths
-    // public static final Supplier<Block> OAK_PATH = registerBlock("oak_path.json", () -> new PathBlock(Block.Properties.of(Material.WOOD).strength(0.7F).sound(SoundType.WOOD).noOcclusion().noCollission()));
+    //public static final Supplier<Block> OAK_PATH = registerBlock("oak_path.json", () -> new PathBlock(Block.Properties.of(Material.WOOD).strength(0.7F).sound(SoundType.WOOD).noOcclusion().noCollission()));
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);

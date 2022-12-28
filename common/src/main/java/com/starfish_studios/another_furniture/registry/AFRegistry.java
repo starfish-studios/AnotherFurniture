@@ -1,7 +1,6 @@
 package com.starfish_studios.another_furniture.registry;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
@@ -10,12 +9,12 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
@@ -86,6 +85,16 @@ public class AFRegistry {
 
     @ExpectPlatform
     public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isModLoaded(String mod) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isFakePlayer(Player player) {
         throw new AssertionError();
     }
 }

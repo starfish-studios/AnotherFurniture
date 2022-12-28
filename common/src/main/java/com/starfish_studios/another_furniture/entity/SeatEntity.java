@@ -28,14 +28,14 @@ public class SeatEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if(!this.level.isClientSide) {
-            BlockState state = this.level.getBlockState(this.blockPosition());
-            boolean remove = true;
-            if(state.getBlock() instanceof SeatBlock seatBlock) remove = !seatBlock.isSittable(state);
-            if(this.getPassengers().isEmpty() || remove) {
-                this.remove(RemovalReason.DISCARDED);
-                this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());
-            }
+        if(this.level.isClientSide) return;
+
+        BlockState state = this.level.getBlockState(this.blockPosition());
+        boolean remove = true;
+        if(state.getBlock() instanceof SeatBlock seatBlock) remove = !seatBlock.isSittable(state);
+        if(this.getPassengers().isEmpty() || remove) {
+            this.remove(RemovalReason.DISCARDED);
+            this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());
         }
     }
 
