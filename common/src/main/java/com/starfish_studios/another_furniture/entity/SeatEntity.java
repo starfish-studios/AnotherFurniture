@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -97,5 +98,14 @@ public class SeatEntity extends Entity {
             passenger.setYRot(seatBlock.setRiderRotation(state, passenger));
         }
         super.addPassenger(passenger);
+    }
+
+    @Override
+    public double getMyRidingOffset() {
+        Block block = level.getBlockState(this.blockPosition()).getBlock();
+        if (block instanceof SeatBlock seatBlock) {
+            return seatBlock.seatHeight();
+        }
+        return super.getMyRidingOffset();
     }
 }
