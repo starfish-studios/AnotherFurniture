@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.integration.forge;
 
+import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
 import com.simibubi.create.content.contraptions.components.structureMovement.interaction.SimpleBlockMovingInteraction;
 import com.starfish_studios.another_furniture.block.ShutterBlock;
@@ -10,8 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
 public class ShutterMovingInteraction extends SimpleBlockMovingInteraction {
-    public ShutterMovingInteraction() {
-    }
 
     protected BlockState handle(Player player, Contraption contraption, BlockPos pos, BlockState currentState) {
         toggleShutters(currentState, pos, currentState.getValue(ShutterBlock.OPEN), contraption);

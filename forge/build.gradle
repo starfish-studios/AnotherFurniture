@@ -41,8 +41,8 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
-	modImplementation("com.simibubi.create:create-1.19.2:0.5.0.g-19:all") { transitive = false }
-	modImplementation("com.jozufozu.flywheel:flywheel-forge-1.19.2:${flywheel_version}")
+	modImplementation("com.simibubi.create:create-1.19.2:0.5.0.i-23:all") { transitive = false }
+	modImplementation("com.jozufozu.flywheel:flywheel-forge-1.19.2:${forge_flywheel_version}")
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 	
 	modImplementation("curse.maven:jei-238222:3940099")

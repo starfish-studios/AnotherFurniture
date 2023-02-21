@@ -72,7 +72,7 @@ public class AwningBlock extends SlabBlock {
 
     @Override
     public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction direction) {
-        if (adjacentBlockState.getBlock() instanceof AwningBlock && state.getValue(TYPE) == adjacentBlockState.getValue(TYPE)) {
+        if (adjacentBlockState.getBlock() instanceof AwningBlock && direction.getAxis().isHorizontal() && state.getValue(TYPE) == adjacentBlockState.getValue(TYPE)) {
             return true;
         }
         return super.skipRendering(state, adjacentBlockState, direction);

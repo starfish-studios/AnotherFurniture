@@ -10,6 +10,4 @@ public class CreateCompat {
         throw new AssertionError();
     }
 
-
-
 }
