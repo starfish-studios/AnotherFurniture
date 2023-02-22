@@ -67,10 +67,10 @@ public class AFBlockEntityTypes {
                     AFBlocks.WARPED_DRAWER.get()
             ));
 
-    public static final Supplier<BlockEntityType<TombstoneBlockEntity>> TOMBSTONE = AFRegistry.registerBlockEntityType("tombstone",
-            () -> AFRegistry.createBlockEntityType(TombstoneBlockEntity::new,
-                    AFBlocks.STONE_TOMBSTONE.get()
-            ));
+//    public static final Supplier<BlockEntityType<TombstoneBlockEntity>> TOMBSTONE = AFRegistry.registerBlockEntityType("tombstone",
+//            () -> AFRegistry.createBlockEntityType(TombstoneBlockEntity::new,
+//                    AFBlocks.STONE_TOMBSTONE.get()
+//            ));
 
     public static void init() {}
 }

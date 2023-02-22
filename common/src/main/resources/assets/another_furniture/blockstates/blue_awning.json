@@ -6,12 +6,19 @@
         "facing=north,type=top": {
             "model": "another_furniture:block/awning/blue_top"
         },
+        "facing=north,type=double": {
+            "model": "another_furniture:block/awning/blue_double"
+        },
         "facing=east,type=bottom": {
             "model": "another_furniture:block/awning/blue",
             "y": 90
         },
         "facing=east,type=top": {
             "model": "another_furniture:block/awning/blue_top",
+            "y": 90
+        },
+        "facing=east,type=double": {
+            "model": "another_furniture:block/awning/blue_double",
             "y": 90
         },
         "facing=south,type=bottom": {
@@ -22,12 +29,20 @@
             "model": "another_furniture:block/awning/blue_top",
             "y": 180
         },
+        "facing=south,type=double": {
+            "model": "another_furniture:block/awning/blue_double",
+            "y": 180
+        },
         "facing=west,type=bottom": {
             "model": "another_furniture:block/awning/blue",
             "y": 270
         },
         "facing=west,type=top": {
             "model": "another_furniture:block/awning/blue_top",
+            "y": 270
+        },
+        "facing=west,type=double": {
+            "model": "another_furniture:block/awning/blue_double",
             "y": 270
         }
     }

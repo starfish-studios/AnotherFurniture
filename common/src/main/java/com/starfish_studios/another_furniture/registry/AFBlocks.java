@@ -205,38 +205,38 @@ public class AFBlocks {
     public static final Supplier<Block> GREEN_TALL_STOOL = registerBlock("green_tall_stool", () -> new TallStoolBlock(Properties.weak_wood));
     public static final Supplier<Block> RED_TALL_STOOL = registerBlock("red_tall_stool", () -> new TallStoolBlock(Properties.weak_wood));
     public static final Supplier<Block> BLACK_TALL_STOOL = registerBlock("black_tall_stool", () -> new TallStoolBlock(Properties.weak_wood));
-
+    ////////
     // Tombstone
-    public static final Supplier<Block> STONE_TOMBSTONE = registerBlock("stone_tombstone", () -> new TombstoneBlock(Properties.tombstone));
-
-    // Awnings
-    public static final Supplier<Block> WHITE_AWNING = registerBlock("white_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> ORANGE_AWNING = registerBlock("orange_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> MAGENTA_AWNING = registerBlock("magenta_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> LIGHT_BLUE_AWNING = registerBlock("light_blue_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> YELLOW_AWNING = registerBlock("yellow_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> LIME_AWNING = registerBlock("lime_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> PINK_AWNING = registerBlock("pink_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> GRAY_AWNING = registerBlock("gray_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> LIGHT_GRAY_AWNING = registerBlock("light_gray_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> CYAN_AWNING = registerBlock("cyan_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> PURPLE_AWNING = registerBlock("purple_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> BLUE_AWNING = registerBlock("blue_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> BROWN_AWNING = registerBlock("brown_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> GREEN_AWNING = registerBlock("green_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> RED_AWNING = registerBlock("red_awning", () -> new AwningBlock(Properties.awning));
-    public static final Supplier<Block> BLACK_AWNING = registerBlock("black_awning", () -> new AwningBlock(Properties.awning));
-
-    // Lattices
-    public static final Supplier<Block> OAK_LATTICE = registerBlock("oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> SPRUCE_LATTICE = registerBlock("spruce_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> BIRCH_LATTICE = registerBlock("birch_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
-    public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
+//    public static final Supplier<Block> STONE_TOMBSTONE = registerBlock("stone_tombstone", () -> new TombstoneBlock(Properties.tombstone));
+//
+//    // Awnings
+//    public static final Supplier<Block> WHITE_AWNING = registerBlock("white_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> ORANGE_AWNING = registerBlock("orange_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> MAGENTA_AWNING = registerBlock("magenta_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> LIGHT_BLUE_AWNING = registerBlock("light_blue_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> YELLOW_AWNING = registerBlock("yellow_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> LIME_AWNING = registerBlock("lime_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> PINK_AWNING = registerBlock("pink_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> GRAY_AWNING = registerBlock("gray_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> LIGHT_GRAY_AWNING = registerBlock("light_gray_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> CYAN_AWNING = registerBlock("cyan_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> PURPLE_AWNING = registerBlock("purple_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> BLUE_AWNING = registerBlock("blue_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> BROWN_AWNING = registerBlock("brown_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> GREEN_AWNING = registerBlock("green_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> RED_AWNING = registerBlock("red_awning", () -> new AwningBlock(Properties.awning));
+//    public static final Supplier<Block> BLACK_AWNING = registerBlock("black_awning", () -> new AwningBlock(Properties.awning));
+//
+//    // Lattices
+//    public static final Supplier<Block> OAK_LATTICE = registerBlock("oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> SPRUCE_LATTICE = registerBlock("spruce_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> BIRCH_LATTICE = registerBlock("birch_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
+//    public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
 
     // Paths
     //public static final Supplier<Block> OAK_PATH = registerBlock("oak_path.json", () -> new PathBlock(Block.Properties.of(Material.WOOD).strength(0.7F).sound(SoundType.WOOD).noOcclusion().noCollission()));
@@ -255,6 +255,150 @@ public class AFBlocks {
 
     public static <T extends Block> Supplier<T> registerBlockOnly(String name, Supplier<T> block) {
         return AFRegistry.registerBlock(name, block);
+    }
+
+    public static void registerFlammables() {
+        AFRegistry.setFlammable(OAK_CHAIR, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_CHAIR, 5, 20);
+        AFRegistry.setFlammable(BIRCH_CHAIR, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_CHAIR, 5, 20);
+        AFRegistry.setFlammable(ACACIA_CHAIR, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_CHAIR, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_CHAIR, 5, 20);
+
+        AFRegistry.setFlammable(OAK_SHELF, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_SHELF, 5, 20);
+        AFRegistry.setFlammable(BIRCH_SHELF, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_SHELF, 5, 20);
+        AFRegistry.setFlammable(ACACIA_SHELF, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_SHELF, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_SHELF, 5, 20);
+
+        AFRegistry.setFlammable(OAK_TABLE, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_TABLE, 5, 20);
+        AFRegistry.setFlammable(BIRCH_TABLE, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_TABLE, 5, 20);
+        AFRegistry.setFlammable(ACACIA_TABLE, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_TABLE, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_TABLE, 5, 20);
+
+        AFRegistry.setFlammable(OAK_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(BIRCH_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(ACACIA_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_SHUTTER, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_SHUTTER, 5, 20);
+
+        AFRegistry.setFlammable(OAK_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(BIRCH_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(ACACIA_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_PLANTER_BOX, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_PLANTER_BOX, 5, 20);
+
+        AFRegistry.setFlammable(WHITE_STOOL, 5, 20);
+        AFRegistry.setFlammable(ORANGE_STOOL, 5, 20);
+        AFRegistry.setFlammable(MAGENTA_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIGHT_BLUE_STOOL, 5, 20);
+        AFRegistry.setFlammable(YELLOW_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIME_STOOL, 5, 20);
+        AFRegistry.setFlammable(PINK_STOOL, 5, 20);
+        AFRegistry.setFlammable(GRAY_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIGHT_GRAY_STOOL, 5, 20);
+        AFRegistry.setFlammable(CYAN_STOOL, 5, 20);
+        AFRegistry.setFlammable(PURPLE_STOOL, 5, 20);
+        AFRegistry.setFlammable(BLUE_STOOL, 5, 20);
+        AFRegistry.setFlammable(BROWN_STOOL, 5, 20);
+        AFRegistry.setFlammable(GREEN_STOOL, 5, 20);
+        AFRegistry.setFlammable(RED_STOOL, 5, 20);
+        AFRegistry.setFlammable(BLACK_STOOL, 5, 20);
+
+        AFRegistry.setFlammable(WHITE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(ORANGE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(MAGENTA_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(LIGHT_BLUE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(YELLOW_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(LIME_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(PINK_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(GRAY_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(LIGHT_GRAY_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(CYAN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(PURPLE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(BLUE_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(BROWN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(GREEN_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(RED_CURTAIN, 5, 20);
+        AFRegistry.setFlammable(BLACK_CURTAIN, 5, 20);
+
+        AFRegistry.setFlammable(OAK_BENCH, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_BENCH, 5, 20);
+        AFRegistry.setFlammable(BIRCH_BENCH, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_BENCH, 5, 20);
+        AFRegistry.setFlammable(ACACIA_BENCH, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_BENCH, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_BENCH, 5, 20);
+
+        AFRegistry.setFlammable(OAK_DRAWER, 5, 20);
+        AFRegistry.setFlammable(SPRUCE_DRAWER, 5, 20);
+        AFRegistry.setFlammable(BIRCH_DRAWER, 5, 20);
+        AFRegistry.setFlammable(JUNGLE_DRAWER, 5, 20);
+        AFRegistry.setFlammable(ACACIA_DRAWER, 5, 20);
+        AFRegistry.setFlammable(DARK_OAK_DRAWER, 5, 20);
+        AFRegistry.setFlammable(MANGROVE_DRAWER, 5, 20);
+
+        AFRegistry.setFlammable(WHITE_LAMP, 5, 20);
+        AFRegistry.setFlammable(ORANGE_LAMP, 5, 20);
+        AFRegistry.setFlammable(MAGENTA_LAMP, 5, 20);
+        AFRegistry.setFlammable(LIGHT_BLUE_LAMP, 5, 20);
+        AFRegistry.setFlammable(YELLOW_LAMP, 5, 20);
+        AFRegistry.setFlammable(LIME_LAMP, 5, 20);
+        AFRegistry.setFlammable(PINK_LAMP, 5, 20);
+        AFRegistry.setFlammable(GRAY_LAMP, 5, 20);
+        AFRegistry.setFlammable(LIGHT_GRAY_LAMP, 5, 20);
+        AFRegistry.setFlammable(CYAN_LAMP, 5, 20);
+        AFRegistry.setFlammable(PURPLE_LAMP, 5, 20);
+        AFRegistry.setFlammable(BLUE_LAMP, 5, 20);
+        AFRegistry.setFlammable(BROWN_LAMP, 5, 20);
+        AFRegistry.setFlammable(GREEN_LAMP, 5, 20);
+        AFRegistry.setFlammable(RED_LAMP, 5, 20);
+        AFRegistry.setFlammable(BLACK_LAMP, 5, 20);
+        AFRegistry.setFlammable(LAMP_CONNECTOR, 5, 20);
+
+        AFRegistry.setFlammable(WHITE_SOFA, 5, 20);
+        AFRegistry.setFlammable(ORANGE_SOFA, 5, 20);
+        AFRegistry.setFlammable(MAGENTA_SOFA, 5, 20);
+        AFRegistry.setFlammable(LIGHT_BLUE_SOFA, 5, 20);
+        AFRegistry.setFlammable(YELLOW_SOFA, 5, 20);
+        AFRegistry.setFlammable(LIME_SOFA, 5, 20);
+        AFRegistry.setFlammable(PINK_SOFA, 5, 20);
+        AFRegistry.setFlammable(GRAY_SOFA, 5, 20);
+        AFRegistry.setFlammable(LIGHT_GRAY_SOFA, 5, 20);
+        AFRegistry.setFlammable(CYAN_SOFA, 5, 20);
+        AFRegistry.setFlammable(PURPLE_SOFA, 5, 20);
+        AFRegistry.setFlammable(BLUE_SOFA, 5, 20);
+        AFRegistry.setFlammable(BROWN_SOFA, 5, 20);
+        AFRegistry.setFlammable(GREEN_SOFA, 5, 20);
+        AFRegistry.setFlammable(RED_SOFA, 5, 20);
+        AFRegistry.setFlammable(BLACK_SOFA, 5, 20);
+
+        AFRegistry.setFlammable(WHITE_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(ORANGE_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(MAGENTA_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIGHT_BLUE_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(YELLOW_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIME_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(PINK_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(GRAY_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(LIGHT_GRAY_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(CYAN_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(PURPLE_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(BLUE_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(BROWN_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(GREEN_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(RED_TALL_STOOL, 5, 20);
+        AFRegistry.setFlammable(BLACK_TALL_STOOL, 5, 20);
     }
 
     public static void init() {}

@@ -9,8 +9,8 @@ import com.starfish_studios.another_furniture.registry.AFRegistry;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 
 public class AnotherFurnitureClient {
-    public static final ModelResourceLocation GREEN_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper");
-    public static final ModelResourceLocation RED_STRIPES_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":red_stripes_wallpaper");
+    //public static final ModelResourceLocation GREEN_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":green_wallpaper");
+    //public static final ModelResourceLocation RED_STRIPES_WALLPAPER = new ModelResourceLocation(AnotherFurniture.MOD_ID + ":red_stripes_wallpaper");
 
     public static void init() {
         AFRegistry.registerEntityRenderers(AFEntityTypes.SEAT, SeatRenderer::new);
@@ -19,7 +19,7 @@ public class AnotherFurnitureClient {
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.CURTAIN, CurtainRenderer::new);
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SERVICE_BELL, ServiceBellButtonRenderer::new);
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.PLANTER_BOX, PlanterBoxRenderer::new);
-        AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.TOMBSTONE, TombstoneRenderer::new);
+        //AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.TOMBSTONE, TombstoneRenderer::new);
 
     }
 

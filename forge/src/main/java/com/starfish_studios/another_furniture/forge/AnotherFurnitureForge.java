@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture.forge;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
+import com.starfish_studios.another_furniture.registry.AFBlocks;
 import com.starfish_studios.another_furniture.registry.forge.AFRegistryImpl;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,7 +30,7 @@ public class AnotherFurnitureForge {
 
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            AnotherFurniture.registerFlammables();
+            AFBlocks.registerFlammables();
         });
     }
 
