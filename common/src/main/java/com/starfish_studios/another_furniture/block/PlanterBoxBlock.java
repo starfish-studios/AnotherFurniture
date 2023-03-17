@@ -79,6 +79,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
             BlockEntity blockentity = level.getBlockEntity(currentPos);
             if (blockentity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
                 planterBoxBlockEntity.removeAllItems();
+                return state;
             }
         }
 
@@ -86,6 +87,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         if (attached && direction.getOpposite() == facing && !state.canSurvive(level, currentPos)) {
             return Blocks.AIR.defaultBlockState();
         }
+        if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
         BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof PlanterBoxBlock && l_state.getValue(ATTACHED) == attached && (l_state.getValue(FACING) == facing || (!attached && l_state.getValue(FACING) == facing.getOpposite())));

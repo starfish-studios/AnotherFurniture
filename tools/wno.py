@@ -92,12 +92,12 @@ for file in files_to_process:
     if should_process == "" or should_process.lower() == "y" or should_process.lower() == "yes":
         f = open(file, "r")
         data = json.loads(f.read())
-        if file.startswith("white"):
+        if "white" in file:
             for color in colors:
                 new_data = dict_replace_value(data, "white", color)
                 with open(file.replace("white", color), "w+") as f:
                     f.write(json.dumps(new_data, indent=4) + "\n")
-        elif file.startswith("oak"):
+        elif "oak" in file:
             for wood in woods:
                 new_data = dict_replace_value(data, "oak", wood)
                 with open(file.replace("oak", wood), "w+") as f:

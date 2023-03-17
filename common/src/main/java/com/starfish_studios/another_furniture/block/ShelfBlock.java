@@ -175,6 +175,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         }
 
         Direction facing = state.getValue(FACING);
+        if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
         BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof ShelfBlock && l_state.getValue(FACING) == facing);

@@ -104,8 +104,9 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-
         Direction facing = state.getValue(FACING);
+        if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
+
         BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
         boolean l_side = (l_state.getBlock() instanceof BenchBlock && (l_state.getValue(FACING) == facing || l_state.getValue(FACING) == facing.getOpposite()));

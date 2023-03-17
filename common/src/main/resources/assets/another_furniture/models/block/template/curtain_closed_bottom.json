@@ -1,0 +1,71 @@
+{
+	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"0": "another_furniture:block/curtain2/white_closed_bottom",
+		"particle": "another_furniture:block/curtain2/white_closed_bottom"
+	},
+	"elements": [
+		{
+			"name": "curtain_0",
+			"from": [0, 2, 14],
+			"to": [16, 16, 15],
+			"faces": {
+				"north": {"uv": [16, 0, 0, 14], "texture": "#0"},
+				"east": {"uv": [15, 0, 16, 14], "texture": "#0", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 14], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 14], "texture": "#0", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#0", "cullface": "up"},
+				"down": {"uv": [0, 13, 16, 14], "texture": "#0"}
+			}
+		},
+		{
+			"name": "curtain_1",
+			"from": [0, 1, 14],
+			"to": [3, 2, 15],
+			"faces": {
+				"north": {"uv": [3, 14, 0, 15], "texture": "#0"},
+				"east": {"uv": [2, 14, 3, 15], "texture": "#0"},
+				"south": {"uv": [0, 14, 3, 15], "texture": "#0"},
+				"west": {"uv": [0, 14, 1, 15], "texture": "#0"},
+				"down": {"uv": [0, 14, 3, 15], "texture": "#0"}
+			}
+		},
+		{
+			"name": "curtain_2",
+			"from": [4, 1, 14],
+			"to": [8, 2, 15],
+			"faces": {
+				"north": {"uv": [8, 14, 4, 15], "texture": "#0"},
+				"east": {"uv": [7, 14, 8, 15], "texture": "#0"},
+				"south": {"uv": [4, 14, 8, 15], "texture": "#0"},
+				"west": {"uv": [4, 14, 5, 15], "texture": "#0"},
+				"down": {"uv": [4, 14, 8, 15], "texture": "#0"}
+			}
+		},
+		{
+			"name": "curtain_3",
+			"from": [9, 1, 14],
+			"to": [12, 2, 15],
+			"faces": {
+				"north": {"uv": [12, 14, 9, 15], "texture": "#0"},
+				"east": {"uv": [11, 14, 12, 15], "texture": "#0"},
+				"south": {"uv": [9, 14, 12, 15], "texture": "#0"},
+				"west": {"uv": [9, 14, 10, 15], "texture": "#0"},
+				"down": {"uv": [9, 14, 12, 15], "texture": "#0"}
+			}
+		},
+		{
+			"name": "curtain_4",
+			"from": [13, 1, 14],
+			"to": [16, 2, 15],
+			"faces": {
+				"north": {"uv": [16, 14, 13, 15], "texture": "#0"},
+				"east": {"uv": [16, 14, 15, 15], "texture": "#0"},
+				"south": {"uv": [13, 14, 16, 15], "texture": "#0"},
+				"west": {"uv": [13, 14, 14, 15], "texture": "#0"},
+				"down": {"uv": [13, 14, 16, 15], "texture": "#0"}
+			}
+		}
+	]
+}

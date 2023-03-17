@@ -1,7 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
-import com.starfish_studios.another_furniture.block.entity.CurtainBlockEntity;
-import com.starfish_studios.another_furniture.block.properties.CurtainType;
+import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -11,14 +10,12 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -34,11 +31,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final EnumProperty<CurtainType> TYPE = ModBlockStateProperties.CURTAIN_TYPE;
+    public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-    public static final BooleanProperty TOP = BooleanProperty.create("top");
+    public static final DirectionProperty FACING_VERTICAL = ModBlockStateProperties.FACING_VERTICAL;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape EAST = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
@@ -46,20 +43,21 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     protected static final VoxelShape SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
     protected static final VoxelShape NORTH = Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
 
-    private final DyeColor color;
-    public CurtainBlock(DyeColor color, Properties properties) {
+    public CurtainBlock(Properties properties) {
         super(properties);
-        this.color = color;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, CurtainType.LEFT)
-                .setValue(TOP, true)
+                .setValue(TYPE, HorizontalConnectionType.SINGLE)
+                .setValue(FACING_VERTICAL, Direction.DOWN)
                 .setValue(OPEN, true)
                 .setValue(WATERLOGGED, false));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        HorizontalConnectionType type = state.getValue(TYPE);
+        if ((type == HorizontalConnectionType.SINGLE || type == HorizontalConnectionType.MIDDLE)
+                && state.getValue(FACING_VERTICAL) == Direction.UP) return Shapes.empty();
         return switch (state.getValue(FACING)) {
             case EAST -> EAST;
             case SOUTH -> SOUTH;
@@ -76,44 +74,22 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        Direction direction = context.getHorizontalDirection().getOpposite();
-        CurtainType type;
-        if (direction.getAxis() == Direction.Axis.X) {
-            type = context.getClickLocation().z - (double)context.getClickedPos().getZ() > 0.5D ? CurtainType.RIGHT : CurtainType.LEFT;
-        } else {
-            type = context.getClickLocation().x - (double)context.getClickedPos().getX() > 0.5D ? CurtainType.RIGHT : CurtainType.LEFT;
-        }
-        if (context.getHorizontalDirection() == Direction.NORTH || context.getHorizontalDirection() == Direction.EAST) {
-            type = type == CurtainType.LEFT ? CurtainType.RIGHT : CurtainType.LEFT;
-        }
-        return this.defaultBlockState().setValue(FACING, direction).setValue(TYPE, type);
-        //return level.getBlockState(below).canBeReplaced(pContext) ? this.defaultBlockState().setValue(FACING, direction).setValue(TYPE, type) : null;
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        if (!level.getBlockState(pos.below()).canBeReplaced(context) || level.isOutsideBuildHeight(pos.below())) return null;
+
+        Direction facing = context.getClickedFace();
+        return this.defaultBlockState().setValue(FACING, facing);
     }
 
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         if (level.isClientSide) return;
 
-        Direction facing = state.getValue(FACING);
-        CurtainType type = state.getValue(TYPE);
-        BlockState l_state = level.getBlockState(pos.relative(facing.getClockWise()));
-        BlockState r_state = level.getBlockState(pos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof CurtainBlock && l_state.getValue(FACING) == facing);
-        boolean r_side = (r_state.getBlock() instanceof CurtainBlock && r_state.getValue(FACING) == facing);
-
-        BlockState ll_state = level.getBlockState(pos.relative(facing.getClockWise(), 2));
-        BlockState rr_state = level.getBlockState(pos.relative(facing.getCounterClockWise(), 2));
-        boolean ll_side = (ll_state.getBlock() instanceof CurtainBlock && ll_state.getValue(FACING) == facing);
-        boolean rr_side = (rr_state.getBlock() instanceof CurtainBlock && rr_state.getValue(FACING) == facing);
-
-        if (type == CurtainType.RIGHT && l_side && ll_side && l_state.getValue(TYPE) == CurtainType.RIGHT && ll_state.getValue(TYPE) == CurtainType.LEFT) {
-            level.setBlockAndUpdate(pos.relative(facing.getClockWise()), l_state.setValue(TYPE, CurtainType.MIDDLE));
-            level.setBlock(pos, state.setValue(OPEN, l_state.getValue(OPEN)), 2);
-        } else if (type == CurtainType.LEFT && r_side && rr_side && r_state.getValue(TYPE) == CurtainType.LEFT && rr_state.getValue(TYPE) == CurtainType.RIGHT) {
-            level.setBlockAndUpdate(pos.relative(facing.getCounterClockWise()), r_state.setValue(TYPE, CurtainType.MIDDLE));
-            level.setBlock(pos, state.setValue(OPEN, r_state.getValue(OPEN)), 2);
-        }
+        BlockPos blockPos = pos.below();
+        level.setBlock(blockPos, state.setValue(FACING_VERTICAL, Direction.UP), 3);
+        level.blockUpdated(pos, Blocks.AIR);
+        state.updateNeighbourShapes(level, pos, 3);
     }
 
     @Override
@@ -121,68 +97,60 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        CurtainType type = state.getValue(TYPE);
         Direction facing = state.getValue(FACING);
-        BlockState lState = level.getBlockState(currentPos.relative(facing.getClockWise()));
-        BlockState rState = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
-        boolean lSide = (lState.getBlock() instanceof CurtainBlock && lState.getValue(FACING) == facing);
-        boolean rSide = (rState.getBlock() instanceof CurtainBlock && rState.getValue(FACING) == facing);
-
-        if (type == CurtainType.MIDDLE && !(lSide && lState.getValue(TYPE) == CurtainType.LEFT && rSide && rState.getValue(TYPE) == CurtainType.RIGHT)) {
-            if (lSide && lState.getValue(TYPE) == CurtainType.LEFT) {
-                state = state.setValue(TYPE, CurtainType.RIGHT);
-            } else {
-                state = state.setValue(TYPE, CurtainType.LEFT);
-            }
+        Direction facing_vertical = state.getValue(FACING_VERTICAL);
+        if (direction.getAxis().isVertical()) {
+            BlockState stateOpposite = level.getBlockState(currentPos.relative(facing_vertical));
+            if (!stateOpposite.is(this) || stateOpposite.getValue(FACING_VERTICAL) == facing_vertical) return Blocks.AIR.defaultBlockState();
         }
+        if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
 
-        return state;
+        BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
+        BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
+        boolean l_side = (l_state.getBlock() instanceof CurtainBlock && l_state.getValue(FACING_VERTICAL) == facing_vertical && (l_state.getValue(FACING) == facing));
+        boolean r_side = (r_state.getBlock() instanceof CurtainBlock && r_state.getValue(FACING_VERTICAL) == facing_vertical && (r_state.getValue(FACING) == facing));
+        HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
+        return state.setValue(TYPE, type);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        state = state.cycle(OPEN);
-        boolean open = state.getValue(OPEN);
-        boolean top = state.getValue(TOP);
-        CurtainType type = state.getValue(TYPE);
-        Direction facing = state.getValue(FACING);
-        BlockPos startpos = pos;
-        int times = 1;
-        if (type == CurtainType.MIDDLE) {
-            times = 3;
-            startpos = pos.relative(facing.getClockWise());
-        } else if (type == CurtainType.RIGHT) {
-            BlockState left = level.getBlockState(startpos.relative(facing.getClockWise()));
-            if (left.getBlock() instanceof CurtainBlock && left.getValue(TYPE) == CurtainType.MIDDLE && left.getValue(TOP) == top && left.getValue(FACING) == facing) {
-                times = 3;
-                startpos = pos.relative(facing.getClockWise(), 2);
-            } else if (left.getBlock() instanceof CurtainBlock && left.getValue(TYPE) == CurtainType.LEFT && left.getValue(TOP) == top && left.getValue(FACING) == facing) {
-                times = 2;
-                startpos = pos.relative(facing.getClockWise());
-            }
-        } else {
-            BlockState right = level.getBlockState(startpos.relative(facing.getCounterClockWise()));
-            if (right.getBlock() instanceof CurtainBlock && right.getValue(TYPE) == CurtainType.MIDDLE && right.getValue(TOP) == top && right.getValue(FACING) == facing) {
-                times = 3;
-            } else if (right.getBlock() instanceof CurtainBlock && right.getValue(TYPE) == CurtainType.RIGHT && right.getValue(TOP) == top && right.getValue(FACING) == facing) {
-                times = 2;
-            }
-        }
-        for (int i = 0; i < times; i++) {
-
-            BlockState newstate = level.getBlockState(startpos);
-            if (newstate.getBlock() instanceof CurtainBlock) {
-                //level.addParticle(DustParticleOptions.REDSTONE, (double)startpos.getX() + 0.5, (double)startpos.getY() + 0.5, (double)startpos.getZ() + 0.5, 0.0D, 0.0D, 0.0D);
-                level.setBlock(startpos, newstate.setValue(OPEN, open), 2);
-            }
-            startpos = startpos.relative(facing.getCounterClockWise());
-        }
-
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
+
+        boolean open = !state.getValue(OPEN);
+        Direction facing = state.getValue(FACING);
+        Direction relativeLeft = facing.getClockWise();
+        Direction relativeRight = facing.getCounterClockWise();
+
+        toggleVertical(state, level, pos, open);
+        toggleHorizontal(state, level, pos, open, facing, relativeLeft);
+        toggleHorizontal(state, level, pos, open, facing, relativeRight);
+
         level.playSound(null, pos, AFSoundEvents.CURTAIN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    public void toggleHorizontal(BlockState state, Level level, BlockPos pos, boolean open, Direction facing, Direction dir) {
+        BlockPos facingHorizontalPos = pos.relative(dir);
+        BlockState facingHorizontalState = level.getBlockState(facingHorizontalPos);
+
+        if (facingHorizontalState.is(this) && facingHorizontalState.getValue(FACING) == facing &&
+                state.getValue(FACING_VERTICAL) == facingHorizontalState.getValue(FACING_VERTICAL)) {
+            toggleVertical(facingHorizontalState, level, facingHorizontalPos, open);
+            toggleHorizontal(facingHorizontalState, level, facingHorizontalPos, open, facing, dir);
+        }
+    }
+
+    public void toggleVertical(BlockState state, Level level, BlockPos pos, boolean open) {
+        Direction facingVertical = state.getValue(FACING_VERTICAL);
+        BlockPos facingVerticalPos = pos.relative(facingVertical);
+        BlockState facingVerticalState = level.getBlockState(facingVerticalPos);
+        level.setBlockAndUpdate(pos, state.setValue(OPEN, open));
+
+        if (facingVerticalState.is(this) && facingVertical == facingVerticalState.getValue(FACING_VERTICAL).getOpposite())
+            level.setBlockAndUpdate(facingVerticalPos, facingVerticalState.setValue(OPEN, open));
     }
 
     @Override
@@ -192,26 +160,12 @@ public class CurtainBlock extends BaseEntityBlock implements SimpleWaterloggedBl
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TYPE, OPEN, TOP, WATERLOGGED);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new CurtainBlockEntity(pos, state);
+        builder.add(FACING, TYPE, OPEN, FACING_VERTICAL, WATERLOGGED);
     }
 
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    public String getColor() {
-        return this.color.toString();
     }
 
     @Override

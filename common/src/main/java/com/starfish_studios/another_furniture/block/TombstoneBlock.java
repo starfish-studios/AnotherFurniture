@@ -1,6 +1,6 @@
-package com.starfish_studios.another_furniture.block;
-
-////import com.starfish_studios.another_furniture.block.entity.TombstoneBlockEntity;
+//package com.starfish_studios.another_furniture.block;
+//
+//import com.starfish_studios.another_furniture.block.entity.TombstoneBlockEntity;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.core.Direction;
 //import net.minecraft.world.InteractionHand;
@@ -76,11 +76,11 @@ package com.starfish_studios.another_furniture.block;
 //        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 //    }
 //
-//    //@Nullable
-//    //@Override
-//    //public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-//    //    return new TombstoneBlockEntity(pos, state);
-//    //}
+//    @Nullable
+//    @Override
+//    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+//        return new TombstoneBlockEntity(pos, state);
+//    }
 //
 //    @Override
 //    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

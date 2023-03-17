@@ -1,5 +1,5 @@
-package com.starfish_studios.another_furniture.client.renderer.blockentity;
-
+//package com.starfish_studios.another_furniture.client.renderer.blockentity;
+//
 //import com.mojang.blaze3d.platform.NativeImage;
 //import com.mojang.blaze3d.vertex.PoseStack;
 //import com.mojang.math.Vector3f;

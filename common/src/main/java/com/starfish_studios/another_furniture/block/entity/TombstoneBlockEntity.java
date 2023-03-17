@@ -1,32 +1,37 @@
-package com.starfish_studios.another_furniture.block.entity;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.*;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.UUID;
-import java.util.function.Function;
-
+//package com.starfish_studios.another_furniture.block.entity;
+//
+//import com.mojang.brigadier.exceptions.CommandSyntaxException;
+//import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
+//import net.minecraft.commands.CommandSource;
+//import net.minecraft.commands.CommandSourceStack;
+//import net.minecraft.core.BlockPos;
+//import net.minecraft.nbt.CompoundTag;
+//import net.minecraft.network.chat.*;
+//import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+//import net.minecraft.server.level.ServerLevel;
+//import net.minecraft.server.level.ServerPlayer;
+//import net.minecraft.util.FormattedCharSequence;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.item.DyeColor;
+//import net.minecraft.world.item.SignItem;
+//import net.minecraft.world.level.block.SignBlock;
+//import net.minecraft.world.level.block.StandingSignBlock;
+//import net.minecraft.world.level.block.WallBlock;
+//import net.minecraft.world.level.block.entity.BlockEntity;
+//import net.minecraft.world.level.block.entity.SignBlockEntity;
+//import net.minecraft.world.level.block.state.BlockState;
+//import net.minecraft.world.phys.Vec2;
+//import net.minecraft.world.phys.Vec3;
+//import org.jetbrains.annotations.Nullable;
+//
+//import java.util.UUID;
+//import java.util.function.Function;
+//
 //public class TombstoneBlockEntity extends BlockEntity {
 //    public static final int LINES = 4;
 //    private static final String[] RAW_TEXT_FIELD_NAMES = new String[]{"Text1", "Text2", "Text3", "Text4"};
 //    private static final String[] FILTERED_TEXT_FIELD_NAMES = new String[]{"FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4"};
-//    private final Component[] messages;
+//    public final Component[] messages;
 //    private final Component[] filteredMessages;
 //    private boolean isEditable;
 //    @Nullable
@@ -95,6 +100,10 @@ import java.util.function.Function;
 //        return component;
 //    }
 //
+//    public Component getLine(int line) {
+//        return this.messages[line];
+//    }
+//
 //    private Component deserializeTextSafe(String text) {
 //        try {
 //            Component component = Component.Serializer.fromJson(text);
@@ -134,7 +143,7 @@ import java.util.function.Function;
 //        return this.renderMessages;
 //    }
 //
-//    private Component[] getMessages(boolean filtered) {
+//    public Component[] getMessages(boolean filtered) {
 //        return filtered ? this.filteredMessages : this.messages;
 //    }
 //

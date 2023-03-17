@@ -55,12 +55,11 @@ public class SeatBlock extends Block {
             return InteractionResult.PASS;
 
         List<SeatEntity> seats = level.getEntitiesOfClass(SeatEntity.class, new AABB(pos, pos.offset(1, 1, 1)));
-        if (seats.isEmpty()) {
-            SeatEntity seat = new SeatEntity(level, pos, this.seatHeight());
-            level.addFreshEntity(seat);
-            player.startRiding(seat);
-            return InteractionResult.CONSUME;
-        }
-        return InteractionResult.PASS;
+        if (!seats.isEmpty()) return InteractionResult.PASS;
+
+        SeatEntity seat = new SeatEntity(level, pos, this.seatHeight());
+        level.addFreshEntity(seat);
+        player.startRiding(seat);
+        return InteractionResult.CONSUME;
     }
 }

@@ -2,24 +2,13 @@
     "itemGroup.another_furniture": "Another Furniture",
     "itemGroup.another_furniture.tab": "Another Furniture",
 	
-	"text.autoconfig.another_furniture.title": "Another Furniture Config",
-	"text.autoconfig.another_furniture.option.enableBenches": "Enable Benches",
-	"text.autoconfig.another_furniture.option.enableChairs": "Enable Chairs",
-	"text.autoconfig.another_furniture.option.enableCurtains": "Enable Curtains",
-	"text.autoconfig.another_furniture.option.enableDrawers": "Enable Drawers",
-	"text.autoconfig.another_furniture.option.enableLamps": "Enable Lamps",
-	"text.autoconfig.another_furniture.option.enableShelves": "Enable Shelves",
-	"text.autoconfig.another_furniture.option.enableShutters": "Enable Shutters",
-	"text.autoconfig.another_furniture.option.enableSofas": "Enable Sofas",
-	"text.autoconfig.another_furniture.option.enableStools": "Enable Stools",
-	"text.autoconfig.another_furniture.option.enableTables": "Enable Tables",
-	"text.autoconfig.another_furniture.option.enableTallStools": "Enable Tall Stools",
-	
     "subtitles.block.another_furniture.service_bell.use": "Bell chimes",
     "subtitles.block.another_furniture.chair.tuck": "Chair tucked",
     "subtitles.block.another_furniture.chair.untuck": "Chair untucked",
     "subtitles.block.another_furniture.curtain.use": "Curtain moved",
 	"subtitles.item.another_furniture.furniture_hammer.use": "Hammer impacts",
+	
+	"entity.another_furniture.seat": "Seat",
 	
 	"container.another_furniture.drawer": "Drawer",
     "item.another_furniture.furniture_hammer": "Hammer",
