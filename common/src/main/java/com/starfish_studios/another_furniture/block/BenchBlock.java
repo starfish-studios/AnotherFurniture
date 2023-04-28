@@ -91,11 +91,8 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (tryHammerBlock(BACK, state, level, pos, player, hand)) {
-            return InteractionResult.SUCCESS;
-        } else if (hand == InteractionHand.MAIN_HAND) {     // use() fires twice for both hands so we want to delay
-            return InteractionResult.FAIL;                  // sitting until it checks the offhand for the hammer
-        }
+        if (tryHammerBlock(BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
         return super.use(state, level, pos, player, hand, hit);
     }
 

@@ -97,14 +97,11 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof ShelfBlockEntity shelfBlockEntity) {
-                Containers.dropContents(level, pos, shelfBlockEntity.getItems());
-            }
+        if (state.is(newState.getBlock())) return;
 
-            super.onRemove(state, level, pos, newState, isMoving);
-        }
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof ShelfBlockEntity shelfBlockEntity) Containers.dropContents(level, pos, shelfBlockEntity.getItems());
+        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     @Override
@@ -163,9 +160,8 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+
         BlockState above = level.getBlockState(currentPos.above());
         if (direction == Direction.UP && (above.isFaceSturdy(level, currentPos, Direction.DOWN) && !above.getVisualShape(level, currentPos.above(), CollisionContext.empty()).isEmpty())) {
             BlockEntity blockentity = level.getBlockEntity(currentPos);
@@ -194,8 +190,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         return new ShelfBlockEntity(pos, state);
     }
 
-    private int getPosition(BlockHitResult hit, BlockPos pos)
-    {
+    private int getPosition(BlockHitResult hit, BlockPos pos) {
         Vec3 hitVec = hit.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
         int position = 0;
         if(hitVec.x() > 0.5) position += 1;

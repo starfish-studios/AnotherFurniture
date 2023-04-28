@@ -21,4 +21,5 @@ public class ModBlockStateProperties {
     public static final IntegerProperty LEVEL_1_3 = IntegerProperty.create("level", 1, 3);
     public static final BooleanProperty BACK = BooleanProperty.create("back");
     public static final BooleanProperty BASE = BooleanProperty.create("base");
+    public static final BooleanProperty LOW = BooleanProperty.create("low");
 }

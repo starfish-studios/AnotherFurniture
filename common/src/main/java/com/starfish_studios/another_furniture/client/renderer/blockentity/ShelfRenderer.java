@@ -28,45 +28,38 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
         NonNullList<ItemStack> items = blockEntity.getItems();
         for(int j = 0; j < items.size(); j++) {
             ItemStack stack = items.get(j);
-            if (!stack.isEmpty()) {
+            if (stack.isEmpty()) return;
 
-                int renderCount = getAmount(stack.getCount());
-                for (int i = 0; i < renderCount; ++i) {
-                    float fx = (-0.12375f * (float)(i - 1) * 0.5f) % 0.09f;
-                    float fy = (-0.08375f * (float)(i - 1) * 0.5f) % 0.09f;
-                    float fz = (-0.09375f * (float)(i - 1) * 0.5f) % 0.09f;
+            int renderCount = getAmount(stack.getCount());
+            for (int i = 0; i < renderCount; ++i) {
+                float fx = (-0.12375f * (float)(i - 1) * 0.5f) % 0.09f;
+                float fy = (-0.08375f * (float)(i - 1) * 0.5f) % 0.09f;
+                float fz = (-0.09375f * (float)(i - 1) * 0.5f) % 0.09f;
 
-                    poseStack.pushPose();
+                poseStack.pushPose();
 
-                    poseStack.translate(0.5, 1.18, 0.5);
-                    poseStack.translate(-0.225 + 0.45 * (j % 2), 0.0, -0.225 + 0.45 * (j / 2));
-                    poseStack.translate(-0.061875f, 0.0, -0.046875f);
-                    poseStack.translate(fx, fy, fz);
+                poseStack.translate(0.5, 1.18, 0.5);
+                poseStack.translate(-0.225 + 0.45 * (j % 2), 0.0, -0.225 + 0.45 * (j / 2));
+                poseStack.translate(-0.061875f, 0.0, -0.046875f);
+                poseStack.translate(fx, fy, fz);
 
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees(-90F * direction.get2DDataValue()));
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
+                poseStack.mulPose(Vector3f.YP.rotationDegrees(-90F * direction.get2DDataValue()));
+                poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
 
-                    poseStack.scale(0.375F, 0.375F, 0.375F);
-                    Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, packedLight, packedOverlay, poseStack, bufferSource, 0);
+                poseStack.scale(0.375F, 0.375F, 0.375F);
+                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, packedLight, packedOverlay, poseStack, bufferSource, 0);
 
-                    poseStack.popPose();
-                }
-
+                poseStack.popPose();
             }
+
         }
     }
 
     public int getAmount(int count) {
-        int renderCount = 1;
-        if (count > 48) {
-            renderCount = 5;
-        } else if (count > 32) {
-            renderCount = 4;
-        } else if (count > 16) {
-            renderCount = 3;
-        } else if (count > 1) {
-            renderCount = 2;
-        }
-        return renderCount;
+        if (count > 48) return 5;
+        if (count > 32) return 4;
+        if (count > 16) return 3;
+        if (count > 1) return 2;
+        return 1;
     }
 }

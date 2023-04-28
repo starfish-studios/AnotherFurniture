@@ -90,11 +90,6 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public Vec3i dismountLocationOffset() {
-        return new Vec3i(0, seatHeight(), 0);
-    }
-
-    @Override
     public BlockPos primaryDismountLocation(Level level, BlockState state, BlockPos pos) {
         Direction facing = state.getValue(FACING);
         BlockState stateRelative = level.getBlockState(pos.relative(facing));

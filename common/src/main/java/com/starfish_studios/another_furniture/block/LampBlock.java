@@ -94,12 +94,9 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (!state.canSurvive(level, currentPos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (!state.canSurvive(level, currentPos)) return Blocks.AIR.defaultBlockState();
+
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
         if (state.getValue(FACING) == Direction.UP && (direction == Direction.UP || direction == Direction.DOWN)) {
             BlockState aState = level.getBlockState(currentPos.above());
@@ -107,15 +104,10 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
             boolean aConnect = (aState.getBlock() instanceof LampBlock && aState.getValue(FACING) == Direction.UP) || aState.getBlock() instanceof LampConnectorBlock;
             boolean bConnect = (bState.getBlock() instanceof LampBlock && bState.getValue(FACING) == Direction.UP) || bState.getBlock() instanceof LampConnectorBlock;
 
-            if (aConnect && !bConnect) {
-                state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, true).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            } else if (!aConnect && bConnect) {
-                state = state.setValue(BASE, false);
-            } else if (aConnect) {
-                state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, false).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            } else {
-                state = state.setValue(BASE, true);
-            }
+            if (aConnect && !bConnect) state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, true).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else if (!aConnect && bConnect) state = state.setValue(BASE, false);
+            else if (aConnect) state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, false).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else state = state.setValue(BASE, true);
         }
 
         return state;

@@ -77,17 +77,13 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
         Vec3 clickLocation = context.getClickLocation();
 
         boolean left;
-        if (facing.getAxis() == Direction.Axis.X) {
-            left = clickLocation.z - (double)clickedPos.getZ() > 0.5D;
-        } else {
-            left = clickLocation.x - (double)clickedPos.getX() > 0.5D;
-        }
+        if (facing.getAxis() == Direction.Axis.X) left = clickLocation.z - (double)clickedPos.getZ() > 0.5D;
+        else left = clickLocation.x - (double)clickedPos.getX() > 0.5D;
+
         if (context.getHorizontalDirection() == Direction.NORTH || context.getHorizontalDirection() == Direction.EAST) left = !left;
         blockstate = blockstate.setValue(LEFT, left);
 
-        if (level.hasNeighborSignal(clickedPos)) {
-            blockstate = blockstate.setValue(OPEN, true).setValue(POWERED, true);
-        }
+        if (level.hasNeighborSignal(clickedPos)) blockstate = blockstate.setValue(OPEN, true).setValue(POWERED, true);
 
         blockstate = blockstate.setValue(TYPE, getType(blockstate, level.getBlockState(clickedPos.above()), level.getBlockState(clickedPos.below())));
 
@@ -118,21 +114,16 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (this.material == Material.METAL) {
-            return InteractionResult.PASS;
-        } else {
-            state = state.cycle(OPEN);
-            level.setBlock(pos, state, 3);
-            if (!player.isCrouching()) {
-                toggleShutters(state, level, pos, state.getValue(OPEN));
-            }
-            level.playSound(null, pos, shutterSound(state.getValue(OPEN)), SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (state.getValue(WATERLOGGED)) {
-                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-            }
+        if (this.material == Material.METAL) return InteractionResult.PASS;
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
+        state = state.cycle(OPEN);
+        level.setBlock(pos, state, 3);
+        if (!player.isCrouching()) toggleShutters(state, level, pos, state.getValue(OPEN));
+
+        level.playSound(null, pos, shutterSound(state.getValue(OPEN)), SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     public void toggleShutters(BlockState state, Level level, BlockPos pos, boolean open) {
@@ -170,9 +161,7 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public static SoundEvent shutterSound(boolean open) {
-        if (open) {
-            return SoundEvents.WOODEN_TRAPDOOR_OPEN;
-        }
+        if (open) return SoundEvents.WOODEN_TRAPDOOR_OPEN;
         return SoundEvents.WOODEN_TRAPDOOR_CLOSE;
     }
 
@@ -182,13 +171,9 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
         boolean shape_below_same = below.is(state.getBlock()) && below.getValue(FACING) == state.getValue(FACING)
                 && below.getValue(OPEN) == state.getValue(OPEN) && below.getValue(LEFT) == state.getValue(LEFT);
 
-        if (shape_above_same && !shape_below_same) {
-            return ShutterType.BOTTOM;
-        } else if (!shape_above_same && shape_below_same) {
-            return ShutterType.TOP;
-        } else if (shape_above_same) {
-            return ShutterType.MIDDLE;
-        }
+        if (shape_above_same && !shape_below_same) return ShutterType.BOTTOM;
+        else if (!shape_above_same && shape_below_same) return ShutterType.TOP;
+        else if (shape_above_same) return ShutterType.MIDDLE;
         return ShutterType.NONE;
     }
 
@@ -204,9 +189,7 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }

@@ -131,28 +131,23 @@ public class PlanterBoxBlock extends BaseEntityBlock {
 
         Direction facing = state.getValue(FACING);
         boolean slot_0;
-        if (facing.getAxis() == Direction.Axis.X) {
-            slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
-        } else {
-            slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
-        }
+        if (facing.getAxis() == Direction.Axis.X) slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
+        else slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
+
         if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
-        if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1)) {
+        if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1))
             return InteractionResult.SUCCESS;
-        }
 
         return InteractionResult.CONSUME;
     }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
-                Containers.dropContents(level, pos, planterBoxBlockEntity.getItems());
-            }
-            super.onRemove(state, level, pos, newState, isMoving);
-        }
+        if (state.is(newState.getBlock())) return;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) Containers.dropContents(level, pos, planterBoxBlockEntity.getItems());
+        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     @Override

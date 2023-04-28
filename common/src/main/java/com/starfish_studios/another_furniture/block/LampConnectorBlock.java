@@ -62,9 +62,7 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
         if (direction == Direction.UP || direction == Direction.DOWN) {
             BlockState aState = level.getBlockState(currentPos.above());
@@ -72,15 +70,10 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
             boolean aConnect = (aState.getBlock() instanceof LampBlock && aState.getValue(LampBlock.FACING) == Direction.UP) || aState.is(this);
             boolean bConnect = (bState.getBlock() instanceof LampBlock && bState.getValue(LampBlock.FACING) == Direction.UP) || bState.is(this);
 
-            if (aConnect && !bConnect) {
-                state = state.setValue(BASE, true);
-            } else if (!aConnect && bConnect) {
-                state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            } else if (aConnect) {
-                state = state.setValue(BASE, false);
-            } else {
-                state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            }
+            if (aConnect && !bConnect) state = state.setValue(BASE, true);
+            else if (!aConnect && bConnect) state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else if (aConnect) state = state.setValue(BASE, false);
+            else state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
         }
 
         return state;

@@ -50,11 +50,6 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public Vec3i dismountLocationOffset() {
-        return new Vec3i(0, -1, 0);
-    }
-
-    @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return pState.getValue(TOP) ? AABB_TOP : AABB_BOTTOM;
     }

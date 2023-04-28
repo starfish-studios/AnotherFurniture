@@ -1,0 +1,9 @@
+{
+    "parent": "another_furniture:block/template/stool_low",
+    "textures": {
+        "bottom": "another_furniture:block/stool/bottom",
+        "legs": "another_furniture:block/stool/legs",
+        "side": "another_furniture:block/stool/gray_side",
+        "top": "another_furniture:block/stool/gray_top"
+    }
+}

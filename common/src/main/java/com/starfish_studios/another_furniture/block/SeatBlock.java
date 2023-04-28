@@ -31,10 +31,6 @@ public class SeatBlock extends Block {
         return true;
     }
 
-    public Vec3i dismountLocationOffset() {
-        return new Vec3i(0, seatHeight(), 0);
-    }
-
     public BlockPos primaryDismountLocation(Level level, BlockState state, BlockPos pos) {
         return pos;
     }
@@ -48,11 +44,10 @@ public class SeatBlock extends Block {
         if (AFRegistry.isFakePlayer(player)) return InteractionResult.PASS;
         if (!level.mayInteract(player, pos)) return InteractionResult.PASS;
 
-        if (!isSittable(state) || player.isPassenger() || player.isCrouching())
-            return InteractionResult.PASS;
+        if (!isSittable(state) || player.isPassenger() || player.isCrouching()) return InteractionResult.PASS;
 
-        if (!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() && !level.getBlockState(pos.above()).is(AFBlockTags.NO_SEAT_COLLISION_CHECK))
-            return InteractionResult.PASS;
+        if (!level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty()
+                && !level.getBlockState(pos.above()).is(AFBlockTags.NO_SEAT_COLLISION_CHECK)) return InteractionResult.PASS;
 
         List<SeatEntity> seats = level.getEntitiesOfClass(SeatEntity.class, new AABB(pos, pos.offset(1, 1, 1)));
         if (!seats.isEmpty()) return InteractionResult.PASS;

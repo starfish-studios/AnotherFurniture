@@ -1,7 +1,10 @@
 {
     "variants": {
-        "": {
+        "low=false": {
             "model": "another_furniture:block/stool/green"
+        },
+        "low=true": {
+            "model": "another_furniture:block/stool/green_low"
         }
     }
 }

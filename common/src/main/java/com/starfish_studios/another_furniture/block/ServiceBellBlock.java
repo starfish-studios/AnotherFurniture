@@ -57,17 +57,14 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (state.getValue(POWERED)) {
-            return InteractionResult.CONSUME;
-        }
+        if (state.getValue(POWERED)) return InteractionResult.CONSUME;
 
         this.press(state, level, pos);
         level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
 
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (blockentity instanceof ServiceBellBlockEntity servicebellblockentity) {
-            servicebellblockentity.onHit();
-        }
+        if (blockentity instanceof ServiceBellBlockEntity servicebellblockentity) servicebellblockentity.onHit();
+
         level.playSound(null, pos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(level.isClientSide);
 
@@ -80,11 +77,11 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(POWERED)) {
-            level.setBlock(pos, state.setValue(POWERED, false), 3);
-            this.updateNeighbours(state, level, pos);
-            level.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
-        }
+        if (!state.getValue(POWERED)) return;
+
+        level.setBlock(pos, state.setValue(POWERED, false), 3);
+        this.updateNeighbours(state, level, pos);
+        level.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
     }
 
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {

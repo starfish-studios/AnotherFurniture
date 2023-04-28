@@ -1,9 +1,15 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.util.block.HammerableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -17,27 +23,32 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
-    protected static final VoxelShape SHAPE = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock {
+    protected static final VoxelShape SHAPE_HIGH = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+    protected static final VoxelShape SHAPE_LOW = Block.box(0.0D, 3.0D, 0.0D, 16.0D, 7.0D, 16.0D);
     protected static final VoxelShape LEG1 = Block.box(14.0D, 0.0D, 14.0D, 16.0D, 3.0D, 16.0D);
     protected static final VoxelShape LEG2 = Block.box(0.0D, 0.0D, 14.0D, 2.0D, 3.0D, 16.0D);
     protected static final VoxelShape LEG3 = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 3.0D, 2.0D);
     protected static final VoxelShape LEG4 = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 3.0D, 2.0D);
 
-    protected static final VoxelShape SHAPES = Shapes.or(SHAPE, LEG1, LEG2, LEG3, LEG4);
+    protected static final VoxelShape AABB_HIGH = Shapes.or(SHAPE_HIGH, LEG1, LEG2, LEG3, LEG4);
+    protected static final VoxelShape AABB_LOW = Shapes.or(SHAPE_LOW, LEG1, LEG2, LEG3, LEG4);
 
+    public static final BooleanProperty LOW = ModBlockStateProperties.LOW;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public StoolBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.stateDefinition.any()
-                .setValue(WATERLOGGED, false));
+                .setValue(WATERLOGGED, false)
+                .setValue(LOW, false));
     }
 
     @Override
@@ -47,7 +58,7 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPES;
+        return state.getValue(LOW) ? AABB_LOW : AABB_HIGH;
     }
 
     @Nullable
@@ -71,8 +82,10 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (tryHammerBlock(LOW, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
@@ -99,5 +112,10 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock {
     @Override
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
         return false;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(LOW, WATERLOGGED);
     }
 }

@@ -56,13 +56,13 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         HorizontalConnectionType type = state.getValue(TYPE);
-        if ((type == HorizontalConnectionType.SINGLE || type == HorizontalConnectionType.MIDDLE)
+        if (state.getValue(OPEN) && (type == HorizontalConnectionType.SINGLE || type == HorizontalConnectionType.MIDDLE)
                 && state.getValue(FACING_VERTICAL) == Direction.UP) return Shapes.empty();
         return switch (state.getValue(FACING)) {
+            default -> NORTH;
             case EAST -> EAST;
             case SOUTH -> SOUTH;
             case WEST -> WEST;
-            default -> NORTH;
         };
     }
 
@@ -79,6 +79,7 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
         if (!level.getBlockState(pos.below()).canBeReplaced(context) || level.isOutsideBuildHeight(pos.below())) return null;
 
         Direction facing = context.getClickedFace();
+        if (facing.getAxis().isVertical()) facing = context.getHorizontalDirection().getOpposite();
         return this.defaultBlockState().setValue(FACING, facing);
     }
 
