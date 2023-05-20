@@ -116,6 +116,10 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        return toggleShutters(state, level, pos, player);
+    }
+
+    public InteractionResult toggleShutters(BlockState state, Level level, BlockPos pos, Player player) {
         if (this.material == Material.METAL) return InteractionResult.PASS;
 
         state = state.cycle(OPEN);

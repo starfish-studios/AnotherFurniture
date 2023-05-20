@@ -1,28 +1,36 @@
 package com.starfish_studios.another_furniture.event;
 
-import net.minecraft.client.renderer.debug.DebugRenderer;
+import com.starfish_studios.another_furniture.block.ShutterBlock;
+import com.starfish_studios.another_furniture.registry.AFBlockTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.TargetBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class BlockInteractionEvent {
-    public static InteractionResult use(Player player, Level level, InteractionHand hand, BlockHitResult pos) {
-        BlockState state = level.getBlockState(pos.getBlockPos());
+    public static InteractionResult use(Player player, Level level, InteractionHand hand, BlockHitResult hit) {
+        BlockState state = level.getBlockState(hit.getBlockPos());
 
-        //if (state.is(Blocks.WATER_CAULDRON)) return cauldronWashing(player, level, state, hand, pos);
+        if (state.is(AFBlockTags.CAN_USE_SHUTTERS_THROUGH) && player.getItemInHand(hand).isEmpty())
+            return tryUseShutter(player, level, hand, hit);
 
-        player.pick(1, 1, false);
 
         return InteractionResult.PASS;
 
     }
 
+    public static InteractionResult tryUseShutter(Player player, Level level, InteractionHand hand, BlockHitResult hit) {
 
+        BlockPos frontPos = hit.getBlockPos().relative(hit.getDirection().getOpposite());
+        BlockState frontState = level.getBlockState(frontPos);
+
+        if (frontState.getBlock() instanceof ShutterBlock shutterBlock) {
+            return shutterBlock.toggleShutters(frontState, level, frontPos, player);
+        }
+
+        return InteractionResult.PASS;
+    }
 }

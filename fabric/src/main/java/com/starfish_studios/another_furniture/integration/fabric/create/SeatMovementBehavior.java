@@ -46,12 +46,12 @@ public class SeatMovementBehavior implements MovementBehaviour {
         if (contraptionEntity == null) return;
         int index = context.data.getInt("SeatIndex");
         if (index == -1) return;
-        System.out.println(1);
+        //System.out.println(1);
         Map<UUID, Integer> seatMapping = context.contraption.getSeatMapping();
         BlockState blockState = context.world.getBlockState(pos);
 
         SeatBlock seatBlock = (SeatBlock)blockState.getBlock();
-        System.out.println(seatBlock.seatHeight());
+        //System.out.println(seatBlock.seatHeight());
 
         // Occupied
         if (!seatMapping.containsValue(index))
@@ -72,11 +72,8 @@ public class SeatMovementBehavior implements MovementBehaviour {
             return;
         toDismount.stopRiding();
         Vec3 position = VecHelper.getCenterOf(pos)
-                .add(0, seatBlock.seatHeight(), 0);
-        toDismount.teleportTo(position.x, position.y + 10, position.z);
-        System.out.println(position.x);
-        System.out.println(position.y + 10);
-        System.out.println(position.z);
+                .add(0, 1, 0);
+        toDismount.teleportTo(position.x, position.y, position.z);
         //toDismount.getExtraCustomData().method_10551("ContraptionDismountLocation");
     }
 
@@ -86,9 +83,9 @@ public class SeatMovementBehavior implements MovementBehaviour {
         BlockPos local = pos;
         contraption.getSeats().add(local);
         List<SeatEntity> seatsEntities = world.getEntitiesOfClass(SeatEntity.class, new AABB(globalPos));
-        world.setBlockAndUpdate(globalPos.above(3), Blocks.GLASS.defaultBlockState());
+        //world.setBlockAndUpdate(globalPos.above(3), Blocks.GLASS.defaultBlockState());
         if (!seatsEntities.isEmpty()) {
-            System.out.println("notempty");
+            //System.out.println("notempty");
 
             SeatEntity seat = seatsEntities.get(0);
             List<Entity> passengers = seat.getPassengers();
@@ -96,7 +93,7 @@ public class SeatMovementBehavior implements MovementBehaviour {
                 Map<BlockPos, Entity> initialPassengers = ((ContraptionMixin)contraption).getInitialPassengers();
                 initialPassengers.put(local, passengers.get(0));
                 ((ContraptionMixin)contraption).setInitialPassengers(initialPassengers);
-                System.out.println(21231231);
+                //System.out.println(21231231);
             }
         }
 

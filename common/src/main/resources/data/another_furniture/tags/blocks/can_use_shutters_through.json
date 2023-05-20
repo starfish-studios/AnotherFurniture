@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+		{"id": "#forge:glass", "required": false},
+		{"id": "#forge:glass_panes", "required": false},
+		{"id": "#c:glass_blocks", "required": false},
+		{"id": "#c:glass_panes", "required": false},
+		"#another_furniture:lattices",
+		"#minecraft:fences"
+    ]
+}

@@ -24,13 +24,14 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\planks", template_name =
     print(palette_data)
     return palette_data
 
-def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block", banned_variants = ["chair", "shutter"]):
+def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block", banned_variants = ["shutter"]):
     wood_types = ["oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "crimson", "warped"]
 
     
 
     planks = [os.path.join(dp, f) for dp, dn, filenames in os.walk(plank_path) for f in filenames if os.path.splitext(f)[1] == '.png']
-    templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(template_path) for f in filenames if (os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0].startswith("oak_"))]
+    templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(template_path) for f in filenames if (os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0].startswith("oak"))]
+    print(templates)
     
     primary_palette_data = get_palette_data(plank_path, "oak_planks")
     
@@ -156,7 +157,7 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
 generate_wood_types(
     "C:\\Users\\jacec\\Desktop\\planks",
     "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    ["chair", "drawer", "shutter"])
+    ["drawer", "shutter"])
 
 #generate_color_types(
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",

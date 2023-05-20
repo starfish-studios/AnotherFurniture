@@ -6,6 +6,7 @@ import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import com.starfish_studios.another_furniture.util.block.HammerableBlock;
+import com.starfish_studios.another_furniture.util.block.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -38,28 +39,27 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     public static final BooleanProperty TUCKED = BooleanProperty.create("tucked");
     public static final IntegerProperty CHAIR_BACK = ModBlockStateProperties.CHAIR_BACK;
 
-    protected static final VoxelShape SEAT = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D);
-    protected static final VoxelShape SHAPE_NORTH = Shapes.or(SEAT, Block.box(2.0D, 7.0D, 12.0D, 14.0D, 16.0D, 14.0D));
-    protected static final VoxelShape SHAPE_EAST = Shapes.or(SEAT, Block.box(2.0D, 7.0D, 2.0D, 4.0D, 16.0D, 14.0D));
-    protected static final VoxelShape SHAPE_SOUTH = Shapes.or(SEAT, Block.box(2.0D, 7.0D, 2.0D, 14.0D, 16.0D, 4.0D));
-    protected static final VoxelShape SHAPE_WEST = Shapes.or(SEAT, Block.box(12.0D, 7.0D, 2.0D, 14.0D, 16.0D, 14.0D));
+    protected static final VoxelShape SHAPE_NORTH = Shapes.or(Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D), Block.box(2.0D, 7.0D, 12.0D, 14.0D, 16.0D, 14.0D));
+    protected static final VoxelShape SHAPE_EAST = ShapeUtil.rotateShape(SHAPE_NORTH, Direction.EAST);
+    protected static final VoxelShape SHAPE_SOUTH = ShapeUtil.rotateShape(SHAPE_NORTH, Direction.SOUTH);
+    protected static final VoxelShape SHAPE_WEST = ShapeUtil.rotateShape(SHAPE_NORTH, Direction.WEST);
 
     protected static final VoxelShape SHAPE_NORTH_TUCKED = Shapes.or(Block.box(2.0D, 7.0D, 3.0D, 14.0D, 16.0D, 5.0D), Block.box(2.0D, 0.0D, 0.0D, 14.0D, 7.0D, 5.0D));
-    protected static final VoxelShape SHAPE_EAST_TUCKED = Shapes.or(Block.box(11.0D, 7.0D, 2.0D, 13.0D, 16.0D, 14.0D), Block.box(11.0D, 0.0D, 2.0D, 16.0D, 7.0D, 14.0D));
-    protected static final VoxelShape SHAPE_SOUTH_TUCKED = Shapes.or(Block.box(2.0D, 7.0D, 11.0D, 14.0D, 16.0D, 13.0D), Block.box(2.0D, 0.0D, 11.0D, 14.0D, 7.0D, 16.0D));
-    protected static final VoxelShape SHAPE_WEST_TUCKED = Shapes.or(Block.box(3.0D, 7.0D, 2.0D, 5.0D, 16.0D, 14.0D), Block.box(0.0D, 0.0D, 2.0D, 5.0D, 7.0D, 14.0D));
+    protected static final VoxelShape SHAPE_EAST_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.EAST);
+    protected static final VoxelShape SHAPE_SOUTH_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.SOUTH);
+    protected static final VoxelShape SHAPE_WEST_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.WEST);
     protected static final VoxelShape[] SHAPES = new VoxelShape[]{
             SHAPE_SOUTH, SHAPE_WEST, SHAPE_NORTH, SHAPE_EAST,
             SHAPE_SOUTH_TUCKED, SHAPE_WEST_TUCKED, SHAPE_NORTH_TUCKED, SHAPE_EAST_TUCKED
     };
 
-    public ChairBlock(Properties properties) {
+    public ChairBlock(int defaultBackVariant, Properties properties) {
         super(properties);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false)
                 .setValue(TUCKED, false)
-                .setValue(CHAIR_BACK, 1));
+                .setValue(CHAIR_BACK, defaultBackVariant));
     }
 
     @Override
@@ -113,9 +113,6 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
-
         boolean tucked = state.getValue(TUCKED);
         if (player.isCrouching() && canTuckUnderFacing(state, level, pos)) {
             if (tucked) {
@@ -127,8 +124,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
                 level.playSound(null, pos, AFSoundEvents.CHAIR_TUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
             }
-            return InteractionResult.FAIL;
+
         }
+        if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
         return super.use(state, level, pos, player, hand, hit);
     }
 

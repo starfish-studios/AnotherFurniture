@@ -26,6 +26,7 @@ public class AFBlockTags {
     public static final TagKey<Block> NO_SEAT_COLLISION_CHECK = blockTag("no_seat_collision_check");
     public static final TagKey<Block> TABLES_CONNECTABLE = blockTag("table_connectable");
     public static final TagKey<Block> DONT_CONNECT_TO_PANES = blockTag("dont_connect_to_panes");
+    public static final TagKey<Block> CAN_USE_SHUTTERS_THROUGH = blockTag("can_use_shutters_through");
 
     private static TagKey<Block> blockTag(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));
