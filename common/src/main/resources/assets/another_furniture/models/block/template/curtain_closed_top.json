@@ -1,4 +1,5 @@
 {
+	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"render_type": "minecraft:cutout",
 	"textures": {
@@ -9,8 +10,8 @@
 	"elements": [
 		{
 			"name": "curtain_0",
-			"from": [0, 0, 14],
-			"to": [16, 16, 15],
+			"from": [0, 0, 14.9],
+			"to": [16, 16, 14.9],
 			"faces": {
 				"north": {"uv": [16, 0, 0, 16], "texture": "#0"},
 				"east": {"uv": [15, 0, 16, 16], "texture": "#0", "cullface": "east"},
@@ -24,6 +25,7 @@
 			"from": [0, 14, 15],
 			"to": [16, 16, 16],
 			"faces": {
+				"north": {"uv": [16, 3, 0, 5], "texture": "#pole"},
 				"east": {"uv": [0, 8, 1, 10], "texture": "#pole", "cullface": "east"},
 				"south": {"uv": [0, 6, 16, 8], "texture": "#pole", "cullface": "south"},
 				"west": {"uv": [2, 8, 3, 10], "texture": "#pole", "cullface": "west"},

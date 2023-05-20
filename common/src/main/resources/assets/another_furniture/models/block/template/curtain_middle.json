@@ -1,4 +1,5 @@
 {
+	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"render_type": "minecraft:cutout",
 	"textures": {
@@ -9,8 +10,8 @@
 	"elements": [
 		{
 			"name": "curtain_middle_0",
-			"from": [0, 12, 14],
-			"to": [16, 16, 15],
+			"from": [0, 12, 14.9],
+			"to": [16, 16, 14.9],
 			"faces": {
 				"north": {"uv": [0, 0, 16, 4], "texture": "#0"},
 				"east": {"uv": [0, 0, 1, 4], "texture": "#0", "cullface": "east"},
@@ -22,8 +23,8 @@
 		},
 		{
 			"name": "curtain_middle_1",
-			"from": [1, 11, 14],
-			"to": [7, 12, 15],
+			"from": [1, 11, 14.9],
+			"to": [7, 12, 14.9],
 			"faces": {
 				"north": {"uv": [9, 4, 15, 5], "texture": "#0"},
 				"east": {"uv": [9, 4, 10, 5], "texture": "#0"},
@@ -34,8 +35,8 @@
 		},
 		{
 			"name": "curtain_middle_2",
-			"from": [9, 11, 14],
-			"to": [15, 12, 15],
+			"from": [9, 11, 14.9],
+			"to": [15, 12, 14.9],
 			"faces": {
 				"north": {"uv": [1, 4, 7, 5], "texture": "#0"},
 				"east": {"uv": [1, 4, 2, 5], "texture": "#0"},
@@ -46,8 +47,8 @@
 		},
 		{
 			"name": "curtain_middle_3",
-			"from": [2, 10, 14],
-			"to": [6, 11, 15],
+			"from": [2, 10, 14.9],
+			"to": [6, 11, 14.9],
 			"faces": {
 				"north": {"uv": [10, 5, 14, 6], "texture": "#0"},
 				"east": {"uv": [10, 5, 11, 6], "texture": "#0"},
@@ -58,8 +59,8 @@
 		},
 		{
 			"name": "curtain_middle_4",
-			"from": [10, 10, 14],
-			"to": [14, 11, 15],
+			"from": [10, 10, 14.9],
+			"to": [14, 11, 14.9],
 			"faces": {
 				"north": {"uv": [2, 5, 6, 6], "texture": "#0"},
 				"east": {"uv": [2, 5, 3, 6], "texture": "#0"},
