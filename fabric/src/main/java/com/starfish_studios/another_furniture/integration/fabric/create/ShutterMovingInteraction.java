@@ -1,6 +1,5 @@
-package com.starfish_studios.another_furniture.integration.forge;
+package com.starfish_studios.another_furniture.integration.fabric.create;
 
-import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
 import com.simibubi.create.content.contraptions.components.structureMovement.interaction.SimpleBlockMovingInteraction;
 import com.starfish_studios.another_furniture.block.ShutterBlock;

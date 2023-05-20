@@ -18,16 +18,34 @@ configurations {
 }
 
 repositories {
-    maven { url "https://maven.terraformersmc.com/" }
+	maven {
+        name = 'tterrag.maven'
+        url = 'https://maven.tterrag.com/'
+    }
+	maven { url = "https://maven.terraformersmc.com/" }
+	maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib, Registrate
+	maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+	maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+	maven { url = "https://cursemaven.com" } // Forge Config API Port
 }
 
 dependencies {
+	common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+	
+	// essential
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
-    modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
-
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    
+	// integration
+	modImplementation("com.simibubi.create:create-fabric-1.19.2:0.5.0.i-946+1.19.2")
+	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.19.2:${fabric_flywheel_version}")
+    //modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
+	
+	// misc
+	modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
+	//modImplementation("curse.maven:jei-238222:3940099")
 }
 
 processResources {

@@ -21,3 +21,7 @@ publishing {
         // Add repositories to publish to here.
     }
 }
+
+loom {
+    accessWidenerPath.set(file("src/main/resources/another_furniture.accesswidener"))
+}

@@ -1,11 +1,14 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
+import com.starfish_studios.another_furniture.util.block.HammerableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -29,10 +32,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
+public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty TUCKED = BooleanProperty.create("tucked");
+    public static final IntegerProperty CHAIR_BACK = ModBlockStateProperties.CHAIR_BACK;
+
     protected static final VoxelShape SEAT = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D);
     protected static final VoxelShape SHAPE_NORTH = Shapes.or(SEAT, Block.box(2.0D, 7.0D, 12.0D, 14.0D, 16.0D, 14.0D));
     protected static final VoxelShape SHAPE_EAST = Shapes.or(SEAT, Block.box(2.0D, 7.0D, 2.0D, 4.0D, 16.0D, 14.0D));
@@ -53,7 +58,8 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false)
-                .setValue(TUCKED, false));
+                .setValue(TUCKED, false)
+                .setValue(CHAIR_BACK, 1));
     }
 
     @Override
@@ -107,8 +113,11 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
+
         boolean tucked = state.getValue(TUCKED);
-        if ((player.isCrouching() || tucked) && canTuckUnderFacing(state, level, pos)) {
+        if (player.isCrouching() && canTuckUnderFacing(state, level, pos)) {
             if (tucked) {
                 level.setBlockAndUpdate(pos, state.setValue(TUCKED, false));
                 level.playSound(null, pos, AFSoundEvents.CHAIR_UNTUCK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -135,13 +144,14 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TUCKED, WATERLOGGED);
+        builder.add(FACING, TUCKED, CHAIR_BACK, WATERLOGGED);
     }
 
     public boolean canTuckUnderFacing(BlockState state, Level level, BlockPos pos) {
         Direction dir = state.getValue(FACING);
         BlockState facing_state = level.getBlockState(pos.relative(dir));
         Block facing_state_block = facing_state.getBlock();
+
         if (facing_state_block instanceof ShelfBlock) {
             return facing_state.getValue(ShelfBlock.TYPE) == HorizontalConnectionType.MIDDLE || facing_state.getValue(FACING) != dir;
         } else if (facing_state_block instanceof SlabBlock) {

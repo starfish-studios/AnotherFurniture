@@ -1,4 +1,4 @@
-package com.starfish_studios.another_furniture.integration.forge;
+package com.starfish_studios.another_furniture.integration.fabric.create;
 
 import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementBehaviour;
@@ -33,13 +33,9 @@ public class ShutterMovingBehavior implements MovementBehaviour {
         boolean shape_below_same = below != null && below.state.is(context.state.getBlock()) && below.state.getValue(ShutterBlock.FACING) == facing
                 && below.state.getValue(ShutterBlock.OPEN) == open && below.state.getValue(ShutterBlock.LEFT) == left;
 
-        if (shape_above_same && !shape_below_same) {
-            contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.BOTTOM), state.nbt));
-        } else if (!shape_above_same && shape_below_same) {
-            contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.TOP), state.nbt));
-        } else if (!shape_above_same) {
-            contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.NONE), state.nbt));
-        }
+        if (shape_above_same && !shape_below_same) contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.BOTTOM), state.nbt));
+        else if (!shape_above_same && shape_below_same) contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.TOP), state.nbt));
+        else if (!shape_above_same) contraption.getBlocks().put(context.localPos, new StructureTemplate.StructureBlockInfo(state.pos, context.state.setValue(ShutterBlock.TYPE, ShutterType.NONE), state.nbt));
     }
 
 

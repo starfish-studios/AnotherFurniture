@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockMixin {
     @Inject(method = "isExceptionForConnection", at = @At("HEAD"), cancellable = true)
     private static void onIsExceptionForConnection(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        if (state.is(AFBlockTags.CURTAINS)) {
+        if (state.is(AFBlockTags.DONT_CONNECT_TO_PANES)) {
             cir.setReturnValue(true);
         }
     }

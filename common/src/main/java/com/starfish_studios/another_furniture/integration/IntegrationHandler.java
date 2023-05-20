@@ -1,14 +1,13 @@
 package com.starfish_studios.another_furniture.integration;
 
-import com.starfish_studios.another_furniture.registry.AFRegistry;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 
 public class IntegrationHandler {
 
     private IntegrationHandler() {}
 
+    @ExpectPlatform
     public static void init() {
-        if (AFRegistry.isModLoaded("create")) {
-            CreateCompat.setup();
-        }
+        throw new AssertionError();
     }
 }

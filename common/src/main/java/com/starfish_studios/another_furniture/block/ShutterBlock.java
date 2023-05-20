@@ -47,6 +47,8 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     protected static final VoxelShape NORTH = Block.box(0.0D, 0.0D, 13.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape[] SHAPES = new VoxelShape[]{SOUTH, WEST, NORTH, EAST};
 
+    protected static final VoxelShape TEST = Block.box(0.0D, 0.0D, 13.0D, 16.0D, 32.0D, 16.0D);
+
     public ShutterBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -193,6 +195,11 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
+
+//    @Override
+//    public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+//        return TEST;
+//    }
 
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {

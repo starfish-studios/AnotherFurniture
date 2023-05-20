@@ -22,4 +22,5 @@ public class ModBlockStateProperties {
     public static final BooleanProperty BACK = BooleanProperty.create("back");
     public static final BooleanProperty BASE = BooleanProperty.create("base");
     public static final BooleanProperty LOW = BooleanProperty.create("low");
+    public static final IntegerProperty CHAIR_BACK = IntegerProperty.create("back", 1, 9);
 }
