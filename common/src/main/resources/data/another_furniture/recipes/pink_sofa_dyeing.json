@@ -3,7 +3,7 @@
     "group": "sofas",
     "ingredients": [
         {
-            "item": "another_furniture:pink_dye"
+            "item": "minecraft:pink_dye"
         },
         {
             "item": "another_furniture:white_sofa"

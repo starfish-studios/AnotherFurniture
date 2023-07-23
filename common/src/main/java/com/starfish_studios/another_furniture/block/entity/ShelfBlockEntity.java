@@ -21,8 +21,8 @@ import net.minecraft.world.phys.AABB;
 public class ShelfBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
 
-    public ShelfBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(AFBlockEntityTypes.SHELF.get(), pWorldPosition, pBlockState);
+    public ShelfBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(AFBlockEntityTypes.SHELF.get(), blockPos, blockState);
     }
 
     public NonNullList<ItemStack> getItems() {
@@ -30,16 +30,16 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    public void load(CompoundTag tag) {
+        super.load(tag);
         this.items.clear();
-        ContainerHelper.loadAllItems(pTag, this.items);
+        ContainerHelper.loadAllItems(tag, this.items);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, this.items, true);
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        ContainerHelper.saveAllItems(tag, this.items, true);
     }
 
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -64,19 +64,18 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
     }
 
     public boolean removeItem(int index, Player player, Level level) {
-        if (!this.items.get(index).isEmpty()) {
-            if (level.isClientSide()) {
-                player.playSound(SoundEvents.ITEM_PICKUP);
-                return true;
-            }
+        if (this.items.get(index).isEmpty()) return false;
 
-            ItemStack item = this.items.get(index).copy();
-            player.setItemSlot(EquipmentSlot.MAINHAND, item);
-            this.items.set(index, ItemStack.EMPTY);
-            this.markUpdated();
+        if (level.isClientSide()) {
+            player.playSound(SoundEvents.ITEM_PICKUP);
             return true;
         }
-        return false;
+
+        ItemStack item = this.items.get(index).copy();
+        player.setItemSlot(EquipmentSlot.MAINHAND, item);
+        this.items.set(index, ItemStack.EMPTY);
+        this.markUpdated();
+        return true;
     }
 
     private void markUpdated() {
@@ -91,16 +90,16 @@ public class ShelfBlockEntity extends BlockEntity implements Clearable {
     public void removeAllItems() {
         boolean update = false;
         for (int i = 0; i < items.size(); i++) {
-            if (!this.items.get(i).isEmpty()) {
-                double posX = worldPosition.getX() + 0.3 + 0.4 * (i % 2);
-                double posY = worldPosition.getY() + 1.0;
-                double posZ = worldPosition.getZ() + 0.3 + 0.4 * (i / 2);
+            if (this.items.get(i).isEmpty()) continue;
+            double posX = worldPosition.getX() + 0.3 + 0.4 * (i % 2);
+            double posY = worldPosition.getY() + 1.0;
+            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (i / 2);
 
-                ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
-                this.level.addFreshEntity(entity);
-                this.items.set(i, ItemStack.EMPTY);
-                update = true;
-            }
+            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
+            this.level.addFreshEntity(entity);
+            this.items.set(i, ItemStack.EMPTY);
+            update = true;
+
         }
         if (update) {
             this.markUpdated();

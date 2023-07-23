@@ -1,273 +1,33 @@
 {
     "variants": {
-        "facing=north,tucked=false,back=1": {
-            "model": "another_furniture:block/chair/warped_1"
+        "facing=north,tucked=false": {
+            "model": "another_furniture:block/chair/warped"
         },
-        "facing=east,tucked=false,back=1": {
-            "model": "another_furniture:block/chair/warped_1",
+        "facing=east,tucked=false": {
+            "model": "another_furniture:block/chair/warped",
             "y": 90
         },
-        "facing=south,tucked=false,back=1": {
-            "model": "another_furniture:block/chair/warped_1",
+        "facing=south,tucked=false": {
+            "model": "another_furniture:block/chair/warped",
             "y": 180
         },
-        "facing=west,tucked=false,back=1": {
-            "model": "another_furniture:block/chair/warped_1",
+        "facing=west,tucked=false": {
+            "model": "another_furniture:block/chair/warped",
             "y": 270
         },
-        "facing=north,tucked=true,back=1": {
-            "model": "another_furniture:block/chair/warped_1_tucked"
+        "facing=north,tucked=true": {
+            "model": "another_furniture:block/chair/warped_tucked"
         },
-        "facing=east,tucked=true,back=1": {
-            "model": "another_furniture:block/chair/warped_1_tucked",
+        "facing=east,tucked=true": {
+            "model": "another_furniture:block/chair/warped_tucked",
             "y": 90
         },
-        "facing=south,tucked=true,back=1": {
-            "model": "another_furniture:block/chair/warped_1_tucked",
+        "facing=south,tucked=true": {
+            "model": "another_furniture:block/chair/warped_tucked",
             "y": 180
         },
-        "facing=west,tucked=true,back=1": {
-            "model": "another_furniture:block/chair/warped_1_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=2": {
-            "model": "another_furniture:block/chair/warped_2"
-        },
-        "facing=east,tucked=false,back=2": {
-            "model": "another_furniture:block/chair/warped_2",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=2": {
-            "model": "another_furniture:block/chair/warped_2",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=2": {
-            "model": "another_furniture:block/chair/warped_2",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=2": {
-            "model": "another_furniture:block/chair/warped_2_tucked"
-        },
-        "facing=east,tucked=true,back=2": {
-            "model": "another_furniture:block/chair/warped_2_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=2": {
-            "model": "another_furniture:block/chair/warped_2_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=2": {
-            "model": "another_furniture:block/chair/warped_2_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=3": {
-            "model": "another_furniture:block/chair/warped_3"
-        },
-        "facing=east,tucked=false,back=3": {
-            "model": "another_furniture:block/chair/warped_3",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=3": {
-            "model": "another_furniture:block/chair/warped_1",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=3": {
-            "model": "another_furniture:block/chair/warped_3",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=3": {
-            "model": "another_furniture:block/chair/warped_3_tucked"
-        },
-        "facing=east,tucked=true,back=3": {
-            "model": "another_furniture:block/chair/warped_3_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=3": {
-            "model": "another_furniture:block/chair/warped_3_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=3": {
-            "model": "another_furniture:block/chair/warped_3_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=4": {
-            "model": "another_furniture:block/chair/warped_4"
-        },
-        "facing=east,tucked=false,back=4": {
-            "model": "another_furniture:block/chair/warped_4",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=4": {
-            "model": "another_furniture:block/chair/warped_4",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=4": {
-            "model": "another_furniture:block/chair/warped_4",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=4": {
-            "model": "another_furniture:block/chair/warped_4_tucked"
-        },
-        "facing=east,tucked=true,back=4": {
-            "model": "another_furniture:block/chair/warped_4_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=4": {
-            "model": "another_furniture:block/chair/warped_4_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=4": {
-            "model": "another_furniture:block/chair/warped_4_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=5": {
-            "model": "another_furniture:block/chair/warped_5"
-        },
-        "facing=east,tucked=false,back=5": {
-            "model": "another_furniture:block/chair/warped_5",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=5": {
-            "model": "another_furniture:block/chair/warped_5",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=5": {
-            "model": "another_furniture:block/chair/warped_5",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=5": {
-            "model": "another_furniture:block/chair/warped_5_tucked"
-        },
-        "facing=east,tucked=true,back=5": {
-            "model": "another_furniture:block/chair/warped_5_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=5": {
-            "model": "another_furniture:block/chair/warped_5_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=5": {
-            "model": "another_furniture:block/chair/warped_5_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=6": {
-            "model": "another_furniture:block/chair/warped_6"
-        },
-        "facing=east,tucked=false,back=6": {
-            "model": "another_furniture:block/chair/warped_6",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=6": {
-            "model": "another_furniture:block/chair/warped_6",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=6": {
-            "model": "another_furniture:block/chair/warped_6",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=6": {
-            "model": "another_furniture:block/chair/warped_6_tucked"
-        },
-        "facing=east,tucked=true,back=6": {
-            "model": "another_furniture:block/chair/warped_6_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=6": {
-            "model": "another_furniture:block/chair/warped_6_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=6": {
-            "model": "another_furniture:block/chair/warped_6_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=7": {
-            "model": "another_furniture:block/chair/warped_7"
-        },
-        "facing=east,tucked=false,back=7": {
-            "model": "another_furniture:block/chair/warped_7",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=7": {
-            "model": "another_furniture:block/chair/warped_7",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=7": {
-            "model": "another_furniture:block/chair/warped_7",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=7": {
-            "model": "another_furniture:block/chair/warped_7_tucked"
-        },
-        "facing=east,tucked=true,back=7": {
-            "model": "another_furniture:block/chair/warped_7_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=7": {
-            "model": "another_furniture:block/chair/warped_7_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=7": {
-            "model": "another_furniture:block/chair/warped_7_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=8": {
-            "model": "another_furniture:block/chair/warped_8"
-        },
-        "facing=east,tucked=false,back=8": {
-            "model": "another_furniture:block/chair/warped_8",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=8": {
-            "model": "another_furniture:block/chair/warped_8",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=8": {
-            "model": "another_furniture:block/chair/warped_8",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=8": {
-            "model": "another_furniture:block/chair/warped_8_tucked"
-        },
-        "facing=east,tucked=true,back=8": {
-            "model": "another_furniture:block/chair/warped_8_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=8": {
-            "model": "another_furniture:block/chair/warped_8_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=8": {
-            "model": "another_furniture:block/chair/warped_8_tucked",
-            "y": 270
-        },
-        "facing=north,tucked=false,back=9": {
-            "model": "another_furniture:block/chair/warped_9"
-        },
-        "facing=east,tucked=false,back=9": {
-            "model": "another_furniture:block/chair/warped_9",
-            "y": 90
-        },
-        "facing=south,tucked=false,back=9": {
-            "model": "another_furniture:block/chair/warped_9",
-            "y": 180
-        },
-        "facing=west,tucked=false,back=9": {
-            "model": "another_furniture:block/chair/warped_9",
-            "y": 270
-        },
-        "facing=north,tucked=true,back=9": {
-            "model": "another_furniture:block/chair/warped_9_tucked"
-        },
-        "facing=east,tucked=true,back=9": {
-            "model": "another_furniture:block/chair/warped_9_tucked",
-            "y": 90
-        },
-        "facing=south,tucked=true,back=9": {
-            "model": "another_furniture:block/chair/warped_9_tucked",
-            "y": 180
-        },
-        "facing=west,tucked=true,back=9": {
-            "model": "another_furniture:block/chair/warped_9_tucked",
+        "facing=west,tucked=true": {
+            "model": "another_furniture:block/chair/warped_tucked",
             "y": 270
         }
     }

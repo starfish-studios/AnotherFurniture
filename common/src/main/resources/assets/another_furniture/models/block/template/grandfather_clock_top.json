@@ -1,0 +1,33 @@
+{
+	"parent": "minecraft:block/block",
+	"render_type": "minecraft:cutout",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "another_furniture:block/grandfather_clock/oak",
+		"particle": "another_furniture:block/grandfather_clock/oak"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 4],
+			"to": [14, 12, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, -6, 2]},
+			"faces": {
+				"north": {"uv": [1, 1, 2.5, 2.5], "texture": "#0"},
+				"east": {"uv": [0, 1, 1, 2.5], "texture": "#0"},
+				"south": {"uv": [3.5, 1, 5, 2.5], "texture": "#0"},
+				"west": {"uv": [2.5, 1, 3.5, 2.5], "texture": "#0"},
+				"up": {"uv": [2.5, 1, 1, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 12, 4],
+			"to": [14, 16, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 38, 2]},
+			"faces": {
+				"north": {"uv": [6.125, 3, 7.625, 3.5], "texture": "#0"},
+				"east": {"uv": [5.125, 3, 6.125, 3.5], "texture": "#0"},
+				"west": {"uv": [7.625, 3, 8.625, 3.5], "texture": "#0"}
+			}
+		}
+	]
+}

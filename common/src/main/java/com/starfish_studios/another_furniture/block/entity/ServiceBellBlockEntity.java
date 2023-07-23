@@ -8,28 +8,28 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class ServiceBellBlockEntity extends BlockEntity {
     public int ticks;
-    public boolean shaking;
+    public boolean pressed;
 
-    public ServiceBellBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(AFBlockEntityTypes.SERVICE_BELL.get(), pWorldPosition, pBlockState);
+    public ServiceBellBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(AFBlockEntityTypes.SERVICE_BELL.get(), blockPos, blockState);
     }
 
     public void onHit() {
-        if (this.shaking) {
+        if (this.pressed) {
             this.ticks = 0;
         } else {
-            this.shaking = true;
+            this.pressed = true;
         }
     }
 
-    public static void clientTick(Level pLevel, BlockPos pPos, BlockState pState, ServiceBellBlockEntity pBlockEntity) {
-        if (pBlockEntity.shaking) {
-            ++pBlockEntity.ticks;
+    public static void clientTick(Level level, BlockPos pos, BlockState state, ServiceBellBlockEntity blockEntity) {
+        if (blockEntity.pressed) {
+            ++blockEntity.ticks;
         }
 
-        if (pBlockEntity.ticks >= 5) {
-            pBlockEntity.shaking = false;
-            pBlockEntity.ticks = 0;
+        if (blockEntity.ticks >= 5) {
+            blockEntity.pressed = false;
+            blockEntity.ticks = 0;
         }
     }
 

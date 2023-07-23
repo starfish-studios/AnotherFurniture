@@ -1,36 +1,30 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"0": "another_furniture:block/curtain2/white_closed_top",
-		"particle": "another_furniture:block/curtain2/white_closed_top",
-		"pole": "another_furniture:block/curtain/pole"
+		"curtain": "another_furniture:block/curtain2/white_closed_top",
+		"pole": "another_furniture:block/curtain/pole",
+		"particle": "#curtain"
 	},
 	"elements": [
 		{
-			"name": "curtain_0",
 			"from": [0, 0, 14.9],
 			"to": [16, 16, 14.9],
 			"faces": {
-				"north": {"uv": [16, 0, 0, 16], "texture": "#0"},
-				"east": {"uv": [15, 0, 16, 16], "texture": "#0", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"west": {"uv": [0, 0, 1, 16], "texture": "#0", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 1], "texture": "#0", "cullface": "up"},
-				"down": {"uv": [0, 15, 16, 16], "texture": "#0", "cullface": "down"}
+				"north": {"uv": [16, 0, 0, 16], "texture": "#curtain"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#curtain"}
 			}
 		},
 		{
-			"from": [0, 14, 15],
+			"from": [0, 14, 14],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [16, 3, 0, 5], "texture": "#pole"},
-				"east": {"uv": [0, 8, 1, 10], "texture": "#pole", "cullface": "east"},
+				"north": {"uv": [0, 4, 16, 6], "texture": "#pole"},
+				"east": {"uv": [0, 8, 2, 10], "texture": "#pole", "cullface": "east"},
 				"south": {"uv": [0, 6, 16, 8], "texture": "#pole", "cullface": "south"},
-				"west": {"uv": [2, 8, 3, 10], "texture": "#pole", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 1], "texture": "#pole", "cullface": "up"},
-				"down": {"uv": [16, 2, 0, 3], "texture": "#pole"}
+				"west": {"uv": [2, 8, 4, 10], "texture": "#pole", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#pole", "cullface": "up"},
+				"down": {"uv": [16, 2, 0, 4], "texture": "#pole"}
 			}
 		}
 	]

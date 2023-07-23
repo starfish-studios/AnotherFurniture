@@ -1,8 +1,9 @@
 package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
-import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
+import com.starfish_studios.another_furniture.util.block.BlockPart;
 import com.starfish_studios.another_furniture.util.block.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,10 +23,7 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -37,8 +35,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape TOP = Block.box(0, 14, 0.0, 16, 16, 16);
@@ -69,28 +67,26 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (hit.getDirection() != Direction.UP) {
-            return InteractionResult.PASS;
-        }
+        if (hit.getDirection() != Direction.UP) return InteractionResult.PASS;
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (!(blockentity instanceof ShelfBlockEntity shelfblockentity)) {
-            return InteractionResult.PASS;
-        }
+        if (!(blockentity instanceof ShelfBlockEntity shelfBE)) return InteractionResult.PASS;
+
+        Direction facing = state.getValue(FACING);
+        int slot = BlockPart.get2D(pos, hit.getLocation(), facing.getClockWise(), facing, 2, 2);
 
         // Place
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (!itemstack.isEmpty()) {
-            if (!level.isClientSide && shelfblockentity.placeItem(player.getAbilities().instabuild ? itemstack.copy() : itemstack, this.getPosition(hit, pos))) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (!stack.isEmpty()) {
+            if (!level.isClientSide && shelfBE.placeItem(player.getAbilities().instabuild ? stack.copy() : stack, slot)) {
                 level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
             }
+            // Avoids client trying to place actual block on top
             return InteractionResult.CONSUME;
         }
 
         // Remove
-        if (shelfblockentity.removeItem(this.getPosition(hit, pos), player, level)) {
-            return InteractionResult.SUCCESS;
-        }
+        if (shelfBE.removeItem(slot, player, level)) return InteractionResult.SUCCESS;
 
         return InteractionResult.PASS;
     }
@@ -100,7 +96,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
         if (state.is(newState.getBlock())) return;
 
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (blockentity instanceof ShelfBlockEntity shelfBlockEntity) Containers.dropContents(level, pos, shelfBlockEntity.getItems());
+        if (blockentity instanceof ShelfBlockEntity shelfBE) Containers.dropContents(level, pos, shelfBE.getItems());
         super.onRemove(state, level, pos, newState, isMoving);
     }
 
@@ -164,19 +160,23 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
 
         BlockState above = level.getBlockState(currentPos.above());
         if (direction == Direction.UP && (above.isFaceSturdy(level, currentPos, Direction.DOWN) && !above.getVisualShape(level, currentPos.above(), CollisionContext.empty()).isEmpty())) {
-            BlockEntity blockentity = level.getBlockEntity(currentPos);
-            if (blockentity instanceof ShelfBlockEntity shelfblockentity) {
-                shelfblockentity.removeAllItems();
-            }
+            if (level.getBlockEntity(currentPos) instanceof ShelfBlockEntity shelfBE) shelfBE.removeAllItems();
         }
 
-        Direction facing = state.getValue(FACING);
-        if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
-        BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
-        BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof ShelfBlock && l_state.getValue(FACING) == facing);
-        boolean r_side = (r_state.getBlock() instanceof ShelfBlock && r_state.getValue(FACING) == facing);
-        HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
+        Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        Direction dirL = facing.getClockWise();
+        Direction dirR = facing.getCounterClockWise();
+        if (direction != dirL && direction != dirR) return state;
+
+        BlockState l_state = level.getBlockState(currentPos.relative(dirL));
+        BlockState r_state = level.getBlockState(currentPos.relative(dirR));
+        boolean l_side = l_state.getBlock() instanceof ShelfBlock && l_state.getValue(BlockStateProperties.HORIZONTAL_FACING) == facing;
+        boolean r_side = r_state.getBlock() instanceof ShelfBlock && r_state.getValue(BlockStateProperties.HORIZONTAL_FACING) == facing;
+        HorizontalConnectionType type = l_side && r_side ?
+                HorizontalConnectionType.MIDDLE
+                : (r_side ? HorizontalConnectionType.LEFT
+                : (l_side ? HorizontalConnectionType.RIGHT
+                : HorizontalConnectionType.SINGLE));
         return state.setValue(TYPE, type);
     }
 
@@ -188,14 +188,6 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new ShelfBlockEntity(pos, state);
-    }
-
-    private int getPosition(BlockHitResult hit, BlockPos pos) {
-        Vec3 hitVec = hit.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
-        int position = 0;
-        if(hitVec.x() > 0.5) position += 1;
-        if(hitVec.z() > 0.5) position += 2;
-        return position;
     }
 
     @Override

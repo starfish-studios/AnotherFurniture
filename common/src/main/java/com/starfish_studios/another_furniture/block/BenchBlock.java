@@ -52,7 +52,7 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public float seatHeight() {
+    public float seatHeight(BlockState state) {
         return 0.15F;
     }
 

@@ -22,8 +22,8 @@ import net.minecraft.world.phys.AABB;
 public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(2, ItemStack.EMPTY);
 
-    public PlanterBoxBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(AFBlockEntityTypes.PLANTER_BOX.get(), pWorldPosition, pBlockState);
+    public PlanterBoxBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(AFBlockEntityTypes.PLANTER_BOX.get(), blockPos, blockState);
     }
 
     public NonNullList<ItemStack> getItems() {
@@ -35,16 +35,16 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    public void load(CompoundTag tag) {
+        super.load(tag);
         this.items.clear();
-        ContainerHelper.loadAllItems(pTag, this.items);
+        ContainerHelper.loadAllItems(tag, this.items);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, this.items, true);
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        ContainerHelper.saveAllItems(tag, this.items, true);
     }
 
     @Override
@@ -86,16 +86,16 @@ public class PlanterBoxBlockEntity extends BlockEntity implements Clearable {
     public void removeAllItems() {
         boolean update = false;
         for (int i = 0; i < items.size(); i++) {
-            if (!this.items.get(i).isEmpty()) {
-                double posX = worldPosition.getX() + 0.5;
-                double posY = worldPosition.getY() + 0.5;
-                double posZ = worldPosition.getZ() + 0.5;
+            if (this.items.get(i).isEmpty()) continue;
+            double posX = worldPosition.getX() + 0.5;
+            double posY = worldPosition.getY() + 0.5;
+            double posZ = worldPosition.getZ() + 0.5;
 
-                ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
-                this.level.addFreshEntity(entity);
-                this.items.set(i, ItemStack.EMPTY);
-                update = true;
-            }
+            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.items.get(i).copy());
+            this.level.addFreshEntity(entity);
+            this.items.set(i, ItemStack.EMPTY);
+            update = true;
+
         }
         if (update) {
             this.markUpdated();

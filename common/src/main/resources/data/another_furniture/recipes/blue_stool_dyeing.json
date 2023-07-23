@@ -1,15 +1,15 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "stools",
-  "ingredients": [
-    {
-      "item": "minecraft:blue_dye"
-    },
-    {
-      "item": "another_furniture:white_stool"
+    "type": "minecraft:crafting_shapeless",
+    "group": "stools",
+    "ingredients": [
+        {
+            "item": "minecraft:blue_dye"
+        },
+        {
+            "item": "another_furniture:white_stool"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:blue_stool"
     }
-  ],
-  "result": {
-    "item": "another_furniture:blue_stool"
-  }
 }

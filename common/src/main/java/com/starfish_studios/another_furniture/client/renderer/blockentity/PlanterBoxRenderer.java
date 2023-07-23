@@ -42,37 +42,37 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
 
         for (int i = 0; i < 2; i++) {
             Item item = blockEntity.getItemFromSlot(i);
+            if (item == Items.AIR) continue;
 
-            if (item != Items.AIR) {
-                Block block = ((BlockItem) item).getBlock();
-                if (block instanceof DoublePlantBlock) {
-                    lower = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER);
-                    upper = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER);
-                } else {
-                    lower = block.defaultBlockState();
-                }
-
-                poseStack.pushPose();
-                poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
-                poseStack.translate(0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
-                poseStack.translate(0f, 0.001f * i, 0.001f * i); // prevent z-clipping
-
-                switch (blockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
-                    case EAST -> poseStack.translate(0f, 0f, -1.4f);
-                    case WEST -> poseStack.translate(-1.4f, 0f, 0);
-                    case SOUTH -> poseStack.translate(-1.4f, 0f, -1.4f);
-                }
-                if (blockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
-                    poseStack.translate(0f, 0.9f, 0.36f);
-                }
-
-                blockRenderer.renderSingleBlock(lower, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
-                if (upper != null) {
-                    poseStack.translate(0f, 1.0f, 0f);
-                    blockRenderer.renderSingleBlock(upper, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
-                }
-                poseStack.popPose();
+            Block block = ((BlockItem) item).getBlock();
+            if (block instanceof DoublePlantBlock) {
+                lower = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER);
+                upper = block.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER);
+            } else {
+                lower = block.defaultBlockState();
             }
+
+            poseStack.pushPose();
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
+            poseStack.translate(0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
+            poseStack.translate(0f, 0.001f * i, 0.001f * i); // prevent z-clipping
+
+            switch (blockEntity.getBlockState().getValue(PlanterBoxBlock.FACING)) { // correct position based on direction
+                case EAST -> poseStack.translate(0f, 0f, -1.4f);
+                case WEST -> poseStack.translate(-1.4f, 0f, 0);
+                case SOUTH -> poseStack.translate(-1.4f, 0f, -1.4f);
+            }
+            if (blockEntity.getBlockState().getValue(PlanterBoxBlock.ATTACHED)) { // correct position when attached
+                poseStack.translate(0f, 0.9f, 0.36f);
+            }
+
+            blockRenderer.renderSingleBlock(lower, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
+            if (upper != null) {
+                poseStack.translate(0f, 1.0f, 0f);
+                blockRenderer.renderSingleBlock(upper, poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
+            }
+            poseStack.popPose();
+
         }
 
         poseStack.popPose();

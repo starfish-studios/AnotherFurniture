@@ -1,0 +1,14 @@
+{
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_grandfather_clock", "required": false},
+		{"id": "another_furniture:spruce_grandfather_clock", "required": false},
+		{"id": "another_furniture:birch_grandfather_clock", "required": false},
+		{"id": "another_furniture:jungle_grandfather_clock", "required": false},
+		{"id": "another_furniture:acacia_grandfather_clock", "required": false},
+		{"id": "another_furniture:dark_oak_grandfather_clock", "required": false},
+		{"id": "another_furniture:crimson_grandfather_clock", "required": false},
+		{"id": "another_furniture:warped_grandfather_clock", "required": false},
+		{"id": "another_furniture:mangrove_grandfather_clock", "required": false}
+	]
+}

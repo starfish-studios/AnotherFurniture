@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/chair",
-    "textures": {
-        "bottom": "another_furniture:block/chair/spruce_bottom",
-        "seat": "another_furniture:block/chair/spruce_seat",
-        "back": "another_furniture:block/chair/back_3/spruce"
-    }
-}

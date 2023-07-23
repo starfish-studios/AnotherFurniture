@@ -20,6 +20,7 @@ public class AnotherFurnitureForgeClient {
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ServiceBellButtonRenderer.SERVICE_BELL_MODEL, ServiceBellButtonRenderer::createBodyLayer);
+        //event.registerLayerDefinition(GrandfatherClockRenderer.GRANDFATHER_CLOCK_MODEL, GrandfatherClockRenderer::createBodyLayer);
 
     }
 

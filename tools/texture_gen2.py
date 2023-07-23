@@ -84,8 +84,8 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
                 print(f"saved {save_path}")
 
 
-def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
-                         template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+                         template_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
                          banned_variants = ["curtain", "sofa_old", "tablecloth"]):
     color = ["white","orange","magenta","light_blue","yellow","lime","pink","gray","light_gray","cyan","purple","blue","brown","green","red","black"]
 
@@ -114,7 +114,7 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
         for template in templates:
             is_valid_template = True
             for banned_variant in banned_variants:
-                if banned_variant in template:
+                if banned_variant in template and not "curtain2" in template:
                     is_valid_template = False
                     
             if is_valid_template:
@@ -154,12 +154,11 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
                 print(f"saved {save_path}")
 
 
-generate_wood_types(
-    "C:\\Users\\jacec\\Desktop\\planks",
-    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    ["drawer", "shutter"])
+#generate_wood_types(
+#    "C:\\Users\\jacec\\Desktop\\planks",
+#    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+#    ["drawer", "shutter"])
 
-#generate_color_types(
+generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-#    ["curtain", "sofa_old", "tablecloth"])

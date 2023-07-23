@@ -1,0 +1,49 @@
+{
+    "variants": {
+        "facing=north,type=bottom": {
+            "model": "another_furniture:block/template/grandfather_clock_bottom"
+        },
+        "facing=east,type=bottom": {
+            "model": "another_furniture:block/template/grandfather_clock_bottom",
+            "y": 90
+        },
+        "facing=south,type=bottom": {
+            "model": "another_furniture:block/template/grandfather_clock_bottom",
+            "y": 180
+        },
+        "facing=west,type=bottom": {
+            "model": "another_furniture:block/template/grandfather_clock_bottom",
+            "y": 270
+        },
+        "facing=north,type=middle": {
+            "model": "another_furniture:block/template/grandfather_clock_middle"
+        },
+        "facing=east,type=middle": {
+            "model": "another_furniture:block/template/grandfather_clock_middle",
+            "y": 90
+        },
+        "facing=south,type=middle": {
+            "model": "another_furniture:block/template/grandfather_clock_middle",
+            "y": 180
+        },
+        "facing=west,type=middle": {
+            "model": "another_furniture:block/template/grandfather_clock_middle",
+            "y": 270
+        },
+        "facing=north,type=top": {
+            "model": "another_furniture:block/template/grandfather_clock_top"
+        },
+        "facing=east,type=top": {
+            "model": "another_furniture:block/template/grandfather_clock_top",
+            "y": 90
+        },
+        "facing=south,type=top": {
+            "model": "another_furniture:block/template/grandfather_clock_top",
+            "y": 180
+        },
+        "facing=west,type=top": {
+            "model": "another_furniture:block/template/grandfather_clock_top",
+            "y": 270
+        }
+    }
+}

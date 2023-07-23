@@ -12,6 +12,6 @@
 		"#another_furniture:tables",
 		"#another_furniture:tall_stools",
 		"another_furniture:lamp_connector",
-		"#another_furniture:lattices"
+		{"id": "#another_furniture:lattices", "required": false}
     ]
 }

@@ -1,15 +1,15 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "curtains",
-  "ingredients": [
-    {
-      "item": "minecraft:yellow_dye"
-    },
-    {
-      "item": "another_furniture:white_curtain"
+    "type": "minecraft:crafting_shapeless",
+    "group": "curtains",
+    "ingredients": [
+        {
+            "item": "minecraft:yellow_dye"
+        },
+        {
+            "item": "another_furniture:white_curtain"
+        }
+    ],
+    "result": {
+        "item": "another_furniture:yellow_curtain"
     }
-  ],
-  "result": {
-    "item": "another_furniture:yellow_curtain"
-  }
 }

@@ -1,16 +1,14 @@
 {
-    "values": [
-        "another_furniture:oak_bench",
-        "another_furniture:spruce_bench",
-        "another_furniture:birch_bench",
-        "another_furniture:jungle_bench",
-        "another_furniture:acacia_bench",
-        "another_furniture:dark_oak_bench",
-        {
-            "id": "another_furniture:mangrove_bench",
-            "required": false
-        },
-        "another_furniture:crimson_bench",
-        "another_furniture:warped_bench"
-    ]
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_bench", "required": false},
+		{"id": "another_furniture:spruce_bench", "required": false},
+		{"id": "another_furniture:birch_bench", "required": false},
+		{"id": "another_furniture:jungle_bench", "required": false},
+		{"id": "another_furniture:acacia_bench", "required": false},
+		{"id": "another_furniture:dark_oak_bench", "required": false},
+		{"id": "another_furniture:crimson_bench", "required": false},
+		{"id": "another_furniture:warped_bench", "required": false},
+		{"id": "another_furniture:mangrove_bench", "required": false}
+	]
 }

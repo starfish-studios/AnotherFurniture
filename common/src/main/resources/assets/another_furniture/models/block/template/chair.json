@@ -4,7 +4,7 @@
 	"textures": {
 		"bottom": "another_furniture:block/chair/oak_bottom",
 		"seat": "another_furniture:block/chair/oak_seat",
-		"back": "another_furniture:block/chair/back_1/oak",
+		"back": "another_furniture:block/chair/oak_back",
 		"particle": "#seat"
 	},
 	"elements": [

@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:block/block",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "another_furniture:block/grandfather_clock/oak",
+		"particle": "another_furniture:block/grandfather_clock/oak"
+	},
+	"elements": [
+		{
+			"from": [2, 12, 4],
+			"to": [14, 16, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, -6, 2]},
+			"faces": {
+				"north": {"uv": [1, 4.5, 2.5, 5], "texture": "#0"},
+				"east": {"uv": [0, 4.5, 1, 5], "texture": "#0"},
+				"south": {"uv": [3.5, 4.5, 5, 5], "texture": "#0"},
+				"west": {"uv": [2.5, 4.5, 3.5, 5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 0, 2],
+			"to": [16, 12, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, -6, 2]},
+			"faces": {
+				"north": {"uv": [5.125, 6.25, 7.125, 7.75], "texture": "#0"},
+				"east": {"uv": [3.625, 6.25, 5.125, 7.75], "texture": "#0", "cullface": "east"},
+				"south": {"uv": [8.625, 6.25, 10.625, 7.75], "texture": "#0"},
+				"west": {"uv": [7.125, 6.25, 8.625, 7.75], "texture": "#0", "cullface": "west"},
+				"up": {"uv": [7.125, 6.25, 5.125, 4.75], "texture": "#0"},
+				"down": {"uv": [9.125, 4.75, 7.125, 6.25], "texture": "#0", "cullface": "down"}
+			}
+		}
+	]
+}

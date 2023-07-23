@@ -11,9 +11,11 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.TheEndGatewayRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 @Environment(value= EnvType.CLIENT)
 public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
@@ -25,27 +27,25 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
     @Override
     public void render(ShelfBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         Direction direction = blockEntity.getBlockState().getValue(ShelfBlock.FACING);
+        float rotation = -direction.toYRot() + 180f;
         NonNullList<ItemStack> items = blockEntity.getItems();
+        poseStack.pushPose();
+        poseStack.translate(0.5, 1.18, 0.5);
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation));
         for(int j = 0; j < items.size(); j++) {
             ItemStack stack = items.get(j);
-            if (stack.isEmpty()) return;
+            if (stack.isEmpty()) continue;
 
             int renderCount = getAmount(stack.getCount());
             for (int i = 0; i < renderCount; ++i) {
-                float fx = (-0.12375f * (float)(i - 1) * 0.5f) % 0.09f;
-                float fy = (-0.08375f * (float)(i - 1) * 0.5f) % 0.09f;
-                float fz = (-0.09375f * (float)(i - 1) * 0.5f) % 0.09f;
+                float fx = (-0.10375f * (float)(i - 1) * 0.5f) % 0.09f;
+                float fy = (-0.04375f * (float)(i - 1) * 0.5f) % 0.09f;
+                float fz = (-0.05375f * (float)(i - 1) * 0.5f) % 0.09f;
 
                 poseStack.pushPose();
 
-                poseStack.translate(0.5, 1.18, 0.5);
-                poseStack.translate(-0.225 + 0.45 * (j % 2), 0.0, -0.225 + 0.45 * (j / 2));
-                poseStack.translate(-0.061875f, 0.0, -0.046875f);
+                poseStack.translate(0.15 - 0.4 * (j % 2), 0.0, -0.225 + 0.4 * (j / 2));
                 poseStack.translate(fx, fy, fz);
-
-                poseStack.mulPose(Vector3f.YP.rotationDegrees(-90F * direction.get2DDataValue()));
-                poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
-
                 poseStack.scale(0.375F, 0.375F, 0.375F);
                 Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, packedLight, packedOverlay, poseStack, bufferSource, 0);
 
@@ -53,6 +53,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
             }
 
         }
+        poseStack.popPose();
     }
 
     public int getAmount(int count) {

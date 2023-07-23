@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
@@ -81,7 +82,6 @@ public class AFRegistryImpl {
     }
 
     public static boolean isFakePlayer(Player player) {
-        // No idea how to tell the difference on Fabric
-        return false;
+        return player instanceof ServerPlayer && player.getClass() != ServerPlayer.class;
     }
 }

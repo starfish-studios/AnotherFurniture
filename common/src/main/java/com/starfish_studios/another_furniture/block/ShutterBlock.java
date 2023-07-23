@@ -4,9 +4,11 @@ import com.starfish_studios.another_furniture.block.properties.ModBlockStateProp
 import com.starfish_studios.another_furniture.block.properties.ShutterType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -14,10 +16,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -100,12 +99,13 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
         if (powered != state.getValue(POWERED)) {
             if (state.getValue(OPEN) != powered) {
                 state = state.setValue(OPEN, powered);
-                level.playSound(null, pos, shutterSound(powered), SoundSource.BLOCKS, 1.0F, 1.0F);
+                toggleShutters(state.setValue(OPEN, !powered), level, pos, null);
             }
             state = state.setValue(POWERED, powered);
             if (state.getValue(WATERLOGGED)) {
                 level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
+
         }
         ShutterType type = getType(state, level.getBlockState(pos.above()), level.getBlockState(pos.below()));
         if (state.getValue(TYPE) != type) {
@@ -124,9 +124,9 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
 
         state = state.cycle(OPEN);
         level.setBlock(pos, state, 3);
-        if (!player.isCrouching()) toggleShutters(state, level, pos, state.getValue(OPEN));
-
+        if (player == null || !player.isCrouching()) toggleShutters(state, level, pos, state.getValue(OPEN));
         level.playSound(null, pos, shutterSound(state.getValue(OPEN)), SoundSource.BLOCKS, 1.0F, 1.0F);
+
         if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
         return InteractionResult.sidedSuccess(level.isClientSide);
@@ -165,6 +165,15 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
             }
         }
     }
+
+//    public void flip(BlockState state, Level level, BlockPos pos) {
+//        level.scheduleTick(pos, state.getBlock(), 2);
+//    }
+//
+//    @Override
+//    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+//        toggleShutters();
+//    }
 
     public static SoundEvent shutterSound(boolean open) {
         if (open) return SoundEvents.WOODEN_TRAPDOOR_OPEN;

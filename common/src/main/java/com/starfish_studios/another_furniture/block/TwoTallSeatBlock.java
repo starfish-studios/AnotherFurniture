@@ -40,7 +40,7 @@ public class TwoTallSeatBlock extends SeatBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public float seatHeight() {
+    public float seatHeight(BlockState state) {
         return 0.0F;
     }
 

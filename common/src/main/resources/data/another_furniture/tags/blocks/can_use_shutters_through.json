@@ -5,7 +5,8 @@
 		{"id": "#forge:glass_panes", "required": false},
 		{"id": "#c:glass_blocks", "required": false},
 		{"id": "#c:glass_panes", "required": false},
-		"#another_furniture:lattices",
-		"#minecraft:fences"
+		{"id": "minecraft:iron_bars", "required": false},
+		"#minecraft:fences",
+		{"id": "#another_furniture:lattices", "required": false}
     ]
 }

@@ -1,16 +1,14 @@
 {
-    "values": [
-        "another_furniture:oak_shelf",
-        "another_furniture:spruce_shelf",
-        "another_furniture:birch_shelf",
-        "another_furniture:jungle_shelf",
-        "another_furniture:acacia_shelf",
-        "another_furniture:dark_oak_shelf",
-        {
-            "id": "another_furniture:mangrove_shelf",
-            "required": false
-        },
-        "another_furniture:crimson_shelf",
-        "another_furniture:warped_shelf"
-    ]
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_shelf", "required": false},
+		{"id": "another_furniture:spruce_shelf", "required": false},
+		{"id": "another_furniture:birch_shelf", "required": false},
+		{"id": "another_furniture:jungle_shelf", "required": false},
+		{"id": "another_furniture:acacia_shelf", "required": false},
+		{"id": "another_furniture:dark_oak_shelf", "required": false},
+		{"id": "another_furniture:crimson_shelf", "required": false},
+		{"id": "another_furniture:warped_shelf", "required": false},
+		{"id": "another_furniture:mangrove_shelf", "required": false}
+	]
 }

@@ -47,6 +47,18 @@ public class AFBlockEntityTypes {
                     AFBlocks.CRIMSON_DRAWER.get(),
                     AFBlocks.WARPED_DRAWER.get()
             ));
+//    public static final Supplier<BlockEntityType<GrandfatherClockBlockEntity>> GRANDFATHER_CLOCK = AFRegistry.registerBlockEntityType("grandfather_clock",
+//            () -> AFRegistry.createBlockEntityType(GrandfatherClockBlockEntity::new,
+//                    AFBlocks.OAK_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.SPRUCE_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.BIRCH_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.JUNGLE_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.ACACIA_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.DARK_OAK_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.MANGROVE_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.CRIMSON_GRANDFATHER_CLOCK.get(),
+//                    AFBlocks.WARPED_GRANDFATHER_CLOCK.get()
+//            ));
 
 //    public static final Supplier<BlockEntityType<TombstoneBlockEntity>> TOMBSTONE = AFRegistry.registerBlockEntityType("tombstone",
 //            () -> AFRegistry.createBlockEntityType(TombstoneBlockEntity::new,

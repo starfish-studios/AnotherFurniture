@@ -1,16 +1,14 @@
 {
-    "values": [
-        "another_furniture:oak_shutter",
-        "another_furniture:spruce_shutter",
-        "another_furniture:birch_shutter",
-        "another_furniture:jungle_shutter",
-        "another_furniture:acacia_shutter",
-        "another_furniture:dark_oak_shutter",
-        {
-            "id": "another_furniture:mangrove_shutter",
-            "required": false
-        },
-        "another_furniture:crimson_shutter",
-        "another_furniture:warped_shutter"
-    ]
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_shutter", "required": false},
+		{"id": "another_furniture:spruce_shutter", "required": false},
+		{"id": "another_furniture:birch_shutter", "required": false},
+		{"id": "another_furniture:jungle_shutter", "required": false},
+		{"id": "another_furniture:acacia_shutter", "required": false},
+		{"id": "another_furniture:dark_oak_shutter", "required": false},
+		{"id": "another_furniture:crimson_shutter", "required": false},
+		{"id": "another_furniture:warped_shutter", "required": false},
+		{"id": "another_furniture:mangrove_shutter", "required": false}
+	]
 }

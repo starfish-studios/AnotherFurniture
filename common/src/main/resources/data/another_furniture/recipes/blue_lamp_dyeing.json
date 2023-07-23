@@ -3,7 +3,7 @@
     "group": "lamps",
     "ingredients": [
         {
-            "item": "another_furniture:blue_dye"
+            "item": "minecraft:blue_dye"
         },
         {
             "item": "another_furniture:white_lamp"

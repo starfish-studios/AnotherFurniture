@@ -35,13 +35,16 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
+    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final DirectionProperty FACING_VERTICAL = ModBlockStateProperties.FACING_VERTICAL;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    protected static final VoxelShape EAST = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
-    protected static final VoxelShape WEST = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
     protected static final VoxelShape NORTH = Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape EAST = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
+    protected static final VoxelShape SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
+    protected static final VoxelShape WEST = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+
+
 
     public CurtainBlock(Properties properties) {
         super(properties);
@@ -49,7 +52,8 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
                 .setValue(FACING, Direction.NORTH)
                 .setValue(TYPE, HorizontalConnectionType.SINGLE)
                 .setValue(FACING_VERTICAL, Direction.DOWN)
-                .setValue(OPEN, true)
+                .setValue(OPEN, false)
+                //.setValue(POWERED, false)
                 .setValue(WATERLOGGED, false));
     }
 
@@ -79,17 +83,29 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
         if (!level.getBlockState(pos.below()).canBeReplaced(context) || level.isOutsideBuildHeight(pos.below())) return null;
 
         Direction facing = context.getClickedFace();
+
+        BlockPos clickedPos = context.getClickedPos();
+        Direction clickedFace = context.getClickedFace();
+        BlockPos clickedFacingPos = clickedPos.relative(clickedFace.getOpposite());
+        BlockState clickedFacingState = level.getBlockState(clickedFacingPos);
+
+        // Smart facing, if right clicked on another curtain
+        if (clickedFacingState.getBlock() instanceof CurtainBlock) {
+            Direction clickedFacingFace = clickedFacingState.getValue(FACING);
+            // Do not do smart placement if relative front of back of curtain
+            if (clickedFacingFace != clickedFace && clickedFacingFace.getOpposite() != clickedFace) facing = clickedFacingFace;
+        }
         if (facing.getAxis().isVertical()) facing = context.getHorizontalDirection().getOpposite();
 
 
-        BlockState l_state = level.getBlockState(pos.relative(facing.getClockWise()));
-        BlockState r_state = level.getBlockState(pos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof CurtainBlock && l_state.getValue(FACING_VERTICAL) == Direction.DOWN && (l_state.getValue(FACING) == facing));
-        boolean r_side = (r_state.getBlock() instanceof CurtainBlock && r_state.getValue(FACING_VERTICAL) == Direction.DOWN && (r_state.getValue(FACING) == facing));
+        BlockState stateL = level.getBlockState(pos.relative(facing.getClockWise()));
+        BlockState stateR = level.getBlockState(pos.relative(facing.getCounterClockWise()));
+        boolean sideL = (stateL.getBlock() instanceof CurtainBlock && stateL.getValue(FACING_VERTICAL) == Direction.DOWN && (stateL.getValue(FACING) == facing));
+        boolean sideR = (stateR.getBlock() instanceof CurtainBlock && stateR.getValue(FACING_VERTICAL) == Direction.DOWN && (stateR.getValue(FACING) == facing));
 
-        boolean open = l_side && r_side ? l_state.getValue(OPEN) || r_state.getValue(OPEN) : (r_side ? r_state.getValue(OPEN) : (l_side ? l_state.getValue(OPEN) : true));
+        boolean open = sideL && sideR ? stateL.getValue(OPEN) || stateR.getValue(OPEN) : (sideR ? stateR.getValue(OPEN) : (sideL ? stateL.getValue(OPEN) : true));
 
-        return this.defaultBlockState().setValue(FACING, facing).setValue(OPEN, open);
+        return this.defaultBlockState().setValue(FACING, facing).setValue(OPEN, open).setValue(WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
     }
 
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
@@ -97,29 +113,28 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
         if (level.isClientSide) return;
 
         BlockPos blockPos = pos.below();
-        level.setBlock(blockPos, state.setValue(FACING_VERTICAL, Direction.UP), 3);
+
+        level.setBlock(blockPos, state.setValue(FACING_VERTICAL, Direction.UP).setValue(WATERLOGGED, level.getFluidState(blockPos).getType() == Fluids.WATER), 3);
         level.blockUpdated(pos, Blocks.AIR);
         state.updateNeighbourShapes(level, pos, 3);
     }
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         Direction facing = state.getValue(FACING);
         Direction facing_vertical = state.getValue(FACING_VERTICAL);
         if (direction.getAxis().isVertical()) {
             BlockState stateOpposite = level.getBlockState(currentPos.relative(facing_vertical));
-            if (!stateOpposite.is(this) || stateOpposite.getValue(FACING_VERTICAL) == facing_vertical) return Blocks.AIR.defaultBlockState();
+            if (!(stateOpposite.getBlock() instanceof CurtainBlock) || stateOpposite.getValue(FACING_VERTICAL) == facing_vertical) return Blocks.AIR.defaultBlockState();
         }
         if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
 
-        BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
-        BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
-        boolean l_side = (l_state.getBlock() instanceof CurtainBlock && l_state.getValue(FACING_VERTICAL) == facing_vertical && (l_state.getValue(FACING) == facing));
-        boolean r_side = (r_state.getBlock() instanceof CurtainBlock && r_state.getValue(FACING_VERTICAL) == facing_vertical && (r_state.getValue(FACING) == facing));
-        HorizontalConnectionType type = l_side && r_side ? HorizontalConnectionType.MIDDLE : (r_side ? HorizontalConnectionType.LEFT : (l_side ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
+        BlockState stateL = level.getBlockState(currentPos.relative(facing.getClockWise()));
+        BlockState stateR = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));
+        boolean sideL = (stateL.getBlock() instanceof CurtainBlock && stateL.getValue(FACING_VERTICAL) == facing_vertical && (stateL.getValue(FACING) == facing));
+        boolean sideR = (stateR.getBlock() instanceof CurtainBlock && stateR.getValue(FACING_VERTICAL) == facing_vertical && (stateR.getValue(FACING) == facing));
+        HorizontalConnectionType type = sideL && sideR ? HorizontalConnectionType.MIDDLE : (sideR ? HorizontalConnectionType.LEFT : (sideL ? HorizontalConnectionType.RIGHT : HorizontalConnectionType.SINGLE));
 
         return state.setValue(TYPE, type);
     }
@@ -147,7 +162,7 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
         BlockPos facingHorizontalPos = pos.relative(dir);
         BlockState facingHorizontalState = level.getBlockState(facingHorizontalPos);
 
-        if (facingHorizontalState.is(this) && facingHorizontalState.getValue(FACING) == facing &&
+        if (facingHorizontalState.getBlock() instanceof CurtainBlock && facingHorizontalState.getValue(FACING) == facing &&
                 state.getValue(FACING_VERTICAL) == facingHorizontalState.getValue(FACING_VERTICAL)) {
             toggleVertical(facingHorizontalState, level, facingHorizontalPos, open);
             toggleHorizontal(facingHorizontalState, level, facingHorizontalPos, open, facing, dir);
@@ -160,7 +175,7 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
         BlockState facingVerticalState = level.getBlockState(facingVerticalPos);
         level.setBlockAndUpdate(pos, state.setValue(OPEN, open));
 
-        if (facingVerticalState.is(this) && facingVertical == facingVerticalState.getValue(FACING_VERTICAL).getOpposite())
+        if (facingVerticalState.getBlock() instanceof CurtainBlock && facingVertical == facingVerticalState.getValue(FACING_VERTICAL).getOpposite())
             level.setBlockAndUpdate(facingVerticalPos, facingVerticalState.setValue(OPEN, open));
     }
 

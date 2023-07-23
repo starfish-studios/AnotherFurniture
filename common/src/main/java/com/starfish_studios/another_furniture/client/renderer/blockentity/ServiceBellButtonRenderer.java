@@ -34,19 +34,16 @@ public class ServiceBellButtonRenderer implements BlockEntityRenderer<ServiceBel
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
         partdefinition.addOrReplaceChild("button", CubeListBuilder.create().texOffs(19, 11).addBox(-9.0F, -7.0F, 7.0F, 2.0F, 1.0F, 2.0F), PartPose.ZERO);
-        partdefinition.getChild("button").addOrReplaceChild("button1", CubeListBuilder.create().texOffs(0, 0).addBox(-8.5F, -6.0F, 7.5F, 1.0F, 1.0F, 1.0F), PartPose.ZERO);
+        partdefinition.getChild("button").addOrReplaceChild("button_shaft", CubeListBuilder.create().texOffs(0, 0).addBox(-8.5F, -6.0F, 7.5F, 1.0F, 1.0F, 1.0F), PartPose.ZERO);
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
 
     @Override
     public void render(ServiceBellBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
-        float f = (float)blockEntity.ticks + partialTick;
         float f3 = 0f;
-        if (blockEntity.shaking) {
-            f3 = -(blockEntity.ticks / 25.0f);
+        if (blockEntity.pressed) f3 = -(blockEntity.ticks / 25.0f);
 
-        }
         poseStack.translate(0, f3, 0);
 
 

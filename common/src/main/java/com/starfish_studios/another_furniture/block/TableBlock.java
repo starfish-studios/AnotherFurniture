@@ -38,11 +38,22 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
     protected static final VoxelShape LEG_3 = Block.box(0.0D, 0.0D, 14.0D, 2.0D, 14.0D, 16.0D);
     protected static final VoxelShape LEG_4 = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 14.0D, 2.0D);
     protected static final VoxelShape[] SHAPES = new VoxelShape[]{
-            TOP, Shapes.or(TOP, LEG_1), Shapes.or(TOP, LEG_2), Shapes.or(TOP, LEG_1, LEG_2),
-            Shapes.or(TOP, LEG_3), Shapes.or(TOP, LEG_1, LEG_3), Shapes.or(TOP, LEG_2, LEG_3),
-            Shapes.or(TOP, LEG_1, LEG_2, LEG_3), Shapes.or(TOP, LEG_4), Shapes.or(TOP, LEG_1, LEG_4),
-            Shapes.or(TOP, LEG_2, LEG_4), Shapes.or(TOP, LEG_1, LEG_2, LEG_4), Shapes.or(TOP, LEG_3, LEG_4),
-            Shapes.or(TOP, LEG_1, LEG_3, LEG_4), Shapes.or(TOP, LEG_2, LEG_3, LEG_4), Shapes.or(TOP, LEG_1, LEG_2, LEG_3, LEG_4)
+            TOP,
+            Shapes.or(TOP, LEG_1),
+            Shapes.or(TOP, LEG_2),
+            Shapes.or(TOP, LEG_1, LEG_2),
+            Shapes.or(TOP, LEG_3),
+            Shapes.or(TOP, LEG_1, LEG_3),
+            Shapes.or(TOP, LEG_2, LEG_3),
+            Shapes.or(TOP, LEG_1, LEG_2, LEG_3),
+            Shapes.or(TOP, LEG_4),
+            Shapes.or(TOP, LEG_1, LEG_4),
+            Shapes.or(TOP, LEG_2, LEG_4),
+            Shapes.or(TOP, LEG_1, LEG_2, LEG_4),
+            Shapes.or(TOP, LEG_3, LEG_4),
+            Shapes.or(TOP, LEG_1, LEG_3, LEG_4),
+            Shapes.or(TOP, LEG_2, LEG_3, LEG_4),
+            Shapes.or(TOP, LEG_1, LEG_2, LEG_3, LEG_4)
     };
 
     public TableBlock(Properties properties) {
@@ -78,9 +89,7 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
+        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         return getConnections(state, level, currentPos);
     }
 
@@ -132,6 +141,6 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public boolean validConnection(BlockState state) {
-        return this.material == Material.METAL ? state.is(this) : state.is(AFBlockTags.TABLES_CONNECTABLE);
+        return state.is(AFBlockTags.TABLES_CONNECTABLE);
     }
 }

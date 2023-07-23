@@ -33,7 +33,9 @@ public class DrawerBlock extends BaseEntityBlock {
 
     public DrawerBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(OPEN, false));
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -48,20 +50,20 @@ public class DrawerBlock extends BaseEntityBlock {
     }
 
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof Container) {
-                Containers.dropContents(level, pos, (Container)blockEntity);
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, level, pos, newState, isMoving);
+        if (state.is(newState.getBlock())) return;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof Container) {
+            Containers.dropContents(level, pos, (Container)blockEntity);
+            level.updateNeighbourForOutputSignal(pos, this);
         }
+        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
-            drawerBlockEntity.recheckOpen();
+        if (blockEntity instanceof DrawerBlockEntity drawerBE) {
+            drawerBE.recheckOpen();
         }
     }
 

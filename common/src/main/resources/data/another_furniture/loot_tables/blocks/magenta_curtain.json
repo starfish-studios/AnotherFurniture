@@ -11,7 +11,7 @@
                             "condition": "minecraft:block_state_property",
                             "block": "another_furniture:magenta_curtain",
                             "properties": {
-                                "top": "true"
+                                "facing_vertical": "down"
                             }
                         }
                     ],

@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,7 +19,7 @@ public class TallStoolBlock extends StoolBlock {
     }
 
     @Override
-    public float seatHeight() {
+    public float seatHeight(BlockState state) {
         return 0.7F;
     }
 
@@ -26,6 +27,4 @@ public class TallStoolBlock extends StoolBlock {
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AABB;
     }
-
-
 }

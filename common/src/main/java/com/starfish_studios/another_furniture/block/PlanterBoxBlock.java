@@ -4,6 +4,7 @@ import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFItemTags;
+import com.starfish_studios.another_furniture.util.block.BlockPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
@@ -77,8 +78,8 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         boolean attached = state.getValue(ATTACHED);
         if (direction == Direction.UP && attached && above.isFaceSturdy(level, currentPos, Direction.DOWN)) {
             BlockEntity blockentity = level.getBlockEntity(currentPos);
-            if (blockentity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) {
-                planterBoxBlockEntity.removeAllItems();
+            if (blockentity instanceof PlanterBoxBlockEntity planterBoxBE) {
+                planterBoxBE.removeAllItems();
                 return state;
             }
         }
@@ -120,22 +121,14 @@ public class PlanterBoxBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (!(blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity)) {
-            return InteractionResult.PASS;
-        }
+        if (!(blockEntity instanceof PlanterBoxBlockEntity planterBoxBE)) return InteractionResult.PASS;
 
         ItemStack stack = player.getItemInHand(hand);
-        if (!stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) || stack.is(AFItemTags.PLANTER_BOX_BANNED)) {
-            return InteractionResult.PASS;
-        }
+        if (!stack.is(AFItemTags.PLANTER_BOX_PLACEABLES) || stack.is(AFItemTags.PLANTER_BOX_BANNED)) return InteractionResult.PASS;
 
         Direction facing = state.getValue(FACING);
-        boolean slot_0;
-        if (facing.getAxis() == Direction.Axis.X) slot_0 = hit.getLocation().z - (double)hit.getBlockPos().getZ() > 0.5D;
-        else slot_0 = hit.getLocation().x - (double)hit.getBlockPos().getX() > 0.5D;
-
-        if (facing == Direction.SOUTH || facing == Direction.WEST) slot_0 = !slot_0;
-        if (!level.isClientSide && planterBoxBlockEntity.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot_0 ? 0 : 1))
+        int slot = BlockPart.get1D(pos, hit.getLocation(), facing.getClockWise(), 2);
+        if (!level.isClientSide && planterBoxBE.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot))
             return InteractionResult.SUCCESS;
 
         return InteractionResult.CONSUME;
@@ -146,7 +139,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         if (state.is(newState.getBlock())) return;
 
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBlockEntity) Containers.dropContents(level, pos, planterBoxBlockEntity.getItems());
+        if (blockEntity instanceof PlanterBoxBlockEntity planterBoxBE) Containers.dropContents(level, pos, planterBoxBE.getItems());
         super.onRemove(state, level, pos, newState, isMoving);
     }
 

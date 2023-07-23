@@ -1,0 +1,6 @@
+{
+	"parent": "another_furniture:block/template/curtain_left_bottom",
+	"textures": {
+		"curtain": "another_furniture:block/curtain2/white_open_bottom"
+	}
+}

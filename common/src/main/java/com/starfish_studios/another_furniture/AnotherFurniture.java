@@ -20,6 +20,9 @@ public class AnotherFurniture {
         AFEntityTypes.init();
         AFBlockEntityTypes.init();
 
+        AFItemTags.init();
+        AFBlockTags.init();
+
         IntegrationHandler.init();
     }
 }

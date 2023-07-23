@@ -52,8 +52,8 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public float seatHeight() {
-        return 0.2F;
+    public float seatHeight(BlockState state) {
+        return state.getValue(LOW) ? 0.15F : 0.2F;
     }
 
     @Override
@@ -93,29 +93,31 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter level, Entity entity) {
+    public void updateEntityAfterFallOn(BlockGetter reader, Entity entity) {
         if (entity.isSuppressingBounce()) {
-            super.updateEntityAfterFallOn(level, entity);
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0, 0.0, 1.0));
         } else {
             this.bounceUp(entity);
         }
+        if (entity instanceof Player) return;
+        super.updateEntityAfterFallOn(reader, entity);
     }
 
     private void bounceUp(Entity entity) {
         Vec3 vec3 = entity.getDeltaMovement();
-        if (vec3.y < 0.0D) {
-            double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
-            entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
-        }
-    }
+        if (vec3.y >= 0.0D) return;
+        double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
+        entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
 
-    @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
-        return false;
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(LOW, WATERLOGGED);
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+        return false;
     }
 }

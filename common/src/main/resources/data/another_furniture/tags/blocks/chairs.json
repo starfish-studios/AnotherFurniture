@@ -1,16 +1,14 @@
 {
-    "values": [
-        "another_furniture:oak_chair",
-        "another_furniture:spruce_chair",
-        "another_furniture:birch_chair",
-        "another_furniture:jungle_chair",
-        "another_furniture:acacia_chair",
-        "another_furniture:dark_oak_chair",
-        {
-            "id": "another_furniture:mangrove_chair",
-            "required": false
-        },
-        "another_furniture:crimson_chair",
-        "another_furniture:warped_chair"
-    ]
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_chair", "required": false},
+		{"id": "another_furniture:spruce_chair", "required": false},
+		{"id": "another_furniture:birch_chair", "required": false},
+		{"id": "another_furniture:jungle_chair", "required": false},
+		{"id": "another_furniture:acacia_chair", "required": false},
+		{"id": "another_furniture:dark_oak_chair", "required": false},
+		{"id": "another_furniture:crimson_chair", "required": false},
+		{"id": "another_furniture:warped_chair", "required": false},
+		{"id": "another_furniture:mangrove_chair", "required": false}
+	]
 }

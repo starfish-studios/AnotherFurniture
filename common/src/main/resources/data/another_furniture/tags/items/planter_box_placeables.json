@@ -4,14 +4,6 @@
         "#minecraft:small_flowers",
         "#minecraft:saplings",
         "#minecraft:leaves",
-        {
-            "id": "#quark:hedges",
-            "required": false
-        },
-        {
-            "id": "minecraft:mangrove_roots",
-            "required": false
-        },
         "minecraft:sea_pickle",
         "minecraft:bamboo",
         "minecraft:red_mushroom",
@@ -19,33 +11,12 @@
         "minecraft:crimson_fungus",
         "minecraft:warped_fungus",
         "minecraft:fern",
-        {
-            "id": "quark:glow_shroom",
-            "required": false
-        },
-        {
-            "id": "quark:glow_lichen_growth",
-            "required": false
-        },
-        {
-            "id": "farmersdelight:red_mushroom_colony",
-            "required": false
-        },
-        {
-            "id": "farmersdelight:brown_mushroom_colony",
-            "required": false
-        },
-        {
-            "id": "biomesoplenty:glowshroom",
-            "required": false
-        },
-        {
-            "id": "biomesoplenty:toadstool",
-            "required": false
-        },
-        {
-            "id": "biomesoplenty:clover",
-            "required": false
-        }
+		{"id": "minecraft:mangrove_roots", "required": false},
+		{"id": "#forge:mushrooms", "required": false},
+		{"id": "#c:mushrooms", "required": false},
+		{"id": "#quark:hedges", "required": false},
+        {"id": "quark:glow_lichen_growth", "required": false},
+        {"id": "biomesoplenty:toadstool", "required": false},
+        {"id": "biomesoplenty:clover", "required": false}
     ]
 }

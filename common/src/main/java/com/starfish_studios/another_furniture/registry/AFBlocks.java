@@ -7,10 +7,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.RailBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -35,15 +35,15 @@ public class AFBlocks {
 
     // Version 1 / Release
     // Chair
-    public static final Supplier<Block> OAK_CHAIR = registerBlock("oak_chair", () -> new ChairBlock(1, Properties.wood));
-    public static final Supplier<Block> SPRUCE_CHAIR = registerBlock("spruce_chair", () -> new ChairBlock(2, Properties.wood));
-    public static final Supplier<Block> BIRCH_CHAIR = registerBlock("birch_chair", () -> new ChairBlock(3, Properties.wood));
-    public static final Supplier<Block> JUNGLE_CHAIR = registerBlock("jungle_chair", () -> new ChairBlock(4, Properties.wood));
-    public static final Supplier<Block> ACACIA_CHAIR = registerBlock("acacia_chair", () -> new ChairBlock(5, Properties.wood));
-    public static final Supplier<Block> DARK_OAK_CHAIR = registerBlock("dark_oak_chair", () -> new ChairBlock(6, Properties.wood));
-    public static final Supplier<Block> MANGROVE_CHAIR = registerBlock("mangrove_chair", () -> new ChairBlock(7, Properties.wood));
-    public static final Supplier<Block> CRIMSON_CHAIR = registerBlock("crimson_chair", () -> new ChairBlock(8, Properties.nether_wood));
-    public static final Supplier<Block> WARPED_CHAIR = registerBlock("warped_chair", () -> new ChairBlock(9, Properties.nether_wood));
+    public static final Supplier<Block> OAK_CHAIR = registerBlock("oak_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> SPRUCE_CHAIR = registerBlock("spruce_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> BIRCH_CHAIR = registerBlock("birch_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> JUNGLE_CHAIR = registerBlock("jungle_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> ACACIA_CHAIR = registerBlock("acacia_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> DARK_OAK_CHAIR = registerBlock("dark_oak_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> MANGROVE_CHAIR = registerBlock("mangrove_chair", () -> new ChairBlock(Properties.wood));
+    public static final Supplier<Block> CRIMSON_CHAIR = registerBlock("crimson_chair", () -> new ChairBlock(Properties.nether_wood));
+    public static final Supplier<Block> WARPED_CHAIR = registerBlock("warped_chair", () -> new ChairBlock(Properties.nether_wood));
 
     // Shelf
     public static final Supplier<Block> OAK_SHELF = registerBlock("oak_shelf", () -> new ShelfBlock(Properties.wood));
@@ -228,18 +228,26 @@ public class AFBlocks {
 //    public static final Supplier<Block> BLACK_AWNING = registerBlock("black_awning", () -> new AwningBlock(Properties.awning));
 //
     // Lattices
-    public static final Supplier<Block> OAK_LATTICE = registerBlock("oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> SPRUCE_LATTICE = registerBlock("spruce_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> BIRCH_LATTICE = registerBlock("birch_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-    public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
-    public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
-
-    // Paths
-    //public static final Supplier<Block> OAK_PATH = registerBlock("oak_path.json", () -> new PathBlock(Block.Properties.of(Material.WOOD).strength(0.7F).sound(SoundType.WOOD).noOcclusion().noCollission()));
+//    public static final Supplier<Block> OAK_LATTICE = registerBlock("oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> SPRUCE_LATTICE = registerBlock("spruce_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> BIRCH_LATTICE = registerBlock("birch_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
+//    public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
+//    public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
+//
+//    // Grandfather Clock
+//    public static final Supplier<Block> OAK_GRANDFATHER_CLOCK = registerBlock("oak_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> SPRUCE_GRANDFATHER_CLOCK = registerBlock("spruce_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> BIRCH_GRANDFATHER_CLOCK = registerBlock("birch_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> JUNGLE_GRANDFATHER_CLOCK = registerBlock("jungle_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> ACACIA_GRANDFATHER_CLOCK = registerBlock("acacia_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> DARK_OAK_GRANDFATHER_CLOCK = registerBlock("dark_oak_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> MANGROVE_GRANDFATHER_CLOCK = registerBlock("mangrove_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
+//    public static final Supplier<Block> CRIMSON_GRANDFATHER_CLOCK = registerBlock("crimson_grandfather_clock", () -> new GrandfatherClockBlock(Properties.nether_wood));
+//    public static final Supplier<Block> WARPED_GRANDFATHER_CLOCK = registerBlock("warped_grandfather_clock", () -> new GrandfatherClockBlock(Properties.nether_wood));
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);

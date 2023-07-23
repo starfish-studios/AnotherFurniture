@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/template/curtain_closed_top",
+    "textures": {
+        "curtain": "another_furniture:block/curtain2/pink_closed_top"
+    }
+}

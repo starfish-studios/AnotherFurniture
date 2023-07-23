@@ -63,7 +63,7 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
         level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
 
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (blockentity instanceof ServiceBellBlockEntity servicebellblockentity) servicebellblockentity.onHit();
+        if (blockentity instanceof ServiceBellBlockEntity servicebellBE) servicebellBE.onHit();
 
         level.playSound(null, pos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(level.isClientSide);

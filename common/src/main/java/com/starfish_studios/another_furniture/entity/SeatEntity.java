@@ -9,11 +9,21 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public class SeatEntity extends Entity {
     public SeatEntity(Level level) {
@@ -21,24 +31,24 @@ public class SeatEntity extends Entity {
         this.noPhysics = true;
     }
 
-    public SeatEntity(Level level, BlockPos source, double yOffset) {
+    public SeatEntity(Level level, BlockPos pos) {
         this(level);
-        this.setPos(source.getX() + 0.5, source.getY() + yOffset, source.getZ() + 0.5);
+        this.setPos(pos.getX() + 0.5, pos.getY() + 0.001, pos.getZ() + 0.5);
     }
 
     @Override
     public void tick() {
         if (this.level.isClientSide) return;
-        //super.tick();
-
 
         BlockState state = this.level.getBlockState(this.blockPosition());
-        boolean remove = true;
-        if(state.getBlock() instanceof SeatBlock seatBlock) remove = !seatBlock.isSittable(state);
-        if(!this.getPassengers().isEmpty() && !remove) return;
+        boolean canSit;
+        if (state.getBlock() instanceof SeatBlock seatBlock) canSit = seatBlock.isSittable(state);
+        else canSit = false;
+        if (isVehicle() && canSit) return;
 
-        this.remove(RemovalReason.DISCARDED);
-        this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());
+
+        this.discard();
+        this.level.updateNeighbourForOutputSignal(this.blockPosition(), this.level.getBlockState(this.blockPosition()).getBlock());
     }
 
     @Override
@@ -51,9 +61,24 @@ public class SeatEntity extends Entity {
     protected void addAdditionalSaveData(CompoundTag compound) {}
 
     @Override
-    public double getPassengersRidingOffset()
-    {
-        return 0.0;
+    public double getPassengersRidingOffset() {
+        List<Entity> passengers = this.getPassengers();
+        if (passengers.isEmpty()) return 0.0;
+        double seatHeight = 0.0;
+        BlockState state = level.getBlockState(this.blockPosition());
+        if (state.getBlock() instanceof SeatBlock seatBlock) seatHeight = seatBlock.seatHeight(state);
+
+        return seatHeight + getEntitySeatOffset(passengers.get(0));
+    }
+
+    public static double getEntitySeatOffset(Entity entity) {
+        if (entity instanceof Slime) return 1 / 4f;
+        if (entity instanceof Parrot) return 1 / 16f;
+        if (entity instanceof Skeleton) return 1 / 8f;
+        if (entity instanceof Creeper) return 1 / 4f;
+        if (entity instanceof Cat) return 1 / 8f;
+        if (entity instanceof Wolf) return 1 / 16f;
+        return 0;
     }
 
     @Override
@@ -73,20 +98,15 @@ public class SeatEntity extends Entity {
         Vec3 safeVec;
         BlockState state = this.level.getBlockState(pos);
         if (state.getBlock() instanceof SeatBlock seatBlock) {
-            //pos = pos.offset(seatBlock.dismountLocationOffset());
             safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, seatBlock.primaryDismountLocation(this.level, state, pos), false);
-            if (safeVec != null) {
-                return safeVec.add(0, 0.25, 0);
-            }
+            if (safeVec != null) return safeVec.add(0, 0.25, 0);
         }
 
         Direction original = this.getDirection();
         Direction[] offsets = {original, original.getClockWise(), original.getCounterClockWise(), original.getOpposite()};
         for(Direction dir : offsets) {
             safeVec = DismountHelper.findSafeDismountLocation(entity.getType(), this.level, pos.relative(dir), false);
-            if (safeVec != null) {
-                return safeVec.add(0, 0.25, 0);
-            }
+            if (safeVec != null) return safeVec.add(0, 0.25, 0);
         }
         return super.getDismountLocationForPassenger(entity);
     }
@@ -95,18 +115,13 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.blockPosition();
         BlockState state = this.level.getBlockState(pos);
-        if (state.getBlock() instanceof SeatBlock seatBlock) {
-            passenger.setYRot(seatBlock.setRiderRotation(state, passenger));
-        }
+        if (state.getBlock() instanceof SeatBlock seatBlock) passenger.setYRot(seatBlock.setRiderRotation(state, passenger));
         super.addPassenger(passenger);
     }
 
     @Override
-    public double getMyRidingOffset() {
-        Block block = level.getBlockState(this.blockPosition()).getBlock();
-        if (block instanceof SeatBlock seatBlock) {
-            return seatBlock.seatHeight();
-        }
-        return super.getMyRidingOffset();
+    protected void removePassenger(Entity entity) {
+        super.removePassenger(entity);
+        if (entity instanceof TamableAnimal ta) ta.setInSittingPose(false);
     }
 }

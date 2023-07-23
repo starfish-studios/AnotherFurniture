@@ -23,7 +23,7 @@ public class AFBlockTags {
     public static final TagKey<Block> TALL_STOOLS = blockTag("tall_stools");
 
     public static final TagKey<Block> CHAIRS_TUCKABLE_UNDER = blockTag("chairs_tuckable_under");
-    public static final TagKey<Block> NO_SEAT_COLLISION_CHECK = blockTag("no_seat_collision_check");
+    public static final TagKey<Block> ABOVE_BYPASSES_SEAT_CHECK = blockTag("above_bypasses_seat_check");
     public static final TagKey<Block> TABLES_CONNECTABLE = blockTag("table_connectable");
     public static final TagKey<Block> DONT_CONNECT_TO_PANES = blockTag("dont_connect_to_panes");
     public static final TagKey<Block> CAN_USE_SHUTTERS_THROUGH = blockTag("can_use_shutters_through");
@@ -31,4 +31,6 @@ public class AFBlockTags {
     private static TagKey<Block> blockTag(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));
     }
+
+    public static void init() {}
 }
