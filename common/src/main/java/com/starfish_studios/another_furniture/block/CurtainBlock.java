@@ -180,11 +180,6 @@ public class CurtainBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public PushReaction getPistonPushReaction(BlockState state) {
-        return PushReaction.DESTROY;
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, TYPE, OPEN, FACING_VERTICAL, WATERLOGGED);
     }

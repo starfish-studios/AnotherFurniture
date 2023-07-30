@@ -1,7 +1,7 @@
 package com.starfish_studios.another_furniture.client.renderer.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.starfish_studios.another_furniture.block.ShelfBlock;
 import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -11,11 +11,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.TheEndGatewayRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 @Environment(value= EnvType.CLIENT)
 public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
@@ -31,7 +30,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
         NonNullList<ItemStack> items = blockEntity.getItems();
         poseStack.pushPose();
         poseStack.translate(0.5, 1.18, 0.5);
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation));
+        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
         for(int j = 0; j < items.size(); j++) {
             ItemStack stack = items.get(j);
             if (stack.isEmpty()) continue;
@@ -47,7 +46,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity> {
                 poseStack.translate(0.15 - 0.4 * (j % 2), 0.0, -0.225 + 0.4 * (j / 2));
                 poseStack.translate(fx, fy, fz);
                 poseStack.scale(0.375F, 0.375F, 0.375F);
-                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, packedLight, packedOverlay, poseStack, bufferSource, 0);
+                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, bufferSource, blockEntity.getLevel(), 0);
 
                 poseStack.popPose();
             }

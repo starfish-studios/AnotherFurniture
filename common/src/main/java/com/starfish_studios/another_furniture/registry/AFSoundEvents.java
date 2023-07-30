@@ -14,7 +14,7 @@ public class AFSoundEvents {
     public static final Supplier<SoundEvent> HAMMER_USE = register("item.furniture_hammer.use");
 
     public static Supplier<SoundEvent> register(String name) {
-        return AFRegistry.registerSoundEvent(name, () -> new SoundEvent(new ResourceLocation(AnotherFurniture.MOD_ID, name)));
+        return AFRegistry.registerSoundEvent(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(AnotherFurniture.MOD_ID, name)));
     }
 
     public static void init() {}

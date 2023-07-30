@@ -1,10 +1,10 @@
 {
 	"parent": "minecraft:block/block",
 	"textures": {
+		"particle": "another_furniture:block/planter_box/oak_top_sides",
 		"top_sides": "another_furniture:block/planter_box/oak_top_sides",
 		"bottom": "another_furniture:block/planter_box/oak_bottom",
-		"dirt": "minecraft:block/dirt",
-		"particle": "#top_sides"
+		"dirt": "block/dirt"
 	},
 	"elements": [
 		{
@@ -27,7 +27,7 @@
 			"faces": {
 				"north": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
 				"east": {"uv": [0, 8, 1, 9], "texture": "#top_sides", "cullface": "east"},
-				"south": {"uv": [0, 8, 16, 9], "texture": "#top_sides", "cullface": "up"},
+				"south": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
 				"west": {"uv": [15, 8, 16, 9], "texture": "#top_sides", "cullface": "west"},
 				"up": {"uv": [0, 7, 16, 8], "texture": "#top_sides"}
 			}
@@ -37,7 +37,7 @@
 			"to": [16, 6, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
 			"faces": {
-				"north": {"uv": [0, 8, 16, 9], "texture": "#top_sides", "cullface": "up"},
+				"north": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
 				"east": {"uv": [0, 8, 1, 9], "texture": "#top_sides", "cullface": "east"},
 				"south": {"uv": [0, 8, 16, 9], "texture": "#top_sides"},
 				"west": {"uv": [15, 8, 16, 9], "texture": "#top_sides", "cullface": "west"},
@@ -50,7 +50,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -4]},
 			"faces": {
 				"east": {"uv": [1, 1, 9, 2], "texture": "#top_sides", "cullface": "east"},
-				"west": {"uv": [0, 1, 1, 7], "rotation": 90, "texture": "#top_sides", "cullface": "up"},
+				"west": {"uv": [0, 1, 1, 7], "rotation": 90, "texture": "#top_sides"},
 				"up": {"uv": [0, 1, 1, 7], "rotation": 90, "texture": "#top_sides"}
 			}
 		}

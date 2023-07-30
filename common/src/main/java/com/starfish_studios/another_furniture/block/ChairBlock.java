@@ -118,10 +118,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
         return super.use(state, level, pos, player, hand, hit);
     }
 
-    @Override
-    public PushReaction getPistonPushReaction(BlockState state) {
-        return state.getValue(TUCKED) ? PushReaction.BLOCK : super.getPistonPushReaction(state);
-    }
+    //@Override
+    //public PushReaction getPistonPushReaction(BlockState state) {
+     //   return state.getValue(TUCKED) ? PushReaction.BLOCK : super.getPistonPushReaction(state);
+    //}
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

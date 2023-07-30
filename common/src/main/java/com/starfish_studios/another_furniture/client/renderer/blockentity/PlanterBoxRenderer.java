@@ -1,7 +1,7 @@
 package com.starfish_studios.another_furniture.client.renderer.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.starfish_studios.another_furniture.block.PlanterBoxBlock;
 import com.starfish_studios.another_furniture.block.entity.PlanterBoxBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import org.joml.Vector3f;
 
 @Environment(value= EnvType.CLIENT)
 public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEntity> {
@@ -53,7 +54,7 @@ public class PlanterBoxRenderer implements BlockEntityRenderer<PlanterBoxBlockEn
             }
 
             poseStack.pushPose();
-            poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation)); // rotate based on direction
+            poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // rotate based on direction
             poseStack.translate(0.6f - 0.8 * i, 0.001f * i, 0.2f); // position each flower at left and right
             poseStack.translate(0f, 0.001f * i, 0.001f * i); // prevent z-clipping
 

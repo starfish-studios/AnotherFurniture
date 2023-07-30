@@ -3,34 +3,29 @@ package com.starfish_studios.another_furniture.registry;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.*;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.Supplier;
 
 public class AFBlocks {
 
     public static class Properties {
-        public static BlockBehaviour.Properties wood = Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
-        public static BlockBehaviour.Properties nether_wood = Block.Properties.of(Material.NETHER_WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
-        public static BlockBehaviour.Properties weak_wood = Block.Properties.of(Material.WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD);
-        public static BlockBehaviour.Properties nether_weak_wood = Block.Properties.of(Material.NETHER_WOOD).strength(1.0F, 3.0F).sound(SoundType.WOOD);
+        public static BlockBehaviour.Properties wood = Block.Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.WOOD);
+        public static BlockBehaviour.Properties nether_wood = Block.Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD).mapColor(MapColor.WOOD);
+        public static BlockBehaviour.Properties weak_wood = Block.Properties.of().strength(1.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.WOOD);
         
-        public static BlockBehaviour.Properties curtain = Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion();
-        public static BlockBehaviour.Properties service_bell = Block.Properties.of(Material.METAL).strength(2.0F, 3.0F).sound(SoundType.METAL);
+        public static BlockBehaviour.Properties curtain = Block.Properties.of().strength(0.1F).noOcclusion().sound(SoundType.WOOL).mapColor(MapColor.WOOL).pushReaction(PushReaction.DESTROY);
+        public static BlockBehaviour.Properties service_bell = Block.Properties.of().strength(2.0F, 3.0F).sound(SoundType.METAL).mapColor(MapColor.METAL);
         public static BlockBehaviour.Properties lamp = wood.lightLevel((blockState) -> blockState.hasProperty(BlockStateProperties.LIT) && blockState.getValue(BlockStateProperties.LIT) ? (blockState.getValue(ModBlockStateProperties.LEVEL_1_3) * 5) : 0);
-        public static BlockBehaviour.Properties tombstone = Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).sound(SoundType.STONE);
-        public static BlockBehaviour.Properties awning = Block.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion();
+        public static BlockBehaviour.Properties tombstone = Block.Properties.of().strength(3.0F, 3.0F).sound(SoundType.STONE).mapColor(MapColor.STONE);
+        public static BlockBehaviour.Properties awning = Block.Properties.of().strength(0.1F).sound(SoundType.WOOL).noOcclusion().ignitedByLava().mapColor(MapColor.WOOL);
     }
 
     // Version 1 / Release
@@ -130,7 +125,7 @@ public class AFBlocks {
     public static final Supplier<Block> SERVICE_BELL = registerBlock("service_bell", () -> new ServiceBellBlock(Properties.service_bell));
 
     // Version 3
-    //Bench
+    // Bench
     public static final Supplier<Block> OAK_BENCH = registerBlock("oak_bench", () -> new BenchBlock(Properties.wood));
     public static final Supplier<Block> SPRUCE_BENCH = registerBlock("spruce_bench", () -> new BenchBlock(Properties.wood));
     public static final Supplier<Block> BIRCH_BENCH = registerBlock("birch_bench", () -> new BenchBlock(Properties.wood));
@@ -141,6 +136,7 @@ public class AFBlocks {
     public static final Supplier<Block> CRIMSON_BENCH = registerBlock("crimson_bench", () -> new BenchBlock(Properties.nether_wood));
     public static final Supplier<Block> WARPED_BENCH = registerBlock("warped_bench", () -> new BenchBlock(Properties.nether_wood));
 
+    // Drawer
     public static final Supplier<Block> OAK_DRAWER = registerBlock("oak_drawer", () -> new DrawerBlock(Properties.wood));
     public static final Supplier<Block> SPRUCE_DRAWER = registerBlock("spruce_drawer", () -> new DrawerBlock(Properties.wood));
     public static final Supplier<Block> BIRCH_DRAWER = registerBlock("birch_drawer", () -> new DrawerBlock(Properties.wood));
@@ -251,7 +247,7 @@ public class AFBlocks {
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         Supplier<T> supplier = AFRegistry.registerBlock(name, block);
-        AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties().tab(AnotherFurniture.TAB)));
+        AFRegistry.registerItem(name, () -> new BlockItem(supplier.get(), new Item.Properties()));
         return supplier;
     }
 

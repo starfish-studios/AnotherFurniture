@@ -1,7 +1,6 @@
 {
     "replace": false,
     "values": [
-        "#another_furniture:tables",
-        "#another_furniture:drawers"
+        "#another_furniture:tables"
     ]
 }

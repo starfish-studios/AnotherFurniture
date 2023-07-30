@@ -1,5 +1,5 @@
 {
-	"parent": "minecraft:block/orientable",
+	"parent": "another_furniture:block/template/drawer",
 	"textures": {
 		"front": "another_furniture:block/drawer/dark_oak_front",
 		"side": "another_furniture:block/drawer/dark_oak_side",

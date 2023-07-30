@@ -57,14 +57,14 @@ public class AFRegistryImpl {
         return BlockEntityType.Builder.of(blockEntity::create, validBlocks).build(null);
     }
 
-    public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
-        return new CreativeModeTab(name.getNamespace()) {
-            @Override
-            public ItemStack makeIcon() {
-                return icon.get();
-            }
-        };
-    }
+//    public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
+//        return new CreativeModeTab(name.getNamespace()) {
+//            @Override
+//            public ItemStack makeIcon() {
+//                return icon.get();
+//            }
+//        };
+//    }
 
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
         EntityRenderers.register(type.get(), renderProvider);

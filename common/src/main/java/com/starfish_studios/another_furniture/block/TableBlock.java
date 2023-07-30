@@ -1,11 +1,11 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -24,13 +23,13 @@ import org.jetbrains.annotations.Nullable;
 
 public class TableBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty LEG1 = BooleanProperty.create("leg_1");
-    public static final BooleanProperty LEG2 = BooleanProperty.create("leg_2");
-    public static final BooleanProperty LEG3 = BooleanProperty.create("leg_3");
-    public static final BooleanProperty LEG4 = BooleanProperty.create("leg_4");
+    public static final BooleanProperty LEG1 = ModBlockStateProperties.LEG_1;
+    public static final BooleanProperty LEG2 = ModBlockStateProperties.LEG_2;
+    public static final BooleanProperty LEG3 = ModBlockStateProperties.LEG_3;
+    public static final BooleanProperty LEG4 = ModBlockStateProperties.LEG_4;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     //exists solely to update corner blocks
-    public static final BooleanProperty UPDATE = BooleanProperty.create("update");
+    public static final BooleanProperty UPDATE = ModBlockStateProperties.UPDATE;
 
     protected static final VoxelShape TOP = Block.box(0.0D, 13.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape LEG_1 = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 14.0D, 2.0D);
@@ -111,9 +110,23 @@ public class TableBlock extends Block implements SimpleWaterloggedBlock {
         boolean leg4 = state.getValue(LEG4);
         return switch(rotation) {
             case NONE -> state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-            case CLOCKWISE_90 -> state.setValue(FACING, rotation.rotate(state.getValue(FACING))).setValue(LEG1, leg4).setValue(LEG2, leg1).setValue(LEG3, leg2).setValue(LEG4, leg3);
-            case CLOCKWISE_180 -> state.setValue(FACING, rotation.rotate(state.getValue(FACING))).setValue(LEG1, leg3).setValue(LEG2, leg4).setValue(LEG3, leg1).setValue(LEG4, leg2);
-            case COUNTERCLOCKWISE_90 -> state.setValue(FACING, rotation.rotate(state.getValue(FACING))).setValue(LEG1, leg2).setValue(LEG2, leg3).setValue(LEG3, leg4).setValue(LEG4, leg1);
+            case CLOCKWISE_90 -> state
+                    .setValue(FACING, rotation.rotate(state.getValue(FACING)))
+                    .setValue(LEG1, leg4)
+                    .setValue(LEG2, leg1)
+                    .setValue(LEG3, leg2)
+                    .setValue(LEG4, leg3);
+            case CLOCKWISE_180 -> state
+                    .setValue(FACING, rotation.rotate(state.getValue(FACING)))
+                    .setValue(LEG1, leg3)
+                    .setValue(LEG2, leg4)
+                    .setValue(LEG3, leg1).setValue(LEG4, leg2);
+            case COUNTERCLOCKWISE_90 -> state
+                    .setValue(FACING, rotation.rotate(state.getValue(FACING)))
+                    .setValue(LEG1, leg2)
+                    .setValue(LEG2, leg3)
+                    .setValue(LEG3, leg4)
+                    .setValue(LEG4, leg1);
         };
     }
 

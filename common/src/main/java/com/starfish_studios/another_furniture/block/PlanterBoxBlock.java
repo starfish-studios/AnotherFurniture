@@ -85,9 +85,7 @@ public class PlanterBoxBlock extends BaseEntityBlock {
         }
 
         Direction facing = state.getValue(FACING);
-        if (attached && direction.getOpposite() == facing && !state.canSurvive(level, currentPos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
+        if (attached && direction.getOpposite() == facing && !state.canSurvive(level, currentPos)) return Blocks.AIR.defaultBlockState();
         if (direction != facing.getClockWise() && direction != facing.getCounterClockWise()) return state;
         BlockState l_state = level.getBlockState(currentPos.relative(facing.getClockWise()));
         BlockState r_state = level.getBlockState(currentPos.relative(facing.getCounterClockWise()));

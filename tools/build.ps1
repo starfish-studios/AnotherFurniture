@@ -1,2 +1,2 @@
 cd ..
-./gradlew build
+./gradlew build --stacktrace

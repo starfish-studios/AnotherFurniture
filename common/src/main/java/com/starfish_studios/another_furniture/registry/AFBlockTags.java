@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -29,7 +30,7 @@ public class AFBlockTags {
     public static final TagKey<Block> CAN_USE_SHUTTERS_THROUGH = blockTag("can_use_shutters_through");
 
     private static TagKey<Block> blockTag(String name) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation(AnotherFurniture.MOD_ID, name));
     }
 
     public static void init() {}

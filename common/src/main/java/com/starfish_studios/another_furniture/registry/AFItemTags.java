@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.registry;
 
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -30,7 +31,7 @@ public class AFItemTags {
     public static final TagKey<Item> FURNITURE_HAMMER = itemTag("furniture_hammers");
 
     private static TagKey<Item> itemTag(String name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(AnotherFurniture.MOD_ID, name));
+        return TagKey.create(Registries.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name));
     }
 
     public static void init() {}

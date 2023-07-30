@@ -1,6 +1,5 @@
 package com.starfish_studios.another_furniture.util.block;
 
-import com.starfish_studios.another_furniture.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;

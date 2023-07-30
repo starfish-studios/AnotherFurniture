@@ -71,20 +71,21 @@ public class SeatBlock extends Block {
 
     @Override
     public void updateEntityAfterFallOn(BlockGetter reader, Entity entity) {
-
         BlockPos pos = entity.blockPosition();
         if (reader.getBlockState(pos).getBlock() != this) {
             pos = pos.below(); // Might be a full height block, like the Tall Stool
-            if (reader.getBlockState(pos).getBlock() != this) return;
+            if (reader.getBlockState(pos).getBlock() != this) {
+                super.updateEntityAfterFallOn(reader, entity);
+                return;
+            }
         }
 
-        if (entity instanceof Player || !(entity instanceof LivingEntity) ||
-                !canBePickedUp(entity) || isSeatOccupied(entity.level, pos)) {
+        if (entity instanceof Player || !(entity instanceof LivingEntity) || !canBePickedUp(entity) || isSeatOccupied(entity.level(), pos)) {
             super.updateEntityAfterFallOn(reader, entity);
             return;
         }
 
-        sitDown(entity.level, pos, entity);
+        sitDown(entity.level(), pos, entity);
     }
 
     public static boolean isSeatBlocked(Level level, BlockPos pos) {
@@ -97,7 +98,7 @@ public class SeatBlock extends Block {
     }
 
     public static Optional<Entity> getLeashed(Player player) {
-        List<Entity> entities = player.level.getEntities((Entity) null, player.getBoundingBox().inflate(10), e -> true);
+        List<Entity> entities = player.level().getEntities((Entity) null, player.getBoundingBox().inflate(10), e -> true);
         for (Entity e : entities)
             if (e instanceof Mob mob && mob.getLeashHolder() == player && canBePickedUp(e)) return Optional.of(mob);
         return Optional.empty();

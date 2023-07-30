@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.block;
 
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
 import com.starfish_studios.another_furniture.block.properties.ShutterType;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +26,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -120,8 +120,6 @@ public class ShutterBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public InteractionResult toggleShutters(BlockState state, Level level, BlockPos pos, Player player) {
-        if (this.material == Material.METAL) return InteractionResult.PASS;
-
         state = state.cycle(OPEN);
         level.setBlock(pos, state, 3);
         if (player == null || !player.isCrouching()) toggleShutters(state, level, pos, state.getValue(OPEN));

@@ -24,4 +24,9 @@ public class ModBlockStateProperties {
     public static final BooleanProperty LOW = BooleanProperty.create("low");
     public static final BooleanProperty TUCKED = BooleanProperty.create("tucked");
     public static final IntegerProperty CHAIR_BACK = IntegerProperty.create("back", 1, 9);
+    public static final BooleanProperty LEG_1 = BooleanProperty.create("leg_1");
+    public static final BooleanProperty LEG_2 = BooleanProperty.create("leg_2");
+    public static final BooleanProperty LEG_3 = BooleanProperty.create("leg_3");
+    public static final BooleanProperty LEG_4 = BooleanProperty.create("leg_4");
+    public static final BooleanProperty UPDATE = BooleanProperty.create("update");
 }

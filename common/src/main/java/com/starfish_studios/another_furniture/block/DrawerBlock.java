@@ -62,9 +62,7 @@ public class DrawerBlock extends BaseEntityBlock {
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof DrawerBlockEntity drawerBE) {
-            drawerBE.recheckOpen();
-        }
+        if (blockEntity instanceof DrawerBlockEntity drawerBE) drawerBE.recheckOpen();
     }
 
     @Nullable
@@ -77,12 +75,10 @@ public class DrawerBlock extends BaseEntityBlock {
     }
 
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if (stack.hasCustomHoverName()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
-                drawerBlockEntity.setCustomName(stack.getHoverName());
-            }
-        }
+        if (!stack.hasCustomHoverName()) return;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) drawerBlockEntity.setCustomName(stack.getHoverName());
     }
 
     public boolean hasAnalogOutputSignal(BlockState state) {
