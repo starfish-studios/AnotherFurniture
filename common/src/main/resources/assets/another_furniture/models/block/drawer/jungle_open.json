@@ -1,6 +1,6 @@
 {
-	"parent": "another_furniture:block/drawer/jungle",
-	"textures": {
-		"front": "another_furniture:block/drawer/jungle_front_open"
-	}
+    "parent": "another_furniture:block/drawer/jungle",
+    "textures": {
+        "front": "another_furniture:block/drawer/jungle_front_open"
+    }
 }

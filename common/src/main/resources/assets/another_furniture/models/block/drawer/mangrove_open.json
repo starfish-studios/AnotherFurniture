@@ -1,6 +1,6 @@
 {
-	"parent": "another_furniture:block/drawer/mangrove",
-	"textures": {
-		"front": "another_furniture:block/drawer/mangrove_front_open"
-	}
+    "parent": "another_furniture:block/drawer/mangrove",
+    "textures": {
+        "front": "another_furniture:block/drawer/mangrove_front_open"
+    }
 }

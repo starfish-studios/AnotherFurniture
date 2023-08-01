@@ -9,6 +9,8 @@
 		{"id": "another_furniture:dark_oak_shelf", "required": false},
 		{"id": "another_furniture:crimson_shelf", "required": false},
 		{"id": "another_furniture:warped_shelf", "required": false},
-		{"id": "another_furniture:mangrove_shelf", "required": false}
+		{"id": "another_furniture:mangrove_shelf", "required": false},
+		{"id": "another_furniture:bamboo_shelf", "required": false},
+		{"id": "another_furniture:cherry_shelf", "required": false}
 	]
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "another_furniture:block/drawer/bamboo",
+    "textures": {
+        "front": "another_furniture:block/drawer/bamboo_front_open"
+    }
+}

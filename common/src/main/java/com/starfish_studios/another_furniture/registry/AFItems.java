@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 public class AFItems {
 
-    public static final Supplier<Item> FURNITURE_HAMMER = AFRegistry.registerItem("furniture_hammer", () -> new Item(new Item.Properties().durability(892)));
+    public static final Supplier<Item> FURNITURE_HAMMER = AFRegistry.registerItem("furniture_hammer", () -> new Item(new Item.Properties().durability(892)), "tab");
 
     public static void init() {}
 }

@@ -15,7 +15,7 @@ public class AnotherFurnitureClient {
 
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SHELF, ShelfRenderer::new);
         AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.SERVICE_BELL, ServiceBellButtonRenderer::new);
-        AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.PLANTER_BOX, PlanterBoxRenderer::new);
+        AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.FLOWER_BOX, FlowerBoxRenderer::new);
         //AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.GRANDFATHER_CLOCK, GrandfatherClockRenderer::new);
         //AFRegistry.registerBlockEntityRenderer(AFBlockEntityTypes.TOMBSTONE, TombstoneRenderer::new);
 

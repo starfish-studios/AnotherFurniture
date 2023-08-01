@@ -6,7 +6,7 @@
             "item": "minecraft:lime_dye"
         },
         {
-            "item": "another_furniture:white_curtain"
+            "tag": "another_furniture:curtains"
         }
     ],
     "result": {

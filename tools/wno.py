@@ -69,7 +69,9 @@ woods = [
     "dark_oak",
     "mangrove",
     "crimson",
-    "warped"
+    "warped",
+    "bamboo",
+    "cherry"
 ]
 
 namespace = "another_furniture"

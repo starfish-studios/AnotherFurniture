@@ -22,7 +22,7 @@ public class AnotherFurniture {
 
         AFItemTags.init();
         AFBlockTags.init();
-
+        //CreativeModeTab TAB = AFRegistry.registerCreativeModeTab(new ResourceLocation(AnotherFurniture.MOD_ID, "tab"), () -> new ItemStack(AFBlocks.OAK_CHAIR.get()));
         IntegrationHandler.init();
     }
 }

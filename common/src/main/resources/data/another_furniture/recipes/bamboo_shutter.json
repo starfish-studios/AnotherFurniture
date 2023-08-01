@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "shutters",
+    "key": {
+        "S": {
+            "item": "minecraft:bamboo_slab"
+        }
+    },
+    "pattern": [
+        "SS",
+        "SS",
+        "SS"
+    ],
+    "result": {
+        "count": 4,
+        "item": "another_furniture:bamboo_shutter"
+    }
+}

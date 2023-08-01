@@ -2,7 +2,6 @@
     "parent": "another_furniture:block/template/shutter_top",
     "textures": {
         "middle": "another_furniture:block/shutter/crimson_middle",
-        "top": "another_furniture:block/shutter/crimson_top",
-        "particle": "another_furniture:block/shutter/crimson_top"
+        "top": "another_furniture:block/shutter/crimson_top"
     }
 }

@@ -26,8 +26,8 @@ public class AFItemTags {
     public static final TagKey<Item> TABLES = itemTag("tables");
     public static final TagKey<Item> TALL_STOOLS = itemTag("tall_stools");
 
-    public static final TagKey<Item> PLANTER_BOX_PLACEABLES = itemTag("planter_box_placeables");
-    public static final TagKey<Item> PLANTER_BOX_BANNED = itemTag("planter_box_banned");
+    public static final TagKey<Item> FLOWER_BOX_PLACEABLES = itemTag("flower_box_placeables");
+    public static final TagKey<Item> FLOWER_BOX_BANNED = itemTag("flower_box_banned");
     public static final TagKey<Item> FURNITURE_HAMMER = itemTag("furniture_hammers");
 
     private static TagKey<Item> itemTag(String name) {

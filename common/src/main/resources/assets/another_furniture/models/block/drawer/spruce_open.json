@@ -1,6 +1,6 @@
 {
-	"parent": "another_furniture:block/drawer/spruce",
-	"textures": {
-		"front": "another_furniture:block/drawer/spruce_front_open"
-	}
+    "parent": "another_furniture:block/drawer/spruce",
+    "textures": {
+        "front": "another_furniture:block/drawer/spruce_front_open"
+    }
 }

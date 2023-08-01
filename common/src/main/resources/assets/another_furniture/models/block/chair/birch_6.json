@@ -1,0 +1,8 @@
+{
+    "parent": "another_furniture:block/template/chair",
+    "textures": {
+        "bottom": "another_furniture:block/chair/birch_bottom",
+        "seat": "another_furniture:block/chair/birch_seat",
+        "back": "another_furniture:block/chair/back_6/birch"
+    }
+}

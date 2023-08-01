@@ -1,6 +1,0 @@
-{
-    "parent": "another_furniture:block/template/path",
-    "textures": {
-        "path": "another_furniture:block/path/dark_oak_path"
-    }
-}

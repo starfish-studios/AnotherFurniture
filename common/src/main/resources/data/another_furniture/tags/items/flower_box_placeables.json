@@ -1,0 +1,22 @@
+{
+    "replace": false,
+    "values": [
+        "#minecraft:small_flowers",
+        "#minecraft:saplings",
+        "#minecraft:leaves",
+        "minecraft:sea_pickle",
+        "minecraft:bamboo",
+        "minecraft:red_mushroom",
+        "minecraft:brown_mushroom",
+        "minecraft:crimson_fungus",
+        "minecraft:warped_fungus",
+        "minecraft:fern",
+		 "minecraft:mangrove_roots",
+		{"id": "#forge:mushrooms", "required": false},
+		{"id": "#c:mushrooms", "required": false},
+		{"id": "#quark:hedges", "required": false},
+        {"id": "quark:glow_lichen_growth", "required": false},
+        {"id": "biomesoplenty:toadstool", "required": false},
+        {"id": "biomesoplenty:clover", "required": false}
+    ]
+}

@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/spruce_none",
+    "parent": "another_furniture:block/shutter/spruce",
     "gui_light": "front",
     "display": {
         "gui": {

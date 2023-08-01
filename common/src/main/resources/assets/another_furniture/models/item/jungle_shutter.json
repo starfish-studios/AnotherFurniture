@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/jungle_none",
+    "parent": "another_furniture:block/shutter/jungle",
     "gui_light": "front",
     "display": {
         "gui": {

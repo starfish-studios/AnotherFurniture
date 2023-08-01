@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/mangrove_none",
+    "parent": "another_furniture:block/shutter/mangrove",
     "gui_light": "front",
     "display": {
         "gui": {

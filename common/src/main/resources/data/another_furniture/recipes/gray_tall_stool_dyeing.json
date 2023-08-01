@@ -6,7 +6,7 @@
             "item": "minecraft:gray_dye"
         },
         {
-            "item": "another_furniture:white_tall_stool"
+            "tag": "another_furniture:tall_stools"
         }
     ],
     "result": {

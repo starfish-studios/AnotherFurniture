@@ -6,7 +6,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class BlockPart {
 
-    // Gives part of the block that was interacted with.
+    // Gives part of the block that was interacted with, starts from 0
     public static int get1D(BlockPos blockPos, Vec3 clickedPos, Direction axisDir, int parts) {
         Direction.Axis axis = axisDir.getAxis();
         double posNormal = clickedPos.get(axis) - (double) blockPos.get(axis);

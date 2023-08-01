@@ -30,7 +30,7 @@ public class AFRegistry {
     }
 
     @ExpectPlatform
-    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item, String tab_id) {
         throw new AssertionError();
     }
 

@@ -1,8 +1,8 @@
 {
-	"parent": "another_furniture:block/template/drawer",
-	"textures": {
-		"front": "another_furniture:block/drawer/warped_front",
-		"side": "another_furniture:block/drawer/warped_side",
-		"top": "another_furniture:block/drawer/warped_top"
-	}
+    "parent": "another_furniture:block/template/drawer",
+    "textures": {
+        "front": "another_furniture:block/drawer/warped_front",
+        "side": "another_furniture:block/drawer/warped_side",
+        "top": "another_furniture:block/drawer/warped_top"
+    }
 }

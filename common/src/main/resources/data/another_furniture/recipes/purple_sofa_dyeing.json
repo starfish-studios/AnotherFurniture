@@ -6,7 +6,7 @@
             "item": "minecraft:purple_dye"
         },
         {
-            "item": "another_furniture:white_sofa"
+            "tag": "another_furniture:sofas"
         }
     ],
     "result": {

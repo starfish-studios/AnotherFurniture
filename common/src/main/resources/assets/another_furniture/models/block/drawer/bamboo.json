@@ -1,0 +1,8 @@
+{
+    "parent": "another_furniture:block/template/drawer",
+    "textures": {
+        "front": "another_furniture:block/drawer/bamboo_front",
+        "side": "another_furniture:block/drawer/bamboo_side",
+        "top": "another_furniture:block/drawer/bamboo_top"
+    }
+}

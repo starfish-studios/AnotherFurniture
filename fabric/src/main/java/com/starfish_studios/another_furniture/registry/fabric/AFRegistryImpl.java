@@ -40,7 +40,7 @@ public class AFRegistryImpl {
         return () -> registry;
     }
 
-    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item, String tab_id) {
         var registry = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name), item.get());
         return () -> registry;
     }

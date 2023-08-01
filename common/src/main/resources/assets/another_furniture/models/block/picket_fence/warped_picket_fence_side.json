@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/picket_fence_side",
-    "textures": {
-        "0": "another_furniture:block/picket_fence/warped",
-        "particle": "minecraft:block/warped_planks"
-    }
-}

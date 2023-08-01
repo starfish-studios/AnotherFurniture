@@ -1,17 +1,11 @@
 package com.starfish_studios.another_furniture.block;
 
-import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
-import com.starfish_studios.another_furniture.entity.SeatEntity;
-import com.starfish_studios.another_furniture.registry.AFSoundEvents;
-import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import com.starfish_studios.another_furniture.util.block.HammerableBlock;
 import com.starfish_studios.another_furniture.util.block.ShapeUtil;
 import com.starfish_studios.another_furniture.util.block.TuckableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -26,8 +20,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -37,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock, TuckableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    //public static final IntegerProperty CHAIR_BACK = ModBlockStateProperties.CHAIR_BACK;
+    public static final IntegerProperty CHAIR_BACK = ModBlockStateProperties.CHAIR_BACK;
 
     protected static final VoxelShape SHAPE_NORTH = Shapes.or(Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D), Block.box(2.0D, 7.0D, 12.0D, 14.0D, 16.0D, 14.0D));
     protected static final VoxelShape SHAPE_EAST = ShapeUtil.rotateShape(SHAPE_NORTH, Direction.EAST);
@@ -53,13 +45,13 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
             SHAPE_SOUTH_TUCKED, SHAPE_WEST_TUCKED, SHAPE_NORTH_TUCKED, SHAPE_EAST_TUCKED
     };
 
-    public ChairBlock(Properties properties) {
+    public ChairBlock(int defaultBackVariant, Properties properties) {
         super(properties);
         registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false)
-                .setValue(TUCKED, false));
-                //.setValue(CHAIR_BACK, defaultBackVariant));
+                .setValue(TUCKED, false)
+                .setValue(CHAIR_BACK, defaultBackVariant));
     }
 
     @Override
@@ -113,19 +105,14 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (TuckableBlock.tryTuck(state, level, pos, player)) return InteractionResult.SUCCESS;
 
-        //if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        //else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
+        if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
         return super.use(state, level, pos, player, hand, hit);
     }
 
-    //@Override
-    //public PushReaction getPistonPushReaction(BlockState state) {
-     //   return state.getValue(TUCKED) ? PushReaction.BLOCK : super.getPistonPushReaction(state);
-    //}
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TUCKED, WATERLOGGED); //CHAIR_BACK
+        builder.add(FACING, TUCKED, CHAIR_BACK, WATERLOGGED);
     }
 
     @Override

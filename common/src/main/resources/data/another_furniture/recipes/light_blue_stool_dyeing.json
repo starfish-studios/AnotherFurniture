@@ -6,7 +6,7 @@
             "item": "minecraft:light_blue_dye"
         },
         {
-            "item": "another_furniture:white_stool"
+            "tag": "another_furniture:stools"
         }
     ],
     "result": {

@@ -1,0 +1,16 @@
+{
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:oak_flower_box", "required": false},
+		{"id": "another_furniture:spruce_flower_box", "required": false},
+		{"id": "another_furniture:birch_flower_box", "required": false},
+		{"id": "another_furniture:jungle_flower_box", "required": false},
+		{"id": "another_furniture:acacia_flower_box", "required": false},
+		{"id": "another_furniture:dark_oak_flower_box", "required": false},
+		{"id": "another_furniture:crimson_flower_box", "required": false},
+		{"id": "another_furniture:warped_flower_box", "required": false},
+		{"id": "another_furniture:mangrove_flower_box", "required": false},
+		{"id": "another_furniture:bamboo_flower_box", "required": false},
+		{"id": "another_furniture:cherry_flower_box", "required": false}
+	]
+}

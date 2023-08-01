@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/crimson_none",
+    "parent": "another_furniture:block/shutter/crimson",
     "gui_light": "front",
     "display": {
         "gui": {

@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\planks", template_name = "oak_planks"):
+def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks", template_name = "oak_planks"):
     img = Image.open(path + "\\" + template_name + ".png").convert(mode="RGBA",dither=Image.Dither.NONE)
     img_loaded = img.load()
 
@@ -25,7 +25,7 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\planks", template_name =
     return palette_data
 
 def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block", banned_variants = ["shutter"]):
-    wood_types = ["oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "crimson", "warped"]
+    wood_types = ["oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "crimson", "warped", "bamboo", "cherry"]
 
     
 
@@ -154,11 +154,11 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
                 print(f"saved {save_path}")
 
 
-#generate_wood_types(
-#    "C:\\Users\\jacec\\Desktop\\planks",
-#    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-#    ["drawer", "shutter"])
+generate_wood_types(
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks",
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+    ["drawer", "shutter", "chair"])
 
-generate_color_types()
+#generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",

@@ -6,7 +6,7 @@
             "item": "minecraft:orange_dye"
         },
         {
-            "item": "another_furniture:white_lamp"
+            "tag": "another_furniture:lamps"
         }
     ],
     "result": {

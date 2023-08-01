@@ -1,48 +1,48 @@
 {
     "variants": {
-        "type=none,facing=north,open=false": {
-            "model": "another_furniture:block/shutter/spruce_none"
+        "type=single,facing=north,open=false": {
+            "model": "another_furniture:block/shutter/spruce"
         },
-        "type=none,facing=east,open=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=east,open=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 90
         },
-        "type=none,facing=south,open=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=south,open=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 180
         },
-        "type=none,facing=west,open=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=west,open=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 270
         },
-        "type=none,facing=north,open=true,left=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=north,open=true,left=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 90
         },
-        "type=none,facing=east,open=true,left=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=east,open=true,left=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 180
         },
-        "type=none,facing=south,open=true,left=false": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=south,open=true,left=false": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 270
         },
-        "type=none,facing=west,open=true,left=false": {
-            "model": "another_furniture:block/shutter/spruce_none"
+        "type=single,facing=west,open=true,left=false": {
+            "model": "another_furniture:block/shutter/spruce"
         },
-        "type=none,facing=north,open=true,left=true": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=north,open=true,left=true": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 270
         },
-        "type=none,facing=east,open=true,left=true": {
-            "model": "another_furniture:block/shutter/spruce_none"
+        "type=single,facing=east,open=true,left=true": {
+            "model": "another_furniture:block/shutter/spruce"
         },
-        "type=none,facing=south,open=true,left=true": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=south,open=true,left=true": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 90
         },
-        "type=none,facing=west,open=true,left=true": {
-            "model": "another_furniture:block/shutter/spruce_none",
+        "type=single,facing=west,open=true,left=true": {
+            "model": "another_furniture:block/shutter/spruce",
             "y": 180
         },
         "type=top,facing=north,open=false": {

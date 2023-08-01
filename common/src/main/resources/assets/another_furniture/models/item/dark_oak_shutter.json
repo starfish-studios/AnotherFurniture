@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/dark_oak_none",
+    "parent": "another_furniture:block/shutter/dark_oak",
     "gui_light": "front",
     "display": {
         "gui": {

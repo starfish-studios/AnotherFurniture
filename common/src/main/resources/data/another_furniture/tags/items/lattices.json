@@ -9,6 +9,8 @@
 		{"id": "another_furniture:dark_oak_lattice", "required": false},
 		{"id": "another_furniture:crimson_lattice", "required": false},
 		{"id": "another_furniture:warped_lattice", "required": false},
-		{"id": "another_furniture:mangrove_lattice", "required": false}
+		{"id": "another_furniture:mangrove_lattice", "required": false},
+		{"id": "another_furniture:bamboo_lattice", "required": false},
+		{"id": "another_furniture:cherry_lattice", "required": false}
 	]
 }

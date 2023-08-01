@@ -22,6 +22,8 @@
     "block.another_furniture.mangrove_chair": "Mangrove Chair",
     "block.another_furniture.crimson_chair": "Crimson Chair",
     "block.another_furniture.warped_chair": "Warped Chair",
+	"block.another_furniture.bamboo_chair": "Bamboo Chair",
+    "block.another_furniture.cherry_chair": "Cherry Chair",
 	
     "block.another_furniture.oak_shelf": "Oak Shelf",
     "block.another_furniture.spruce_shelf": "Spruce Shelf",
@@ -32,6 +34,8 @@
     "block.another_furniture.mangrove_shelf": "Mangrove Shelf",
     "block.another_furniture.crimson_shelf": "Crimson Shelf",
     "block.another_furniture.warped_shelf": "Warped Shelf",
+	"block.another_furniture.bamboo_shelf": "Bamboo Shelf",
+    "block.another_furniture.cherry_shelf": "Cherry Shelf",
 	
     "block.another_furniture.oak_table": "Oak Table",
     "block.another_furniture.spruce_table": "Spruce Table",
@@ -42,6 +46,8 @@
     "block.another_furniture.mangrove_table": "Mangrove Table",
     "block.another_furniture.crimson_table": "Crimson Table",
     "block.another_furniture.warped_table": "Warped Table",
+	"block.another_furniture.bamboo_table": "Bamboo Table",
+    "block.another_furniture.cherry_table": "Cherry Table",
 	
     "block.another_furniture.oak_shutter": "Oak Shutter",
     "block.another_furniture.spruce_shutter": "Spruce Shutter",
@@ -52,16 +58,20 @@
     "block.another_furniture.mangrove_shutter": "Mangrove Shutter",
     "block.another_furniture.crimson_shutter": "Crimson Shutter",
     "block.another_furniture.warped_shutter": "Warped Shutter",
+	"block.another_furniture.bamboo_shutter": "Bamboo Shutter",
+    "block.another_furniture.cherry_shutter": "Cherry Shutter",
 	
-    "block.another_furniture.oak_planter_box": "Oak Flower Box",
-    "block.another_furniture.spruce_planter_box": "Spruce Flower Box",
-    "block.another_furniture.birch_planter_box": "Birch Flower Box",
-    "block.another_furniture.jungle_planter_box": "Jungle Flower Box",
-    "block.another_furniture.acacia_planter_box": "Acacia Flower Box",
-    "block.another_furniture.dark_oak_planter_box": "Dark Oak Flower Box",
-    "block.another_furniture.mangrove_planter_box": "Mangrove Flower Box",
-    "block.another_furniture.crimson_planter_box": "Crimson Flower Box",
-    "block.another_furniture.warped_planter_box": "Warped Flower Box",
+    "block.another_furniture.oak_flower_box": "Oak Flower Box",
+    "block.another_furniture.spruce_flower_box": "Spruce Flower Box",
+    "block.another_furniture.birch_flower_box": "Birch Flower Box",
+    "block.another_furniture.jungle_flower_box": "Jungle Flower Box",
+    "block.another_furniture.acacia_flower_box": "Acacia Flower Box",
+    "block.another_furniture.dark_oak_flower_box": "Dark Oak Flower Box",
+    "block.another_furniture.mangrove_flower_box": "Mangrove Flower Box",
+    "block.another_furniture.crimson_flower_box": "Crimson Flower Box",
+    "block.another_furniture.warped_flower_box": "Warped Flower Box",
+	"block.another_furniture.bamboo_flower_box": "Bamboo Flower Box",
+    "block.another_furniture.cherry_flower_box": "Cherry Flower Box",
 
     "block.another_furniture.oak_bench": "Oak Bench",
     "block.another_furniture.spruce_bench": "Spruce Bench",
@@ -72,6 +82,8 @@
     "block.another_furniture.mangrove_bench": "Mangrove Bench",
     "block.another_furniture.crimson_bench": "Crimson Bench",
     "block.another_furniture.warped_bench": "Warped Bench",
+	"block.another_furniture.bamboo_bench": "Bamboo Bench",
+    "block.another_furniture.cherry_bench": "Cherry Bench",
 
 	"block.another_furniture.oak_drawer": "Oak Drawer",
     "block.another_furniture.spruce_drawer": "Spruce Drawer",
@@ -82,6 +94,8 @@
     "block.another_furniture.mangrove_drawer": "Mangrove Drawer",
     "block.another_furniture.crimson_drawer": "Crimson Drawer",
     "block.another_furniture.warped_drawer": "Warped Drawer",
+	"block.another_furniture.bamboo_drawer": "Bamboo Drawer",
+    "block.another_furniture.cherry_drawer": "Cherry Drawer",
 
     "block.another_furniture.white_sofa": "White Sofa",
     "block.another_furniture.orange_sofa": "Orange Sofa",
@@ -196,13 +210,6 @@
     "block.another_furniture.dark_oak_lattice": "Dark Oak Lattice",
     "block.another_furniture.crimson_lattice": "Crimson Lattice",
     "block.another_furniture.warped_lattice": "Warped Lattice",
-
-    "block.another_furniture.oak_picket_fence": "Oak Picket Fence",
-    "block.another_furniture.spruce_picket_fence": "Spruce Picket Fence",
-    "block.another_furniture.birch_picket_fence": "Birch Picket Fence",
-    "block.another_furniture.jungle_picket_fence": "Jungle Picket Fence",
-    "block.another_furniture.acacia_picket_fence": "Acacia Picket Fence",
-    "block.another_furniture.dark_oak_picket_fence": "Dark Oak Picket Fence",
-    "block.another_furniture.crimson_picket_fence": "Crimson Picket Fence",
-    "block.another_furniture.warped_picket_fence": "Warped Picket Fence"
+    "block.another_furniture.bamboo_lattice": "Bamboo Lattice",
+    "block.another_furniture.cherry_lattice": "Cherry Lattice"
 }
