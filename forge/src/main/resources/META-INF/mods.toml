@@ -19,7 +19,7 @@ Decorating your home just got better! Another Furniture adds various furniture, 
 [[dependencies.another_furniture]]
 modId = "forge"
 mandatory = true
-versionRange = "[43.1.1,)"
+versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 

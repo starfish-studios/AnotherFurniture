@@ -43,7 +43,7 @@ dependencies {
     //modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 	
 	// misc
-	modImplementation("curse.maven:jei-238222:3940099")
+	//modImplementation("curse.maven:jei-238222:3940099")
 	//modImplementation fileTree(dir: 'mods', include: '*.jar')
 	
 }
