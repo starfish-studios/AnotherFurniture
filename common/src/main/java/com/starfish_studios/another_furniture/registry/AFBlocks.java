@@ -19,7 +19,7 @@ public class AFBlocks {
     public static class Properties {
         public static BlockBehaviour.Properties wood = Block.Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS);
         public static BlockBehaviour.Properties nether_wood = Block.Properties.of().strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).mapColor(MapColor.WOOD);
-        public static BlockBehaviour.Properties bamboo_wood = wood.sound(SoundType.BAMBOO_WOOD)
+        public static BlockBehaviour.Properties bamboo_wood = wood.sound(SoundType.BAMBOO_WOOD);
         public static BlockBehaviour.Properties cherry_wood = wood.sound(SoundType.CHERRY_WOOD);
 
         public static BlockBehaviour.Properties weak_wood = wood.strength(1.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava().mapColor(MapColor.WOOD);
