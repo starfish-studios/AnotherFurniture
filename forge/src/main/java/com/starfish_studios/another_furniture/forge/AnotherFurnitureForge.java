@@ -3,6 +3,7 @@ package com.starfish_studios.another_furniture.forge;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.registry.AFBlocks;
 import com.starfish_studios.another_furniture.registry.forge.AFRegistryImpl;
+import com.starfish_studios.another_furniture.registry.forge.AFTabsImpl;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +22,7 @@ public class AnotherFurnitureForge {
         AFRegistryImpl.SOUND_EVENTS.register(bus);
         AFRegistryImpl.ENTITY_TYPES.register(bus);
         AFRegistryImpl.BLOCK_ENTITY_TYPES.register(bus);
+        AFTabsImpl.register(bus);
 
         bus.addListener(this::setup);
 

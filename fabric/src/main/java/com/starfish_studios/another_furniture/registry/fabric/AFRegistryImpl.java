@@ -7,15 +7,11 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.impl.registry.sync.FabricRegistryInit;
-import net.fabricmc.fabric.mixin.registry.sync.RegistriesAccessor;
-import net.fabricmc.fabric.mixin.registry.sync.RegistriesMixin;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -24,13 +20,15 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class AFRegistryImpl {
@@ -42,6 +40,7 @@ public class AFRegistryImpl {
 
     public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item, String tab_id) {
         var registry = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name), item.get());
+        itemList.add(registry.getDefaultInstance());
         return () -> registry;
     }
 
@@ -64,10 +63,6 @@ public class AFRegistryImpl {
         return FabricBlockEntityTypeBuilder.create(blockEntity::create, validBlocks).build();
     }
 
-    //public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
-    //    return FabricItemGroupBuilder.build(name, icon);
-    //}
-
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
         EntityRendererRegistry.register(type.get(), renderProvider);
     }
@@ -86,5 +81,11 @@ public class AFRegistryImpl {
 
     public static boolean isFakePlayer(Player player) {
         return player instanceof ServerPlayer && player.getClass() != ServerPlayer.class;
+    }
+
+    // TODO this is a really unclean implementation
+    static List<ItemStack> itemList = new ArrayList<>();
+    public static Collection<ItemStack> getAllModItems() {
+        return itemList;
     }
 }

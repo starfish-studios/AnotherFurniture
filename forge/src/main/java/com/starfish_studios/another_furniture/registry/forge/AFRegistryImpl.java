@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,6 +28,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Supplier;
@@ -40,9 +39,8 @@ public class AFRegistryImpl {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, AnotherFurniture.MOD_ID);
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AnotherFurniture.MOD_ID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, AnotherFurniture.MOD_ID);
-    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AnotherFurniture.MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> MOD_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AnotherFurniture.MOD_ID);
 
-    public static RegistryObject<CreativeModeTab> TAB;
     public static final HashMap<String, List<Supplier<? extends ItemLike>>> ITEMS_TAB_MAP = new HashMap<>();
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
@@ -73,18 +71,6 @@ public class AFRegistryImpl {
         return BlockEntityType.Builder.of(blockEntity::create, validBlocks).build(null);
     }
 
-    public static CreativeModeTab registerCreativeModeTab(ResourceLocation name, Supplier<ItemStack> icon) {
-        TAB = TABS.register(name.getPath(), () ->
-                CreativeModeTab.builder()
-                        .title(Component.translatable(name.toLanguageKey("itemGroup")))
-                        .icon(icon)
-                        .displayItems((displayParams, output) ->
-                                output.accept(Items.ACACIA_BUTTON))
-                        .withSearchBar()
-                        .build());
-        return null;
-    }
-
     public static <T extends Entity> void registerEntityRenderers(Supplier<EntityType<T>> type, EntityRendererProvider<T> renderProvider) {
         EntityRenderers.register(type.get(), renderProvider);
     }
@@ -103,6 +89,14 @@ public class AFRegistryImpl {
 
     public static boolean isFakePlayer(Player player) {
         return player instanceof FakePlayer;
+    }
+
+    public static Collection<ItemStack> getAllModItems() {
+        List<ItemStack> itemList = new ArrayList<>();
+        for (RegistryObject<Item> itemRegistryObject: AFRegistryImpl.ITEMS.getEntries()) {
+            itemList.add(itemRegistryObject.get().getDefaultInstance());
+        }
+        return itemList;
     }
 
 }

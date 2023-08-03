@@ -1,6 +1,5 @@
 {
-    "itemGroup.another_furniture": "Another Furniture",
-    "itemGroup.another_furniture.tab": "Another Furniture",
+    "item_group.another_furniture.tab": "Another Furniture",
 	
     "subtitles.block.another_furniture.service_bell.use": "Bell chimes",
     "subtitles.block.another_furniture.chair.tuck": "Chair tucked",

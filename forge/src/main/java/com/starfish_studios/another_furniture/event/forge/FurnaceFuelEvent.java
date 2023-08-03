@@ -2,7 +2,6 @@ package com.starfish_studios.another_furniture.event.forge;
 
 import com.starfish_studios.another_furniture.mixin.forge.AbstractFurnaceBlockEntityAccessor;
 import com.starfish_studios.another_furniture.registry.forge.AFFurnaceFuelRegistryImpl;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
@@ -24,7 +23,6 @@ public class FurnaceFuelEvent {
         var itemStack = event.getItemStack();
         // Doesn't recognise that it invokes a mixin to access a condition. This is fine. Suppressed.
         boolean isValidFuel = itemStack.is(item.asItem()) && !AbstractFurnaceBlockEntityAccessor.invokeNotFurnaceFuel(itemStack.getItem());
-        if (!isValidFuel) return;
-        event.setBurnTime(burnTime);
+        if (isValidFuel) event.setBurnTime(burnTime);
     }
 }

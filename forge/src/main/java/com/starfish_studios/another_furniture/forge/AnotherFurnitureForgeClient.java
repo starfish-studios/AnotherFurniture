@@ -3,7 +3,6 @@ package com.starfish_studios.another_furniture.forge;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.client.AnotherFurnitureClient;
 import com.starfish_studios.another_furniture.client.renderer.blockentity.ServiceBellButtonRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
