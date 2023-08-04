@@ -1,5 +1,5 @@
 from PIL import Image
-import os
+import re, os
 
 def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks", template_name = "oak_planks"):
     img = Image.open(path + "\\" + template_name + ".png").convert(mode="RGBA",dither=Image.Dither.NONE)
@@ -52,36 +52,38 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
         for template in templates:
             is_valid_template = True
             for banned_variant in banned_variants:
-                if banned_variant in template:
+                if re.search(banned_variant, template):
                     is_valid_template = False
                     
-            if is_valid_template:
-                input_img = Image.open(template).convert(mode="RGBA",dither=Image.Dither.NONE)
-                input_img_loaded = input_img.load()
+            if not is_valid_template:
+                continue
+            
+            input_img = Image.open(template).convert(mode="RGBA",dither=Image.Dither.NONE)
+            input_img_loaded = input_img.load()
 
-                # skip swapping colors if it's oak
-                if not plank.split("\\")[-1].startswith("oak"):
-                    input_img_size = input_img.size
-                    img_new = input_img
-                    image_new = img_new.load()
-                    
-                    size = input_img.size
-                    for y in range(size[0]):
-                        for x in range(size[1]):
+            # skip swapping colors if it's oak
+            if not plank.split("\\")[-1].startswith("oak"):
+                input_img_size = input_img.size
+                img_new = input_img
+                image_new = img_new.load()
+                
+                size = input_img.size
+                for y in range(size[0]):
+                    for x in range(size[1]):
 
-                            
-                            pix = input_img_loaded[x,y]
-                            for num, primary_palette_data_item in enumerate(primary_palette_data):
-                                if pix == primary_palette_data_item["color"]:
-                                    image_new[x,y] = secondary_palette_data[num]["color"]
-                                elif pix == (0, 0, 0, 0):
-                                    image_new[x,y] = (0, 0, 0, 0)
-                else:
-                    img_new = input_img
-                    
-                save_path = template.replace("oak", plank.split("\\")[-1].replace(".png","")).replace("_planks","")
-                img_new.save(save_path)
-                print(f"saved {save_path}")
+                        
+                        pix = input_img_loaded[x,y]
+                        for num, primary_palette_data_item in enumerate(primary_palette_data):
+                            if pix == primary_palette_data_item["color"]:
+                                image_new[x,y] = secondary_palette_data[num]["color"]
+                            elif pix == (0, 0, 0, 0):
+                                image_new[x,y] = (0, 0, 0, 0)
+            else:
+                img_new = input_img
+                
+            save_path = template.replace("oak", plank.split("\\")[-1].replace(".png","")).replace("_planks","")
+            img_new.save(save_path)
+            print(f"saved {save_path}")
 
 
 def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
@@ -117,47 +119,49 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
                 if banned_variant in template and not "curtain2" in template:
                     is_valid_template = False
                     
-            if is_valid_template:
-                input_img = Image.open(template).convert(mode="RGBA",dither=Image.Dither.NONE)
-                input_img_loaded = input_img.load()
+            if not is_valid_template:
+                continue
+            
+            input_img = Image.open(template).convert(mode="RGBA",dither=Image.Dither.NONE)
+            input_img_loaded = input_img.load()
 
-                # skip swapping colors if it's oak
-                if not color.split("\\")[-1].startswith("white"):
-                    input_img_size = input_img.size
-                    img_new = Image.new("RGBA", (input_img_size[0], input_img_size[1]), color = "white")
-                    image_new = img_new.load()
-                    
-                    size = input_img.size
-                    
-                    for y in range(size[0]):
-                        for x in range(size[1]):
-                            found = False
-                            pix = input_img_loaded[x,y]
-                            for num, primary_palette_data_item in enumerate(primary_palette_data):
-                                if not found:
-                                    if pix == primary_palette_data_item["color"]:
-                                        image_new[x,y] = secondary_palette_data[num]["color"]
-                                        found = True
-                                    elif pix == (0, 0, 0, 0):
-                                        image_new[x,y] = (0, 0, 0, 0)
-                                        found = True
-                                    else:
-                                        image_new[x,y] = input_img_loaded[x,y]
+            # skip swapping colors if it's oak
+            if not color.split("\\")[-1].startswith("white"):
+                input_img_size = input_img.size
+                img_new = Image.new("RGBA", (input_img_size[0], input_img_size[1]), color = "white")
+                image_new = img_new.load()
+                
+                size = input_img.size
+                
+                for y in range(size[0]):
+                    for x in range(size[1]):
+                        found = False
+                        pix = input_img_loaded[x,y]
+                        for num, primary_palette_data_item in enumerate(primary_palette_data):
+                            if not found:
+                                if pix == primary_palette_data_item["color"]:
+                                    image_new[x,y] = secondary_palette_data[num]["color"]
+                                    found = True
+                                elif pix == (0, 0, 0, 0):
+                                    image_new[x,y] = (0, 0, 0, 0)
+                                    found = True
+                                else:
+                                    image_new[x,y] = input_img_loaded[x,y]
 
-                else:
-                    img_new = input_img
-                    
-                save_path = template.replace("white", color.split("\\")[-1].replace(".png","")).replace("_planks","")
-                if save_path.endswith("_.png"):
-                    save_path = save_path[:-5] + ".png"
-                img_new.save(save_path)
-                print(f"saved {save_path}")
+            else:
+                img_new = input_img
+                
+            save_path = template.replace("white", color.split("\\")[-1].replace(".png","")).replace("_planks","")
+            if save_path.endswith("_.png"):
+                save_path = save_path[:-5] + ".png"
+            img_new.save(save_path)
+            print(f"saved {save_path}")
 
 
 generate_wood_types(
     "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks",
     "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    ["drawer", "shutter", "chair"])
+    [".*unused.*", ".*shutter.*", ".*drawer."])
 
 #generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",

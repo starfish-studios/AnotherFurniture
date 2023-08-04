@@ -1,9 +1,6 @@
 package com.starfish_studios.another_furniture.registry;
 
-import com.starfish_studios.another_furniture.block.entity.DrawerBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.FlowerBoxBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
-import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
+import com.starfish_studios.another_furniture.block.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -22,6 +19,21 @@ public class AFBlockEntityTypes {
                     AFBlocks.WARPED_SHELF.get(),
                     AFBlocks.BAMBOO_SHELF.get(),
                     AFBlocks.CHERRY_SHELF.get()
+            ));
+
+    public static final Supplier<BlockEntityType<SmallShelfBlockEntity>> SMALL_SHELF = AFRegistry.registerBlockEntityType("small_shelf",
+            () -> AFRegistry.createBlockEntityType(SmallShelfBlockEntity::new,
+                    AFBlocks.OAK_SMALL_SHELF.get(),
+                    AFBlocks.SPRUCE_SMALL_SHELF.get(),
+                    AFBlocks.BIRCH_SMALL_SHELF.get(),
+                    AFBlocks.JUNGLE_SMALL_SHELF.get(),
+                    AFBlocks.ACACIA_SMALL_SHELF.get(),
+                    AFBlocks.DARK_OAK_SMALL_SHELF.get(),
+                    AFBlocks.MANGROVE_SMALL_SHELF.get(),
+                    AFBlocks.CRIMSON_SMALL_SHELF.get(),
+                    AFBlocks.WARPED_SMALL_SHELF.get(),
+                    AFBlocks.BAMBOO_SMALL_SHELF.get(),
+                    AFBlocks.CHERRY_SMALL_SHELF.get()
             ));
 
     public static final Supplier<BlockEntityType<ServiceBellBlockEntity>> SERVICE_BELL = AFRegistry.registerBlockEntityType("service_bell",

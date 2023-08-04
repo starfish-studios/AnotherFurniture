@@ -18,11 +18,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
-public class ShelfBlockEntity extends BlockEntity implements Clearable {
+public class SmallShelfBlockEntity extends BlockEntity implements Clearable {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
 
-    public ShelfBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(AFBlockEntityTypes.SHELF.get(), blockPos, blockState);
+    public SmallShelfBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(AFBlockEntityTypes.SMALL_SHELF.get(), blockPos, blockState);
     }
 
     public NonNullList<ItemStack> getItems() {

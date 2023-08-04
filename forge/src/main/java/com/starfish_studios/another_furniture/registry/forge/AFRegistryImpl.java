@@ -93,7 +93,7 @@ public class AFRegistryImpl {
 
     public static Collection<ItemStack> getAllModItems() {
         List<ItemStack> itemList = new ArrayList<>();
-        for (RegistryObject<Item> itemRegistryObject: AFRegistryImpl.ITEMS.getEntries()) {
+        for (RegistryObject<Item> itemRegistryObject: ITEMS.getEntries()) {
             itemList.add(itemRegistryObject.get().getDefaultInstance());
         }
         return itemList;
