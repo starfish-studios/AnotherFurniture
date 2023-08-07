@@ -39,7 +39,7 @@ dependencies {
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     
 	// integration
-	//modImplementation("com.simibubi.create:create-fabric-1.19.2:0.5.0.i-946+1.19.2")
+    modImplementation "com.simibubi.create:create-fabric-1.20.1:${fabric_create_version}"
 	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.19.2:${fabric_flywheel_version}")
     //modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 	

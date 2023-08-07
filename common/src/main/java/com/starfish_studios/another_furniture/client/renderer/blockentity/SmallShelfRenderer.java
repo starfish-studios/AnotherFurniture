@@ -21,7 +21,7 @@ public class SmallShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity>
     public SmallShelfRenderer(BlockEntityRendererProvider.Context context) {
 
     }
-
+    //TODO
     @Override
     public void render(ShelfBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         Direction direction = blockEntity.getBlockState().getValue(ShelfBlock.FACING);

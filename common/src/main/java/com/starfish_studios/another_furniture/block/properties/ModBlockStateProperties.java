@@ -26,4 +26,5 @@ public class ModBlockStateProperties {
     public static final BooleanProperty LEG_3 = BooleanProperty.create("leg_3");
     public static final BooleanProperty LEG_4 = BooleanProperty.create("leg_4");
     public static final BooleanProperty UPDATE = BooleanProperty.create("update");
+    public static final BooleanProperty ON = BooleanProperty.create("on");
 }
