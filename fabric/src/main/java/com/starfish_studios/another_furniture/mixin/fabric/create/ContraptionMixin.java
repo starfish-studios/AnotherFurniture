@@ -1,6 +1,6 @@
 //package com.starfish_studios.another_furniture.mixin.fabric.create;
-
-//import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
+//
+//import com.simibubi.create.content.contraptions.Contraption;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.world.entity.Entity;
 //import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +16,6 @@
 //
 //
 //    @Accessor("initialPassengers")
-//    public void setInitialPassengers(Map<BlockPos, Entity> passengers);
+//    void setInitialPassengers(Map<BlockPos, Entity> passengers);
 //
 //}

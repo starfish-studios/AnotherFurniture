@@ -1,9 +1,9 @@
 //package com.starfish_studios.another_furniture.integration.fabric.create;
-
-//import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
-//import com.simibubi.create.content.contraptions.components.structureMovement.interaction.SimpleBlockMovingInteraction;
+//
+//import com.simibubi.create.content.contraptions.Contraption;
+//import com.simibubi.create.content.contraptions.behaviour.SimpleBlockMovingInteraction;
 //import com.starfish_studios.another_furniture.block.ShutterBlock;
-//import com.starfish_studios.another_furniture.block.properties.ShutterType;
+//import com.starfish_studios.another_furniture.block.properties.VerticalConnectionType;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.level.block.state.BlockState;
@@ -22,30 +22,30 @@
 //
 //        BlockState updateState = state;
 //        BlockPos updatePos = pos;
-//        if (state.getValue(ShutterBlock.TYPE) == ShutterType.MIDDLE || state.getValue(ShutterBlock.TYPE) == ShutterType.BOTTOM) {
+//        if (state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.BOTTOM) {
 //            int heightUp = (int)contraption.bounds.maxY - updatePos.getY();
 //            for (int i = 0; i < heightUp; i++) {
 //                StructureTemplate.StructureBlockInfo above = contraption.getBlocks().get(updatePos.above());
-//                if (above != null && above.state.is(state.getBlock()) && above.state.getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && above.state.getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && above.state.getValue(ShutterBlock.OPEN) != open) {
-//                    updateState = above.state;
+//                if (above != null && above.state().is(state.getBlock()) && above.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && above.state().getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && above.state().getValue(ShutterBlock.OPEN) != open) {
+//                    updateState = above.state();
 //                    updatePos = updatePos.above();
-//                    this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(above.pos, updateState.setValue(ShutterBlock.OPEN, open), above.nbt));
+//                    this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(above.pos(), updateState.setValue(ShutterBlock.OPEN, open), above.nbt()));
 //                } else {
 //                    break;
 //                }
 //            }
 //        }
-//        if (state.getValue(ShutterBlock.TYPE) == ShutterType.MIDDLE || state.getValue(ShutterBlock.TYPE) == ShutterType.TOP) {
+//        if (state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.TOP) {
 //            updateState = state;
 //            updatePos = pos;
 //            int heightDown = (int)contraption.bounds.minY - updatePos.getY();
 //            heightDown = (heightDown < 0) ? -heightDown : heightDown;
 //            for (int i = 0; i < heightDown; i++) {
 //                StructureTemplate.StructureBlockInfo below = contraption.getBlocks().get(updatePos.below());
-//                if (below != null && below.state.is(state.getBlock()) && below.state.getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && below.state.getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && below.state.getValue(ShutterBlock.OPEN) != open) {
-//                    updateState = below.state;
+//                if (below != null && below.state().is(state.getBlock()) && below.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && below.state().getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && below.state().getValue(ShutterBlock.OPEN) != open) {
+//                    updateState = below.state();
 //                    updatePos = updatePos.below();
-//                    this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(below.pos, updateState.setValue(ShutterBlock.OPEN, open), below.nbt));
+//                    this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(below.pos(), updateState.setValue(ShutterBlock.OPEN, open), below.nbt()));
 //                } else {
 //                    break;
 //                }

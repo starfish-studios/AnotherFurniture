@@ -18,10 +18,7 @@ configurations {
 }
 
 repositories {
-	maven {
-        name = 'tterrag.maven'
-        url = 'https://maven.tterrag.com/'
-    }
+	maven { url = "https://maven.tterrag.com/" }
 	maven { url = "https://maven.terraformersmc.com/" }
 	maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib, Registrate
 	maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
@@ -39,9 +36,10 @@ dependencies {
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     
 	// integration
-    modImplementation "com.simibubi.create:create-fabric-1.20.1:${fabric_create_version}"
-	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.19.2:${fabric_flywheel_version}")
-    //modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
+    //modImplementation("com.simibubi.create:create-fabric-1.20.1:${fabric_create_version}")
+	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.20.1:${fabric_flywheel_version}")
+    //modImplementation("com.tterrag.registrate_fabric:Registrate:${fabric_registrate_version}")
+	//modImplementation("io.github.fabricators_of_create.Porting-Lib:Porting-Lib:${porting_lib_version}")
 	
 	// misc
 	modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"

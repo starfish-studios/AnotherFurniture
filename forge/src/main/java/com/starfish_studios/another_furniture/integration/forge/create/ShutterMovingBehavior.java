@@ -24,9 +24,9 @@ public class ShutterMovingBehavior implements MovementBehaviour {
         StructureTemplate.StructureBlockInfo state = contraption.getBlocks().get(context.localPos);
         StructureTemplate.StructureBlockInfo above = contraption.getBlocks().get(context.localPos.above());
         StructureTemplate.StructureBlockInfo below = contraption.getBlocks().get(context.localPos.below());
-        System.out.println(state.state());
-        if (above != null) System.out.println(above.state());
-        if (below != null) System.out.println(below.state());
+        //System.out.println(state.state());
+        //if (above != null) System.out.println(above.state());
+        //if (below != null) System.out.println(below.state());
 
         boolean shape_above_same = above != null && above.state().is(context.state.getBlock()) && above.state().getValue(ShutterBlock.FACING) == facing
                 && above.state().getValue(ShutterBlock.OPEN) == open && above.state().getValue(ShutterBlock.LEFT) == left;

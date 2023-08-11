@@ -6,11 +6,12 @@
 	"plugin": "com.starfish_studios.another_furniture.mixin.forge.ConditionalMixinPlugin",
 	"client": [],
 	"mixins": [
+		"FireBlockAccessor",
+		"AbstractFurnaceBlockEntityAccessor",
+		
 		"create.ContraptionMixin",
 		"create.AbstractContraptionEntityMixin",
-		"create.BlockMovementChecksMixin",
-		"FireBlockAccessor",
-		"AbstractFurnaceBlockEntityAccessor"
+		"create.BlockMovementChecksMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

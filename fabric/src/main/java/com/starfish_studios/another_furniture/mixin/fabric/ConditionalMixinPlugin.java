@@ -15,8 +15,9 @@
 //    private static final Supplier<Boolean> TRUE = () -> true;
 //
 //    private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
-//            //"com.starfish_studios.another_furniture.mixin.fabric.create.ContraptionMixin", () -> FabricLoader.getInstance().isModLoaded("create"),
-//            //"com.starfish_studios.another_furniture.mixin.fabric.create.AbstractContraptionEntityMixin", () -> FabricLoader.getInstance().isModLoaded("create")
+//            "com.starfish_studios.another_furniture.mixin.fabric.create.ContraptionMixin", () -> FabricLoader.getInstance().isModLoaded("create"),
+//            "com.starfish_studios.another_furniture.mixin.fabric.create.AbstractContraptionEntityMixin", () -> FabricLoader.getInstance().isModLoaded("create"),
+//            "com.starfish_studios.another_furniture.mixin.fabric.create.BlockMovementChecksMixin", () -> FabricLoader.getInstance().isModLoaded("create")
 //    );
 //
 //    @Override

@@ -1,6 +1,5 @@
 package com.starfish_studios.another_furniture.integration.fabric;
 
-//import com.starfish_studios.another_furniture.integration.fabric.create.CreateCompat;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
 
 public class IntegrationHandlerImpl {
