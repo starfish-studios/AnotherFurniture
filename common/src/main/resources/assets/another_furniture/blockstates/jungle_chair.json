@@ -269,6 +269,66 @@
         "facing=west,tucked=true,back=9": {
             "model": "another_furniture:block/chair/jungle_9_tucked",
             "y": 270
+        },
+        "facing=north,tucked=false,back=10": {
+            "model": "another_furniture:block/chair/jungle_10"
+        },
+        "facing=east,tucked=false,back=10": {
+            "model": "another_furniture:block/chair/jungle_10",
+            "y": 90
+        },
+        "facing=south,tucked=false,back=10": {
+            "model": "another_furniture:block/chair/jungle_10",
+            "y": 180
+        },
+        "facing=west,tucked=false,back=10": {
+            "model": "another_furniture:block/chair/jungle_10",
+            "y": 270
+        },
+        "facing=north,tucked=true,back=10": {
+            "model": "another_furniture:block/chair/jungle_10_tucked"
+        },
+        "facing=east,tucked=true,back=10": {
+            "model": "another_furniture:block/chair/jungle_10_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true,back=10": {
+            "model": "another_furniture:block/chair/jungle_10_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true,back=10": {
+            "model": "another_furniture:block/chair/jungle_10_tucked",
+            "y": 270
+        },
+        "facing=north,tucked=false,back=11": {
+            "model": "another_furniture:block/chair/jungle_11"
+        },
+        "facing=east,tucked=false,back=11": {
+            "model": "another_furniture:block/chair/jungle_11",
+            "y": 90
+        },
+        "facing=south,tucked=false,back=11": {
+            "model": "another_furniture:block/chair/jungle_11",
+            "y": 180
+        },
+        "facing=west,tucked=false,back=11": {
+            "model": "another_furniture:block/chair/jungle_11",
+            "y": 270
+        },
+        "facing=north,tucked=true,back=11": {
+            "model": "another_furniture:block/chair/jungle_11_tucked"
+        },
+        "facing=east,tucked=true,back=11": {
+            "model": "another_furniture:block/chair/jungle_11_tucked",
+            "y": 90
+        },
+        "facing=south,tucked=true,back=11": {
+            "model": "another_furniture:block/chair/jungle_11_tucked",
+            "y": 180
+        },
+        "facing=west,tucked=true,back=11": {
+            "model": "another_furniture:block/chair/jungle_11_tucked",
+            "y": 270
         }
     }
 }
