@@ -161,7 +161,7 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
 generate_wood_types(
     "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks",
     "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    [".*unused.*", ".*shutter.*", ".*drawer.*"])
+    [".*unused.*", ".*drawer.*"])
 
 #generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
