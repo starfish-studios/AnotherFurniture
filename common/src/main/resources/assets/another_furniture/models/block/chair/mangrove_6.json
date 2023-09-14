@@ -1,8 +1,8 @@
 {
     "parent": "another_furniture:block/template/chair",
     "textures": {
-        "bottom": "another_furniture:block/chair/mangrove_bottom",
-        "seat": "another_furniture:block/chair/mangrove_seat",
+        "bottom": "another_furniture:block/chair/bottom/mangrove",
+        "seat": "another_furniture:block/chair/seat/mangrove",
         "back": "another_furniture:block/chair/back_6/mangrove"
     }
 }

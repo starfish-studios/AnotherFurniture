@@ -5,27 +5,21 @@ import com.starfish_studios.another_furniture.registry.AFBlockTags;
 import com.starfish_studios.another_furniture.registry.AFEntityTypeTags;
 import com.starfish_studios.another_furniture.registry.AFRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PowderSnowBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +49,6 @@ public class SeatBlock extends Block {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (AFRegistry.isFakePlayer(player)) return InteractionResult.PASS;
         if (!level.mayInteract(player, pos)) return InteractionResult.PASS;
-
         if (!isSittable(state) || player.isPassenger() || player.isCrouching()) return InteractionResult.PASS;
 
         if (isSeatBlocked(level, pos)) return InteractionResult.PASS;
@@ -65,29 +58,30 @@ public class SeatBlock extends Block {
             return InteractionResult.PASS;
         }
 
+
         if (level.isClientSide) return InteractionResult.SUCCESS;
         sitDown(level, pos, getLeashed(player).orElse(player));
         return InteractionResult.SUCCESS;
     }
 
-    @Override
-    public void updateEntityAfterFallOn(BlockGetter reader, Entity entity) {
-        BlockPos pos = entity.blockPosition();
-        if (reader.getBlockState(pos).getBlock() != this) {
-            pos = pos.below(); // Might be a full height block, like the Tall Stool
-            if (reader.getBlockState(pos).getBlock() != this) {
-                super.updateEntityAfterFallOn(reader, entity);
-                return;
-            }
-        }
-
-        if (!(entity instanceof LivingEntity) || !canBePickedUp(entity) || isSeatOccupied(entity.level(), pos)) {
-            super.updateEntityAfterFallOn(reader, entity);
-            return;
-        }
-
-        sitDown(entity.level(), pos, entity);
-    }
+//    @Override
+//    public void updateEntityAfterFallOn(BlockGetter reader, Entity entity) {
+//        BlockPos pos = entity.blockPosition();
+//        if (reader.getBlockState(pos).getBlock() != this) {
+//            pos = pos.below(); // Might be a full height block, like the Tall Stool
+//            if (reader.getBlockState(pos).getBlock() != this) {
+//                super.updateEntityAfterFallOn(reader, entity);
+//                return;
+//            }
+//        }
+//
+//        if (!(entity instanceof LivingEntity) || !canBePickedUp(entity) || isSeatOccupied(entity.level(), pos)) {
+//            super.updateEntityAfterFallOn(reader, entity);
+//            return;
+//        }
+//
+//        sitDown(entity.level(), pos, entity);
+//    }
 
     public static boolean isSeatBlocked(Level level, BlockPos pos) {
         return !(level.getBlockState(pos.above()).getCollisionShape(level, pos).isEmpty() ||
@@ -114,8 +108,8 @@ public class SeatBlock extends Block {
 
     public static boolean canBePickedUp(Entity passenger) {
         if (passenger instanceof Player) return false;
-        if (passenger.getType().is(AFEntityTypeTags.CANNOT_SIT_IN_SEATS)) return false;
-        return passenger instanceof LivingEntity;
+        if (passenger instanceof TamableAnimal ta && !ta.isTame()) return false;
+        return passenger instanceof LivingEntity && passenger.getType().is(AFEntityTypeTags.CAN_SIT_IN_SEATS);
     }
 
     public static void sitDown(Level level, BlockPos pos, Entity entity) {

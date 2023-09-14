@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/birch",
+    "parent": "another_furniture:block/shutter/variant_3/birch_single",
     "gui_light": "front",
     "display": {
         "gui": {

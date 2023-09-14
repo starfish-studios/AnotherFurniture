@@ -1,122 +1,122 @@
 {
     "variants": {
-        "facing=north,attached=true,type=single": {
+        "facing=north,attached=true,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson_attached"
         },
-        "facing=east,attached=true,type=single": {
+        "facing=east,attached=true,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson_attached",
             "y": 90
         },
-        "facing=south,attached=true,type=single": {
+        "facing=south,attached=true,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson_attached",
             "y": 180
         },
-        "facing=west,attached=true,type=single": {
+        "facing=west,attached=true,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson_attached",
             "y": 270
         },
-        "facing=north,attached=true,type=left": {
+        "facing=north,attached=true,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_attached_left"
         },
-        "facing=east,attached=true,type=left": {
+        "facing=east,attached=true,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_attached_left",
             "y": 90
         },
-        "facing=south,attached=true,type=left": {
+        "facing=south,attached=true,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_attached_left",
             "y": 180
         },
-        "facing=west,attached=true,type=left": {
+        "facing=west,attached=true,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_attached_left",
             "y": 270
         },
-        "facing=north,attached=true,type=middle": {
+        "facing=north,attached=true,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_attached_middle"
         },
-        "facing=east,attached=true,type=middle": {
+        "facing=east,attached=true,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_attached_middle",
             "y": 90
         },
-        "facing=south,attached=true,type=middle": {
+        "facing=south,attached=true,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_attached_middle",
             "y": 180
         },
-        "facing=west,attached=true,type=middle": {
+        "facing=west,attached=true,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_attached_middle",
             "y": 270
         },
-        "facing=north,attached=true,type=right": {
+        "facing=north,attached=true,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_attached_right"
         },
-        "facing=east,attached=true,type=right": {
+        "facing=east,attached=true,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_attached_right",
             "y": 90
         },
-        "facing=south,attached=true,type=right": {
+        "facing=south,attached=true,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_attached_right",
             "y": 180
         },
-        "facing=west,attached=true,type=right": {
+        "facing=west,attached=true,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_attached_right",
             "y": 270
         },
-        "facing=north,attached=false,type=single": {
+        "facing=north,attached=false,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson"
         },
-        "facing=east,attached=false,type=single": {
+        "facing=east,attached=false,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson",
             "y": 90
         },
-        "facing=south,attached=false,type=single": {
+        "facing=south,attached=false,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson",
             "y": 180
         },
-        "facing=west,attached=false,type=single": {
+        "facing=west,attached=false,horizontal=single": {
             "model": "another_furniture:block/flower_box/crimson",
             "y": 270
         },
-        "facing=north,attached=false,type=left": {
+        "facing=north,attached=false,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_left"
         },
-        "facing=east,attached=false,type=left": {
+        "facing=east,attached=false,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_left",
             "y": 90
         },
-        "facing=south,attached=false,type=left": {
+        "facing=south,attached=false,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_left",
             "y": 180
         },
-        "facing=west,attached=false,type=left": {
+        "facing=west,attached=false,horizontal=left": {
             "model": "another_furniture:block/flower_box/crimson_left",
             "y": 270
         },
-        "facing=north,attached=false,type=middle": {
+        "facing=north,attached=false,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_middle"
         },
-        "facing=east,attached=false,type=middle": {
+        "facing=east,attached=false,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_middle",
             "y": 90
         },
-        "facing=south,attached=false,type=middle": {
+        "facing=south,attached=false,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_middle",
             "y": 180
         },
-        "facing=west,attached=false,type=middle": {
+        "facing=west,attached=false,horizontal=middle": {
             "model": "another_furniture:block/flower_box/crimson_middle",
             "y": 270
         },
-        "facing=north,attached=false,type=right": {
+        "facing=north,attached=false,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_right"
         },
-        "facing=east,attached=false,type=right": {
+        "facing=east,attached=false,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_right",
             "y": 90
         },
-        "facing=south,attached=false,type=right": {
+        "facing=south,attached=false,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_right",
             "y": 180
         },
-        "facing=west,attached=false,type=right": {
+        "facing=west,attached=false,horizontal=right": {
             "model": "another_furniture:block/flower_box/crimson_right",
             "y": 270
         }

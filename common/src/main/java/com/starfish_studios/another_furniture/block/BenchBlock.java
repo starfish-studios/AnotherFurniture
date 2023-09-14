@@ -90,13 +90,6 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (tryHammerBlock(BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
-        return super.use(state, level, pos, player, hand, hit);
-    }
-
-    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
@@ -138,6 +131,11 @@ public class BenchBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     @Override
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
         return false;
+    }
+
+    @Override
+    public Property<?> getPropertyToCycle() {
+        return BACK;
     }
 }
 

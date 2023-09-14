@@ -38,7 +38,7 @@ dependencies {
     
 	// integration
     modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${fabric_create_version}")
-	modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.20.1:${fabric_flywheel_version}")
+	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.20.1:${fabric_flywheel_version}")
     //modImplementation("com.tterrag.registrate_fabric:Registrate:${fabric_registrate_version}")
 	//modImplementation("io.github.fabricators_of_create.Porting-Lib:Porting-Lib:${porting_lib_version}")
 	

@@ -5,18 +5,17 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.state.properties.*;
 
 public class ModBlockStateProperties {
-    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE = EnumProperty.create("type", HorizontalConnectionType.class);
-    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE_1 = EnumProperty.create("type_1", HorizontalConnectionType.class);
-    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE_2 = EnumProperty.create("type_2", HorizontalConnectionType.class);
-    public static final EnumProperty<VerticalConnectionType> VERTICAL_CONNECTION_TYPE = EnumProperty.create("type", VerticalConnectionType.class);
-    public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
+    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE = EnumProperty.create("horizontal", HorizontalConnectionType.class);
+    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE_1 = EnumProperty.create("horizontal_1", HorizontalConnectionType.class);
+    public static final EnumProperty<HorizontalConnectionType> HORIZONTAL_CONNECTION_TYPE_2 = EnumProperty.create("horizontal_2", HorizontalConnectionType.class);
+    public static final EnumProperty<VerticalConnectionType> VERTICAL_CONNECTION_TYPE = EnumProperty.create("vertical", VerticalConnectionType.class);
     public static final EnumProperty<SofaType> SOFA_TYPE = EnumProperty.create("type", SofaType.class);
     public static final EnumProperty<VerticalConnectionType> VERTICAL_CONNECTION_NO_SINGLE_TYPE = EnumProperty.create("type", VerticalConnectionType.class, (type) -> type != VerticalConnectionType.SINGLE);
     public static final EnumProperty<SlabType> HALF = EnumProperty.create("half", SlabType.class);
     public static final DirectionProperty FACING_EXCEPT_DOWN = DirectionProperty.create("facing", (direction) -> direction != Direction.DOWN);
-    public static final DirectionProperty FACING_VERTICAL = DirectionProperty.create("facing_vertical", (direction) -> direction.getAxis().isVertical());
+    public static final DirectionProperty VERTICAL_CONNECTION_TYPE_UP_DOWN = DirectionProperty.create("vertical", (direction) -> direction.getAxis().isVertical());
     public static final IntegerProperty LEVEL_1_3 = IntegerProperty.create("level", 1, 3);
-    public static final IntegerProperty CHAIR_BACK = IntegerProperty.create("back", 1, 11);
+    public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 1, 11);
     public static final BooleanProperty BACK = BooleanProperty.create("back");
     public static final BooleanProperty BASE = BooleanProperty.create("base");
     public static final BooleanProperty LOW = BooleanProperty.create("low");

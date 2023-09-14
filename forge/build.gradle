@@ -46,6 +46,9 @@ dependencies {
 	//modImplementation("curse.maven:jei-238222:3940099")
 	//modImplementation fileTree(dir: 'mods', include: '*.jar')
 	
+	//test
+	modImplementation("curse.maven:naturalist-627986:4660377")
+	
 }
 
 processResources {

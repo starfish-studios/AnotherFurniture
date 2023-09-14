@@ -1,8 +1,8 @@
 {
     "parent": "another_furniture:block/template/chair",
     "textures": {
-        "bottom": "another_furniture:block/chair/acacia_bottom",
-        "seat": "another_furniture:block/chair/acacia_seat",
+        "bottom": "another_furniture:block/chair/bottom/acacia",
+        "seat": "another_furniture:block/chair/seat/acacia",
         "back": "another_furniture:block/chair/back_5/acacia"
     }
 }

@@ -1,129 +1,129 @@
 {
     "variants": {
-        "facing=north,facing_vertical=down,type=single,open=true": {
+        "facing=north,vertical=up,horizontal=single,open=true": {
             "model": "another_furniture:block/curtain/gray_middle"
         },
-        "facing=north,facing_vertical=down,type=left,open=true": {
+        "facing=north,vertical=up,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_top"
         },
-        "facing=north,facing_vertical=up,type=left,open=true": {
+        "facing=north,vertical=down,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_bottom"
         },
-        "facing=north,facing_vertical=down,type=right,open=true": {
+        "facing=north,vertical=up,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_top"
         },
-        "facing=north,facing_vertical=up,type=right,open=true": {
+        "facing=north,vertical=down,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_bottom"
         },
-        "facing=north,facing_vertical=down,type=middle,open=true": {
+        "facing=north,vertical=up,horizontal=middle,open=true": {
             "model": "another_furniture:block/curtain/gray_middle"
         },
-        "facing=north,facing_vertical=down,open=false": {
+        "facing=north,vertical=up,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_top"
         },
-        "facing=north,facing_vertical=up,open=false": {
+        "facing=north,vertical=down,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_bottom"
         },
-        "facing=east,facing_vertical=down,type=single,open=true": {
+        "facing=east,vertical=up,horizontal=single,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 90
         },
-        "facing=east,facing_vertical=down,type=left,open=true": {
+        "facing=east,vertical=up,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_top",
             "y": 90
         },
-        "facing=east,facing_vertical=up,type=left,open=true": {
+        "facing=east,vertical=down,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_bottom",
             "y": 90
         },
-        "facing=east,facing_vertical=down,type=right,open=true": {
+        "facing=east,vertical=up,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_top",
             "y": 90
         },
-        "facing=east,facing_vertical=up,type=right,open=true": {
+        "facing=east,vertical=down,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_bottom",
             "y": 90
         },
-        "facing=east,facing_vertical=down,type=middle,open=true": {
+        "facing=east,vertical=up,horizontal=middle,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 90
         },
-        "facing=east,facing_vertical=down,open=false": {
+        "facing=east,vertical=up,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_top",
             "y": 90
         },
-        "facing=east,facing_vertical=up,open=false": {
+        "facing=east,vertical=down,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_bottom",
             "y": 90
         },
-        "facing=south,facing_vertical=down,type=single,open=true": {
+        "facing=south,vertical=up,horizontal=single,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 180
         },
-        "facing=south,facing_vertical=down,type=left,open=true": {
+        "facing=south,vertical=up,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_top",
             "y": 180
         },
-        "facing=south,facing_vertical=up,type=left,open=true": {
+        "facing=south,vertical=down,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_bottom",
             "y": 180
         },
-        "facing=south,facing_vertical=down,type=right,open=true": {
+        "facing=south,vertical=up,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_top",
             "y": 180
         },
-        "facing=south,facing_vertical=up,type=right,open=true": {
+        "facing=south,vertical=down,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_bottom",
             "y": 180
         },
-        "facing=south,facing_vertical=down,type=middle,open=true": {
+        "facing=south,vertical=up,horizontal=middle,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 180
         },
-        "facing=south,facing_vertical=down,open=false": {
+        "facing=south,vertical=up,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_top",
             "y": 180
         },
-        "facing=south,facing_vertical=up,open=false": {
+        "facing=south,vertical=down,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_bottom",
             "y": 180
         },
-        "facing=west,facing_vertical=down,type=single,open=true": {
+        "facing=west,vertical=up,horizontal=single,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 270
         },
-        "facing=west,facing_vertical=down,type=left,open=true": {
+        "facing=west,vertical=up,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_top",
             "y": 270
         },
-        "facing=west,facing_vertical=up,type=left,open=true": {
+        "facing=west,vertical=down,horizontal=left,open=true": {
             "model": "another_furniture:block/curtain/gray_left_bottom",
             "y": 270
         },
-        "facing=west,facing_vertical=down,type=right,open=true": {
+        "facing=west,vertical=up,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_top",
             "y": 270
         },
-        "facing=west,facing_vertical=up,type=right,open=true": {
+        "facing=west,vertical=down,horizontal=right,open=true": {
             "model": "another_furniture:block/curtain/gray_right_bottom",
             "y": 270
         },
-        "facing=west,facing_vertical=down,type=middle,open=true": {
+        "facing=west,vertical=up,horizontal=middle,open=true": {
             "model": "another_furniture:block/curtain/gray_middle",
             "y": 270
         },
-        "facing=west,facing_vertical=down,open=false": {
+        "facing=west,vertical=up,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_top",
             "y": 270
         },
-        "facing=west,facing_vertical=up,open=false": {
+        "facing=west,vertical=down,open=false": {
             "model": "another_furniture:block/curtain/gray_closed_bottom",
             "y": 270
         },
-        "facing_vertical=up,type=single,open=true": {
+        "vertical=down,horizontal=single,open=true": {
             "model": "minecraft:block/air"
         },
-        "facing_vertical=up,type=middle,open=true": {
+        "vertical=down,horizontal=middle,open=true": {
             "model": "minecraft:block/air"
         }
     }

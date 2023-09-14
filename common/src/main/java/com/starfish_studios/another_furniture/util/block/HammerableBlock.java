@@ -22,14 +22,24 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 public interface HammerableBlock {
 
-    default boolean tryHammerBlock(Property<?> property, BlockState state, LevelAccessor level, BlockPos pos, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (!stack.is(AFItemTags.FURNITURE_HAMMER) || property == null || !state.hasProperty(property)) return false;
+    default boolean tryHammerBlock(BlockState state, LevelAccessor level, BlockPos pos, Player player, InteractionHand hand) {
+        Property<?> property = getPropertyToCycle();
+        if (property == null || !state.hasProperty(property)) return false;
 
-        level.setBlock(pos, state.cycle(property), 3);
+        state = state.cycle(property);
+        state = updateAfterCycle(state, level, pos);
+
+        level.setBlock(pos, state, 3);
         level.playSound(null, pos, getUseSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
-        stack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
         return true;
+    }
+
+    default Property<?> getPropertyToCycle() {
+        return null;
+    }
+
+    default BlockState updateAfterCycle(BlockState state, LevelAccessor level, BlockPos pos) {
+        return state;
     }
 
 //    default void cycleState(BlockState state, Property<?> property, LevelAccessor level, BlockPos pos) {
@@ -48,5 +58,7 @@ public interface HammerableBlock {
     default SoundEvent getUseSound() {
         return AFSoundEvents.HAMMER_USE.get();
     }
+
+
 
 }

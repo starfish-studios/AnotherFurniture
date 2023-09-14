@@ -26,7 +26,7 @@ public class ShutterMovingInteraction extends SimpleBlockMovingInteraction {
             int heightUp = (int)contraption.bounds.maxY - updatePos.getY();
             for (int i = 0; i < heightUp; i++) {
                 StructureTemplate.StructureBlockInfo above = contraption.getBlocks().get(updatePos.above());
-                if (above != null && above.state().is(state.getBlock()) && above.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && above.state().getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && above.state().getValue(ShutterBlock.OPEN) != open) {
+                if (above != null && above.state().is(state.getBlock()) && above.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && above.state().getValue(ShutterBlock.HINGE) == updateState.getValue(ShutterBlock.HINGE) && above.state().getValue(ShutterBlock.OPEN) != open) {
                     updateState = above.state();
                     updatePos = updatePos.above();
                     this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(above.pos(), updateState.setValue(ShutterBlock.OPEN, open), above.nbt()));
@@ -42,7 +42,7 @@ public class ShutterMovingInteraction extends SimpleBlockMovingInteraction {
             heightDown = (heightDown < 0) ? -heightDown : heightDown;
             for (int i = 0; i < heightDown; i++) {
                 StructureTemplate.StructureBlockInfo below = contraption.getBlocks().get(updatePos.below());
-                if (below != null && below.state().is(state.getBlock()) && below.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && below.state().getValue(ShutterBlock.LEFT) == updateState.getValue(ShutterBlock.LEFT) && below.state().getValue(ShutterBlock.OPEN) != open) {
+                if (below != null && below.state().is(state.getBlock()) && below.state().getValue(ShutterBlock.FACING) == updateState.getValue(ShutterBlock.FACING) && below.state().getValue(ShutterBlock.HINGE) == updateState.getValue(ShutterBlock.HINGE) && below.state().getValue(ShutterBlock.OPEN) != open) {
                     updateState = below.state();
                     updatePos = updatePos.below();
                     this.setContraptionBlockData(contraption.entity, updatePos, new StructureTemplate.StructureBlockInfo(below.pos(), updateState.setValue(ShutterBlock.OPEN, open), below.nbt()));

@@ -1,6 +1,7 @@
 package com.starfish_studios.another_furniture.block.properties;
 
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.block.state.BlockState;
 
 public enum VerticalConnectionType implements StringRepresentable {
     SINGLE("single"),
@@ -20,5 +21,13 @@ public enum VerticalConnectionType implements StringRepresentable {
 
     public String getSerializedName() {
         return this.name;
+    }
+
+    public boolean isConnectedUp() {
+        return (this.equals(MIDDLE) || this.equals(BOTTOM));
+    }
+
+    public boolean isConnectedDown() {
+        return (this.equals(MIDDLE) || this.equals(BOTTOM));
     }
 }

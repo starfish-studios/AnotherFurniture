@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock, TuckableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final IntegerProperty CHAIR_BACK = ModBlockStateProperties.CHAIR_BACK;
+    public static final IntegerProperty VARIANT = ModBlockStateProperties.VARIANT;
 
     protected static final VoxelShape SHAPE_NORTH = Shapes.or(Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D), Block.box(2.0D, 7.0D, 12.0D, 14.0D, 16.0D, 14.0D));
     protected static final VoxelShape SHAPE_EAST = ShapeUtil.rotateShape(SHAPE_NORTH, Direction.EAST);
@@ -40,7 +40,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     protected static final VoxelShape SHAPE_EAST_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.EAST);
     protected static final VoxelShape SHAPE_SOUTH_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.SOUTH);
     protected static final VoxelShape SHAPE_WEST_TUCKED = ShapeUtil.rotateShape(SHAPE_NORTH_TUCKED, Direction.WEST);
-    protected static final VoxelShape[] SHAPES = new VoxelShape[]{
+    protected static final VoxelShape[] SHAPES = new VoxelShape[] {
             SHAPE_SOUTH, SHAPE_WEST, SHAPE_NORTH, SHAPE_EAST,
             SHAPE_SOUTH_TUCKED, SHAPE_WEST_TUCKED, SHAPE_NORTH_TUCKED, SHAPE_EAST_TUCKED
     };
@@ -51,7 +51,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false)
                 .setValue(TUCKED, false)
-                .setValue(CHAIR_BACK, defaultBackVariant));
+                .setValue(VARIANT, defaultBackVariant));
     }
 
     @Override
@@ -105,14 +105,12 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (TuckableBlock.tryTuck(state, level, pos, player)) return InteractionResult.SUCCESS;
 
-        if (tryHammerBlock(CHAIR_BACK, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
         return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TUCKED, CHAIR_BACK, WATERLOGGED);
+        builder.add(FACING, TUCKED, VARIANT, WATERLOGGED);
     }
 
     @Override
@@ -128,5 +126,10 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    @Override
+    public Property<?> getPropertyToCycle() {
+        return VARIANT;
     }
 }

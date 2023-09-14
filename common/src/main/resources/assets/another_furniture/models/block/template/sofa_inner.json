@@ -4,11 +4,11 @@
 		"wood_1": "another_furniture:block/sofa/wood_1",
 		"wood_2": "another_furniture:block/sofa/wood_2",
 		"bottom": "another_furniture:block/sofa/bottom_inner",
+		"particle": "another_furniture:block/sofa/white_seat_inner",
 		"seat_top": "another_furniture:block/sofa/white_seat_inner",
 		"seat_front": "another_furniture:block/sofa/white_seat_front",
 		"seat_back_2": "another_furniture:block/sofa/white_seat_back_2",
-		"back": "another_furniture:block/sofa/white_back",
-		"particle": "#seat_top"
+		"back": "another_furniture:block/sofa/white_back"
 	},
 	"elements": [
 		{
@@ -91,6 +91,30 @@
 				"north": {"uv": [14, 0, 12, 3], "texture": "#wood_1", "cullface": "north"},
 				"east": {"uv": [12, 0, 14, 3], "texture": "#wood_1"},
 				"south": {"uv": [14, 0, 12, 3], "texture": "#wood_1"},
+				"west": {"uv": [12, 0, 14, 3], "texture": "#wood_1", "cullface": "west"},
+				"down": {"uv": [14, 0, 16, 2], "texture": "#wood_1", "cullface": "down"}
+			}
+		},
+		{
+			"from": [14, 0, 0],
+			"to": [16, 3, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0, 4]},
+			"faces": {
+				"north": {"uv": [14, 0, 12, 3], "texture": "#wood_1", "cullface": "north"},
+				"east": {"uv": [12, 0, 14, 3], "texture": "#wood_1", "cullface": "north"},
+				"south": {"uv": [14, 0, 12, 3], "texture": "#wood_1", "cullface": "north"},
+				"west": {"uv": [12, 0, 14, 3], "texture": "#wood_1", "cullface": "north"},
+				"down": {"uv": [14, 0, 16, 2], "texture": "#wood_1", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 0, 14],
+			"to": [2, 3, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0, 4]},
+			"faces": {
+				"north": {"uv": [14, 0, 12, 3], "texture": "#wood_1", "cullface": "west"},
+				"east": {"uv": [12, 0, 14, 3], "texture": "#wood_1", "cullface": "west"},
+				"south": {"uv": [14, 0, 12, 3], "texture": "#wood_1", "cullface": "west"},
 				"west": {"uv": [12, 0, 14, 3], "texture": "#wood_1", "cullface": "west"},
 				"down": {"uv": [14, 0, 16, 2], "texture": "#wood_1", "cullface": "down"}
 			}

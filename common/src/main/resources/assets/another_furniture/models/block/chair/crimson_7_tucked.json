@@ -1,8 +1,8 @@
 {
     "parent": "another_furniture:block/template/chair_tucked",
     "textures": {
-        "bottom": "another_furniture:block/chair/crimson_bottom",
-        "seat": "another_furniture:block/chair/crimson_seat",
+        "bottom": "another_furniture:block/chair/bottom/crimson",
+        "seat": "another_furniture:block/chair/seat/crimson",
         "back": "another_furniture:block/chair/back_7/crimson"
     }
 }

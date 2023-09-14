@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "base=true": {
+            "model": "another_furniture:block/template/lamp_tall_base"
+        },
+        "base=false": {
+            "model": "another_furniture:block/template/lamp_tall_middle"
+        }
+    }
+}

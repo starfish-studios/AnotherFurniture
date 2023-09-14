@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/acacia",
+    "parent": "another_furniture:block/shutter/variant_5/acacia_single",
     "gui_light": "front",
     "display": {
         "gui": {

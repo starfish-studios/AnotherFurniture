@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class CreateCommon {
     public static boolean canStickToContraption(BlockState state, Direction direction) {
         if (state.getBlock() instanceof ShutterBlock) {
-            VerticalConnectionType type = state.getValue(ShutterBlock.TYPE);
+            VerticalConnectionType type = state.getValue(ShutterBlock.VERTICAL);
             if (type == VerticalConnectionType.MIDDLE && direction.getAxis().isVertical()) return true;
             if (type == VerticalConnectionType.TOP && direction == Direction.DOWN) return true;
             if (type == VerticalConnectionType.BOTTOM && direction == Direction.UP) return true;

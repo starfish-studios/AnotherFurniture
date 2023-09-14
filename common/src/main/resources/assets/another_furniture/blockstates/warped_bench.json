@@ -3,7 +3,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_1": "single"
+                "horizontal_1": "single"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_single"
@@ -12,7 +12,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_1": "single"
+                "horizontal_1": "single"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_single",
@@ -22,7 +22,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_1": "single"
+                "horizontal_1": "single"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_single",
@@ -32,7 +32,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_1": "single"
+                "horizontal_1": "single"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_single",
@@ -42,7 +42,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_1": "left"
+                "horizontal_1": "left"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_left"
@@ -51,7 +51,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_1": "left"
+                "horizontal_1": "left"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_left",
@@ -61,7 +61,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_1": "left"
+                "horizontal_1": "left"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_left",
@@ -71,7 +71,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_1": "left"
+                "horizontal_1": "left"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_left",
@@ -81,7 +81,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_1": "right"
+                "horizontal_1": "right"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_right"
@@ -90,7 +90,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_1": "right"
+                "horizontal_1": "right"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_right",
@@ -100,7 +100,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_1": "right"
+                "horizontal_1": "right"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_right",
@@ -110,7 +110,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_1": "right"
+                "horizontal_1": "right"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_right",
@@ -120,7 +120,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_1": "middle"
+                "horizontal_1": "middle"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_middle"
@@ -129,7 +129,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_1": "middle"
+                "horizontal_1": "middle"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_middle",
@@ -139,7 +139,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_1": "middle"
+                "horizontal_1": "middle"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_middle",
@@ -149,7 +149,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_1": "middle"
+                "horizontal_1": "middle"
             },
             "apply": {
                 "model": "another_furniture:block/bench/warped_middle",
@@ -159,7 +159,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_2": "single",
+                "horizontal_2": "single",
                 "back": "true"
             },
             "apply": {
@@ -169,7 +169,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_2": "single",
+                "horizontal_2": "single",
                 "back": "true"
             },
             "apply": {
@@ -180,7 +180,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_2": "single",
+                "horizontal_2": "single",
                 "back": "true"
             },
             "apply": {
@@ -191,7 +191,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_2": "single",
+                "horizontal_2": "single",
                 "back": "true"
             },
             "apply": {
@@ -202,7 +202,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_2": "left",
+                "horizontal_2": "left",
                 "back": "true"
             },
             "apply": {
@@ -212,7 +212,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_2": "left",
+                "horizontal_2": "left",
                 "back": "true"
             },
             "apply": {
@@ -223,7 +223,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_2": "left",
+                "horizontal_2": "left",
                 "back": "true"
             },
             "apply": {
@@ -234,7 +234,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_2": "left",
+                "horizontal_2": "left",
                 "back": "true"
             },
             "apply": {
@@ -245,7 +245,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_2": "right",
+                "horizontal_2": "right",
                 "back": "true"
             },
             "apply": {
@@ -255,7 +255,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_2": "right",
+                "horizontal_2": "right",
                 "back": "true"
             },
             "apply": {
@@ -266,7 +266,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_2": "right",
+                "horizontal_2": "right",
                 "back": "true"
             },
             "apply": {
@@ -277,7 +277,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_2": "right",
+                "horizontal_2": "right",
                 "back": "true"
             },
             "apply": {
@@ -288,7 +288,7 @@
         {
             "when": {
                 "facing": "north",
-                "type_2": "middle",
+                "horizontal_2": "middle",
                 "back": "true"
             },
             "apply": {
@@ -298,7 +298,7 @@
         {
             "when": {
                 "facing": "east",
-                "type_2": "middle",
+                "horizontal_2": "middle",
                 "back": "true"
             },
             "apply": {
@@ -309,7 +309,7 @@
         {
             "when": {
                 "facing": "south",
-                "type_2": "middle",
+                "horizontal_2": "middle",
                 "back": "true"
             },
             "apply": {
@@ -320,7 +320,7 @@
         {
             "when": {
                 "facing": "west",
-                "type_2": "middle",
+                "horizontal_2": "middle",
                 "back": "true"
             },
             "apply": {

@@ -101,12 +101,12 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         if (state.getValue(FACING) == Direction.UP && (direction == Direction.UP || direction == Direction.DOWN)) {
             BlockState aState = level.getBlockState(currentPos.above());
             BlockState bState = level.getBlockState(currentPos.below());
-            boolean aConnect = (aState.getBlock() instanceof LampBlock && aState.getValue(FACING) == Direction.UP) || aState.getBlock() instanceof LampConnectorBlock;
-            boolean bConnect = (bState.getBlock() instanceof LampBlock && bState.getValue(FACING) == Direction.UP) || bState.getBlock() instanceof LampConnectorBlock;
+            boolean aConnect = (aState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && aState.getValue(FACING) == Direction.UP) || (aState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
+            boolean bConnect = (bState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && bState.getValue(FACING) == Direction.UP) || (bState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
 
-            if (aConnect && !bConnect) state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, true).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            if (aConnect && !bConnect) state = getLampConnectorByColor(color).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
             else if (!aConnect && bConnect) state = state.setValue(BASE, false);
-            else if (aConnect) state = AFBlocks.LAMP_CONNECTOR.get().defaultBlockState().setValue(BASE, false).setValue(LampConnectorBlock.COLOR, color).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else if (aConnect) state = getLampConnectorByColor(color).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
             else state = state.setValue(BASE, true);
         }
 
@@ -176,5 +176,30 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
         return false;
+    }
+
+    public DyeColor getColor() {
+        return color;
+    }
+
+    public static Block getLampConnectorByColor(DyeColor color) {
+        return switch (color) {
+            case WHITE -> AFBlocks.WHITE_LAMP_CONNECTOR.get();
+            case ORANGE -> AFBlocks.ORANGE_LAMP_CONNECTOR.get();
+            case MAGENTA -> AFBlocks.MAGENTA_LAMP_CONNECTOR.get();
+            case LIGHT_BLUE -> AFBlocks.LIGHT_BLUE_LAMP_CONNECTOR.get();
+            case YELLOW -> AFBlocks.YELLOW_LAMP_CONNECTOR.get();
+            case LIME -> AFBlocks.LIME_LAMP_CONNECTOR.get();
+            case PINK -> AFBlocks.PINK_LAMP_CONNECTOR.get();
+            case GRAY -> AFBlocks.GRAY_LAMP_CONNECTOR.get();
+            case LIGHT_GRAY -> AFBlocks.LIGHT_GRAY_LAMP_CONNECTOR.get();
+            case CYAN -> AFBlocks.CYAN_LAMP_CONNECTOR.get();
+            case PURPLE -> AFBlocks.PURPLE_LAMP_CONNECTOR.get();
+            case BLUE -> AFBlocks.BLUE_LAMP_CONNECTOR.get();
+            case BROWN -> AFBlocks.BROWN_LAMP_CONNECTOR.get();
+            case GREEN -> AFBlocks.GREEN_LAMP_CONNECTOR.get();
+            case RED -> AFBlocks.RED_LAMP_CONNECTOR.get();
+            case BLACK -> AFBlocks.BLACK_LAMP_CONNECTOR.get();
+        };
     }
 }

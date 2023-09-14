@@ -10,11 +10,9 @@ public class BlockPart {
     public static int get1D(BlockPos blockPos, Vec3 clickedPos, Direction axisDir, int parts) {
         Direction.Axis axis = axisDir.getAxis();
         double posNormal = clickedPos.get(axis) - (double) blockPos.get(axis);
-        System.out.println(posNormal);
         if (axisDir == Direction.SOUTH || axisDir == Direction.EAST || (axisDir == Direction.UP && posNormal != 0.5)) posNormal = 1d - posNormal;
         double partSize = 1d / parts;
         int part = (int)Math.min(posNormal / partSize, parts - 1);
-        System.out.println(part);
         return part;
     }
 
@@ -24,7 +22,6 @@ public class BlockPart {
 
         //width * y + x
         int part = partsX * slotY + slotX;
-        System.out.println(part);
         return part;
     }
 }

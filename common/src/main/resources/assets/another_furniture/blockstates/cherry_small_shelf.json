@@ -1,63 +1,48 @@
 {
     "variants": {
-        "facing=north,type=single": {
-            "model": "another_furniture:block/shelf/cherry_full"
+        "facing=north,half=bottom": {
+            "model": "another_furniture:block/template/small_shelf_bottom"
         },
-        "facing=east,type=single": {
-            "model": "another_furniture:block/shelf/cherry_full",
+        "facing=east,half=bottom": {
+            "model": "another_furniture:block/template/small_shelf_bottom",
             "y": 90
         },
-        "facing=south,type=single": {
-            "model": "another_furniture:block/shelf/cherry_full",
+        "facing=south,half=bottom": {
+            "model": "another_furniture:block/template/small_shelf_bottom",
             "y": 180
         },
-        "facing=west,type=single": {
-            "model": "another_furniture:block/shelf/cherry_full",
+        "facing=west,half=bottom": {
+            "model": "another_furniture:block/template/small_shelf_bottom",
             "y": 270
         },
-        "facing=north,type=left": {
-            "model": "another_furniture:block/shelf/cherry_l"
+        "facing=north,half=top": {
+            "model": "another_furniture:block/template/small_shelf_top"
         },
-        "facing=east,type=left": {
-            "model": "another_furniture:block/shelf/cherry_l",
+        "facing=east,half=top": {
+            "model": "another_furniture:block/template/small_shelf_top",
             "y": 90
         },
-        "facing=south,type=left": {
-            "model": "another_furniture:block/shelf/cherry_l",
+        "facing=south,half=top": {
+            "model": "another_furniture:block/template/small_shelf_top",
             "y": 180
         },
-        "facing=west,type=left": {
-            "model": "another_furniture:block/shelf/cherry_l",
+        "facing=west,half=top": {
+            "model": "another_furniture:block/template/small_shelf_top",
             "y": 270
         },
-        "facing=north,type=middle": {
-            "model": "another_furniture:block/shelf/cherry_top"
+        "facing=north,half=double": {
+            "model": "another_furniture:block/template/small_shelf_double"
         },
-        "facing=east,type=middle": {
-            "model": "another_furniture:block/shelf/cherry_top",
+        "facing=east,half=double": {
+            "model": "another_furniture:block/template/small_shelf_double",
             "y": 90
         },
-        "facing=south,type=middle": {
-            "model": "another_furniture:block/shelf/cherry_top",
+        "facing=south,half=double": {
+            "model": "another_furniture:block/template/small_shelf_double",
             "y": 180
         },
-        "facing=west,type=middle": {
-            "model": "another_furniture:block/shelf/cherry_top",
-            "y": 270
-        },
-        "facing=north,type=right": {
-            "model": "another_furniture:block/shelf/cherry_r"
-        },
-        "facing=east,type=right": {
-            "model": "another_furniture:block/shelf/cherry_r",
-            "y": 90
-        },
-        "facing=south,type=right": {
-            "model": "another_furniture:block/shelf/cherry_r",
-            "y": 180
-        },
-        "facing=west,type=right": {
-            "model": "another_furniture:block/shelf/cherry_r",
+        "facing=west,half=double": {
+            "model": "another_furniture:block/template/small_shelf_double",
             "y": 270
         }
     }

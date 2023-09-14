@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/warped",
+    "parent": "another_furniture:block/shutter/variant_11/warped_single",
     "gui_light": "front",
     "display": {
         "gui": {

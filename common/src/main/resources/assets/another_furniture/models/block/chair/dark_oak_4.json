@@ -1,8 +1,8 @@
 {
     "parent": "another_furniture:block/template/chair",
     "textures": {
-        "bottom": "another_furniture:block/chair/dark_oak_bottom",
-        "seat": "another_furniture:block/chair/dark_oak_seat",
+        "bottom": "another_furniture:block/chair/bottom/dark_oak",
+        "seat": "another_furniture:block/chair/seat/dark_oak",
         "back": "another_furniture:block/chair/back_4/dark_oak"
     }
 }

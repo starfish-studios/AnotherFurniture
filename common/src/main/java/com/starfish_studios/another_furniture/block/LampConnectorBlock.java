@@ -28,13 +28,14 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty BASE = ModBlockStateProperties.BASE;
-    public static final EnumProperty<DyeColor> COLOR = ModBlockStateProperties.COLOR;
 
     protected static final VoxelShape AABB_NOT_BASE = Block.box(7.0D, 0.0D, 7.0D, 9.0D, 16.0D, 9.0D);
     protected static final VoxelShape AABB_BASE = Shapes.or(Block.box(5.0D, 0.0D, 5.0D, 11.0D, 2.0D, 11.0D), Block.box(7.0D, 2.0D, 7.0D, 9.0D, 16.0D, 9.0D));
 
-    public LampConnectorBlock(Properties properties) {
+    private final DyeColor color;
+    public LampConnectorBlock(DyeColor color, Properties properties) {
         super(properties);
+        this.color = color;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(POWERED, false)
                 .setValue(WATERLOGGED, false)
@@ -54,9 +55,7 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
         BlockPos pos = context.getClickedPos();
 
         BlockState blockstate = this.defaultBlockState();
-        if (level.hasNeighborSignal(pos)) {
-            blockstate = blockstate.setValue(POWERED, true);
-        }
+        if (level.hasNeighborSignal(pos)) blockstate = blockstate.setValue(POWERED, true);
 
         return blockstate.setValue(WATERLOGGED, waterlogged);
     }
@@ -67,13 +66,13 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
         if (direction == Direction.UP || direction == Direction.DOWN) {
             BlockState aState = level.getBlockState(currentPos.above());
             BlockState bState = level.getBlockState(currentPos.below());
-            boolean aConnect = (aState.getBlock() instanceof LampBlock && aState.getValue(LampBlock.FACING) == Direction.UP) || aState.is(this);
-            boolean bConnect = (bState.getBlock() instanceof LampBlock && bState.getValue(LampBlock.FACING) == Direction.UP) || bState.is(this);
+            boolean aConnect = (aState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && aState.getValue(LampBlock.FACING) == Direction.UP) || (aState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
+            boolean bConnect = (bState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && bState.getValue(LampBlock.FACING) == Direction.UP) || (bState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
 
             if (aConnect && !bConnect) state = state.setValue(BASE, true);
-            else if (!aConnect && bConnect) state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else if (!aConnect && bConnect) state = getLampByColor(color).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
             else if (aConnect) state = state.setValue(BASE, false);
-            else state = getLampByColor(state.getValue(COLOR)).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            else state = getLampByColor(color).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
         }
 
         return state;
@@ -89,15 +88,17 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
 
         BlockState below = level.getBlockState(pos.below());
         boolean powered = level.hasNeighborSignal(pos) || (below.getBlock() instanceof LampConnectorBlock && below.getValue(POWERED));
-        if (powered != state.getValue(POWERED)) {
-            state = state.setValue(POWERED, powered);
-        }
+        if (powered != state.getValue(POWERED)) state = state.setValue(POWERED, powered);
         level.setBlock(pos, state, 3);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, POWERED, BASE, COLOR);
+        builder.add(WATERLOGGED, POWERED, BASE);
+    }
+
+    public DyeColor getColor() {
+        return color;
     }
 
     public static Block getLampByColor(DyeColor color) {
