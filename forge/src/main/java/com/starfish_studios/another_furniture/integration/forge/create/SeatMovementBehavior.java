@@ -28,7 +28,7 @@ public class SeatMovementBehavior implements MovementBehaviour {
                 .indexOf(context.localPos);
         context.data.putInt("SeatIndex", indexOf);
         moveSeat(context.contraption, context.world, context.localPos);
-        System.out.println(context.data.getInt("SeatIndex"));
+        //System.out.println(context.data.getInt("SeatIndex"));
     }
 
     @Override

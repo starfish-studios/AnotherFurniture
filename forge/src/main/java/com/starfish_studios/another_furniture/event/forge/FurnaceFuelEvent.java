@@ -4,6 +4,7 @@ import com.starfish_studios.another_furniture.mixin.forge.AbstractFurnaceBlockEn
 import com.starfish_studios.another_furniture.registry.forge.AFFurnaceFuelRegistryImpl;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.event.RegisterStructureConversionsEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

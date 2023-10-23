@@ -1,5 +1,5 @@
 {
-    "parent": "another_furniture:block/shutter/variant_7/bamboo_single",
+    "parent": "another_furniture:block/shutter/variant_9/bamboo_single",
     "gui_light": "front",
     "display": {
         "gui": {

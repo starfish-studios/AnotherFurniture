@@ -21,20 +21,20 @@ public class AFBlockEntityTypes {
                     AFBlocks.CHERRY_SHELF.get()
             ));
 
-    public static final Supplier<BlockEntityType<SmallShelfBlockEntity>> SMALL_SHELF = AFRegistry.registerBlockEntityType("small_shelf",
-            () -> AFRegistry.createBlockEntityType(SmallShelfBlockEntity::new,
-                    AFBlocks.OAK_SMALL_SHELF.get(),
-                    AFBlocks.SPRUCE_SMALL_SHELF.get(),
-                    AFBlocks.BIRCH_SMALL_SHELF.get(),
-                    AFBlocks.JUNGLE_SMALL_SHELF.get(),
-                    AFBlocks.ACACIA_SMALL_SHELF.get(),
-                    AFBlocks.DARK_OAK_SMALL_SHELF.get(),
-                    AFBlocks.MANGROVE_SMALL_SHELF.get(),
-                    AFBlocks.CRIMSON_SMALL_SHELF.get(),
-                    AFBlocks.WARPED_SMALL_SHELF.get(),
-                    AFBlocks.BAMBOO_SMALL_SHELF.get(),
-                    AFBlocks.CHERRY_SMALL_SHELF.get()
-            ));
+//    public static final Supplier<BlockEntityType<SmallShelfBlockEntity>> SMALL_SHELF = AFRegistry.registerBlockEntityType("small_shelf",
+//            () -> AFRegistry.createBlockEntityType(SmallShelfBlockEntity::new,
+//                    AFBlocks.OAK_SMALL_SHELF.get(),
+//                    AFBlocks.SPRUCE_SMALL_SHELF.get(),
+//                    AFBlocks.BIRCH_SMALL_SHELF.get(),
+//                    AFBlocks.JUNGLE_SMALL_SHELF.get(),
+//                    AFBlocks.ACACIA_SMALL_SHELF.get(),
+//                    AFBlocks.DARK_OAK_SMALL_SHELF.get(),
+//                    AFBlocks.MANGROVE_SMALL_SHELF.get(),
+//                    AFBlocks.CRIMSON_SMALL_SHELF.get(),
+//                    AFBlocks.WARPED_SMALL_SHELF.get(),
+//                    AFBlocks.BAMBOO_SMALL_SHELF.get(),
+//                    AFBlocks.CHERRY_SMALL_SHELF.get()
+//            ));
 
     public static final Supplier<BlockEntityType<ServiceBellBlockEntity>> SERVICE_BELL = AFRegistry.registerBlockEntityType("service_bell",
             () -> AFRegistry.createBlockEntityType(ServiceBellBlockEntity::new, AFBlocks.SERVICE_BELL.get()));

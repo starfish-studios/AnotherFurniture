@@ -22,20 +22,15 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 public interface HammerableBlock {
 
-    default boolean tryHammerBlock(BlockState state, LevelAccessor level, BlockPos pos, Player player, InteractionHand hand) {
-        Property<?> property = getPropertyToCycle();
+    default boolean tryHammerBlock(Property<?> property, BlockState state, LevelAccessor level, BlockPos pos, Player player, InteractionHand hand) {
         if (property == null || !state.hasProperty(property)) return false;
-
+        if (!player.getItemInHand(hand).is(AFItemTags.FURNITURE_HAMMER)) return false;
         state = state.cycle(property);
         state = updateAfterCycle(state, level, pos);
 
         level.setBlock(pos, state, 3);
         level.playSound(null, pos, getUseSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
         return true;
-    }
-
-    default Property<?> getPropertyToCycle() {
-        return null;
     }
 
     default BlockState updateAfterCycle(BlockState state, LevelAccessor level, BlockPos pos) {

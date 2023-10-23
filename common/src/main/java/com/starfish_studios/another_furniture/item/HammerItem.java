@@ -15,17 +15,17 @@ public class HammerItem extends Item {
         super(properties);
     }
 
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        BlockState state = level.getBlockState(pos);
-        if (state.getBlock() instanceof HammerableBlock hammerableBlock && hammerableBlock.tryHammerBlock(state, level, pos, context.getPlayer(), context.getHand())) {
-            context.getItemInHand().hurtAndBreak(1, context.getPlayer(), (livingEntity) -> {
-                livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
-            return InteractionResult.SUCCESS;
-        }
-        return super.useOn(context);
-    }
+//    @Override
+//    public InteractionResult useOn(UseOnContext context) {
+//        Level level = context.getLevel();
+//        BlockPos pos = context.getClickedPos();
+//        BlockState state = level.getBlockState(pos);
+//        if (state.getBlock() instanceof HammerableBlock hammerableBlock && hammerableBlock.tryHammerBlock(state, level, pos, context.getPlayer(), context.getHand())) {
+//            context.getItemInHand().hurtAndBreak(1, context.getPlayer(), (livingEntity) -> {
+//                livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+//            });
+//            return InteractionResult.SUCCESS;
+//        }
+//        return super.useOn(context);
+//    }
 }

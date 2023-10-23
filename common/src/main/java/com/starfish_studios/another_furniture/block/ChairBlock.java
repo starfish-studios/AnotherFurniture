@@ -104,7 +104,7 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (TuckableBlock.tryTuck(state, level, pos, player)) return InteractionResult.SUCCESS;
-
+        if (tryHammerBlock(VARIANT, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
         return super.use(state, level, pos, player, hand, hit);
     }
 
@@ -126,10 +126,5 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    public Property<?> getPropertyToCycle() {
-        return VARIANT;
     }
 }

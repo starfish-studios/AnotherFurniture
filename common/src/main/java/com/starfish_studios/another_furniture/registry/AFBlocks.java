@@ -58,17 +58,17 @@ public class AFBlocks {
     public static final Supplier<Block> WARPED_SHELF = registerBlock("warped_shelf", () -> new ShelfBlock(Properties.nether_wood));
 
     // Small Shelf
-    public static final Supplier<Block> OAK_SMALL_SHELF = registerBlock("oak_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> SPRUCE_SMALL_SHELF = registerBlock("spruce_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> BIRCH_SMALL_SHELF = registerBlock("birch_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> JUNGLE_SMALL_SHELF = registerBlock("jungle_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> ACACIA_SMALL_SHELF = registerBlock("acacia_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> DARK_OAK_SMALL_SHELF = registerBlock("dark_oak_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> MANGROVE_SMALL_SHELF = registerBlock("mangrove_small_shelf", () -> new SmallShelfBlock(Properties.wood));
-    public static final Supplier<Block> CHERRY_SMALL_SHELF = registerBlock("cherry_small_shelf", () -> new SmallShelfBlock(Properties.cherry_wood));
-    public static final Supplier<Block> BAMBOO_SMALL_SHELF = registerBlock("bamboo_small_shelf", () -> new SmallShelfBlock(Properties.bamboo_wood));
-    public static final Supplier<Block> CRIMSON_SMALL_SHELF = registerBlock("crimson_small_shelf", () -> new SmallShelfBlock(Properties.nether_wood));
-    public static final Supplier<Block> WARPED_SMALL_SHELF = registerBlock("warped_small_shelf", () -> new SmallShelfBlock(Properties.nether_wood));
+//    public static final Supplier<Block> OAK_SMALL_SHELF = registerBlock("oak_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> SPRUCE_SMALL_SHELF = registerBlock("spruce_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> BIRCH_SMALL_SHELF = registerBlock("birch_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> JUNGLE_SMALL_SHELF = registerBlock("jungle_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> ACACIA_SMALL_SHELF = registerBlock("acacia_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> DARK_OAK_SMALL_SHELF = registerBlock("dark_oak_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> MANGROVE_SMALL_SHELF = registerBlock("mangrove_small_shelf", () -> new SmallShelfBlock(Properties.wood));
+//    public static final Supplier<Block> CHERRY_SMALL_SHELF = registerBlock("cherry_small_shelf", () -> new SmallShelfBlock(Properties.cherry_wood));
+//    public static final Supplier<Block> BAMBOO_SMALL_SHELF = registerBlock("bamboo_small_shelf", () -> new SmallShelfBlock(Properties.bamboo_wood));
+//    public static final Supplier<Block> CRIMSON_SMALL_SHELF = registerBlock("crimson_small_shelf", () -> new SmallShelfBlock(Properties.nether_wood));
+//    public static final Supplier<Block> WARPED_SMALL_SHELF = registerBlock("warped_small_shelf", () -> new SmallShelfBlock(Properties.nether_wood));
 
     // Table
     public static final Supplier<Block> OAK_TABLE = registerBlock("oak_table", () -> new TableBlock(Properties.wood));

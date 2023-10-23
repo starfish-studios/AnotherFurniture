@@ -22,7 +22,7 @@ public class ShutterMovingInteraction extends SimpleBlockMovingInteraction {
 
         BlockState updateState = state;
         BlockPos updatePos = pos;
-        if (state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.BOTTOM) {
+        if (state.getValue(ShutterBlock.VERTICAL) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.VERTICAL) == VerticalConnectionType.BOTTOM) {
             int heightUp = (int)contraption.bounds.maxY - updatePos.getY();
             for (int i = 0; i < heightUp; i++) {
                 StructureTemplate.StructureBlockInfo above = contraption.getBlocks().get(updatePos.above());
@@ -35,7 +35,7 @@ public class ShutterMovingInteraction extends SimpleBlockMovingInteraction {
                 }
             }
         }
-        if (state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.TYPE) == VerticalConnectionType.TOP) {
+        if (state.getValue(ShutterBlock.VERTICAL) == VerticalConnectionType.MIDDLE || state.getValue(ShutterBlock.VERTICAL) == VerticalConnectionType.TOP) {
             updateState = state;
             updatePos = pos;
             int heightDown = (int)contraption.bounds.minY - updatePos.getY();
