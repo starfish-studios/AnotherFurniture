@@ -11,7 +11,7 @@
                             "condition": "minecraft:block_state_property",
                             "block": "another_furniture:lime_curtain",
                             "properties": {
-                                "facing_vertical": "down"
+                                "vertical": "up"
                             }
                         }
                     ],

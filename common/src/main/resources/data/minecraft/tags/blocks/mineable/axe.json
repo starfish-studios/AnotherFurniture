@@ -1,17 +1,16 @@
 {
     "values": [
-        "#another_furniture:benches",
-		"#another_furniture:chairs",
-		"#another_furniture:drawers",
-		"#another_furniture:lamps",
-		"#another_furniture:flower_boxes",
-		"#another_furniture:shelves",
-		"#another_furniture:shutters",
-		"#another_furniture:sofas",
-		"#another_furniture:stools",
-		"#another_furniture:tables",
-		"#another_furniture:tall_stools",
-		"another_furniture:lamp_connector",
-		{"id": "#another_furniture:lattices", "required": false}
+		{"id": "#another_furniture:benches", "required": false},
+		{"id": "#another_furniture:chairs", "required": false},
+		{"id": "#another_furniture:drawers", "required": false},
+		{"id": "#another_furniture:lamps", "required": false},
+		{"id": "#another_furniture:lamp_connectors", "required": false},
+		{"id": "#another_furniture:flower_boxes", "required": false},
+		{"id": "#another_furniture:shelves", "required": false},
+		{"id": "#another_furniture:shutters", "required": false},
+		{"id": "#another_furniture:sofas", "required": false},
+		{"id": "#another_furniture:stools", "required": false},
+		{"id": "#another_furniture:tables", "required": false},
+		{"id": "#another_furniture:tall_stools", "required": false}
     ]
 }
