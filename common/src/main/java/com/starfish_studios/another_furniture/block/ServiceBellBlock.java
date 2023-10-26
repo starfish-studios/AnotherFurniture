@@ -1,11 +1,15 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
+import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import com.starfish_studios.another_furniture.registry.AFSoundEvents;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -14,10 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -64,6 +65,23 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
 
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof ServiceBellBlockEntity servicebellBE) servicebellBE.onHit();
+
+        if (player.getVehicle() != null && player.getVehicle() instanceof SeatEntity seatEntity
+                && level.getBlockState(seatEntity.blockPosition().below()).is(Blocks.TNT)) {
+            BlockPos tntPos = seatEntity.blockPosition().below();
+            TntBlock.explode(level, tntPos);
+            level.removeBlock(tntPos, false);
+            if (player instanceof ServerPlayer serverPlayer) {
+                Advancement advancement = level.getServer().getAdvancements().getAdvancement(AnotherFurniture.res("last_chance_to_look_at_me"));
+                System.out.println(AnotherFurniture.res("last_chance_to_look_at_me"));
+                if (advancement != null) {
+
+                    if (!serverPlayer.getAdvancements().getOrStartProgress(advancement).isDone()) {
+                        serverPlayer.getAdvancements().award(advancement, "unlock");
+                    }
+                }
+            }
+        }
 
         level.playSound(null, pos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(level.isClientSide);

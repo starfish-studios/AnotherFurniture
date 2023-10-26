@@ -1,7 +1,0 @@
-{
-    "parent": "another_furniture:block/template/lattice_middle",
-    "textures": {
-        "main": "another_furniture:block/lattice/jungle",
-        "particle": "#main"
-    }
-}

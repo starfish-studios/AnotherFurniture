@@ -47,7 +47,7 @@ dependencies {
 	//modImplementation fileTree(dir: 'mods', include: '*.jar')
 	
 	//test
-	modImplementation("curse.maven:naturalist-627986:4660377")
+	//modImplementation("curse.maven:naturalist-627986:4660377")
 	
 }
 

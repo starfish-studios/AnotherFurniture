@@ -1,8 +1,0 @@
-{
-    "parent": "another_furniture:block/template/lattice_right",
-    "textures": {
-        "main": "another_furniture:block/lattice/birch",
-        "bar": "another_furniture:block/lattice/birch_bar",
-        "particle": "#main"
-    }
-}
