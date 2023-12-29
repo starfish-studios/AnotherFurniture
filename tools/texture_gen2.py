@@ -8,12 +8,8 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\another_furniture\\tools
     img_size = img.size
 
     palette_data = []
-    for y in range(img_size[0]):
-        if y > 15:
-            continue
-        for x in range(img_size[1]):
-            if x > 15:
-                continue
+    for y in range(img_size[1]):
+        for x in range(img_size[0]):
             add = True
             for palette_data_entry in palette_data:
                 if palette_data_entry["color"] == img_loaded[x,y] or img_loaded[x,y][3] == 0:
@@ -68,8 +64,8 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
                 image_new = img_new.load()
                 
                 size = input_img.size
-                for y in range(size[0]):
-                    for x in range(size[1]):
+                for y in range(size[1]):
+                    for x in range(size[0]):
 
                         
                         pix = input_img_loaded[x,y]
@@ -94,7 +90,7 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
     
 
     colors = [os.path.join(dp, f) for dp, dn, filenames in os.walk(color_path) for f in filenames if os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0] in color]
-    templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(template_path) for f in filenames if (os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0].startswith("white_"))]
+    templates = [os.path.join(dp, f) for dp, dn, filenames in os.walk(template_path) for f in filenames if (os.path.splitext(f)[1] == '.png' and os.path.splitext(f)[0].startswith("white"))]
     
     primary_palette_data = get_palette_data(color_path, "white")
     
@@ -133,8 +129,8 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
                 
                 size = input_img.size
                 
-                for y in range(size[0]):
-                    for x in range(size[1]):
+                for y in range(size[1]):
+                    for x in range(size[0]):
                         found = False
                         pix = input_img_loaded[x,y]
                         for num, primary_palette_data_item in enumerate(primary_palette_data):
@@ -157,11 +153,17 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
             img_new.save(save_path)
             print(f"saved {save_path}")
 
+generate_color_types(
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+    "D:\\desktop\\files\\starfish_studios\\packs\\afm-addon\\packs\\resource_packs\\0\\textures\\sf\\afm\\items",
+)
+
+
 
 generate_wood_types(
     "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks",
-    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
-    [".*unused.*", ".*drawer.*"])
+    "D:\\desktop\\files\\starfish_studios\\packs\\afm-addon\\packs\\resource_packs\\0\\textures\\sf\\afm\\items",
+    [".*unused.*"])
 
 #generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
