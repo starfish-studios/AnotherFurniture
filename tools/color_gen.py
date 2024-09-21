@@ -8,12 +8,8 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\planks", template_name =
     img_size = img.size
 
     palette_data = []
-    for y in range(img_size[0]):
-        if y > 15:
-            continue
-        for x in range(img_size[1]):
-            if x > 15:
-                continue
+    for y in range(img_size[1]):
+        for x in range(img_size[0]):
             add = True
             for palette_data_entry in palette_data:
                 if palette_data_entry["color"] == img_loaded[x,y] or img_loaded[x,y][3] == 0:
@@ -70,8 +66,8 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
                     
                     size = input_img.size
                     
-                    for y in range(size[0]):
-                        for x in range(size[1]):
+                    for y in range(size[1]):
+                        for x in range(size[0]):
                             found = False
                             pix = input_img_loaded[x,y]
                             for num, primary_palette_data_item in enumerate(primary_palette_data):
@@ -95,6 +91,6 @@ def generate_color_types(color_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Moddi
                 print(f"saved {save_path}")
 
 generate_color_types(
-    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
-    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block",
+    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+    "C:\\Users\\jacec\\Desktop\\collar",
     ["curtain", "sofa_old", "tablecloth"])

@@ -71,7 +71,24 @@ woods = [
     "crimson",
     "warped",
     "bamboo",
-    "cherry"
+    "cherry",
+    "bamboo_mosaic",
+    "stone",
+    "smooth_stone",
+    "sandstone",
+    "cut_sandstone",
+    "cobblestone",
+    "brick",
+    "stone_brick",
+    "mud_brick",
+    "nether_brick",
+    "quartz",
+    "red_sandstone",
+    "cut_red_sandstone",
+    "purpur",
+    "prismarine",
+    "prismarine_brick",
+    "dark_prismarine"
 ]
 
 namespace = "another_furniture"

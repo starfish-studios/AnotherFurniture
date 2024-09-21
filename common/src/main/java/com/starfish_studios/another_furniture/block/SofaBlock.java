@@ -14,10 +14,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -255,6 +252,31 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
 
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+        Direction direction = state.getValue(FACING);
+        SofaType type = state.getValue(TYPE);
+        switch (mirror) {
+            case LEFT_RIGHT:
+                if (direction.getAxis() == Direction.Axis.Z) {
+                    return switch (type) {
+                        case INNER_LEFT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.INNER_RIGHT);
+                        case INNER_RIGHT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.INNER_LEFT);
+                        case OUTER_LEFT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.OUTER_RIGHT);
+                        case OUTER_RIGHT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.OUTER_LEFT);
+                        default -> state.rotate(Rotation.CLOCKWISE_180);
+                    };
+                }
+                break;
+            case FRONT_BACK:
+                if (direction.getAxis() == Direction.Axis.X) {
+                    return switch (type) {
+                        case INNER_LEFT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.INNER_LEFT);
+                        case INNER_RIGHT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.INNER_RIGHT);
+                        case OUTER_LEFT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.OUTER_RIGHT);
+                        case OUTER_RIGHT -> state.rotate(Rotation.CLOCKWISE_180).setValue(TYPE, SofaType.OUTER_LEFT);
+                        default -> state.rotate(Rotation.CLOCKWISE_180);
+                    };
+                }
+        }
+        return super.mirror(state, mirror);
     }
 }

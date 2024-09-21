@@ -20,7 +20,7 @@ def get_palette_data(path = "C:\\Users\\jacec\\Desktop\\another_furniture\\tools
     print(palette_data)
     return palette_data
 
-def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block", banned_variants = ["shutter"]):
+def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks", template_path = "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block", banned_variants = ["shutter"]):
     wood_types = ["oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "crimson", "warped", "bamboo", "cherry"]
 
     
@@ -44,7 +44,7 @@ def generate_wood_types(plank_path = "C:\\Users\\jacec\\Desktop\\planks", templa
             y = primary_palette_data_item["y"]
             secondary_palette_data.append({"x":x,"y":y,"color":palette[x,y]})
         print(secondary_palette_data)
-
+        
         for template in templates:
             is_valid_template = True
             for banned_variant in banned_variants:
@@ -153,17 +153,14 @@ def generate_color_types(color_path = "C:\\Users\\jacec\\Desktop\\another_furnit
             img_new.save(save_path)
             print(f"saved {save_path}")
 
-generate_color_types(
-    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
-    "D:\\desktop\\files\\starfish_studios\\packs\\afm-addon\\packs\\resource_packs\\0\\textures\\sf\\afm\\items",
-)
+##generate_color_types(
+##    "C:\\Users\\jacec\\Desktop\\another_furniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",
+##    "D:\\desktop\\files\\starfish_studios\\packs\\afm-addon\\packs\\resource_packs\\0\\textures\\sf\\afm\\items",
+##)
 
 
 
-generate_wood_types(
-    "C:\\Users\\jacec\\Desktop\\another_furniture\\tools\\palettes\\planks",
-    "D:\\desktop\\files\\starfish_studios\\packs\\afm-addon\\packs\\resource_packs\\0\\textures\\sf\\afm\\items",
-    [".*unused.*"])
+generate_wood_types(template_path = "C:\\Users\\jacec\\Desktop\\asdfg")
 
 #generate_color_types()
 #    "C:\\Users\\lukeh\\Desktop\\Starfish-Modding\\AnotherFurniture\\common\\src\\main\\resources\\assets\\another_furniture\\textures\\block\\curtain",

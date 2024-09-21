@@ -22,6 +22,7 @@ def getPlural(name: str):
 
 
 colors = [
+    #"white",
     "orange",
     "magenta",
     "light_blue",
