@@ -86,8 +86,7 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (tryHammerBlock(LOW, state, level, pos, player, hand)) return ItemInteractionResult.SUCCESS;
-        else if (hand == InteractionHand.MAIN_HAND) return ItemInteractionResult.FAIL;
+        if (tryHammerBlock(LOW, stack, state, level, pos, player)) return ItemInteractionResult.SUCCESS;
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 

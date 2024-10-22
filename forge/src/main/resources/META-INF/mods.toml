@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[52,)"
 license = "MIT"
 issueTrackerURL = "https://github.com/starfish-studios/AnotherFurniture/issues"
 
@@ -19,13 +19,13 @@ Decorating your home just got better! Another Furniture adds various furniture, 
 [[dependencies.another_furniture]]
 modId = "forge"
 mandatory = true
-versionRange = "[47.1.0,)"
+versionRange = "[52.0.22,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.another_furniture]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,1.21)"
+versionRange = "[1.21,1.22)"
 ordering = "NONE"
 side = "BOTH"

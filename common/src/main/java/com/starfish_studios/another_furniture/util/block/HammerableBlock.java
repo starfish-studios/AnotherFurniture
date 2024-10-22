@@ -22,9 +22,9 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 public interface HammerableBlock {
 
-    default boolean tryHammerBlock(Property<?> property, BlockState state, LevelAccessor level, BlockPos pos, Player player, InteractionHand hand) {
+    default boolean tryHammerBlock(Property<?> property, ItemStack stack, BlockState state, LevelAccessor level, BlockPos pos, Player player) {
         if (property == null || !state.hasProperty(property)) return false;
-        if (!player.getItemInHand(hand).is(AFItemTags.FURNITURE_HAMMER)) return false;
+        if (!stack.is(AFItemTags.FURNITURE_HAMMER)) return false;
         state = state.cycle(property);
         state = updateAfterCycle(state, level, pos);
 

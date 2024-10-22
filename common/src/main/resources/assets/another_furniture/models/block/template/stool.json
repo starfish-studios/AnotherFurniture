@@ -4,8 +4,8 @@
 		"bottom": "another_furniture:block/stool/bottom",
 		"legs": "another_furniture:block/stool/legs",
 		"side": "another_furniture:block/stool/white_side",
-		"particle": "another_furniture:block/stool/white_top",
-		"top": "another_furniture:block/stool/white_top"
+		"top": "another_furniture:block/stool/white_top",
+		"particle": "#top"
 	},
 	"elements": [
 		{
