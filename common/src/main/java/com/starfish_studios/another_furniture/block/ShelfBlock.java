@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.mojang.serialization.MapCodec;
 import com.starfish_studios.another_furniture.block.entity.ShelfBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
@@ -12,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -35,6 +37,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<ShelfBlock> CODEC = simpleCodec(ShelfBlock::new);
+    public MapCodec<ShelfBlock> codec() {
+        return CODEC;
+    }
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -66,29 +72,28 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (hit.getDirection() != Direction.UP) return InteractionResult.PASS;
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (hitResult.getDirection() != Direction.UP) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (!(blockentity instanceof ShelfBlockEntity shelfBE)) return InteractionResult.PASS;
+        if (!(blockentity instanceof ShelfBlockEntity shelfBE)) return ItemInteractionResult.FAIL;
 
         Direction facing = state.getValue(FACING);
-        int slot = BlockPart.get2D(pos, hit.getLocation(), facing.getClockWise(), facing, 2, 2);
+        int slot = BlockPart.get2D(pos, hitResult.getLocation(), facing.getClockWise(), facing, 2, 2);
 
         // Place
-        ItemStack stack = player.getItemInHand(hand);
-        if (!stack.isEmpty()) {
+        if (!stack.isEmpty()) {//todo switch to #Block.useWithoutItem
             if (!level.isClientSide && shelfBE.placeItem(player.getAbilities().instabuild ? stack.copy() : stack, slot)) {
                 level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F);
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
             // Avoids client trying to place actual block on top
-            return InteractionResult.CONSUME;
+            return ItemInteractionResult.CONSUME;
         }
 
         // Remove
-        if (shelfBE.removeItem(slot, player, level)) return InteractionResult.SUCCESS;
+        if (shelfBE.removeItem(slot, player, level)) return ItemInteractionResult.SUCCESS;
 
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
@@ -206,7 +211,7 @@ public class ShelfBlock extends BaseEntityBlock implements SimpleWaterloggedBloc
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 }

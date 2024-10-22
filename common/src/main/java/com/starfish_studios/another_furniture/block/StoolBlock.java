@@ -7,9 +7,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -83,10 +85,15 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (tryHammerBlock(LOW, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        else if (hand == InteractionHand.MAIN_HAND) return InteractionResult.FAIL;
-        return super.use(state, level, pos, player, hand, hit);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (tryHammerBlock(LOW, state, level, pos, player, hand)) return ItemInteractionResult.SUCCESS;
+        else if (hand == InteractionHand.MAIN_HAND) return ItemInteractionResult.FAIL;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
@@ -118,7 +125,8 @@ public class StoolBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
+
 }

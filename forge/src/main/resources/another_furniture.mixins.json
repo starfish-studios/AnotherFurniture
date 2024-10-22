@@ -1,17 +1,13 @@
 {
 	"required": true,
 	"package": "com.starfish_studios.another_furniture.mixin.forge",
-	"compatibilityLevel": "JAVA_17",
+	"compatibilityLevel": "JAVA_21",
 	"minVersion": "0.8",
-	"plugin": "com.starfish_studios.another_furniture.mixin.forge.ConditionalMixinPlugin",
+	"_plugin": "com.starfish_studios.another_furniture.mixin.forge.ConditionalMixinPlugin",
 	"client": [],
 	"mixins": [
 		"FireBlockAccessor",
-		"AbstractFurnaceBlockEntityAccessor",
-		
-		"create.ContraptionMixin",
-		"create.AbstractContraptionEntityMixin",
-		"create.BlockMovementChecksMixin"
+		"AbstractFurnaceBlockEntityAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

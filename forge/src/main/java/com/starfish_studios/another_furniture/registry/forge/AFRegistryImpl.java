@@ -19,9 +19,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -80,7 +80,7 @@ public class AFRegistryImpl {
     }
 
     public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
-        ((FireBlockAccessor)fireBlock).invokeSetFlammable(block.get(), encouragement, flammability);
+        //((FireBlockAccessor)fireBlock).invokeSetFlammable(block.get(), encouragement, flammability); //todo
     }
 
     public static boolean isModLoaded(String mod) {
@@ -88,7 +88,7 @@ public class AFRegistryImpl {
     }
 
     public static boolean isFakePlayer(Player player) {
-        return player instanceof FakePlayer;
+        return false;
     }
 
     public static Collection<ItemStack> getAllModItems() {

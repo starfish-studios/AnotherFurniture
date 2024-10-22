@@ -30,7 +30,7 @@ public class AFBlockTags {
     public static final TagKey<Block> CAN_USE_SHUTTERS_THROUGH = blockTag("can_use_shutters_through");
 
     private static TagKey<Block> blockTag(String name) {
-        return TagKey.create(Registries.BLOCK, new ResourceLocation(AnotherFurniture.MOD_ID, name));
+        return TagKey.create(Registries.BLOCK, AnotherFurniture.res(name));
     }
 
     public static void init() {}

@@ -248,38 +248,7 @@ public class AFBlocks {
     ////////
     // Tombstone
     //public static final Supplier<Block> STONE_TOMBSTONE = registerBlock("stone_tombstone", () -> new TombstoneBlock(Properties.tombstone));
-//
-//    // Awnings
-//    public static final Supplier<Block> WHITE_AWNING = registerBlock("white_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> ORANGE_AWNING = registerBlock("orange_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> MAGENTA_AWNING = registerBlock("magenta_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> LIGHT_BLUE_AWNING = registerBlock("light_blue_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> YELLOW_AWNING = registerBlock("yellow_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> LIME_AWNING = registerBlock("lime_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> PINK_AWNING = registerBlock("pink_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> GRAY_AWNING = registerBlock("gray_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> LIGHT_GRAY_AWNING = registerBlock("light_gray_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> CYAN_AWNING = registerBlock("cyan_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> PURPLE_AWNING = registerBlock("purple_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> BLUE_AWNING = registerBlock("blue_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> BROWN_AWNING = registerBlock("brown_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> GREEN_AWNING = registerBlock("green_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> RED_AWNING = registerBlock("red_awning", () -> new AwningBlock(Properties.awning));
-//    public static final Supplier<Block> BLACK_AWNING = registerBlock("black_awning", () -> new AwningBlock(Properties.awning));
-//
-    // Lattices
-//    public static final Supplier<Block> OAK_LATTICE = registerBlock("oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> SPRUCE_LATTICE = registerBlock("spruce_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> BIRCH_LATTICE = registerBlock("birch_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> JUNGLE_LATTICE = registerBlock("jungle_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> ACACIA_LATTICE = registerBlock("acacia_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> DARK_OAK_LATTICE = registerBlock("dark_oak_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> MANGROVE_LATTICE = registerBlock("mangrove_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> CRIMSON_LATTICE = registerBlock("crimson_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
-//    public static final Supplier<Block> WARPED_LATTICE = registerBlock("warped_lattice", () -> new LatticeBlock(Properties.nether_weak_wood.noOcclusion()));
-//    public static final Supplier<Block> BAMBOO_LATTICE = registerBlock("bamboo_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//    public static final Supplier<Block> CHERRY_LATTICE = registerBlock("cherry_lattice", () -> new LatticeBlock(Properties.weak_wood.noOcclusion()));
-//
+
 //    // Grandfather Clock
 //    public static final Supplier<Block> OAK_GRANDFATHER_CLOCK = registerBlock("oak_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));
 //    public static final Supplier<Block> SPRUCE_GRANDFATHER_CLOCK = registerBlock("spruce_grandfather_clock", () -> new GrandfatherClockBlock(Properties.wood));

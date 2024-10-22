@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class AFTabsImpl {
     public static final CreativeModeTab AFM_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
-            new ResourceLocation(AnotherFurniture.MOD_ID, "tab"),
+            AnotherFurniture.res("tab"),
             FabricItemGroup.builder().title(Component.translatable("item_group." + AnotherFurniture.MOD_ID + ".tab"))
             .icon(() -> new ItemStack(AFBlocks.OAK_CHAIR.get().asItem())).displayItems((parameters, output) -> {
                 output.acceptAll(AFRegistry.getAllModItems());

@@ -1,5 +1,5 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 archivesBaseName = "${rootProject.archives_base_name}-${project.name}"
@@ -37,13 +37,13 @@ dependencies {
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     
 	// integration
-    modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${fabric_create_version}")
+    //modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${fabric_create_version}")
 	//modImplementation("com.jozufozu.flywheel:flywheel-fabric-1.20.1:${fabric_flywheel_version}")
     //modImplementation("com.tterrag.registrate_fabric:Registrate:${fabric_registrate_version}")
 	//modImplementation("io.github.fabricators_of_create.Porting-Lib:Porting-Lib:${porting_lib_version}")
 	
 	// misc
-	modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
+	//modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
 	//modImplementation("curse.maven:jei-238222:3940099")
 }
 
@@ -59,17 +59,17 @@ shadowJar {
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier null
+    archiveClassifier = "fabric"
 }
 
 jar {
-    classifier "dev"
+    archiveClassifier = "dev"
 }
 
 sourcesJar {

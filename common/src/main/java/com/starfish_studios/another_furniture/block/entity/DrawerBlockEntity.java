@@ -3,6 +3,7 @@ package com.starfish_studios.another_furniture.block.entity;
 import com.starfish_studios.another_furniture.block.DrawerBlock;
 import com.starfish_studios.another_furniture.registry.AFBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
@@ -54,19 +55,24 @@ public class DrawerBlockEntity extends RandomizableContainerBlockEntity {
         };
     }
 
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         if (!this.trySaveLootTable(tag)) {
-            ContainerHelper.saveAllItems(tag, this.items);
+            ContainerHelper.saveAllItems(tag, this.items, registries);
+        }
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        if (!this.tryLoadLootTable(tag)) {
+            ContainerHelper.loadAllItems(tag, this.items, registries);
         }
     }
 
     public void load(CompoundTag tag) {
-        super.load(tag);
-        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(tag)) {
-            ContainerHelper.loadAllItems(tag, this.items);
-        }
+
     }
 
     public int getContainerSize() {

@@ -12,7 +12,7 @@ public class AFEntityTypeTags {
     public static final TagKey<EntityType<?>> CAN_SIT_IN_SEATS = entityTypeTag("can_sit_in_seats");
 
     private static TagKey<EntityType<?>> entityTypeTag(String name) {
-        return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(AnotherFurniture.MOD_ID, name));
+        return TagKey.create(Registries.ENTITY_TYPE, AnotherFurniture.res(name));
     }
 
     public static void init() {}

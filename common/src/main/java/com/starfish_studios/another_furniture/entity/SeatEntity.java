@@ -8,6 +8,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -53,7 +55,7 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {}
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {}
@@ -61,16 +63,16 @@ public class SeatEntity extends Entity {
     @Override
     protected void addAdditionalSaveData(CompoundTag compound) {}
 
-    @Override
-    public double getPassengersRidingOffset() {
-        List<Entity> passengers = this.getPassengers();
-        if (passengers.isEmpty()) return 0.0;
-        double seatHeight = 0.0;
-        BlockState state = level().getBlockState(this.blockPosition());
-        if (state.getBlock() instanceof SeatBlock seatBlock) seatHeight = seatBlock.seatHeight(state);
-
-        return seatHeight + getEntitySeatOffset(passengers.get(0));
-    }
+//    @Override
+//    public double getPassengersRidingOffset() {
+//        List<Entity> passengers = this.getPassengers();
+//        if (passengers.isEmpty()) return 0.0;
+//        double seatHeight = 0.0;
+//        BlockState state = level().getBlockState(this.blockPosition());
+//        if (state.getBlock() instanceof SeatBlock seatBlock) seatHeight = seatBlock.seatHeight(state);
+//
+//        return seatHeight + getEntitySeatOffset(passengers.get(0));
+//    }
 
     public static double getEntitySeatOffset(Entity entity) {
         if (entity instanceof Slime) return 1 / 4f;
@@ -89,9 +91,14 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
+    public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity entity) {
+        return super.getAddEntityPacket(entity);
     }
+    //todo ^
+    //@Override
+    //public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    //    return new ClientboundAddEntityPacket(this);
+    //}
 
     @Override
     public Vec3 getDismountLocationForPassenger(LivingEntity entity) {

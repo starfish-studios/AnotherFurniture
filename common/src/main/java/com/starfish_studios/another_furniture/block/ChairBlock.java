@@ -8,8 +8,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -102,10 +104,15 @@ public class ChairBlock extends SeatBlock implements SimpleWaterloggedBlock, Ham
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (tryHammerBlock(VARIANT, state, level, pos, player, hand)) return ItemInteractionResult.SUCCESS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (TuckableBlock.tryTuck(state, level, pos, player)) return InteractionResult.SUCCESS;
-        if (tryHammerBlock(VARIANT, state, level, pos, player, hand)) return InteractionResult.SUCCESS;
-        return super.use(state, level, pos, player, hand, hit);
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     @Override

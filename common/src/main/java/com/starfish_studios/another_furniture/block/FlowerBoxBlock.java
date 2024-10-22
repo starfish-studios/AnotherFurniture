@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.mojang.serialization.MapCodec;
 import com.starfish_studios.another_furniture.block.entity.FlowerBoxBlockEntity;
 import com.starfish_studios.another_furniture.block.properties.HorizontalConnectionType;
 import com.starfish_studios.another_furniture.block.properties.ModBlockStateProperties;
@@ -10,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -32,6 +34,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class FlowerBoxBlock extends BaseEntityBlock {
+    public static final MapCodec<FlowerBoxBlock> CODEC = simpleCodec(FlowerBoxBlock::new);
+    public MapCodec<FlowerBoxBlock> codec() {
+        return CODEC;
+    }
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<HorizontalConnectionType> TYPE = ModBlockStateProperties.HORIZONTAL_CONNECTION_TYPE;
     public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
@@ -49,6 +56,7 @@ public class FlowerBoxBlock extends BaseEntityBlock {
                 .setValue(TYPE, HorizontalConnectionType.SINGLE)
                 .setValue(ATTACHED, false));
     }
+
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -116,20 +124,20 @@ public class FlowerBoxBlock extends BaseEntityBlock {
         return new FlowerBoxBlockEntity(pos, state);
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (!(blockEntity instanceof FlowerBoxBlockEntity flowerBoxBE)) return InteractionResult.PASS;
 
-        ItemStack stack = player.getItemInHand(hand);
-        if (!stack.is(AFItemTags.FLOWER_BOX_PLACEABLES) || stack.is(AFItemTags.FLOWER_BOX_BANNED)) return InteractionResult.PASS;
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (!(blockEntity instanceof FlowerBoxBlockEntity flowerBoxBE)) return ItemInteractionResult.FAIL;
+
+        if (!stack.is(AFItemTags.FLOWER_BOX_PLACEABLES) || stack.is(AFItemTags.FLOWER_BOX_BANNED)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         Direction facing = state.getValue(FACING);
-        int slot = BlockPart.get1D(pos, hit.getLocation(), facing.getClockWise(), 2);
+        int slot = BlockPart.get1D(pos, hitResult.getLocation(), facing.getClockWise(), 2);
         if (!level.isClientSide && flowerBoxBE.placeFlower(player.getAbilities().instabuild ? stack.copy() : stack, slot))
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
 
-        return InteractionResult.CONSUME;
+        return ItemInteractionResult.CONSUME;
     }
 
     @Override
@@ -157,7 +165,7 @@ public class FlowerBoxBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 }

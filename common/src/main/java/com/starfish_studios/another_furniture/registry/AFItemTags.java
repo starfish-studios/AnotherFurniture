@@ -31,7 +31,7 @@ public class AFItemTags {
     public static final TagKey<Item> FURNITURE_HAMMER = itemTag("furniture_hammers");
 
     private static TagKey<Item> itemTag(String name) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation(AnotherFurniture.MOD_ID, name));
+        return TagKey.create(Registries.ITEM, AnotherFurniture.res(name));
     }
 
     public static void init() {}

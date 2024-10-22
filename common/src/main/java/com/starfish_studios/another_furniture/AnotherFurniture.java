@@ -23,6 +23,6 @@ public class AnotherFurniture {
     }
 
     public static ResourceLocation res(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 }

@@ -10,8 +10,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -141,9 +143,9 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (player.getItemInHand(hand).is(AFItemTags.LAMPS) && state.getValue(FACING) == Direction.UP && hit.getDirection() == Direction.UP) {
-            return InteractionResult.FAIL;
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (player.getItemInHand(hand).is(AFItemTags.LAMPS) && state.getValue(FACING) == Direction.UP && hitResult.getDirection() == Direction.UP) {
+            return ItemInteractionResult.FAIL; //todo check if can place lamps on top
         }
         if (player.isCrouching()) {
             int light = state.getValue(LEVEL);
@@ -155,7 +157,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         }
         level.setBlock(pos, state, 3);
         level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 1.0f, 1.0f);
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -174,7 +176,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 

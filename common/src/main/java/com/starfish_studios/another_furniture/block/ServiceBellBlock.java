@@ -1,5 +1,6 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.mojang.serialization.MapCodec;
 import com.starfish_studios.another_furniture.AnotherFurniture;
 import com.starfish_studios.another_furniture.block.entity.ServiceBellBlockEntity;
 import com.starfish_studios.another_furniture.entity.SeatEntity;
@@ -35,6 +36,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<ServiceBellBlock> CODEC = simpleCodec(ServiceBellBlock::new);
+    public MapCodec<ServiceBellBlock> codec() {
+        return CODEC;
+    }
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 7.0D, 12.0D);
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -57,7 +62,7 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (state.getValue(POWERED)) return InteractionResult.CONSUME;
 
         this.press(state, level, pos);
@@ -66,22 +71,22 @@ public class ServiceBellBlock extends BaseEntityBlock implements SimpleWaterlogg
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof ServiceBellBlockEntity servicebellBE) servicebellBE.onHit();
 
-        if (player.getVehicle() != null && player.getVehicle() instanceof SeatEntity seatEntity
-                && level.getBlockState(seatEntity.blockPosition().below()).is(Blocks.TNT)) {
-            BlockPos tntPos = seatEntity.blockPosition().below();
-            TntBlock.explode(level, tntPos);
-            level.removeBlock(tntPos, false);
-            if (player instanceof ServerPlayer serverPlayer) {
-                Advancement advancement = level.getServer().getAdvancements().getAdvancement(AnotherFurniture.res("last_chance_to_look_at_me"));
-                System.out.println(AnotherFurniture.res("last_chance_to_look_at_me"));
-                if (advancement != null) {
-
-                    if (!serverPlayer.getAdvancements().getOrStartProgress(advancement).isDone()) {
-                        serverPlayer.getAdvancements().award(advancement, "unlock");
-                    }
-                }
-            }
-        }
+//        if (player.getVehicle() != null && player.getVehicle() instanceof SeatEntity seatEntity
+//                && level.getBlockState(seatEntity.blockPosition().below()).is(Blocks.TNT)) {
+//            BlockPos tntPos = seatEntity.blockPosition().below();
+//            TntBlock.explode(level, tntPos);
+//            level.removeBlock(tntPos, false);
+//            if (player instanceof ServerPlayer serverPlayer) {
+//                Advancement advancement = level.getServer().getAdvancements().getAdvancement(AnotherFurniture.res("last_chance_to_look_at_me"));
+//                System.out.println(AnotherFurniture.res("last_chance_to_look_at_me"));
+//                if (advancement != null) {
+//
+//                    if (!serverPlayer.getAdvancements().getOrStartProgress(advancement).isDone()) {
+//                        serverPlayer.getAdvancements().award(advancement, "unlock");
+//                    }
+//                }
+//            }
+//        }
 
         level.playSound(null, pos, AFSoundEvents.SERVICE_BELL.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.sidedSuccess(level.isClientSide);

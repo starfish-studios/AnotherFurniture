@@ -24,5 +24,5 @@ public class SeatRenderer extends EntityRenderer<SeatEntity> {
     }
 
     @Override
-    protected void renderNameTag(SeatEntity entity, Component component, PoseStack stack, MultiBufferSource source, int light) {}
+    protected void renderNameTag(SeatEntity entity, Component displayName, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, float partialTick) {}
 }

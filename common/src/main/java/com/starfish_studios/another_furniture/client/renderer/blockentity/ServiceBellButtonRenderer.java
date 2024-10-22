@@ -22,8 +22,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @Environment(value= EnvType.CLIENT)
 public class ServiceBellButtonRenderer implements BlockEntityRenderer<ServiceBellBlockEntity> {
-    public static final Material BELL_TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(AnotherFurniture.MOD_ID, "block/service_bell"));
-    public static ModelLayerLocation SERVICE_BELL_MODEL = new ModelLayerLocation(new ResourceLocation(AnotherFurniture.MOD_ID, "service_bell"), "service_bell");
+    public static final Material BELL_TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, AnotherFurniture.res("block/service_bell"));
+    public static ModelLayerLocation SERVICE_BELL_MODEL = new ModelLayerLocation(AnotherFurniture.res("service_bell"), "service_bell");
     private final ModelPart button;
 
     public ServiceBellButtonRenderer(BlockEntityRendererProvider.Context context) {

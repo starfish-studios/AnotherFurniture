@@ -1,8 +1,11 @@
 package com.starfish_studios.another_furniture.block;
 
+import com.mojang.serialization.MapCodec;
 import com.starfish_studios.another_furniture.block.entity.DrawerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
@@ -28,6 +31,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 public class DrawerBlock extends BaseEntityBlock {
+    public static final MapCodec<DrawerBlock> CODEC = simpleCodec(DrawerBlock::new);
+    public MapCodec<DrawerBlock> codec() {
+        return CODEC;
+    }
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
 
@@ -75,12 +82,11 @@ public class DrawerBlock extends BaseEntityBlock {
     }
 
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if (!stack.hasCustomHoverName()) return;
+        //if (!stack.has(DataComponents.ITEM_NAME)) return; //todo
 
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) drawerBlockEntity.setCustomName(stack.getHoverName());
+        //BlockEntity blockEntity = level.getBlockEntity(pos);
+        //if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) drawerBlockEntity.setComponents(DataComponents.ITEM_NAME, stack.getHoverName());
     }
-
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
