@@ -30,7 +30,7 @@ repositories {
         url = 'https://maven.tterrag.com/'
     }
 	maven { url = "https://www.cursemaven.com" }
-    maven { url = "https://maven.createmod.net" } // Create, Flywheel
+	maven { url = "https://maven.createmod.net" } // Create, Flywheel
 }
 
 dependencies {
