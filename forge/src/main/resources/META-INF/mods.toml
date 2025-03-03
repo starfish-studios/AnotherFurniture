@@ -29,3 +29,10 @@ mandatory = true
 versionRange = "[1.20.1,1.21)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.another_furniture]]
+modId = "create"
+mandatory = false
+versionRange = "[6.0.0,)"
+ordering = "NONE"
+side = "BOTH"
