@@ -29,7 +29,8 @@ repositories {
         name = 'tterrag.maven'
         url = 'https://maven.tterrag.com/'
     }
-	maven { url = "https://www.cursemaven.com" } // Create, Flywheel, Registrate
+	maven { url = "https://www.cursemaven.com" }
+    maven { url = "https://maven.createmod.net" } // Create, Flywheel
 }
 
 dependencies {
@@ -40,7 +41,8 @@ dependencies {
 	// integration
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
     modImplementation("com.simibubi.create:create-1.20.1:${forge_create_version}") { transitive = false }
-    modImplementation("com.jozufozu.flywheel:flywheel-forge-1.20.1:${forge_flywheel_version}")
+    modImplementation("dev.engine-room.flywheel:flywheel-forge-1.20.1:${forge_flywheel_version}")
+    modImplementation("net.createmod.catnip:Catnip-Forge-1.20.1:${forge_catnip_version}")
 	
 	// misc
 	//modImplementation("curse.maven:jei-238222:3940099")

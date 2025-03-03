@@ -1,7 +1,7 @@
 package com.starfish_studios.another_furniture.integration.forge.create;
 
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.Contraption;
-import com.simibubi.create.content.contraptions.behaviour.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.starfish_studios.another_furniture.block.ShutterBlock;
 import com.starfish_studios.another_furniture.block.properties.VerticalConnectionType;
