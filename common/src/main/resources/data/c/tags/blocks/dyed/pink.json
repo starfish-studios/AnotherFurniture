@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:pink_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:pink_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:pink_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:pink_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:pink_tall_stool",
+            "required": false
+        }
+    ]
+}

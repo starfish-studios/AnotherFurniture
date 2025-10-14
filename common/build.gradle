@@ -23,5 +23,5 @@ publishing {
 }
 
 loom {
-    accessWidenerPath.set(file("src/main/resources/another_furniture.accesswidener"))
+    //accessWidenerPath.set(file("src/main/resources/another_furniture.accesswidener"))
 }

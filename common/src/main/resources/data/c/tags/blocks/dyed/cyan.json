@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:cyan_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:cyan_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:cyan_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:cyan_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:cyan_tall_stool",
+            "required": false
+        }
+    ]
+}

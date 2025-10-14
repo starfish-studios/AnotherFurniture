@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:orange_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:orange_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:orange_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:orange_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:orange_tall_stool",
+            "required": false
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:gray_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:gray_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:gray_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:gray_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:gray_tall_stool",
+            "required": false
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:magenta_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:magenta_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:magenta_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:magenta_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:magenta_tall_stool",
+            "required": false
+        }
+    ]
+}

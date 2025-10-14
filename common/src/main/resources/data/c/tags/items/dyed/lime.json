@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "another_furniture:lime_curtain",
+            "required": false
+        },
+        {
+            "id": "another_furniture:lime_lamp",
+            "required": false
+        },
+        {
+            "id": "another_furniture:lime_sofa",
+            "required": false
+        },
+        {
+            "id": "another_furniture:lime_stool",
+            "required": false
+        },
+        {
+            "id": "another_furniture:lime_tall_stool",
+            "required": false
+        }
+    ]
+}

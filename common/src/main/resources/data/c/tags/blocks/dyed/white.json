@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values": [
+		{"id": "another_furniture:white_curtain", "required": false},
+		{"id": "another_furniture:white_lamp", "required": false},
+		{"id": "another_furniture:white_sofa", "required": false},
+		{"id": "another_furniture:white_stool", "required": false},
+		{"id": "another_furniture:white_tall_stool", "required": false}
+	]
+}
