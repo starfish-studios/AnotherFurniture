@@ -31,6 +31,7 @@ repositories {
     }
 	maven { url = "https://www.cursemaven.com" }
 	maven { url = "https://maven.createmod.net" } // Create, Flywheel
+	maven { url = "https://modmaven.dev/" }
 }
 
 dependencies {
@@ -41,8 +42,10 @@ dependencies {
 	// integration
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
     modImplementation("com.simibubi.create:create-1.20.1:${forge_create_version}") { transitive = false }
+	modImplementation("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
     modImplementation("dev.engine-room.flywheel:flywheel-forge-1.20.1:${forge_flywheel_version}")
-    modImplementation("net.createmod.catnip:Catnip-Forge-1.20.1:${forge_catnip_version}")
+    //modImplementation("net.createmod.catnip:Catnip-Forge-1.20.1:${forge_catnip_version}")
+	implementation(include("io.github.llamalad7:mixinextras-forge:0.3.6"))
 	
 	// misc
 	//modImplementation("curse.maven:jei-238222:3940099")
@@ -65,17 +68,17 @@ shadowJar {
     exclude "fabric.mod.json"
 
     configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier null
+    archiveClassifier = null
 }
 
 jar {
-    classifier "dev"
+    archiveClassifier = "dev"
 }
 
 sourcesJar {
