@@ -1,6 +1,6 @@
 package com.starfish_studios.another_furniture.mixin.fabric.create;
 
-import com.simibubi.create.content.contraptions.BlockMovementChecks;
+import com.simibubi.create.api.contraption.BlockMovementChecks;
 import com.starfish_studios.another_furniture.integration.common.create.CreateCommon;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = BlockMovementChecks.class, remap = false)
 public abstract class BlockMovementChecksMixin {
-    @Inject(method = "isBlockAttachedTowardsFallback", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "isBlockAttachedTowards", at = @At(value = "HEAD"), cancellable = true)
     private static void af$allowStickyConnections(BlockState state, Level world, BlockPos pos, Direction direction, CallbackInfoReturnable<Boolean> cir) {
         if (CreateCommon.canStickToContraption(state, direction)) cir.setReturnValue(true);
     }

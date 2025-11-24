@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.Contraption;
-import com.simibubi.create.content.contraptions.behaviour.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.starfish_studios.another_furniture.entity.SeatEntity;
 import com.starfish_studios.another_furniture.mixin.fabric.create.ContraptionMixin;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import com.simibubi.create.foundation.utility.VecHelper;
 
 public class SeatMovementBehavior implements MovementBehaviour {
 
@@ -58,6 +58,7 @@ public class SeatMovementBehavior implements MovementBehaviour {
         if (toDismount == null)
             return;
         toDismount.stopRiding();
+
         Vec3 position = VecHelper.getCenterOf(pos)
                 .add(0, 1, 0);
         toDismount.teleportTo(position.x, position.y, position.z);

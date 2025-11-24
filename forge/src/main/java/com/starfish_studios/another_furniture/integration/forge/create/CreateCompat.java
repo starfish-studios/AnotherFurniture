@@ -1,14 +1,9 @@
 package com.starfish_studios.another_furniture.integration.forge.create;
 
-import com.simibubi.create.AllInteractionBehaviours;
-import com.simibubi.create.AllMovementBehaviours;
 import com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour;
 import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.api.registry.SimpleRegistry;
-import com.simibubi.create.content.contraptions.behaviour.DoorMovingInteraction;
-import com.starfish_studios.another_furniture.block.SeatBlock;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
-import net.minecraft.tags.BlockTags;
 
 import java.util.List;
 

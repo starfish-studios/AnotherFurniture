@@ -1,35 +1,27 @@
 package com.starfish_studios.another_furniture.integration.fabric.create;
 
-import com.simibubi.create.AllInteractionBehaviours;
-import com.simibubi.create.AllMovementBehaviours;
-import com.starfish_studios.another_furniture.block.SeatBlock;
+import com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour;
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
+import com.simibubi.create.api.registry.SimpleRegistry;
 import com.starfish_studios.another_furniture.registry.AFBlockTags;
+
+import java.util.List;
 
 public class CreateCompat {
     public static void setup() {
 
-        ShutterMovingInteraction shutterMovingInteraction = new ShutterMovingInteraction();
-        AllInteractionBehaviours.registerBehaviourProvider(state -> {
-            if (state.is(AFBlockTags.SHUTTERS)) {
-                return shutterMovingInteraction;
-            }
-            return null;
-        });
+        MovingInteractionBehaviour.REGISTRY.registerProvider(SimpleRegistry.Provider.forBlockTag(AFBlockTags.SHUTTERS, new ShutterMovingInteraction()));
 
-        ShutterMovingBehavior shutterMovingBehavior = new ShutterMovingBehavior();
-        AllMovementBehaviours.registerBehaviourProvider(state -> {
-            if (state.is(AFBlockTags.SHUTTERS)) {
-                return shutterMovingBehavior;
-            }
-            return null;
-        });
+        MovementBehaviour.REGISTRY.registerProvider(SimpleRegistry.Provider.forBlockTag(AFBlockTags.SHUTTERS, new ShutterMovingBehavior()));
 
-        SeatMovementBehavior seatMovementBehavior = new SeatMovementBehavior();
-        AllMovementBehaviours.registerBehaviourProvider(state -> {
-            if (state.getBlock() instanceof SeatBlock) {
-                return seatMovementBehavior;
-            }
-            return null;
+        List.of(
+                AFBlockTags.BENCHES,
+                AFBlockTags.CHAIRS,
+                AFBlockTags.SOFAS,
+                AFBlockTags.STOOLS,
+                AFBlockTags.TALL_STOOLS
+        ).forEach(blockTagKey -> {
+            MovementBehaviour.REGISTRY.registerProvider(SimpleRegistry.Provider.forBlockTag(blockTagKey, new SeatMovementBehavior()));
         });
     }
 }
