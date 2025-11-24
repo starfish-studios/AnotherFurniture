@@ -127,7 +127,7 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return direction.getAxis().isHorizontal() ? state.setValue(TYPE, getConnection(state, (Level)level, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+        return direction.getAxis().isHorizontal() && level instanceof Level level1 ? state.setValue(TYPE, getConnection(state, level1, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Override
