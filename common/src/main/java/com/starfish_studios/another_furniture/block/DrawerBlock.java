@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +35,7 @@ public class DrawerBlock extends BaseEntityBlock {
     public MapCodec<DrawerBlock> codec() {
         return CODEC;
     }
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
 
     public DrawerBlock(BlockBehaviour.Properties properties) {
@@ -47,16 +47,22 @@ public class DrawerBlock extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level.isClientSide) return InteractionResult.SUCCESS;
+        if (level instanceof ServerLevel serverLevel) {
 
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
-            player.openMenu(drawerBlockEntity);
-            PiglinAi.angerNearbyPiglins(player, true);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof DrawerBlockEntity drawerBlockEntity) {
+                player.openMenu(drawerBlockEntity);
+                PiglinAi.angerNearbyPiglins(serverLevel, player, true);
+            }
         }
-        return InteractionResult.CONSUME;
+        return InteractionResult.SUCCESS;
     }
 
+    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
+        Containers.updateNeighboursAfterDestroy(state, level, pos);
+    }
+
+    /*
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.is(newState.getBlock())) return;
 
@@ -67,8 +73,9 @@ public class DrawerBlock extends BaseEntityBlock {
         }
         super.onRemove(state, level, pos, newState, isMoving);
     }
+    */
 
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof DrawerBlockEntity drawerBE) drawerBE.recheckOpen();
     }
@@ -78,9 +85,6 @@ public class DrawerBlock extends BaseEntityBlock {
         return new DrawerBlockEntity(pos, state);
     }
 
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
 
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;

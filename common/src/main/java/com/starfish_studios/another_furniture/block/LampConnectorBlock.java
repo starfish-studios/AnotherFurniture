@@ -8,20 +8,21 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock {
@@ -35,6 +36,7 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
 
     private final DyeColor color;
     public LampConnectorBlock(DyeColor color, Properties properties) {
+        properties.overrideDescription(getLampByColor(color).getDescriptionId());
         super(properties);
         this.color = color;
         this.registerDefaultState(this.stateDefinition.any()
@@ -61,8 +63,9 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
         return blockstate.setValue(WATERLOGGED, waterlogged);
     }
 
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    @Override
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        if (state.getValue(WATERLOGGED)) scheduledTickAccess.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
         if (direction == Direction.UP || direction == Direction.DOWN) {
             BlockState aState = level.getBlockState(currentPos.above());
@@ -84,8 +87,8 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (level.isClientSide) return;
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
+        if (level.isClientSide()) return;
 
         BlockState below = level.getBlockState(pos.below());
         boolean powered = level.hasNeighborSignal(pos) || (below.getBlock() instanceof LampConnectorBlock && below.getValue(POWERED));
@@ -121,11 +124,5 @@ public class LampConnectorBlock extends Block implements SimpleWaterloggedBlock 
             case RED -> AFBlocks.RED_LAMP.get();
             case BLACK -> AFBlocks.BLACK_LAMP.get();
         };
-    }
-
-    @Override
-    public @NotNull String getDescriptionId() {
-        Block lamp = getLampByColor(color);
-        return lamp.getDescriptionId();
     }
 }

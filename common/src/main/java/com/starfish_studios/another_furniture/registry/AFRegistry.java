@@ -2,6 +2,7 @@ package com.starfish_studios.another_furniture.registry;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -15,20 +16,22 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class AFRegistry {
     @ExpectPlatform
-    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
+    public static <T extends Block> Supplier<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory, BlockBehaviour.Properties properties) {
         throw new AssertionError();
     }
 
     @ExpectPlatform
-    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item, String tab_id) {
+    public static <T extends Item> Supplier<T> registerItem(String name, Function<Item.Properties, T> factory, Item.Properties properties, String tab_id) {
         throw new AssertionError();
     }
 
@@ -63,7 +66,7 @@ public class AFRegistry {
     }
 
     @ExpectPlatform
-    public static <T extends BlockEntity> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T> renderProvider) {
+    public static <T extends BlockEntity, S extends BlockEntityRenderState> void registerBlockEntityRenderer(Supplier<BlockEntityType<T>> type, BlockEntityRendererProvider<T, S> renderProvider) {
         throw new AssertionError();
     }
 
@@ -71,8 +74,17 @@ public class AFRegistry {
         setFlammable(Blocks.FIRE, block, encouragement, flammability);
     }
 
+    public static void setFlammable(Block block, int encouragement, int flammability) {
+        setFlammable(Blocks.FIRE, block, encouragement, flammability);
+    }
+
     @ExpectPlatform
     public static <T extends Block> void setFlammable(Block fireBlock, Supplier<T> block, int encouragement, int flammability) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static void setFlammable(Block fireBlock, Block block, int encouragement, int flammability) {
         throw new AssertionError();
     }
 

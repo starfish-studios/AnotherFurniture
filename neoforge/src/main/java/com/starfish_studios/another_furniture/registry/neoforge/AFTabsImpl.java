@@ -15,7 +15,7 @@ public class AFTabsImpl {
             .icon(() -> new ItemStack(AFBlocks.OAK_CHAIR.get().asItem()))
             .title(Component.translatable("item_group." + AnotherFurniture.MOD_ID + ".tab"))
             .displayItems(((parameters, output) -> {
-                output.acceptAll(AFRegistry.getAllModItems());
+                AFRegistry.getAllModItems().forEach((item) -> output.accept(item));
             })).build());
 
     public static void register(IEventBus eventBus) {

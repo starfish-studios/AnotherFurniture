@@ -3,6 +3,7 @@ package com.starfish_studios.another_furniture.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +13,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -61,11 +64,11 @@ public class TallStoolBlock extends SeatBlock implements SimpleWaterloggedBlock 
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+    public BlockState updateShape(final BlockState state, final LevelReader level, final ScheduledTickAccess ticks, final BlockPos currentPos, final Direction direction, final BlockPos neighbourPos, final BlockState neighbourState, final RandomSource random) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            ticks.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+        return super.updateShape(state, level, ticks, currentPos, direction, neighbourPos, neighbourState, random);
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dmg) {
@@ -73,14 +76,15 @@ public class TallStoolBlock extends SeatBlock implements SimpleWaterloggedBlock 
     }
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter reader, Entity entity) {
+    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
         if (entity.isSuppressingBounce()) {
             entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0, 0.0, 1.0));
         } else {
             this.bounceUp(entity);
         }
+
         if (entity instanceof Player) return;
-        super.updateEntityAfterFallOn(reader, entity);
+        super.fallOn(level, state, pos, entity, fallDistance);
     }
 
     private void bounceUp(Entity entity) {
@@ -88,7 +92,6 @@ public class TallStoolBlock extends SeatBlock implements SimpleWaterloggedBlock 
         if (vec3.y >= 0.0D) return;
         double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
         entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d0, vec3.z);
-
     }
 
     @Override
